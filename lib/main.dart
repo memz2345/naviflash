@@ -554,7 +554,6 @@ class MyApp extends StatelessWidget {
                   ],
                   theme: ThemeData(
                     useMaterial3: true,
-                    fontFamily: 'MyCustomFont',
                     colorScheme: lightScheme,
                     textTheme: textTheme,
                     scaffoldBackgroundColor: Colors.transparent,
@@ -562,7 +561,6 @@ class MyApp extends StatelessWidget {
                   ),
                   darkTheme: ThemeData(
                     useMaterial3: true,
-                    fontFamily: 'MyCustomFont',
                     colorScheme: darkSchemeWithPureBlack,
                     textTheme: textTheme,
                     scaffoldBackgroundColor: Colors.transparent,

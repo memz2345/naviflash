@@ -148,8 +148,5 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-  fonts:
-    - family: MyCustomFont  
-      fonts:
-        - asset: assets/MiSansVF.ttf 
+  # 注：原内置 MiSansVF 可变字体（约 20MB）已移除，改走系统字体。
 
