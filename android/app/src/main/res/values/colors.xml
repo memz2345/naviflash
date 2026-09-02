@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SplashScreen 背景色（浅色模式；深色模式在 values-night/colors.xml 覆盖） -->
+    <color name="splash_background">#F7F8FA</color>
+</resources>

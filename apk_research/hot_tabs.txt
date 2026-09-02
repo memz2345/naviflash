@@ -1,0 +1,53 @@
+ver=1787721542 items=10
+item_title=当前热门
+head_image=https://i0.hdslb.com/bfs/legacy/1e7a9273bba1e3c20fecd7e69274278affd52e0f.png
+toast=为您推荐热门内容
+bottom_text=已经到达热门的尽头惹，<em class="keyword">关于热门</em>
+
+== top_items (field5) count=20 ==
+[00] 排行榜      id=4    icon=http://i0.hdslb.com/bfs/archive/a3f11218aaf4521b4967db2ae164ecd3052586b9.png
+     uri=bilibili://rank?type=all
+[01] 每周必看     id=34   icon=http://i0.hdslb.com/bfs/archive/552ebe8c4794aeef30ebd1568b59ad35f15e21ad.png
+     uri=https://www.bilibili.com/blackboard/era/4GF2gaSNsrRnX85G.html?wbType=common&wb_ui=nc@FFFFA901_ph1_tc@FFFFFFFF_b@FFFFA901
+[02] 入站必刷     id=6    icon=http://i0.hdslb.com/bfs/archive/3693ec9335b78ca57353ac0734f36a46f3d179a9.png
+     uri=https://www.bilibili.com/blackboard/era/gjKw13WZjaET3pX8.html?wbType=common&wb_ui=nc@FFB45B2B_ph1_tc@FFFFFFFF_b@FFB45B2B
+[03] 每日有料     id=247  icon=https://i0.hdslb.com/bfs/legacy/d9922415b96bba45ae9feda99711c105a8e5c1e2.png
+     uri=https://www.bilibili.com/blackboard/era/bili-youliao.html?from=hot&navhide=1
+[04] 手游热榜     id=210  icon=https://i0.hdslb.com/bfs/legacy/2a7e8a93bc395631ff1b6bee85907fbe0d1313bf.png
+     uri=https://app.biligame.com/game-rank-list/h5/game-list?tab=av&navhide=1&wb_ui=nh1_sh1
+[05] 音乐榜      id=96   icon=http://i0.hdslb.com/bfs/feed-admin/7ae83346c01be447aa323e102de656ad508fec5e.png
+     uri=https://music.bilibili.com/h5/rank?position_id=7&navhide=1
+[06] 未来科技     id=235  icon=https://i0.hdslb.com/bfs/legacy/d99009c40582b165cfb639634170e93b38db67f0.png
+     uri=https://www.bilibili.com/blackboard/era/rLQxUIHXtuv5uDjN.html?wbType=common&wb_ui=nc@FF212121_ph1_tc@FFFFFFFF_b@FF212121
+[07] 热门播客     id=202  icon=https://i0.hdslb.com/bfs/legacy/715ca4d8022d2281bb6291d684ae3ce6e4e0c96c.png
+     uri=https://www.bilibili.com/blackboard/era/fuwAmTrtqFLexuSx.html?wbType=common&wb_ui=nc@FF0D71AB_ph1_tc@FFFFFFFF_b@FF0D71AB
+[08] 直拍热榜     id=184  icon=https://i0.hdslb.com/bfs/legacy/db2ce7d75f47921c8dd7ad009b1345b4d45cbd26.png
+     uri=https://www.bilibili.com/blackboard/era/Dh6jt8JUV0goUV6R.html?wbType=common&wb_ui=nc@FFF55497_ph1_tc@FFFFFFFF_b@FFF55497
+[09] AI偶像     id=163  icon=https://i0.hdslb.com/bfs/legacy/379e37b640cfb1d061cebefc3a2d4bc0f07a2808.png
+     uri=https://www.bilibili.com/blackboard/era/XRwF6CvLNikSfyG7.html?wbType=common&wb_ui=nc@FF675AE8_ph1_tc@FFFFFFFF_b@FF675AE8
+[10] 科技新品     id=209  icon=https://i0.hdslb.com/bfs/legacy/77e35492c109494c83638e76d85f3763867df17e.png
+     uri=https://www.bilibili.com/blackboard/dynamic/409529
+[11] 新车榜      id=231  icon=https://i0.hdslb.com/bfs/legacy/e73b381e6694bf6469d0e5fd1886a815fbff1dab.png
+     uri=https://www.bilibili.com/blackboard/era/iOlaaEZDEBLnXzSc.html?wbType=common&wb_ui=nc@FFFF5588_ph1_tc@FFFFFFFF_b@FFFF5588
+[12] 财经哔看     id=212  icon=https://i0.hdslb.com/bfs/legacy/0d1da61b8274c984594d65ac2e80105ed05381ea.png
+     uri=https://www.bilibili.com/blackboard/era/y2d5yJKnaskOIxTB.html?wbType=common&wb_ui=nc@FFFA5C8F_ph1_tc@FFFFFFFF_b@FFFA5C8F
+[13] AI新榜     id=220  icon=https://i0.hdslb.com/bfs/legacy/27e3486f254a401a76c70380c096d203cac1dd5e.png
+     uri=https://www.bilibili.com/blackboard/era/myy1hHE7ifSJELxU.html?wbType=common&wb_ui=nc@FF3860E9_ph1_tc@FFFFFFFF_b@FF3860E9
+[14] UP动画     id=236  icon=https://i0.hdslb.com/bfs/legacy/5bc1ba29406342b2f8b93c97dccde7b7c1f6abb8.png
+     uri=https://www.bilibili.com/blackboard/era/ClRp5wF7U67v6Q6K.html?wbType=common&wb_ui=nc@FF180C07_ph1_tc@FFFFFFFF_b@FF180C07
+[15] 哔看榜      id=151  icon=https://i0.hdslb.com/bfs/legacy/eafb95ab711eacc98946d0b768644c40f1e8c364.png
+     uri=https://m.bilibili.com/bangumi/v2/rank-list?navhide=1
+[16] 热搜榜      id=90   icon=http://i0.hdslb.com/bfs/feed-admin/8e45dab7160927a907d225f14cc6952d217b4266.png
+     uri=https://www.bilibili.com/blackboard/activity-trending-topic.html?navhide=1
+[17] 辟谣专区     id=194  icon=https://i0.hdslb.com/bfs/legacy/ce9ee90c1442977f438713d01d3ab59506f3fad0.png
+     uri=https://www.bilibili.com/blackboard/era/3xO7ten9xI4ukhTA.html
+[18] 课堂热榜     id=112  icon=https://i0.hdslb.com/bfs/legacy/017b1e5269fb20b05b84ea786fde48fa09d65d07.png
+     uri=https://m.bilibili.com/cheese/ranklist?navhide=1&csource=common_hoticon_null_null
+[19] 美食       id=9    icon=http://i0.hdslb.com/bfs/archive/f7a062d5e6721af0555c0a9d72544d46c4571983.png
+     uri=http://www.bilibili.com/h5/popular/9?navhide=1
+     top_photo=https://i0.hdslb.com/bfs/legacy/9e7e685b28ff67181bb62f3d68750b73df5c4d9f.png
+
+== page_items (field7) count=1 ==
+[00] 全站热门     id=0    type=1 icon=https://i0.hdslb.com/bfs/archive/10814950191d33ba6eb6f29439e27399c3eeee37.png
+     uri=https://www.bilibili.com/blackboard/activity-RKWxGjjMb.html
+     top_photo=https://i0.hdslb.com/bfs/legacy/1e7a9273bba1e3c20fecd7e69274278affd52e0f.png

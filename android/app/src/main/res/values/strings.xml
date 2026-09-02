@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="shortcut_search">搜索</string>
+    <string name="shortcut_search_long">B站搜索</string>
+    <string name="shortcut_offline">离线视频</string>
+    <string name="shortcut_offline_long">离线视频（我的缓存）</string>
+    <string name="shortcut_recommend">推荐</string>
+    <string name="shortcut_recommend_long">推荐主页</string>
+</resources>

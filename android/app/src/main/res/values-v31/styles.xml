@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+（API 31+）系统级 SplashScreen：
+         使用系统 SplashScreen API，背景色随深浅模式自动切换，
+         图标沿用应用图标；windowBackground 与 Splash 同色，
+         保证 Splash 结束到 Flutter 首帧之间无闪白。 -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowSplashScreenBackground">@color/splash_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="android:windowSplashScreenAnimationDuration">400</item>
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+</resources>

@@ -1,0 +1,3663 @@
+{
+  "@@locale": "en",
+  "metroDate": "{month}/{day}",
+  "@metroDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "metroSunday": "Sunday",
+  "metroMonday": "Monday",
+  "metroTuesday": "Tuesday",
+  "metroWednesday": "Wednesday",
+  "metroThursday": "Thursday",
+  "metroFriday": "Friday",
+  "metroSaturday": "Saturday",
+  "metroLogin": "Log in",
+  "metroWelcome": "Welcome",
+  "imageViewerNoFile": "Image file not found",
+  "syncPassphraseEmpty": "Sync passphrase cannot be empty",
+  "imageBytesRequired": "Provide either imageUrl or imageBytes",
+  "webdavConnectSuccess": "Connected!",
+  "webdavConfigSaved": "Configuration saved",
+  "webdavConfigureFirst": "Configure and test the WebDAV connection first",
+  "webdavSelectContactsFirst": "Select the contacts to back up below first",
+  "webdavNoFiles": "The selected contacts have no files to back up",
+  "webdavConfirmBackup": "Confirm backup",
+  "webdavBackupConfirm": "Back up {files} files from {contacts} contacts to the WebDAV server.\nRemote path: {path}/chats/<nickname>/",
+  "@webdavBackupConfirm": {
+    "placeholders": {
+      "contacts": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      },
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStartBackup": "Start backup",
+  "webdavBackingUpTitle": "Backing up",
+  "webdavBackupDoneTitle": "Backup done",
+  "webdavTotalFiles": "Total: {count} files",
+  "@webdavTotalFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSuccessCount": "Succeeded: {count}",
+  "@webdavSuccessCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavFailCount": "Failed: {count}",
+  "@webdavFailCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavMoreErrors": "...{count} more errors",
+  "@webdavMoreErrors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavBackupFab": "Backup",
+  "webdavShowInfo": "Show my info",
+  "webdavHideInfo": "Hide my info",
+  "webdavScanToFill": "Scan to fill the server URL",
+  "webdavScanFilled": "Address filled from QR code",
+  "webdavServerConfig": "Server configuration",
+  "webdavServerUrlLabel": "Server URL",
+  "webdavUsernameLabel": "Username",
+  "webdavPasswordLabel": "Password",
+  "webdavRemotePathLabel": "Remote backup path",
+  "webdavTesting": "Testing...",
+  "webdavSaveAndTest": "Save and test connection",
+  "webdavSaveOnly": "Save only",
+  "webdavConnectVerified": "Connection verified",
+  "webdavAutoBackup": "Auto backup",
+  "webdavAutoBackupOnReceive": "Auto back up received files",
+  "webdavAutoBackupSubtitle": "Applies only to the selected contacts below",
+  "webdavMediaSync": "Media sync",
+  "webdavSyncPlaylists": "Sync playlists",
+  "webdavSyncDanmaku": "Sync danmaku",
+  "webdavPassphraseEncrypted": "Sync passphrase (AES-256 encrypted)",
+  "webdavPassphrasePlain": "Sync passphrase (leave empty = plain upload)",
+  "webdavPassphraseHint": "Playlists will be uploaded encrypted once a passphrase is set",
+  "webdavGeneratePassphrase": "Generate random passphrase",
+  "webdavMediaSyncHint": "Playlists (including backgrounds) and danmaku are stored in separate cloud directories (playlists/, danmaku/), so they won't mix with chat backups. Devices sharing the same remote path can merge with each other; playlists can also be synced manually or restored from the cloud on the playlist page.",
+  "webdavEncryptionOn": "Encryption enabled: playlists are uploaded encrypted with AES-256-GCM (including embedded WebDAV auth), so the server cannot read the content. Other devices must use the same passphrase to decrypt.",
+  "webdavEncryptionOff": "Not encrypted: playlists (including embedded WebDAV auth) are uploaded in plaintext. Anyone with server access can read them. Not recommended.",
+  "webdavBackupContacts": "Backup contacts",
+  "webdavSelectedContacts": "{selected} / {total} contacts selected",
+  "@webdavSelectedContacts": {
+    "placeholders": {
+      "selected": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSearchContacts": "Search contacts or IP...",
+  "webdavDeselectAll": "Deselect all",
+  "webdavFileCount": "{count} files",
+  "@webdavFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNoContacts": "No contacts",
+  "webdavNoMatch": "No matches",
+  "webdavContactSubtitle": "{ip}  ·  {count} files",
+  "@webdavContactSubtitle": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavManage": "Manage",
+  "webdavLastSync": "Last sync",
+  "webdavLastError": "Last error",
+  "webdavClearConfig": "Clear WebDAV configuration",
+  "webdavClearConfigSubtitle": "Delete all server info and credentials",
+  "webdavUserLabel": "User",
+  "webdavStatusActive": "{name} active",
+  "@webdavStatusActive": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStatusConfigured": "{name} configured",
+  "@webdavStatusConfigured": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStatusNotConfigured": "Not configured",
+  "webdavNotSynced": "Not synced yet",
+  "webdavJustNow": "Last sync: just now",
+  "webdavMinutesAgo": "Last sync: {minutes} minutes ago",
+  "@webdavMinutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavHoursAgo": "Last sync: {hours} hours ago",
+  "@webdavHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSyncedDate": "Last sync: {month}/{day} {time}",
+  "@webdavSyncedDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPassphraseGenerated": "A sync passphrase was generated and copied to the clipboard. Enter the same passphrase on other devices",
+  "webdavConfirmClear": "Confirm clearing",
+  "webdavClearConfirmText": "This deletes all WebDAV configuration (server, credentials, selected contacts).\nAlready uploaded files are not affected.",
+  "profileEditProfile": "Edit profile",
+  "profileAccountSection": "Account",
+  "profileWebdavBackup": "WebDAV backup",
+  "profileWebdavLoggedIn": "{username} logged in",
+  "@profileWebdavLoggedIn": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "profileNotLoggedIn": "Not logged in",
+  "profileAvatarSection": "Avatar",
+  "profileChangeAvatar": "Change avatar",
+  "profileRemoveAvatar": "Remove avatar",
+  "profilePickFromGallery": "Pick an image from the gallery",
+  "profileRestoreDefaultAvatar": "Restore default avatar",
+  "profileSetBackground": "Set background",
+  "profileBgSubtitle": "Choose a background image for the sidebar",
+  "profileRestoreDefault": "Restore default",
+  "profileBgRemoveSubtitle": "Remove the custom background and use the theme gradient",
+  "profileInfoSection": "Profile info",
+  "profileNicknameLabel": "Nickname",
+  "profileNotSet": "Not set",
+  "profileBgTitle": "Profile background",
+  "profileAvatarUpdated": "Avatar updated",
+  "profileAvatarFailed": "Failed to pick avatar: {error}",
+  "@profileAvatarFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "profileRemoveAvatarConfirm": "Remove the current avatar? This cannot be undone.",
+  "profileAvatarRemoved": "Avatar removed",
+  "profileSetNickname": "Set nickname",
+  "profileNicknameHint": "Enter nickname",
+  "profileNicknameEmpty": "Nickname cannot be empty",
+  "profileNicknameUpdated": "Nickname updated",
+  "colorDefaultGreen": "Default green",
+  "colorPink": "Pink",
+  "colorRed": "Red",
+  "colorOrange": "Orange",
+  "colorAmber": "Amber",
+  "colorYellow": "Yellow",
+  "colorLime": "Lime",
+  "colorLightGreen": "Light green",
+  "colorGreen": "Green",
+  "colorCyan": "Cyan",
+  "colorTeal": "Teal",
+  "colorLightBlue": "Light blue",
+  "colorBlue": "Blue",
+  "colorIndigo": "Indigo",
+  "colorPurple": "Purple",
+  "colorDeepPurple": "Deep purple",
+  "colorBlueGrey": "Blue grey",
+  "colorBrown": "Brown",
+  "colorGrey": "Grey",
+  "themeColorExtracted": "Theme color extracted from image",
+  "themeColorFailed": "Failed to pick color: {error}",
+  "@themeColorFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "themeImageOnly": "Only image formats are supported",
+  "themeTitle": "Theme",
+  "themeColorCopied": "Color code copied: {hex}",
+  "@themeColorCopied": {
+    "placeholders": {
+      "hex": {
+        "type": "String"
+      }
+    }
+  },
+  "themeAppearance": "Appearance",
+  "themeDarkBlackened": "Dark mode (pure black)",
+  "themeOff": "Off",
+  "themeEnabled": "On",
+  "themeColorsSection": "Colors",
+  "themePaletteStyle": "Palette style",
+  "themeFollowSystem": "Follow system colors",
+  "themePickColor": "Pick a color",
+  "themeDropHint": "Release to extract the theme color from the image",
+  "themeNewTheme": "New theme",
+  "themeSwitched": "Switched to the {name} theme",
+  "@themeSwitched": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDeleteTitle": "Delete theme",
+  "themeDeleteConfirm": "Delete the custom theme \"{name}\"?",
+  "@themeDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDeleted": "\"{name}\" deleted",
+  "@themeDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeCreateTitle": "Create custom theme",
+  "themeNameLabel": "Theme name",
+  "themeNameHint": "Enter text",
+  "themeHexLabel": "Hex / RGB",
+  "themeHexHint": "e.g. #FF0000 or 255,0,0",
+  "themeCreated": "Theme \"{name}\" created and saved",
+  "@themeCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeCopyColor": "Copy color code",
+  "themePickFromImage": "Pick color from image",
+  "searchBack": "Back to settings",
+  "searchHint": "Search settings…",
+  "searchPrompt": "Type keywords to search settings",
+  "searchExamples": "e.g. refresh rate / decode / UA / danmaku",
+  "searchNoResults": "No settings found for \"{query}\"",
+  "@searchNoResults": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "searchThemeMode": "Theme mode",
+  "searchPureBlack": "Pure black dark mode",
+  "searchThemeColor": "Theme colors",
+  "searchFontWeight": "Font weight",
+  "searchDisplayScale": "Display scale",
+  "searchDisplayMode": "Display mode / refresh rate",
+  "searchStatusBar": "Status bar",
+  "searchKeepWindowRatio": "Keep window aspect ratio",
+  "searchLongPressSpeed": "Hold to speed up",
+  "searchScreenshot": "Screenshot",
+  "searchScreenshotDanmaku": "Show danmaku in screenshots",
+  "searchPlayProgress": "Playback progress",
+  "searchHwdec": "Hardware decoding",
+  "searchVideoSync": "Video sync",
+  "searchImmersiveLongPress": "Immersive hold-to-speed",
+  "searchMpvLog": "Log mpv output",
+  "searchMpvLogLevel": "mpv log level",
+  "searchNetworkMode": "Network mode",
+  "searchInsecureCert": "Allow insecure certificates",
+  "searchChatIpv6": "Chat IPv6",
+  "searchConnectivityTest": "Connectivity test",
+  "searchHostOverrides": "Host overrides",
+  "searchDohQuery": "DoH query",
+  "searchReferer": "Referer header",
+  "searchUserAgent": "User-Agent header",
+  "searchSystemSettings": "System settings",
+  "searchUserSettings": "User settings",
+  "settingsDisplaySub": "Theme, fonts, layout",
+  "settingsSystem": "System",
+  "settingsSystemSub": "Language, storage, permissions",
+  "settingsStorage": "Storage",
+  "settingsStorageSub": "Image cache, danmaku cache",
+  "settingsNetwork": "Network",
+  "settingsNetworkSub": "Wi-Fi, proxy, sync",
+  "settingsLanguage": "Language",
+  "settingsLanguageSub": "App language, Bilibili AI translation",
+  "appLangSection": "App language",
+  "appLangFollowSystem": "Follow system",
+  "biliLangSection": "Target language",
+  "biliAiSection": "AI Translation",
+  "biliAiTranslateEnable": "Enable AI translation",
+  "biliAiTranslateOnDesc": "Enabled: Bilibili requests carry translation headers",
+  "biliAiTranslateOffDesc": "Disabled: content stays in the original language",
+  "langZhCn": "简体中文 (Simplified Chinese)",
+  "langZhHk": "繁體中文 (Traditional Chinese, HK)",
+  "langZhTw": "繁體中文 (Traditional Chinese, TW)",
+  "langEnUs": "English",
+  "langJaJp": "日本語 (Japanese)",
+  "langKoKr": "한국어 (Korean)",
+  "settingsPlayer": "Player",
+  "settingsPlayerSub": "Status bar, speed, screenshots",
+  "settingsStartScreenSub": "Start screen, Charm",
+  "settingsLogs": "Logs",
+  "settingsLogsSub": "Error logs, mpv logs",
+  "settingsAccounts": "Accounts",
+  "settingsAccountsSub": "Bilibili, WebDAV",
+  "settingsUser": "User",
+  "settingsUserSub": "Account, privacy, security",
+  "settingsAboutSub": "Version, licenses",
+  "settingsLicenses": "Open source licenses",
+  "settingsLicensesSub": "Open source projects used by this app",
+  "settingsSearch": "Search settings",
+  "openSidebar": "Open sidebar",
+  "settingsPlaceholderEasterEgg": "Hmm, why not ask the wonderful Frieren?",
+  "storageClearTitle": "Clear {label}",
+  "@storageClearTitle": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "storageClearConfirm": "Clear {label}? Images will be re-downloaded when viewed again.",
+  "@storageClearConfirm": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "storageClear": "Clear",
+  "storageCleared": "{label} cleared",
+  "@storageCleared": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "refreshAction": "Refresh",
+  "storageCacheSection": "Cache",
+  "storageImageCache": "Image cache",
+  "storageCounting": "Counting…",
+  "storageFileCount": "{count} files · {size}",
+  "@storageFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "storageDanmakuCache": "Danmaku cache",
+  "storageVideoCount": "{count} videos · {size}",
+  "@storageVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAutoOfflineCache": "Auto cache played videos",
+  "settingsAutoOfflineCacheHint": "Videos you watch are saved locally (about a 2 GB cap, oldest evicted when full), and play from disk next time without re-downloading. Turn off to stop adding new caches.",
+  "storageVideoCache": "Offline video cache",
+  "storageVideoCacheDesc": "Media of played videos (auto-cached within the size cap, LRU evicted); plays from disk next time",
+  "storageMemoryCache": "In-memory image cache",
+  "storageMemoryCacheDesc": "Images decoded during this session; freed automatically on exit",
+  "storageClearing": "Clearing…",
+  "storageClearAll": "Clear all cache",
+  "storageCacheHint": "The image cache is the app's private directory (image_cache); cleared comment images will be re-downloaded. The danmaku cache is used for offline danmaku.",
+  "storageClearAllTitle": "Clear all cache",
+  "storageClearAllConfirm": "This clears the image cache, danmaku cache and in-memory image cache. Images will be re-downloaded when viewed again.",
+  "storageAllCleared": "All cache cleared",
+  "verificationPendingRequests": "Pending requests",
+  "verificationNoPending": "No pending requests",
+  "verificationIpAddress": "IP address: {ip}",
+  "@verificationIpAddress": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationNickname": "Nickname: {name}",
+  "@verificationNickname": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationRequestTime": "Request time: {time}",
+  "@verificationRequestTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationRejectInvalid": "Cannot reject: invalid IP address",
+  "verificationRejected": "Connection request rejected",
+  "verificationReject": "Reject",
+  "verificationAcceptInvalid": "Cannot accept: invalid IP address",
+  "verificationAccepted": "Connection request accepted",
+  "verificationAccept": "Accept",
+  "startScreenWarning": "This project may no longer be updated",
+  "startScreenTitle": "Start screen",
+  "startScreenGoBack": "Navigate up",
+  "enableStartScreen": "Enable start screen",
+  "startScreenEnableSubtitle": "Allow opening the start screen from the Charm Start button",
+  "enableCharm": "Enable Charm",
+  "charmEnableSubtitle": "Show the Charm bar on the right edge of the screen",
+  "charmGestureTitle": "Gesture to open Charm",
+  "charmGestureSubtitle": "Swipe left from the right edge or hover the top-right corner to open Charm",
+  "externalVideo": "External video",
+  "audioChannelName": "Video media playback",
+  "foregroundChannelName": "Navi keep-alive",
+  "foregroundChannelDesc": "Keep me running in the background",
+  "foregroundTitle": "Keeping alive",
+  "foregroundText": "Verifying",
+  "drawerBilibiliSearch": "Bilibili Search",
+  "commentImageLoadFail": "Image failed to load",
+  "commentDetailTitle": "Comment Details",
+  "commentLikeLoginRequired": "Please log in to your Bilibili account (and enable sending cookies) before liking",
+  "commentLikeFail": "Like failed: {error}",
+  "@commentLikeFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "relatedEmpty": "No related videos",
+  "biliLoadFailed": "Failed to load",
+  "countWan": "{count}W",
+  "@countWan": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "countYi": "{count}M",
+  "@countYi": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "searchNoNewContent": "No new content",
+  "searchNewContentRefreshed": "Refreshed with a new batch of content",
+  "biliDialogNeedLogin": "Login required",
+  "biliDialogInteractDesc": "Likes, coins, triple-send and other interactions require logging in to a Bilibili account",
+  "biliGoLogin": "Go to login",
+  "biliCookieScopeHint": "Enable \"Carry Cookie\" and the \"Interactions\" scope in Account settings",
+  "videoTabRelated": "Related",
+  "videoTabComments": "Comments",
+  "videoTabCommentsCount": "Comments {count}",
+  "@videoTabCommentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTabEpisodes": "Episodes {count}",
+  "@videoTabEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTabIntro": "Intro",
+  "danmakuWatching": "{count} watching",
+  "@danmakuWatching": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuLoadedBar": "{count} danmaku loaded",
+  "@danmakuLoadedBar": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuToggleOn": "Enable danmaku",
+  "danmakuDisable": "Disable danmaku",
+  "danmakuInputHint": "Post a friendly danmaku to mark this moment",
+  "danmakuToastEmpty": "Danmaku text cannot be empty",
+  "danmakuToastSendFail": "Failed to send: {error}",
+  "@danmakuToastSendFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuToastSent": "Danmaku sent",
+  "videoLikeTooltip": "Like (long-press for triple-send)",
+  "videoUnlikeTooltip": "Unlike",
+  "videoCoinTooltip": "Coin",
+  "videoFavTooltip": "Favorite",
+  "videoUnfavTooltip": "Unfavorite",
+  "videoShareLabel": "Share",
+  "videoStatRating": "{count} rated",
+  "@videoStatRating": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoStatFollowing": "{count} following",
+  "@videoStatFollowing": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoStatWatching": "{count} watching",
+  "@videoStatWatching": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoFollowLabel": "Follow",
+  "videoFollowedLabel": "Following",
+  "commentDetailEmpty": "No replies yet",
+  "commentDetailNoMore": "No more replies ({count} total)",
+  "@commentDetailNoMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentDetailLoadMore": "Scroll to load more",
+  "commentDetailRootBadge": "OP",
+  "commentDetailDeleted": "(Comment deleted)",
+  "commentMenuCopy": "Copy Comment",
+  "commentMenuSelectText": "Select Text",
+  "commentDialogTitle": "Comment Content",
+  "commentDialogEmpty": "(It's empty here)",
+  "danmakuInputBvPrompt": "Please enter a BV ID",
+  "danmakuInputCidPrompt": "Please enter a CID",
+  "danmakuInputCidNumeric": "CID must contain only digits",
+  "danmakuInputCacheHit": "Cache hit: {count} danmaku loaded (oid={oid})",
+  "@danmakuInputCacheHit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuInputFetchSuccess": "Loaded: {count} danmaku (oid={oid})",
+  "@danmakuInputFetchSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuInputFetchFail": "Failed to fetch",
+  "danmakuInputTitle": "Bilibili Danmaku",
+  "danmakuInputTypeLabel": "Type: ",
+  "danmakuInputBvHint": "Enter a BV ID to automatically fetch the CID of the first part",
+  "danmakuInputCidHint": "Enter a numeric CID directly (e.g. obtained from an API)",
+  "danmakuInputFetching": "Fetching...",
+  "danmakuInputFetchDanmaku": "Fetch Danmaku",
+  "danmakuInputEmpty": "Input cannot be empty",
+  "danmakuCidFetchFail": "Unable to fetch CID, please check the BV ID",
+  "danmakuNoData": "No danmaku data found (oid={oid})",
+  "@danmakuNoData": {
+    "placeholders": {
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuSettingsTitle": "Danmaku Settings",
+  "danmakuDataSource": "Data Source",
+  "danmakuDisplayControl": "Display Control",
+  "danmakuEnable": "Enable Danmaku",
+  "danmakuSmartMask": "Smart Anti-Occlusion",
+  "danmakuSmartMaskDesc": "Detects people so danmaku won't cover them",
+  "danmakuTypeFilter": "Danmaku Type",
+  "danmakuTypeScroll": "Scrolling Danmaku",
+  "danmakuTypeTop": "Top Danmaku",
+  "danmakuTypeBottom": "Bottom Danmaku",
+  "danmakuTypeAdvanced": "Advanced Danmaku (BAS)",
+  "danmakuAdvancedSubtitle": "Animated danmaku; enabling may affect performance",
+  "danmakuParameters": "Parameters",
+  "danmakuScrollSpeed": "Scroll Speed",
+  "danmakuOpacity": "Opacity",
+  "danmakuFontSize": "Font Size",
+  "danmakuMaxLines": "Max Lines",
+  "danmakuLinesCount": "{count} lines",
+  "@danmakuLinesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuQuickActions": "Quick Actions",
+  "danmakuResetParams": "Reset Parameters",
+  "danmakuClearDanmaku": "Clear Danmaku",
+  "danmakuLoadLocalXml": "Load Local XML Danmaku",
+  "danmakuFetchOnline": "Fetch Online Bilibili Danmaku",
+  "danmakuNotLoaded": "No danmaku loaded yet",
+  "danmakuLoadedCount": "{count} danmaku loaded",
+  "@danmakuLoadedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuBlockColorful": "Colored danmaku",
+  "danmakuCloudFilter": "Smart cloud filter",
+  "danmakuCloudFilterOff": "Off",
+  "danmakuCloudFilterLevel": "Level {level}",
+  "@danmakuCloudFilterLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuFontSizeFS": "Fullscreen font size",
+  "danmakuSeconds": "{value}s",
+  "@danmakuSeconds": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuOthers": "Others",
+  "danmakuMassiveMode": "Massive mode",
+  "danmakuStatic2Scroll": "Static to scroll",
+  "danmakuShowArea": "Show area",
+  "danmakuFontWeight": "Font weight",
+  "danmakuStrokeWidth": "Stroke width",
+  "danmakuScrollDuration": "Scroll duration (s)",
+  "danmakuStaticDuration": "Static duration (s)",
+  "danmakuLineHeight": "Line height",
+  "danmakuResetTo": "Reset to default: {value}",
+  "@danmakuResetTo": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "naviAddAction": "Add",
+  "playlistImportAdded": "Added {count} files",
+  "@playlistImportAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistAddEpisodeTitle": "Add Episode",
+  "playlistTitleLabel": "Title",
+  "playlistEpisodeHint": "Episode 1",
+  "playlistVideoUrlLabel": "Video URL",
+  "playlistAdd": "Add",
+  "playlistNameRequired": "Please enter a playlist name",
+  "playlistAtLeastOneVideo": "Please add at least one video",
+  "playlistEditTitle": "Edit Playlist",
+  "playlistCreateTitle": "Create Playlist",
+  "playlistNameLabel": "Playlist Name",
+  "playlistNameHint": "My anime list",
+  "playlistWebdavMulti": "WebDAV Multi-select",
+  "playlistItemsCount": "{count} episodes",
+  "@playlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistNoItems": "No videos added yet",
+  "playlistImportHint": "Tap the buttons above to import",
+  "playlistSaveChanges": "Save Changes",
+  "playlistEpisodePanelTitle": "Episodes",
+  "playlistEpisodeCurrent": "Current: Episode {index}",
+  "@playlistEpisodeCurrent": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistSyncResult": "{what}: {message}",
+  "@playlistSyncResult": {
+    "placeholders": {
+      "what": {
+        "type": "String"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistSyncTwoWay": "Two-way Sync Playlists",
+  "playlistSyncTwoWaySubtitle": "Download from cloud and merge, then upload the merged result (includes backgrounds)",
+  "playlistRestoreFromCloud": "Restore from Cloud",
+  "playlistRestoreFromCloudSubtitle": "Overwrite local playlists with cloud data (includes backgrounds)",
+  "playlistUploadToCloud": "Upload to Cloud",
+  "playlistUploadToCloudSubtitle": "Upload all local playlists (includes backgrounds, no merging)",
+  "playlistSyncDanmaku": "Sync Danmaku Cache",
+  "playlistSyncDanmakuSubtitle": "Merge with the cloud danmaku cache (keep the newer)",
+  "playlistCreated": "Created: {name}",
+  "@playlistCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistDeleteTitle": "Delete Playlist",
+  "playlistDeleteConfirm": "Delete \"{name}\"?",
+  "@playlistDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistNewTooltip": "New Playlist",
+  "playlistListTitle": "Playlists",
+  "playlistCloudSync": "Cloud Sync",
+  "playlistMyLists": "My Lists",
+  "playlistNoLists": "No playlists",
+  "playlistListSummary": "{count} total · Tap a list to view all episodes",
+  "@playlistListSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistEmptyTitle": "No playlists yet",
+  "playlistEmptyHint": "Tap the \"Create\" button at the bottom right to create one",
+  "playlistResume": "Resume",
+  "playlistEditAction": "Edit",
+  "playlistTileProgress": "{total} episodes · Watched up to episode {current}",
+  "@playlistTileProgress": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "current": {
+        "type": "int"
+      }
+    }
+  },
+  "subtitleOff": "Off",
+  "subtitleTrackFallback": "Track {id}",
+  "@subtitleTrackFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleLoadedLocal": "Subtitle loaded: {name}",
+  "@subtitleLoadedLocal": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleWebdavNotConfigured": "WebDAV is not configured, please log in first",
+  "subtitleWebdavFolderEmpty": "The WebDAV subtitle folder is empty",
+  "subtitleSelectFile": "Select Subtitle File",
+  "subtitleDownloadFailed": "Subtitle download failed: HTTP {code}",
+  "@subtitleDownloadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "subtitleLoadedRemote": "Remote subtitle loaded: {name}",
+  "@subtitleLoadedRemote": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleLoadError": "Subtitle load error: {error}",
+  "@subtitleLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitlePanelTitle": "Subtitles (CC)",
+  "subtitleLoadLocal": "Load Local Subtitle",
+  "subtitleLoadWebdav": "Load Subtitle from WebDAV",
+  "subtitleFontSize": "Font Size",
+  "subtitleFontColor": "Font Color",
+  "subtitleBgColor": "Background Color",
+  "webdavInputPath": "Enter Path",
+  "webdavGoTo": "Go",
+  "webdavLoginRequired": "Please log in to your WebDAV account first",
+  "webdavLoginSubtitle": "Configure a server to browse remote videos",
+  "webdavLoginSubtitleMulti": "After logging in, you can multi-select remote videos to create playlists",
+  "webdavRefresh": "Refresh",
+  "webdavRoot": "Root",
+  "webdavParent": "Parent",
+  "webdavFolderEmpty": "This folder is empty",
+  "webdavPullToRefresh": "Try pulling down to refresh?",
+  "webdavSelectVideo": "Please select a video file",
+  "webdavPlay": "Play",
+  "webdavMultiSelectTitle": "Multi-select Files",
+  "webdavNoSelection": "No files selected",
+  "webdavSelectedCount": "{count} videos selected",
+  "@webdavSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSelectionOrder": "In selection order: {names}",
+  "@webdavSelectionOrder": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavClear": "Clear",
+  "webdavConfirmSelection": "Confirm Selection",
+  "webdavGoLogin": "Log In",
+  "profileTitle": "Profile",
+  "settingsAvatarTitle": "Avatar",
+  "settingsAvatarSet": "Set",
+  "settingsNotSet": "Not set",
+  "settingsAvatarChangeTooltip": "Change avatar",
+  "settingsAvatarDeleteTooltip": "Delete avatar",
+  "settingsAvatarUpdated": "Avatar updated",
+  "settingsPickAvatarFailed": "Failed to pick avatar: {error}",
+  "@settingsPickAvatarFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAvatarDeleteTitle": "Delete avatar",
+  "settingsAvatarDeleteConfirm": "Are you sure you want to delete the current avatar?",
+  "settingsAvatarDeleteConfirmPermanent": "Are you sure you want to delete the current avatar? This cannot be undone.",
+  "settingsAvatarDeleted": "Avatar deleted",
+  "settingsNickname": "Nickname",
+  "settingsNicknameEditTooltip": "Edit nickname",
+  "settingsSetNickname": "Set nickname",
+  "settingsNicknamePrompt": "Please enter your nickname",
+  "settingsNicknameHint": "Enter nickname",
+  "settingsNicknameEmpty": "Nickname cannot be empty",
+  "settingsNicknameTooLong": "Nickname cannot exceed 20 characters",
+  "settingsNicknameUpdated": "Nickname updated",
+  "settingsLockWallpaper": "Lock screen wallpaper",
+  "settingsWallpaperCustomSet": "Custom wallpaper set",
+  "settingsWallpaperDefaultBg": "Using default dark background",
+  "settingsWallpaperUpdated": "Wallpaper updated",
+  "settingsWallpaperPickTooltip": "Choose wallpaper",
+  "settingsWallpaperDelete": "Delete wallpaper",
+  "settingsWallpaperDeleteConfirm": "Delete the lock screen wallpaper and restore default?",
+  "settingsWallpaperDeleted": "Wallpaper deleted",
+  "settingsDecoImage": "Bottom-right decoration image",
+  "settingsDecoImageSet": "Set (transparent PNG/WebP supported)",
+  "settingsDecoImageUpdated": "Decoration image updated",
+  "settingsPickImageFailed": "Failed to pick image: {error}",
+  "@settingsPickImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsPickImageTooltip": "Choose image",
+  "settingsDecoImageDelete": "Delete decoration image",
+  "settingsDecoImageDeleteConfirm": "Delete the bottom-right decoration image?",
+  "settingsDecoImageDeleted": "Decoration image deleted",
+  "settingsSize": "Size",
+  "settingsSizePxLabel": "{size} px",
+  "@settingsSizePxLabel": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsSizePxValue": "{size}px",
+  "@settingsSizePxValue": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsOpacity": "Opacity",
+  "settingsOpacityPercentValue": "{percent}%",
+  "@settingsOpacityPercentValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsDisplay": "Display",
+  "settingsDisplaySubtitle": "Theme · Color · Text · Scale",
+  "settingsAppTheme": "App theme",
+  "settingsCurrentColor": "Current color: #{color}",
+  "@settingsCurrentColor": {
+    "placeholders": {
+      "color": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsFontWeight": "Font weight",
+  "settingsCurrentFontWeight": "Current weight: {weight}",
+  "@settingsCurrentFontWeight": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsDisplayScale": "Display scale",
+  "settingsCurrentScale": "Current scale: {percent}%",
+  "@settingsCurrentScale": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsRestrictIp": "Restrict LAN IP connections",
+  "settingsRestrictIpSubtitle": "Only allow Class A, B, and C LAN IP addresses",
+  "settingsDefaultPort": "Default port",
+  "settingsAdjustFontWeight": "Adjust font weight",
+  "settingsFontWeightPreview": "Preview: {weight}",
+  "@settingsFontWeightPreview": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsWeightHairline": "Hairline",
+  "settingsWeightThin": "Thin",
+  "settingsWeightRegular": "Regular",
+  "settingsWeightMedium": "Medium",
+  "settingsWeightBold": "Bold",
+  "settingsWeightBlack": "Black",
+  "settingsFontWeightUpdated": "Font weight updated",
+  "logTitle": "Logs",
+  "logBackTooltip": "Navigate up",
+  "logRefresh": "Refresh",
+  "logClearAll": "Clear logs",
+  "logClearTitle": "Clear logs",
+  "logClearConfirm": "All log files under error/ and mpv/ will be deleted. Continue?",
+  "logClearAction": "Clear",
+  "logDeletedCount": "{count} log files deleted",
+  "@logDeletedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "logCopyContent": "Copy content",
+  "logShare": "Share log",
+  "logDeleteThis": "Delete this log",
+  "logEmptyContent": "(Empty log)",
+  "logStorageLocation": "Storage location: {path}",
+  "@logStorageLocation": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logErrorSection": "Error logs (written on crash)",
+  "logNoErrorLogs": "No error logs",
+  "logMpvSection": "mpv logs (optional)",
+  "logNoMpvLogs": "No mpv logs",
+  "logReadingLogs": "Reading logs…",
+  "lockFollowThemeColor": "Follow theme color (time)",
+  "lockShowBattery": "Show battery",
+  "lockShowNetwork": "Show network",
+  "lockDate": "{month}/{day}",
+  "@lockDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "weekdaySunday": "Sunday",
+  "weekdayMonday": "Monday",
+  "weekdayTuesday": "Tuesday",
+  "weekdayWednesday": "Wednesday",
+  "weekdayThursday": "Thursday",
+  "weekdayFriday": "Friday",
+  "weekdaySaturday": "Saturday",
+  "myQrSelectIpHint": "Tap to choose the IP used in the QR code",
+  "myQrNoIpType": "No IP of this type",
+  "myQrInUse": "In use",
+  "myQrSetAsQr": "Set as QR",
+  "netLanDiscoveryPort": "Local discovery port",
+  "netDohNoRecord": "No A record found for {domain}",
+  "@netDohNoRecord": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      }
+    }
+  },
+  "netDohQueryFailed": "Query failed: {error}",
+  "@netDohQueryFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "netMappingSaved": "Mapping saved: {domain} → {ip}",
+  "@netMappingSaved": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netAddHostMapping": "Add host mapping",
+  "netDomainLabel": "Domain",
+  "netIpLabel": "IP address",
+  "netAdd": "Add",
+  "netMappingAdded": "Mapping added: {host} → {ip}",
+  "@netMappingAdded": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netMappingRemoved": "Mapping removed: {host}",
+  "@netMappingRemoved": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "netTitle": "Network",
+  "netBackTooltip": "Navigate up",
+  "netRetestAll": "Retest all",
+  "netConnectionModeSection": "Connection mode",
+  "netNetworkMode": "Network mode",
+  "netModeStandardLabel": "Standard mode",
+  "netModeCompatLabel": "Compatibility direct connect",
+  "netModeStandardDesc": "Use the system default network stack",
+  "netAllowInsecureCert": "Allow insecure certificates",
+  "netAllowInsecureCertDesc": "Skip certificate verification in compatibility mode (IP direct connect)",
+  "netChatIpv6": "Chat IPv6",
+  "netChatIpv6On": "Enabled: IPv6 chat, discovery and QR codes supported",
+  "netChatIpv6Off": "Disabled: IPv4 only for chat",
+  "netChatIpv6EnabledSnack": "Chat IPv6 enabled (takes effect after restart)",
+  "netChatIpv6DisabledSnack": "Chat IPv6 disabled (takes effect after restart)",
+  "netLocalSendCompat": "LocalSend compatibility",
+  "netLocalSendCompatOn": "Enabled: LocalSend protocol (port 53317) for file transfer with LocalSend clients",
+  "netLocalSendCompatOff": "Disabled: using the navi native protocol",
+  "netLocalSendCompatEnabledSnack": "LocalSend compatibility enabled",
+  "netLocalSendCompatDisabledSnack": "LocalSend compatibility disabled (native protocol restored)",
+  "lsSectionTitle": "LocalSend devices",
+  "lsHintEnable": "LocalSend compatibility is off",
+  "lsHintEnableDesc": "Enable it to share files with LocalSend official clients (Android/iOS/Windows/macOS/Linux)",
+  "lsEnableNow": "Enable",
+  "lsEnabledSnack": "LocalSend compatibility enabled",
+  "lsNoDevices": "No LocalSend devices found",
+  "lsHttpScan": "HTTP scan",
+  "lsHttpScanning": "Scanning local network (fallback when multicast fails)...",
+  "lsHttpScanDone": "Scan finished",
+  "lsSendFile": "Send files",
+  "lsSendFileDesc": "Send to this device via the LocalSend protocol",
+  "lsProbe": "Probe again",
+  "lsProbing": "Probing...",
+  "lsProbeFound": "Probe succeeded",
+  "lsProbeNotFound": "Device did not respond",
+  "lsPickFailed": "Failed to pick files: {error}",
+  "@lsPickFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "lsNoPath": "File path unavailable",
+  "lsSendingTitle": "Sending to {alias}",
+  "@lsSendingTitle": {
+    "placeholders": {
+      "alias": {
+        "type": "String"
+      }
+    }
+  },
+  "lsSendSuccess": "{count} files sent successfully",
+  "@lsSendSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lsSendFailed": "{count} files sent successfully, others failed",
+  "@lsSendFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lsReceiveRequestTitle": "Incoming file request",
+  "lsReceiveRequestDesc": "The peer wants to send {count} files ({size} in total)",
+  "@lsReceiveRequestDesc": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "lsAccept": "Accept",
+  "lsReject": "Reject",
+  "lsOpenFile": "Open file",
+  "lsReceiveCompleteTitle": "File received",
+  "lsReceiveCompleteDesc": "{fileName} saved to:\n{path}",
+  "@lsReceiveCompleteDesc": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "lsFileReceived": "File received: {fileName}",
+  "@lsFileReceived": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "netConnectivitySection": "Connectivity test",
+  "netHostMappingSection": "Host mapping",
+  "netMappingReset": "Restored built-in default IP table",
+  "netRestoreDefaults": "Restore defaults",
+  "netNoMappings": "No mappings",
+  "netAddMapping": "Add mapping",
+  "netDohQuerySection": "DoH query",
+  "netDohQueryDesc": "Query domain A records via the Cloudflare JSON DNS API; results can be saved as host mappings with one tap",
+  "netDohResultDisplay": "{domain} → {ip}",
+  "@netDohResultDisplay": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netSaveAsMapping": "Save as mapping",
+  "netHeadersSection": "Request headers",
+  "netRefererNotSet": "Not set (e.g. https://www.bilibili.com/)",
+  "netNotSet": "Not set",
+  "netHeaderEditorTitle": "Set {title}",
+  "@netHeaderEditorTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "netHeaderSaved": "{title} saved",
+  "@netHeaderSaved": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ossTitle": "Open source licenses",
+  "ossBackTooltip": "Navigate up",
+  "ossThanks": "Acknowledgements",
+  "ossSummary": "This project is built with Flutter and references {count} open source projects under the MIT, Apache-2.0 and BSD-3-Clause licenses. Tap an entry to view the full license text. Thanks to all open source authors for their selfless contributions.",
+  "@ossSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ossGroupCount": "{name} · {count} items",
+  "@ossGroupCount": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ossCopyFullText": "Copy full text",
+  "ossLicenseCopied": "License text copied to clipboard",
+  "playHistoryTitle": "Play history",
+  "playHistoryBackTooltip": "Navigate up",
+  "playHistoryClearAll": "Clear all",
+  "playHistoryEmpty": "Nothing here yet",
+  "playHistoryEmptySub": "Hmm, it's quite quiet today",
+  "playHistoryClearTitle": "Clear play history",
+  "playHistoryClearConfirm": "Are you sure you want to delete all saved play progress? This cannot be undone.",
+  "playHistoryClearAction": "Clear",
+  "playHistoryResume": "Resume playback",
+  "playHistoryDeleteRecord": "Delete record",
+  "playHistoryDeleted": "Deleted play record for “{title}”",
+  "@playHistoryDeleted": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "timeJustNow": "Just now",
+  "timeMinutesAgo": "{count} minutes ago",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHoursAgo": "{count} hours ago",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeDaysAgo": "{count} days ago",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerArtistVideo": "Video playback",
+  "playerArtistPlaylist": "Playlist",
+  "playerArtistWebdav": "WebDAV video",
+  "playerWebdavSubtitle": "WebDAV subtitle",
+  "playerResumeFrom": "Resumed from {position}",
+  "@playerResumeFrom": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "playerNowPlaying": "Now playing: {title}",
+  "@playerNowPlaying": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "playerDanmakuCache": "Danmaku cache ({count})",
+  "@playerDanmakuCache": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuBilibili": "Bilibili danmaku ({count})",
+  "@playerDanmakuBilibili": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuNoData": "No danmaku data parsed",
+  "playerDanmakuLoaded": "{count} danmaku items loaded",
+  "@playerDanmakuLoaded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuOnline": "Bilibili online danmaku ({count})",
+  "@playerDanmakuOnline": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuLoadedFromCache": "Loaded {count} danmaku items from local cache",
+  "@playerDanmakuLoadedFromCache": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuLoadedOnline": "Loaded {count} online danmaku items",
+  "@playerDanmakuLoadedOnline": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerScreenshotFailed": "Screenshot failed: {error}",
+  "@playerScreenshotFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSavedToAlbum": "Saved to album",
+  "playerScreenshotSavedToAlbum": "Screenshot {fileName} saved to album",
+  "@playerScreenshotSavedToAlbum": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSaveFailed": "Save failed: {error}",
+  "@playerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPipFailed": "Picture-in-picture failed: {error}",
+  "@playerPipFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerFitAdapt": "Contain",
+  "playerFitStretch": "Stretch",
+  "playerFitFill": "Fill",
+  "playerEndPause": "Pause when finished",
+  "playerEndLoop": "Loop",
+  "playerEndExit": "Exit when finished",
+  "playerSubtitleSettings": "Subtitle settings",
+  "playerAdvancedSettings": "Advanced settings",
+  "playerFlipHorizontal": "Mirror horizontally",
+  "playerFlipHorizontalDesc": "Flip the image horizontally",
+  "playerFlipVertical": "Flip vertically",
+  "playerFlipVerticalDesc": "Flip the image vertically",
+  "playerShowStats": "Show video stats",
+  "playerShowStatsDesc": "Codec / resolution / bitrate / frame rate",
+  "playerAutoPip": "Auto picture-in-picture on home",
+  "playerLoadDanmakuOnResume": "Load danmaku on resume",
+  "playerLoadDanmakuOnResumeDesc": "Automatically read/fetch danmaku when resuming from play history",
+  "playerDefaultRate": "Default playback speed",
+  "playerDefaultEndBehavior": "Default end behavior",
+  "playerBuffering": "Buffering…",
+  "playerHwdecSoftware": "Software decode (SW)",
+  "playerHwdecHardware": "Hardware decode ({mode})",
+  "@playerHwdecHardware": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSourceLocal": "Local file",
+  "playerStatResolution": "Resolution",
+  "playerStatVideoCodec": "Video codec",
+  "playerStatAudioCodec": "Audio codec",
+  "playerStatBitrate": "Bitrate",
+  "playerStatFps": "Frame rate",
+  "playerStatDecode": "Decode",
+  "playerStatSubtitle": "Subtitle",
+  "playerOn": "On",
+  "playerOff": "Off",
+  "playerStatDanmaku": "Danmaku",
+  "playerStatDownload": "Download",
+  "playerStatSource": "Source",
+  "playerStatPosition": "Position",
+  "playerStatDuration": "Duration",
+  "playerCopyLink": "Copy video link",
+  "playerCopyLinkAt": "Copy link at {time}",
+  "@playerCopyLinkAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "playerCopyLinkAt0": "Copy link at current position",
+  "playerCopyLinkDone": "Copied: {url}",
+  "@playerCopyLinkDone": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerCopyLinkNotBili": "Copying links is only supported for Bilibili videos",
+  "playerColorAdjust": "Video color adjustment",
+  "playerColorBrightness": "Brightness",
+  "playerColorContrast": "Contrast",
+  "playerColorSaturation": "Saturation",
+  "playerColorHue": "Hue",
+  "playerColorGamma": "Gamma",
+  "playerColorReset": "Reset",
+  "playerColorUnavailable": "Color adjustment is not supported by this player",
+  "playerStats": "Statistics",
+  "playerAlignAspectRatio": "Match aspect ratio",
+  "playerAlignAspectRatioDone": "Window aligned to video ratio",
+  "playerAlignAspectRatioFailed": "Couldn't get video size",
+  "commonClose": "Close",
+  "playerPlaybackError": "Playback error",
+  "playerAllEpisodesPlayed": "All {count} episodes played",
+  "@playerAllEpisodesPlayed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerFastForwarding": "Playing at {rate} speed",
+  "@playerFastForwarding": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "playerTapToSave": "Tap to save",
+  "playerResetScreen": "Reset screen",
+  "playerBackTooltip": "Navigate up",
+  "playerRotate90": "Rotate 90°",
+  "playerQuality": "Quality",
+  "playerQualityLocked": "This quality is unavailable (login or VIP required)",
+  "playerFullscreen": "Fullscreen",
+  "playerBiliSubtitle": "Bilibili subtitle",
+  "playerDecodeFormat": "Decode format",
+  "playerDecodeFormatSwitchFailed": "Failed to switch decode format",
+  "playerDecodeAuto": "Auto",
+  "playerDecodeAutoShort": "Auto",
+  "playerDecodeAvc": "AVC / H.264",
+  "playerDecodeHevc": "HEVC / H.265",
+  "playerDecodeAv1": "AV1",
+  "playerSubtitleLoadFailed": "Failed to load subtitle",
+  "playerPortraitMode": "Portrait mode",
+  "playerLandscapeMode": "Landscape mode",
+  "playerDescription": "Description",
+  "playerWebdavSource": "WebDAV video source",
+  "playerCast": "Cast",
+  "playerWatchTogether": "Watch together",
+  "watchInviteTitle": "invites you to watch together",
+  "watchWaitingAccept": "Waiting for the other side to accept…",
+  "watchSelectPeer": "Choose a friend to watch with",
+  "watchNoOnlinePeer": "No online contacts",
+  "watchInviteSent": "Watch-together invite sent to {name}",
+  "@watchInviteSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "watchActiveWith": "Watching together with {name}",
+  "@watchActiveWith": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "watchPeerRejected": "The other side rejected your invite",
+  "watchPeerNoAnswer": "The other side didn't accept the invite",
+  "watchPeerLeft": "The other side left watch together",
+  "watchTcpFailed": "Couldn't connect. Watch together failed",
+  "watchConnectionDropped": "Connection dropped. Watch together failed",
+  "watchUrlInvalid": "Video URL unavailable. Can't start watch together",
+  "rcInviteTitle": "requests remote control of your device",
+  "rcInviteHint": "Once accepted, they can see your screen and control your device",
+  "rcPeerRejected": "The other side rejected the remote control request",
+  "rcTcpFailed": "Couldn't connect. Remote control failed",
+  "rcConnectionDropped": "Connection dropped. Remote control failed",
+  "rcTimeout": "Timed out waiting for the other side",
+  "rcShizukuNotInstalled": "Shizuku is not installed on the target device",
+  "rcShizukuNotInstalledHint": "The target device needs Shizuku running (shizuku.rikka.app)",
+  "rcShizukuGrantTitle": "Shizuku authorization required",
+  "rcShizukuGrantHint": "After granting Navi Shizuku permission on the target, they can control the screen remotely",
+  "rcShizukuGrant": "Grant Shizuku",
+  "rcRequesting": "Requesting…",
+  "rcShizukuNotGranted": "Shizuku is not granted",
+  "rcScreenCaptureFailed": "Screen capture failed: {error}",
+  "@rcScreenCaptureFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "rcShareFailed": "Screen share failed",
+  "rcRetry": "Retry",
+  "rcClose": "Close",
+  "rcCancel": "Cancel",
+  "rcSend": "Send",
+  "rcConnecting": "Connecting…",
+  "rcControlling": "Controlling {name} remotely",
+  "@rcControlling": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rcBeingControlled": "{name} is controlling your device remotely",
+  "@rcBeingControlled": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rcEnd": "End remote control",
+  "rcConnectionLost": "Remote control connection lost",
+  "rcSessionEnded": "Remote control ended",
+  "rcInputText": "Input text",
+  "rcInputTextHint": "Text to send to the target device",
+  "rcKeyBack": "Back",
+  "rcKeyHome": "Home",
+  "rcKeyRecents": "Recents",
+  "rcKeyVolumeUp": "Volume up",
+  "rcKeyVolumeDown": "Volume down",
+  "dlnaPageTitle": "Cast",
+  "dlnaRefresh": "Rescan",
+  "dlnaSearching": "Searching for DLNA devices on the LAN…",
+  "dlnaNoDevice": "No cast device found",
+  "dlnaNoDeviceHint": "Make sure your TV/box is on the same network and DLNA/casting is enabled",
+  "dlnaSearchAgain": "Search again",
+  "dlnaFoundDevices": "Devices found",
+  "dlnaCastStarted": "Casting to {device}",
+  "@dlnaCastStarted": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaCastFailed": "Cast failed: {device}",
+  "@dlnaCastFailed": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaCastingTo": "Casting to {device}",
+  "@dlnaCastingTo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaStopCast": "Stop casting",
+  "dlnaPlay": "Play",
+  "dlnaPause": "Pause",
+  "dlnaVolumeUp": "Volume up",
+  "dlnaVolumeDown": "Volume down",
+  "dlnaFileMissing": "Video file not found",
+  "dlnaServerStartFailed": "Failed to start local file server: {error}",
+  "@dlnaServerStartFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "Episodes",
+  "playerDanmakuSettings": "Danmaku settings",
+  "psTitle": "Player",
+  "psBackTooltip": "Navigate up",
+  "psStaffEntrance": "Staff entrance",
+  "psDisplaySection": "Display",
+  "psStatusBar": "Status bar",
+  "psStatusBarDesc": "Show time, battery and network icons at the top of the player",
+  "psKeepWindowRatio": "Lock window aspect ratio",
+  "psKeepWindowRatioDesc": "During playback the window can only be resized at the current aspect ratio",
+  "psKeepWindowRatioDesktopOnly": "Only takes effect on Windows / macOS / Linux desktop",
+  "psInteractionSection": "Interaction",
+  "psLongPressSpeed": "Long-press speed boost",
+  "psLongPressSpeedDesc": "Hold the screen or the D key on the keyboard to fast-forward at 2× speed",
+  "psScreenshot": "Screenshot",
+  "psScreenshotDesc": "Allow capturing the current frame in the player and saving it to the album",
+  "psScreenshotDanmaku": "Include danmaku in screenshots",
+  "psScreenshotDanmakuDesc": "Capture the current danmaku together with the screenshot",
+  "psProgressSection": "Progress",
+  "psPlayProgress": "Play progress",
+  "psNoHistory": "No saved play records",
+  "psHistoryCount": "You have {count} records",
+  "@psHistoryCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "psMiscSection": "Miscellaneous",
+  "psHwdec": "Hardware decoding",
+  "psHwdecAuto": "Automatically choose the best decoder",
+  "psHwdecSoftware": "Force CPU software decoding",
+  "psHwdecAutoShort": "Auto",
+  "psHwdecPureSoftware": "Software only",
+  "psVideoSync": "Video sync",
+  "psVsyncAudioDefault": "Use audio clock as reference (default)",
+  "psVsyncResample": "Resample audio to match the display refresh rate",
+  "psVsyncAdrop": "Drop / duplicate audio frames to match display",
+  "psVsyncVdrop": "Drop / duplicate video frames to match display",
+  "psVsyncAudio": "Audio",
+  "psVsyncDisplayResample": "Display resample",
+  "psVsyncDisplayAdrop": "Display audio drop",
+  "psVsyncDisplayVdrop": "Display video drop",
+  "psImmersiveLongPress": "Long-press speed in immersive mode",
+  "psImmersiveLongPressDesc": "Long-press still triggers 2× speed when the controls are hidden",
+  "psLogSection": "Logs",
+  "psMpvLog": "Record mpv logs",
+  "psMpvLogEnabled": "Enabled, takes effect on next playback (level: {level})",
+  "@psMpvLogEnabled": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "psMpvLogDisabled": "Disabled. Crash logs are always recorded regardless of this switch",
+  "psMpvLogLevel": "mpv log level",
+  "psMpvLogLevelDesc": "Higher levels produce more detailed logs and use more space",
+  "psMpvLogError": "Errors only",
+  "psMpvLogWarn": "Warnings",
+  "psMpvLogWarnDefault": "Warnings (default)",
+  "psMpvLogInfo": "Info",
+  "psMpvLogVerbose": "Verbose",
+  "psMpvLogDebug": "Debug",
+  "psMpvLogTrace": "All (very verbose)",
+  "psViewLogs": "View logs",
+  "psViewLogsDesc": "Browse error logs and mpv logs, with sharing and clearing",
+  "testPlaylistCreated": "Created: {name}",
+  "@testPlaylistCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "testPageTitle": "Test page",
+  "testVideoSourceSection": "Video source",
+  "testVideoSourceSubtitle": "Choose a source to start playing",
+  "testWebdavVideo": "WebDAV video",
+  "testWebdavVideoDesc": "Browse and play from a WebDAV server",
+  "testLocalVideo": "Local video",
+  "testLocalVideoDesc": "Choose a video file from device storage",
+  "testRecentSection": "Recently played",
+  "testLastPlayedSubtitle": "Last played record",
+  "testNoRecords": "No play records yet",
+  "testPlaylistSection": "Playlists",
+  "testPlaylistSectionSubtitle": "Create and manage playlists, play by episodes",
+  "testPlaylistManage": "Manage playlists",
+  "testPlaylistManageDesc": "View / edit / delete playlists, tap to play directly",
+  "testPlaylistCreate": "New playlist",
+  "testPlaylistCreateDesc": "Build a playlist from multiple WebDAV files / import episodes manually",
+  "testQuickActionsSection": "Quick actions",
+  "testQuickActionsSubtitle": "Common test entries",
+  "testUrlDirectPlay": "Play URL directly",
+  "testUrlDirectPlayDesc": "Enter a video URL to play directly",
+  "testVideoWithSubtitle": "Video + subtitles",
+  "testVideoWithSubtitleDesc": "Select a video and a subtitle file together",
+  "testNoVideoPlayed": "No video has been played yet",
+  "testEnterUrlTitle": "Enter video URL",
+  "testPlay": "Play",
+  "testAddSubtitleTitle": "Add subtitles?",
+  "testAddSubtitlePrompt": "Video selected: {name}\nLoad external subtitles?",
+  "@testAddSubtitlePrompt": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "testSkip": "Skip",
+  "testSelectSubtitle": "Choose subtitles",
+  "testAboutLegalese": "Player frontend test page",
+  "testAboutBody": "This page tests the various entry points of MpvPlayerPage:\n• WebDAV remote video\n• Local video files\n• Direct URL playback\n• Video + external subtitles",
+  "testSourceLocal": "Local file",
+  "testSourceLocalSubtitle": "Local + subtitles",
+  "accountsBiliLoginSuccess": "Bilibili login successful",
+  "accountsBiliLogoutTitle": "Log out of Bilibili?",
+  "accountsBiliLogoutHint": "After logging out, the Bilibili API will no longer be called with your Cookie.",
+  "accountsClearWebviewCookieTitle": "Also clear in-app browser cookies",
+  "accountsClearWebviewCookieSubtitle": "Leaving it unchecked is fine. You can still clear them later in account settings.",
+  "accountsLogout": "Log out",
+  "accountsLoggedOutWithCookie": "Logged out and cleared browser cookies",
+  "accountsLoggedOut": "Logged out",
+  "accountsClearCookieTitle": "Clear in-app browser cookies?",
+  "accountsClearCookieContent": "This will clear all cookies stored by the in-app browser, including web logins.",
+  "accountsClearAction": "Clear",
+  "accountsCookieCleared": "In-app browser cookies cleared",
+  "accountsCookieEmpty": "No in-app browser cookies to clear (browser has not been used)",
+  "accountsBiliLoginTitle": "Log in to Bilibili account",
+  "accountsBiliLoginSubtitle": "QR code / Paste Cookie / Password",
+  "accountsClearBrowserCookie": "Clear in-app browser cookies",
+  "accountsClearBrowserCookieSubtitle": "Clear leftover web logins",
+  "accountsLoggedIn": "Logged in",
+  "accountsLoggedInUid": "Logged in · UID {mid}",
+  "@accountsLoggedInUid": {
+    "placeholders": {
+      "mid": {
+        "type": "int"
+      }
+    }
+  },
+  "accountsCarryCookie": "Send requests with Cookie",
+  "accountsCarryCookieOn": "On: Bilibili API requests use your login identity",
+  "accountsCarryCookieOff": "Off: Bilibili API requests use guest identity",
+  "accountsCookieScope": "Cookie usage scope",
+  "accountsCookieScopeSubtitle": "Choose which requests use your account Cookie",
+  "cookieScopeTitle": "Cookie Usage Scope",
+  "cookieScopeHint": "Only affects the request types below. When \"Send requests with Cookie\" is off, these settings have no effect. Bilibili online-favorites operations always send your login Cookie.",
+  "cookieScopeVideo": "Video details & playback",
+  "cookieScopeVideoDesc": "Video info, play URLs and watch-progress reporting",
+  "cookieScopeComments": "Comments",
+  "cookieScopeCommentsDesc": "Comment section requests",
+  "cookieScopeSearch": "Search",
+  "cookieScopeSearchDesc": "Search suggestions and result requests",
+  "cookieScopeArticle": "Articles & moments",
+  "cookieScopeArticleDesc": "Article and dynamic-feed requests",
+  "cookieScopeUserSpace": "User space",
+  "cookieScopeUserSpaceDesc": "Creator space, videos and follower-list requests",
+  "cookieScopeSeason": "Seasons & episodes",
+  "cookieScopeSeasonDesc": "Season details and episode-list requests",
+  "cookieScopeInteractions": "Interactions",
+  "cookieScopeInteractionsDesc": "Like, coin, favorite, follow and danmaku sending; disabled when off",
+  "cookieScopeEnableAll": "Enable all",
+  "cookieScopeDisableAll": "Disable all",
+  "accountsWebdavCloud": "WebDAV Cloud Drive",
+  "accountsWebdavConfiguredOn": "Configured · Auto backup on",
+  "accountsWebdavConfiguredOff": "Configured · Auto backup off",
+  "accountsWebdavNotConfigured": "Not configured · Tap to open settings",
+  "accountsTitle": "Accounts",
+  "accountsSectionBili": "Bilibili Account",
+  "commonBackTooltip": "Navigate up",
+  "biliLoginFetchingQr": "Fetching QR code…",
+  "biliLoginQrFetchFailed": "Failed to fetch QR code, please check your network",
+  "biliLoginScanWithApp": "Scan the QR code with the Bilibili app to log in",
+  "biliLoginInputAccountPwd": "Please enter your account and password",
+  "biliLoginFailedRetry": "Login failed, please try again",
+  "biliLoginTitle": "Bilibili Login",
+  "biliLoginScanMode": "QR Code Login",
+  "biliLoginCookieMode": "Paste Cookie",
+  "biliLoginPwdMode": "Password Login",
+  "biliLoginViaBrowser": "Log in with in-app browser",
+  "biliLoginCookieHint": "\"Send requests with Cookie\" is on by default after login. You can turn it off in Settings → Accounts.",
+  "biliLoginWebTitle": "Web Login",
+  "biliLoginCookieImportFailed": "Failed to import the Cookie from web login. Please retry or use another method.",
+  "biliLoginRefetch": "Fetch again",
+  "biliLoginRefreshQr": "Refresh QR code",
+  "biliLoginScanTip": "Tip: open the Bilibili app → Scan, or scan with the Bilibili mini program",
+  "biliLoginCookieInstruction": "Log in to bilibili.com in a desktop browser, press F12 to open DevTools → Application → Cookies → bilibili.com, copy all cookies (the string starting with SESSDATA=), and paste them into the field below",
+  "biliLoginVerifying": "Verifying…",
+  "biliLoginVerifyAndLogin": "Log in and verify",
+  "biliLoginAccountLabel": "Account (phone / email / username)",
+  "biliLoginPasswordLabel": "Password",
+  "biliLoginLoggingIn": "Logging in…",
+  "biliLoginLoginAction": "Log in",
+  "biliLoginSliderHint": "Password login may trigger a slider captcha. It will automatically retry after verification.",
+  "searchFilterAny": "Any",
+  "searchFilterLastDay": "Last day",
+  "searchFilterLastWeek": "Last week",
+  "searchFilterHalfYear": "Last 6 months",
+  "searchFilterAllDuration": "All durations",
+  "searchFilterDur0to10": "0-10 min",
+  "searchFilterDur10to30": "10-30 min",
+  "searchFilterDur30to60": "30-60 min",
+  "searchFilterDur60plus": "60+ min",
+  "searchZoneAll": "All",
+  "searchZoneAnime": "Animation",
+  "searchZoneGuochuang": "Domestic Creation",
+  "searchZoneMusic": "Music",
+  "searchZoneDance": "Dance",
+  "searchZoneGame": "Games",
+  "searchZoneKnowledge": "Knowledge",
+  "searchZoneTech": "Tech",
+  "searchZoneSports": "Sports",
+  "searchZoneCar": "Auto",
+  "searchZoneLife": "Life",
+  "searchZoneFood": "Food",
+  "searchZoneAnimal": "Animals",
+  "searchZoneKichiku": "Kichiku",
+  "searchZoneFashion": "Fashion",
+  "searchZoneInfo": "News",
+  "searchZoneEnt": "Entertainment",
+  "searchZoneDoc": "Documentary",
+  "searchZoneFilm": "Movies",
+  "searchZoneTv": "TV",
+  "searchCaptchaInitFailed": "Captcha initialization failed",
+  "searchCaptchaIncomplete": "Slider verification not completed",
+  "searchCaptchaValidateFailed": "Captcha verification failed",
+  "searchCaptchaValidateFailedRetry": "Captcha verification failed, please retry",
+  "searchCaptchaPassed": "Verification passed, searching again",
+  "searchBiliHint": "Search Bilibili…",
+  "searchHistoryTitle": "Search history",
+  "searchHistoryClear": "Clear",
+  "searchHistoryClearConfirm": "Clear search history for this section?",
+  "searchHistoryEmpty": "No search history",
+  "searchVideoFilter": "Video search filters",
+  "searchFilterWithCount": "Filters · {count}",
+  "@searchFilterWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchFilter": "Filters",
+  "searchSwitchSingleCol": "Single column",
+  "searchSwitchMulti": "Multi-column",
+  "searchLayoutMulti": "Multi-column",
+  "searchLayoutSingle": "Single column",
+  "searchPickStartDate": "Select start date",
+  "searchPickEndDate": "Select end date",
+  "searchPubTimeSection": "Published",
+  "searchDateBegin": "Start",
+  "searchDateTo": "to",
+  "searchDateEnd": "End",
+  "searchDurationSection": "Duration",
+  "searchZoneSection": "Partition",
+  "searchAntiFuzzy": "Anti-fuzzy search",
+  "searchAntiFuzzyHint": "Limit results from 2009-06-26 to now, avoiding abnormal early data",
+  "searchFilterReset": "Reset",
+  "searchAllLoaded": "— All loaded —",
+  "searchKeywordHint": "Enter a keyword to search Bilibili",
+  "searchPressToSearch": "Tap \"Search\" or press Enter to start searching",
+  "searchNoResultInType": "No results for \"{keyword}\" in {type}",
+  "@searchNoResultInType": {
+    "placeholders": {
+      "keyword": {
+        "type": "String"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "searchResultsCount": "{type} · {count} results",
+  "@searchResultsCount": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "userSpaceLoadFailed": "Failed to load",
+  "userSpaceAvatarLoadFailed": "Failed to load avatar",
+  "userSpaceTitle": "Creator Space",
+  "userSpaceLoading": "Loading creator space…",
+  "userSpaceLoadingName": "Loading…",
+  "userSpaceStatFans": "Followers",
+  "userSpaceStatFollowing": "Following",
+  "userSpaceStatVideos": "Videos",
+  "userSpaceStatLikes": "Likes",
+  "userSpaceVideoCount": "{count} videos",
+  "@userSpaceVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userSpaceSectionAllVideos": "All Videos",
+  "userSpaceNoVideos": "No posts yet",
+  "userSpaceDynLoadFailed": "Failed to load posts",
+  "userSpaceNoDynamics": "No posts yet",
+  "userSpaceBangumiLoadFailed": "Failed to load bangumi list",
+  "userSpaceNoBangumi": "No bangumi",
+  "userSpaceBangumiCount": "Bangumi · {count} titles",
+  "@userSpaceBangumiCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userSpaceLazySign": "This user is too lazy to leave anything here",
+  "userSpaceTabHome": "Home",
+  "userSpaceTabDynamic": "Posts",
+  "userSpaceTabBangumi": "Bangumi",
+  "userSpaceToday": "Today",
+  "userSpaceBangumiFinished": "Finished",
+  "userSpaceBangumiSerializing": "Ongoing",
+  "userSpaceBangumiAiringDate": "Airing {date}",
+  "@userSpaceBangumiAiringDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "browserApp": "app",
+  "browserOpenAppAttempt": "The page tried to open: {app}",
+  "@browserOpenAppAttempt": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "browserNoAppForLink": "No app found to open this link",
+  "browserOpenFailedSystem": "Failed to open: no matching app installed or blocked by the system",
+  "browserEmptyCookieHint": "It's empty here",
+  "browserCopyAll": "Copy all",
+  "browserCookieCopied": "Cookie copied",
+  "browserCookieEmpty": "No cookies found",
+  "browserSetUaTitle": "Set User-Agent",
+  "browserUaHint": "Enter a custom User-Agent",
+  "browserApplyAndReload": "Apply and reload",
+  "browserUaUpdated": "UA updated and page reloaded",
+  "browserUaSetFailed": "Failed to set UA: {error}",
+  "@browserUaSetFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "browserWindowsInitFailed": "Windows WebView initialization failed. Please check that WebView2 is installed.",
+  "browserBiliCookieReadFailed": "Could not read the full login Cookie (SESSDATA is HttpOnly and cannot be read automatically on this platform). Please use QR code login or paste the Cookie instead.",
+  "browserCookieImportFailed": "Failed to import Cookie, please retry",
+  "browserStoppedLoading": "Loading stopped",
+  "browserClipboardAllowed": "Web pages may now write to the clipboard",
+  "browserClipboardBlocked": "Web pages are blocked from writing to the clipboard automatically",
+  "browserNoCurrentUrl": "Could not get the current URL",
+  "browserTroubleshootFailed": "Failed to open. Please check whether \"Get Help\" is available.",
+  "browserSystemBrowserMissing": "System browser is missing (",
+  "browserQrTitle": "Scan me",
+  "browserSaveToDevice": "Save to device",
+  "browserQrSaved": "QR code saved to gallery",
+  "browserSaveFailed": "Save failed: {error}",
+  "@browserSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "browserStopLoading": "Stop loading",
+  "browserImporting": "Importing…",
+  "browserLoginDoneImport": "Logged in, import",
+  "browserClipboardAccess": "Clipboard access",
+  "browserShareQr": "Share QR code",
+  "browserCopyLink": "Copy link",
+  "browserViewCookies": "View cookies",
+  "browserSetUa": "Set UA",
+  "browserUaModeAuto": "Auto (follow system)",
+  "browserUaModeDesktop": "Desktop",
+  "browserUaModeMobile": "Mobile",
+  "browserRefresh": "Refresh",
+  "browserSystemBrowser": "System browser",
+  "browserTroubleshootNetwork": "Troubleshoot network",
+  "browserUnsupportedPlatform": "Embedded browser is not supported on this platform",
+  "browserOpenedInSystem": "Attempted to open in the system browser",
+  "browserReopenInSystem": "Reopen in system browser",
+  "browserAndroidErrorTitle": "No command.",
+  "browserAndroidErrorCause": "Cause",
+  "browserAndroidErrorDetail": "WebView initialization failed\nYour system WebView may be outdated or disabled",
+  "browserUpdateWebview": "Update Android System WebView on Google Play",
+  "browserOpenDevOptions": "Open developer options to view the WebView implementation",
+  "browserAppleErrorTitle": "The app quit unexpectedly",
+  "browserAppleErrorReport": "Problem report",
+  "browserAppleErrorDetail": "Unable to initialize the embedded browser on this device. Please make sure your operating system is up to date.",
+  "browserBsodMessage": "Your WebView2 ran into a problem. We need to collect some error info and then restart the app for you.",
+  "browserBsodNoRestart": "(Actually no restart needed, just install the component)",
+  "browserBsodComplete": "100% complete",
+  "browserBsodSolutions": "View solutions:",
+  "browserBsodDownload": "Download WebView2 runtime",
+  "browserBsodWinUpdate": "Open Windows Update settings",
+  "browserBsodScanQr": "Scan this QR code for solutions",
+  "browserBsodStopCode": "Stop code: WEBVIEW2_RUNTIME_MISSING",
+  "browserCantOpenExternal": "Could not open the external link",
+  "callOutgoing": "Calling...",
+  "callIncoming": "Incoming call...",
+  "callConnecting": "Connecting...",
+  "chatConnectionNotEstablishedImage": "No connection, cannot send image",
+  "chatImageSent": "✅ Image sent",
+  "chatImageSendFailed": "Failed to send image",
+  "chatClipboardImageProcessFailed": "Failed to process clipboard image: {error}",
+  "@chatClipboardImageProcessFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatImageStaged": "🖼️ Image added to input",
+  "chatClipboardNoImage": "No image data in clipboard",
+  "chatClipboardImageFetchFailed": "Failed to get clipboard image: {error}",
+  "@chatClipboardImageFetchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatClipboardEmptyOrUnsupported": "Clipboard is empty or the format is unsupported",
+  "chatConnectionNotEstablishedFile": "No connection, cannot send file",
+  "chatFileNotExist": "File does not exist",
+  "chatFileSendFailed": "Failed to send file",
+  "chatFileSentSuccess": "✅ {fileName} sent",
+  "@chatFileSentSuccess": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFileSendError": "Failed to send file: {error}",
+  "@chatFileSendError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatIpUnknown": "Unknown IP",
+  "chatReconnecting": "Reconnecting...",
+  "chatReconnectFailed": "Reconnect failed. Check your network or whether the peer is online.",
+  "chatStatusUnknown": "Unknown status",
+  "chatStatusWaiting": "Waiting for connection",
+  "chatMe": "Me",
+  "chatFileInfoLost": "(File info missing)",
+  "chatOpenFileFailed": "Could not open file: {message}",
+  "@chatOpenFileFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFileNotDownloaded": "File has not been downloaded",
+  "chatOpenFileError": "Failed to open file: {error}",
+  "@chatOpenFileError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFilePathUnavailable": "Could not get file path (Android permission limits?)",
+  "chatPickFileFailed": "Failed to pick file: {error}",
+  "@chatPickFileFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatImagePathUnavailable": "Could not get image path",
+  "chatPickImageFailed": "Failed to pick image: {error}",
+  "@chatPickImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatCopyText": "Copy text",
+  "chatSelectText": "Select text",
+  "chatOpenFile": "Open file",
+  "chatCopyImage": "Copy image",
+  "chatSaveImage": "Save image",
+  "chatCopyingImage": "Copying image...",
+  "chatImageCopied": "✅ Image copied to clipboard",
+  "chatCopyFailed": "Copy failed",
+  "chatCopyImageFailed": "Failed to copy image: {error}",
+  "@chatCopyImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatSaving": "Saving...",
+  "chatSaveSuccess": "✅ Saved",
+  "chatSaveFailed": "Save failed: {error}",
+  "@chatSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatMessageContent": "Message content",
+  "chatEmptyContent": "(It's empty here)",
+  "chatDeleteMessageConfirm": "Are you sure you want to delete this message?",
+  "chatMessageDeleted": "Message deleted",
+  "chatOpenLinkTitle": "Open link",
+  "chatWillOpen": "Will open: {url}",
+  "@chatWillOpen": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "chatBrowserTitle": "In-app web browser",
+  "chatCantOpenLink": "Could not open link",
+  "chatOpenLinkFailed": "Failed to open link: {error}",
+  "@chatOpenLinkFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatPlusImage": "Image",
+  "chatPlusFile": "File",
+  "chatImageReady": "Image ready",
+  "chatMore": "More",
+  "chatPasteImage": "Paste image",
+  "chatInputHint": "Type a message...",
+  "chatEmoji": "Emoji",
+  "chatSend": "Send",
+  "chatInvalidAddress": "Invalid connection address, cannot send",
+  "chatImageSendError": "Image send failed",
+  "chatSendFailed": "Send failed: {error}",
+  "@chatSendFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatConnStatusUnknown": "Connection status unknown, cannot send message",
+  "chatPendingCannotSend": "Waiting for the peer to verify, cannot send message",
+  "chatConnRejected": "Connection was rejected",
+  "chatConnDisconnected": "The peer has disconnected",
+  "chatConnNotEstablished": "Connection has not been established, cannot send message",
+  "chatNoMessages": "No messages yet, start chatting",
+  "chatDisconnectedRetry": "Connection lost, tap to reconnect",
+  "chatRejectedRetry": "Connection rejected, tap to retry",
+  "chatExpandInput": "Expand input bar",
+  "discoverMyLanIps": "My LAN IPs",
+  "discoverNoIpOfType": "No valid IP of this type found. Please check your network connection.",
+  "discoverIpCopied": "Copied {ip}",
+  "@discoverIpCopied": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "discoverTitle": "Discover nearby devices",
+  "discoverMyIp": "My IP",
+  "discoverRefreshBroadcast": "Refresh/Broadcast",
+  "discoverLanDevices": "LAN devices",
+  "discoverSearching": "Searching for nearby devices...",
+  "discoverSendRequest": "Tap to send a connection request",
+  "discoverPendingVerify": "Waiting for peer verification...",
+  "discoverRejectedRetry": "Rejected, tap to retry",
+  "discoverDisconnectedRetry": "Disconnected, tap to reconnect",
+  "discoverUnknownDevice": "Unknown device",
+  "discoverAlreadyConnected": "This device is already connected",
+  "discoverAlreadyPending": "Waiting for peer verification, please do not send again",
+  "discoverConnectFailed": "Connection failed. Check your network or whether the peer is online.",
+  "discoverManualConnect": "Manually connect to a peer",
+  "discoverConnectIpHint": "Enter IP address (e.g. 192.168.1.100 / fe80::1)",
+  "displayScaleCompact": "Compact mode · Show more content",
+  "displayScaleSmall": "Slightly smaller · Good for large screens",
+  "displayScaleDefault": "Default",
+  "displayScaleLarge": "Slightly larger · Easier to read",
+  "displayScaleLargeFont": "Large text · Accessibility friendly",
+  "displayScaleHuge": "Extra large · Assistive features",
+  "displayScaleMin": "Smallest · Highest information density",
+  "displayScaleCompactBig": "Compact · Good for large screens",
+  "displayScaleSystemDefault": "System default",
+  "displayScaleLargeFontShort": "Large text · Accessibility",
+  "displayScaleTitle": "Display Scale",
+  "displayHeroTransitionBlur": "Use new animations",
+  "displayIosPushTransition": "iOS-style page transitions",
+  "displayIosPushTransitionCorner": "Transition corner radius",
+  "searchIosPushTransition": "iOS page transition animation",
+  "pageBgTitle": "Page background",
+  "pageBgSubtitle": "Background image shared by settings-style pages, croppable after selection",
+  "pageBgEnabled": "Show page background",
+  "pageBgOpacity": "Background opacity",
+  "pageBgBlur": "Background blur",
+  "pageBgNotSet": "Not set",
+  "pageBgPick": "Pick and crop image",
+  "pageBgClear": "Remove background",
+  "pageBgSaved": "Background updated",
+  "pageBgCleared": "Background removed",
+  "pageBgPickFailed": "Failed to pick image",
+  "cropTitle": "Crop background",
+  "cropAspectFree": "Free",
+  "cropApply": "Apply",
+  "cropReset": "Reset",
+  "displayAdvancedGlass": "Advanced rendering",
+  "displayDisableLiquidGlassMenus": "Reduce effects",
+  "displayLiquidGlassTuner": "Liquid glass tuning",
+  "displayLiquidGlassTunerSubtitle": "Adjust glass thickness, blur, tint, refraction and other material parameters",
+  "lgTunerPreview": "Live preview",
+  "lgTunerSectionMaterial": "Material parameters",
+  "lgTunerThickness": "Thickness",
+  "lgTunerBlur": "Background blur",
+  "lgTunerTint": "Tint",
+  "lgTunerSaturation": "Saturation",
+  "lgTunerRefractiveIndex": "Refractive index",
+  "lgTunerLightIntensity": "Highlight intensity",
+  "lgTunerAmbient": "Ambient light",
+  "lgTunerLightAngle": "Light angle",
+  "lgTunerAberration": "Chromatic dispersion",
+  "lgTunerReset": "Reset",
+  "lgTunerNote": "Changes apply instantly and globally: glass surfaces without explicit parameters (dropdown menus, dialogs, etc.) follow these values, while surfaces with explicit styles (e.g. the chat top bar) stay independent.",
+  "lgTunerFallbackNote": "Advanced glass rendering (Impeller) is unavailable on this platform, so the preview shows the FakeGlass fallback. Thickness, refraction and saturation only apply on mobile.",
+  "displayScaleReset": "Reset to 100%",
+  "displayScaleFineTune": "Fine tune",
+  "displayScalePresets": "Quick presets",
+  "displayScaleNote": "The scale applies globally to text and some layout sizes. Set it to 100% to restore the default. Changes take effect immediately without a restart.",
+  "displayScaleConnCount": "{count} connections",
+  "@displayScaleConnCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "displayThemeLight": "Light",
+  "displayThemeDark": "Dark",
+  "displaySettingsTitle": "Display",
+  "displaySectionAppearance": "Appearance",
+  "displayThemeMode": "Theme mode",
+  "displayPureBlack": "Pure black dark mode",
+  "displayPureBlackOn": "Dark mode (pure black)",
+  "displayOff": "Off",
+  "displaySectionPersonalize": "Personalization",
+  "displayThemeColor": "Theme color",
+  "displayFollowSystemColor": "Follow system color",
+  "displayFontWeight": "Font weight",
+  "displaySeedDefaultGreen": "Default green",
+  "displaySeedPink": "Pink",
+  "displaySeedRed": "Red",
+  "displaySeedOrange": "Orange",
+  "displaySeedAmber": "Amber",
+  "displaySeedYellow": "Yellow",
+  "displaySeedLime": "Lime",
+  "displaySeedLightGreen": "Light green",
+  "displaySeedGreen": "Green",
+  "displaySeedCyan": "Cyan",
+  "displaySeedTeal": "Teal",
+  "displaySeedLightBlue": "Light blue",
+  "displaySeedBlue": "Blue",
+  "displaySeedIndigo": "Indigo",
+  "displaySeedPurple": "Purple",
+  "displaySeedDeepPurple": "Deep purple",
+  "displaySeedBlueGrey": "Blue grey",
+  "displaySeedBrown": "Brown",
+  "displaySeedGrey": "Grey",
+  "displaySeedCustom": "Custom",
+  "displayWeightThin": "Thin ({weight})",
+  "@displayWeightThin": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightLight": "Light ({weight})",
+  "@displayWeightLight": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightRegular": "Regular ({weight})",
+  "@displayWeightRegular": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightMedium": "Medium ({weight})",
+  "@displayWeightMedium": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightBold": "Bold ({weight})",
+  "@displayWeightBold": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightBlack": "Black ({weight})",
+  "@displayWeightBlack": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightCustom": "Custom ({weight})",
+  "@displayWeightCustom": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "fontWeightThin": "Thin",
+  "fontWeightLight": "Light",
+  "fontWeightRegular": "Regular",
+  "fontWeightMedium": "Medium",
+  "fontWeightBold": "Bold",
+  "fontWeightBlack": "Black",
+  "fontWeightSampleText": "The quick brown fox jumps over the lazy dog.\nThe quick brown fox jumps over the lazy dog.",
+  "fontWeightSaveApply": "Save and apply",
+  "geetestTitle": "Complete slider verification",
+  "geetestInitFailed": "Captcha component failed to initialize. Please retry or use another login method.",
+  "geetestUnsupported": "Embedded captcha is not supported on this platform. Please use QR code or Cookie login.",
+  "slicerPickImageFirst": "Please select an image first",
+  "slicerRowColInvalid": "Row and column counts must be greater than 0",
+  "slicerSuccess": "Sliced successfully and added to the Start screen",
+  "slicerSaveFailed": "Save failed: {error}",
+  "@slicerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "slicerTitle": "Image Slicer Tile",
+  "slicerTileSize": "Tile size (all slices are the same)",
+  "slicerColsLabel": "Columns (Cols)",
+  "slicerRowsLabel": "Rows (Rows)",
+  "slicerPreview": "Preview: will be sliced into {count} {type} tiles",
+  "@slicerPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "slicerProcessing": "Processing...",
+  "slicerSaveToStart": "Save to Start screen",
+  "viewerSaving": "Saving...",
+  "viewerSaveSuccess": "Saved",
+  "viewerSaveFailed": "Save failed: {error}",
+  "@viewerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerShareImage": "Share image",
+  "viewerShareFailed": "Share failed: {error}",
+  "@viewerShareFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerCopying": "Copying...",
+  "viewerCopyFailed": "Copy failed: {error}",
+  "@viewerCopyFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerSaveToAlbum": "Save to gallery",
+  "viewerCopyToClipboard": "Copy to clipboard",
+  "viewerImageLoadFailed": "Failed to load image",
+  "viewerImageDataNotFound": "Image data not found",
+  "userSpaceMidInvalid": "Invalid mid",
+  "userSpaceNoCard": "Response is missing card",
+  "userSpaceNoList": "Response is missing list",
+  "searchTypeVideo": "Videos",
+  "searchTypeBangumi": "Anime",
+  "searchTypeFt": "Movies & TV",
+  "searchTypeLive": "Live",
+  "searchTypeUser": "Users",
+  "searchTypeArticle": "Articles",
+  "tenThousandUnit": "K",
+  "searchVideoMeta": "{play} views · {danmaku} danmaku",
+  "@searchVideoMeta": {
+    "placeholders": {
+      "play": {
+        "type": "String"
+      },
+      "danmaku": {
+        "type": "String"
+      }
+    }
+  },
+  "searchScore": "Rating {score}",
+  "@searchScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "searchOnline": "{count} online",
+  "@searchOnline": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "searchUserMeta": "{fans} fans · {videos} videos",
+  "@searchUserMeta": {
+    "placeholders": {
+      "fans": {
+        "type": "String"
+      },
+      "videos": {
+        "type": "String"
+      }
+    }
+  },
+  "searchArticleMeta": "{views} reads · {replies} comments",
+  "@searchArticleMeta": {
+    "placeholders": {
+      "views": {
+        "type": "String"
+      },
+      "replies": {
+        "type": "String"
+      }
+    }
+  },
+  "searchBadgeCourse": "Course",
+  "searchBadgeLive": "Live",
+  "searchBadgeCoop": "Collab",
+  "searchBadgeLiveNow": "Live now",
+  "searchKeywordEmpty": "Keyword is empty",
+  "searchBadResponse": "Unexpected response format",
+  "searchFailed": "Search failed",
+  "searchGaiaParamMissing": "gaia register: missing parameters",
+  "searchGaiaRegisterError": "gaia register error: {error}",
+  "@searchGaiaRegisterError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchGaiaValidateFailed": "gaia validate failed (is_valid={isValid})",
+  "@searchGaiaValidateFailed": {
+    "placeholders": {
+      "isValid": {
+        "type": "int"
+      }
+    }
+  },
+  "searchGaiaValidateError": "gaia validate error: {error}",
+  "@searchGaiaValidateError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentOidEmpty": "oid is empty",
+  "commentException": "Exception: {error}",
+  "@commentException": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentSubHttpError": "Replies HTTP {code}",
+  "@commentSubHttpError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSubNoData": "Replies response is missing data",
+  "commentSubException": "Replies error: {error}",
+  "@commentSubException": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentNotLoggedIn": "Not logged in or \"Carry Cookie\" is turned off",
+  "commentMissingJct": "Cookie is missing bili_jct. Please log in again",
+  "commentNetworkError": "Network error: {error}",
+  "@commentNetworkError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentApiError": "{message} (code={code})",
+  "@commentApiError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      },
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "deviceOs": "Operating system",
+  "deviceBuild": "Build number",
+  "deviceSecurityPatch": "Security patch",
+  "deviceOem": "OEM manufacturer",
+  "deviceBrand": "Brand",
+  "deviceModel": "Model",
+  "deviceRomVersion": "ROM / Display version",
+  "deviceFingerprint": "Device fingerprint",
+  "deviceName": "Device name",
+  "deviceComputerName": "Computer name",
+  "deviceHardwareModel": "Hardware model",
+  "deviceKernel": "Kernel version",
+  "deviceDistro": "Distribution",
+  "deviceVersion": "Version",
+  "devicePlatform": "Platform",
+  "deviceInfoFailed": "Failed to get info: {error}",
+  "@deviceInfoFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "logWebUnsupported": "(File logging is not supported on the Web)",
+  "logNotInitialized": "(Not initialized)",
+  "logAppDataDir": "App data directory\n{path}",
+  "@logAppDataDir": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logAppDataRoaming": "AppData (Roaming)\n{path}",
+  "@logAppDataRoaming": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logAppSupport": "Application Support\n{path}",
+  "@logAppSupport": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logLocalDataDir": "Local data directory\n{path}",
+  "@logLocalDataDir": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "nowPlayingVideo": "Playing video",
+  "commonUnknown": "Unknown",
+  "unnamedPlaylist": "Untitled playlist",
+  "unknownVideo": "Unknown video",
+  "dohQueryFailed": "DoH query failed: HTTP {code}",
+  "@dohQueryFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "tcpConnectSuccess": "TCP connection succeeded",
+  "netModeCompat": "Host-mapped IP direct connection, bypassing SNI interference",
+  "netModeStandard": "System default network stack",
+  "netHostResolveFailed": "Unable to resolve host {host}",
+  "@netHostResolveFailed": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "biliCookieEmpty": "Cookie is empty",
+  "biliCookieIncomplete": "Incomplete Cookie. Copy the full Cookie from your browser (must include SESSDATA)",
+  "biliCookieMissingJct": "Cookie is missing bili_jct. Re-copy the full Cookie from your browser (likes and comments depend on it)",
+  "biliCookieInvalid": "Invalid or expired Cookie. Copy it again from your browser",
+  "biliLoginSuccess": "Logged in",
+  "biliHttpError": "HTTP {code}",
+  "@biliHttpError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "biliRiskBlocked": "Request blocked by risk control (-412). Please retry later",
+  "biliQrExpired": "QR code expired",
+  "biliQrScanned": "Scanned. Confirm on your phone",
+  "biliQrWaiting": "Waiting to scan",
+  "biliRequestFailed": "Request failed",
+  "biliResponseNoData": "Response is missing data",
+  "biliQrNoSessionCookie": "Failed to obtain the session Cookie. Refresh the QR code and retry",
+  "biliQrMissingJct": "QR login didn't return a full session (missing bili_jct). Use \"Paste Cookie\" or \"Browser login\" instead",
+  "biliNoSessionCookie": "Failed to obtain the session Cookie",
+  "biliWebKeyFailed": "Failed to get the login public key. Check your network",
+  "biliPwdEncryptFailed": "Failed to encrypt the password",
+  "biliNeedGeetest": "Slider verification required",
+  "biliUnknownError": "Unknown error",
+  "csPlaylists": "Playlists",
+  "csDanmaku": "Danmaku",
+  "csCloudEncrypted": "Cloud data is encrypted. Enter the sync passphrase in WebDAV settings first",
+  "csCloudPassMismatch": "Cloud data is encrypted and the sync passphrase doesn't match. Cannot sync",
+  "csCloudNoFile": "No playlist file on the cloud. Cannot restore",
+  "csRestoredFromCloud": "Restored from cloud",
+  "csSyncDone": "Sync complete",
+  "csUploadBgCount": "Uploaded {count} background images",
+  "@csUploadBgCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDownloadBgCount": "Downloaded {count} background images",
+  "@csDownloadBgCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csUploadedFileCount": "Uploaded {count} file(s)",
+  "@csUploadedFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDownloadedFileCount": "Downloaded {count} file(s)",
+  "@csDownloadedFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csMergedListsCount": "Merged {count} playlist(s)",
+  "@csMergedListsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csEncrypted": "Encrypted",
+  "csSyncFailed": "Sync failed: {error}",
+  "@csSyncFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "csUploadedPlaylists": "Uploaded {count} playlist(s) to the cloud",
+  "@csUploadedPlaylists": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDanmakuSummary": "Uploaded {uploaded}, downloaded {downloaded}",
+  "@csDanmakuSummary": {
+    "placeholders": {
+      "uploaded": {
+        "type": "int"
+      },
+      "downloaded": {
+        "type": "int"
+      }
+    }
+  },
+  "csDanmakuFailed": ", {failed} failed ({details})",
+  "@csDanmakuFailed": {
+    "placeholders": {
+      "failed": {
+        "type": "int"
+      },
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownUser": "Unknown user",
+  "transferSpeedBody": "{fileName}  {speed} KB/s",
+  "@transferSpeedBody": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "sendingFile": "Sending file",
+  "receivingFile": "Receiving: {fileName}",
+  "@receivingFile": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationChannelName": "Chat messages",
+  "notificationChannelDesc": "Receive chat messages and quick replies",
+  "notificationReply": "Reply",
+  "screenshotSavedTitle": "Screenshot saved",
+  "screenshotSavedToAlbum": "Screenshot saved to album",
+  "notificationConfirm": "OK",
+  "callInProgressError": "There is an active call. Hang up first",
+  "callTcpFailed": "Failed to connect to the peer (TCP setup failed). Make sure the peer is online",
+  "callConnectionDropped": "Connection dropped right after setup. Check the network or the peer",
+  "callInitFailed": "Failed to start the call: {error}",
+  "@callInitFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "callAcceptFailed": "Failed to answer the call: {error}",
+  "@callAcceptFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "callRecordVoice": "Voice call",
+  "callRecordMissedOutgoing": "Missed outgoing call",
+  "callRecordRejected": "Rejected call",
+  "callRecordMissedIncoming": "Missed call",
+  "callPeerNoAnswer": "The peer didn't answer",
+  "callUnknown": "Unknown",
+  "callInProgress": "In call",
+  "webdavHttpWarning": "Warning: Using HTTP sends credentials in plaintext. HTTPS is recommended.",
+  "webdavConfigRequired": "Please fill in the server URL and username first",
+  "webdavAuthFailed": "Authentication failed: wrong username or password",
+  "webdavConnectFailed": "Connection failed: HTTP {code}",
+  "@webdavConnectFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNetworkError": "Network error: could not reach the server ({msg})",
+  "@webdavNetworkError": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavUnknownError": "Unknown error: {error}",
+  "@webdavUnknownError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavNotConfigured": "WebDAV is not configured",
+  "webdavLocalFileMissing": "Local file does not exist: {path}",
+  "@webdavLocalFileMissing": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavUploadFailed": "Upload failed: HTTP {code}",
+  "@webdavUploadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavUploadError": "Upload error: {error}",
+  "@webdavUploadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavDownloadFailed": "Download failed: HTTP {code}",
+  "@webdavDownloadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavDownloadError": "Download error: {error}",
+  "@webdavDownloadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavDeleteFailed": "Delete failed: {error}",
+  "@webdavDeleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavListFailed": "Failed to list files: {error}",
+  "@webdavListFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPropfindFailed": "PROPFIND failed: HTTP {code}",
+  "@webdavPropfindFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNetworkErr": "Network error: {msg}",
+  "@webdavNetworkErr": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPreparingBackup": "Preparing to back up {count} files...",
+  "@webdavPreparingBackup": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavBackingUp": "Backing up ({nickname}) {fileName}",
+  "@webdavBackingUp": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      },
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavBackupDone": "Backup done: {success} succeeded, {fail} failed",
+  "@webdavBackupDone": {
+    "placeholders": {
+      "success": {
+        "type": "int"
+      },
+      "fail": {
+        "type": "int"
+      }
+    }
+  },
+  "commonCancel": "Cancel",
+  "commonOk": "OK",
+  "commonConnect": "Connect",
+  "commonSave": "Save",
+  "commonCreate": "Create",
+  "commonDelete": "Delete",
+  "drawerHome": "Home",
+  "drawerVerificationRequests": "Verification Requests",
+  "drawerSettings": "Settings",
+  "drawerAbout": "About",
+  "drawerCloseMenu": "Close menu",
+  "drawerLockNow": "Lock now",
+  "drawerNoNickname": "No nickname set",
+  "drawerSwitchToDark": "Switch to dark mode",
+  "drawerSwitchToLight": "Switch to light mode",
+  "drawerLightMode": "Light mode",
+  "drawerDarkMode": "Dark mode",
+  "drawerSystemMode": "Follow system",
+  "drawerThemeSwitched": "Switched to {mode}",
+  "@drawerThemeSwitched": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerFetchFailed": "Failed to fetch: {error}",
+  "@drawerFetchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerNoDeviceInfo": "No device info",
+  "drawerBackgroundTitle": "Sidebar background",
+  "drawerBackgroundHasCustom": "A custom background is set. You can change or remove it.",
+  "drawerBackgroundNoCustom": "Set a personalized background image for the sidebar.",
+  "drawerBackgroundUpdated": "✅ Sidebar background updated",
+  "drawerBackgroundSetFailed": "❌ Failed to set: {error}",
+  "@drawerBackgroundSetFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerBackgroundChange": "Change background",
+  "drawerBackgroundSelect": "Choose background image",
+  "drawerBackgroundRestored": "Default background restored",
+  "drawerBackgroundRemove": "Remove background",
+  "homeOpenMenu": "Open menu",
+  "homeAddConnection": "Add connection",
+  "homeMessages": "Messages",
+  "homeNoConnections": "No connections",
+  "homePullToRefreshHint": "Pull to refresh or tap + to add",
+  "homeLoadFailed": "Failed to load chats, please retry",
+  "homeRetryLoad": "Retry",
+  "homeUnknownAddress": "Unknown address",
+  "homeNoMessages": "No messages",
+  "homeFileMessage": "[File] {fileName}",
+  "@homeFileMessage": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "homeFileFallbackName": "File",
+  "homeMessagePlaceholder": "[Message]",
+  "connectionLost": "Connection lost",
+  "openVideoFailed": "Failed to open the video",
+  "connectDialogTitle": "Connect to peer",
+  "connectIpHint": "Enter IP address (e.g. 192.168.1.100 or fe80::1)",
+  "connectIpEmpty": "Please enter an IP address",
+  "connectIpInvalid": "Invalid IP address format",
+  "connectIpNotLan": "Only LAN IP addresses are allowed",
+  "connectRequestSent": "Connection request sent, waiting for verification",
+  "connectFailed": "Connection failed. Check the IP address or whether the peer is online",
+  "homeScanQr": "Scan QR code",
+  "homeMyQrCode": "My QR code",
+  "homeManualAdd": "Add manually",
+  "scannedFriends": "Friends added by QR",
+  "scanTitle": "Scan",
+  "scanTitleWebdav": "Scan WebDAV address",
+  "scanHint": "Align the QR code / barcode within the frame",
+  "scanHintWebdav": "Align the WebDAV server address QR code within the frame",
+  "scanHintAddFriend": "Align your friend's device QR code within the frame",
+  "scanPreparing": "Preparing camera...",
+  "scanPermissionNeeded": "Camera permission required",
+  "scanPermissionNeededMsg": "Please allow camera access in the permission dialog to scan.",
+  "scanPermissionDenied": "Camera permission denied",
+  "scanPermissionDeniedMsg": "Permission is permanently denied. Enable it manually in system settings.",
+  "scanCameraUnavailable": "Camera unavailable",
+  "scanRetry": "Retry",
+  "scanOpenSettings": "Go to system settings",
+  "scanTorch": "Flashlight",
+  "scanDetectedLink": "Link detected",
+  "scanOpenLinkPrompt": "Open this link in the built-in browser?",
+  "scanCopy": "Copy",
+  "scanOpen": "Open",
+  "scanLinkCopied": "Link copied",
+  "scanDetectedBiliVideo": "Bilibili video link detected",
+  "scanBiliVideoPrompt": "Open this video in the built-in player?",
+  "scanBiliVideoAt": "Jump to {time}",
+  "@scanBiliVideoAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "scanOpenVideo": "Open video",
+  "scanDetectedWebdav": "WebDAV address detected",
+  "scanWebdavPrompt": "This looks like a WebDAV server address. Fill it into the config automatically?",
+  "scanOpenInBrowser": "Open in browser",
+  "scanFillConfig": "Fill into config",
+  "scanDetectedText": "Text detected",
+  "scanCopiedToClipboard": "Copied to clipboard",
+  "scanClose": "Close",
+  "scanResultTitle": "Scan result",
+  "scanErrorPermission": "Camera permission denied",
+  "scanErrorUnsupported": "Scanning is not supported on this device",
+  "scanErrorDisposed": "Scanner has been disposed. Please retry.",
+  "scanErrorGeneric": "Camera unavailable ({code})",
+  "@scanErrorGeneric": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "scanInitFailed": "Scanner initialization failed: {error}",
+  "@scanInitFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "scanDetectedDevice": "Device QR code detected",
+  "scanAddFriendPrompt": "Add this device as a friend?",
+  "scanAddFriend": "Add friend",
+  "scanFriendAdded": "Friend request sent, waiting for verification",
+  "scanFriendAddFailed": "Failed to add friend. Check the network or whether the peer is online",
+  "myQrTitle": "My QR code",
+  "myQrHint": "Have your friends scan this QR code to add you",
+  "myQrEmbedIp": "The first LAN IP is embedded in the QR code",
+  "myQrLocalIps": "Current LAN IPs",
+  "myQrCopyContent": "Copy QR content",
+  "myQrCopied": "Copied to clipboard",
+  "myQrNoIp": "No valid LAN IP found. Please check your network connection.",
+  "displayModeSectionTitle": "Screen",
+  "displayModeTitle": "Screen refresh rate",
+  "displayModeAuto": "Auto",
+  "displayModeSystemTag": "[System]",
+  "displayModeHint": "Not working? Try restarting the app",
+  "displayModeUnsupported": "Screen refresh rate settings are only supported on Android",
+  "displayModeAndroidOnly": "Android only",
+  "displayModeLoading": "Loading screen refresh rates...",
+  "displayModeEmpty": "No screen refresh rates available",
+  "playerSectionEnhance": "Picture enhancement",
+  "superResolutionTitle": "Super resolution",
+  "superResolutionOff": "Off",
+  "superResolutionEfficiency": "Efficiency (low overhead)",
+  "superResolutionQuality": "Quality (best effect)",
+  "superResolutionHint": "Real-time enhancement via mpv shaders. Recommended with hardware decoding; works best on anime content",
+  "skipIntroOutroTitle": "Skip intro/outro",
+  "skipIntroOutroHint": "Detects intros/outros via community data; only prompts when the video has BV+CID",
+  "skipIntro": "Skip intro",
+  "skipOutro": "Skip outro",
+  "playlistDetailEpisodes": "{count} episodes",
+  "@playlistDetailEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDetailEmpty": "This playlist is empty. Add videos via edit first",
+  "playlistDetailEpisodeOf": "Episode {index}",
+  "@playlistDetailEpisodeOf": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDetailResume": "Resumed at {position}",
+  "@playlistDetailResume": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistDetailBgTitle": "Background image",
+  "playlistDetailBgPick": "Choose background image",
+  "playlistDetailBgChange": "Change background",
+  "playlistDetailBgRemove": "Remove background",
+  "playlistDetailBgUpdated": "✅ Background updated",
+  "playlistDetailBgRemoved": "Default background restored",
+  "playlistDetailBgFail": "Failed to set: {error}",
+  "@playlistDetailBgFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistFabRestart": "Start over",
+  "playlistMenuMore": "More actions",
+  "playlistMenuRename": "Rename",
+  "playlistMenuMultiSelect": "Multi-select",
+  "playlistMenuDanmaku": "Danmaku",
+  "playlistRenameTitle": "Rename playlist",
+  "playlistRenameHint": "Enter a new name",
+  "playlistRenameSaved": "Renamed",
+  "playlistSelectDone": "Done",
+  "playlistSelectEmpty": "Select episodes first",
+  "playlistSelectDelete": "Delete selected ({count})",
+  "@playlistSelectDelete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistSelectDeleted": "Deleted {count} episodes",
+  "@playlistSelectDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuTitle": "Import season danmaku",
+  "playlistDanmakuSsHint": "Enter the season SS number (season_id)",
+  "playlistDanmakuFetchFail": "Failed to fetch episodes. Check the SS number",
+  "playlistDanmakuSelectTitle": "Select episodes ({count} total, matched in order 1, 2, 3... to playlist episodes 1, 2, 3...)",
+  "@playlistDanmakuSelectTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuSelectAll": "Select all",
+  "playlistDanmakuImport": "Import & attach danmaku",
+  "playlistDanmakuAttached": "Danmaku attached to {count} episodes",
+  "@playlistDanmakuAttached": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuExceed": "{selected} selected exceed the {total} episodes in the list; extras were ignored",
+  "@playlistDanmakuExceed": {
+    "placeholders": {
+      "selected": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "splitSelectChat": "Select a chat",
+  "statusPending": "Awaiting verification",
+  "statusConnected": "Connected",
+  "statusRejected": "Rejected",
+  "statusDisconnected": "Disconnected",
+  "homeStart": "Start",
+  "homeDone": "Done",
+  "homeBack": "Back",
+  "homeOverview": "Overview",
+  "homeLocalUser": "Local user",
+  "homeDefaultGroup": "Default group",
+  "homeNewGroup": "New group",
+  "homeUnnamedGroup": "(Unnamed group)",
+  "homeDeleteGroupTitle": "Confirm deletion",
+  "homeDeleteGroupMessage": "Deleting this group will also delete all tiles in it. Continue?",
+  "homeNewGroupTitle": "New group",
+  "homeGroupNameHint": "Enter group name",
+  "homeRenameGroupTitle": "Name this group",
+  "homeNewGroupNameHint": "Enter new group name",
+  "homeImageSlice": "Image slice",
+  "tileSizeLabelSmall": "{size} (Small)",
+  "@tileSizeLabelSmall": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "tileSizeLabelWide": "{size} (Wide)",
+  "@tileSizeLabelWide": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "tileSizeLabelLarge": "{size} (Large)",
+  "@tileSizeLabelLarge": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "homeGroupOne": "Group 1",
+  "homeGroupTwo": "Group 2",
+  "homeGroupProductivity": "Productivity",
+  "homeGroupLegacy": "Legacy",
+  "tileImageSlicer": "Image slicer",
+  "tileSystemSettings": "System settings",
+  "tileDatabase": "Database",
+  "tileLcdDisplay": "LCD display",
+  "tileLedDynamic": "LED dynamic",
+  "tileLedStatic": "LED static",
+  "tilePisScreen": "PIS screen",
+  "tileRoutePreview": "Route preview",
+  "tileStationEntranceDesign": "Entrance design",
+  "tileStationEntrancePillar": "Entrance pillar",
+  "tileStationEntranceSideName": "Entrance side name",
+  "tilePlatformSideName": "Platform side name",
+  "tileScreenDoorCover": "Screen door cover",
+  "tileStationNameSign": "Station name sign",
+  "tileGeneralSign": "General sign",
+  "tileLineSymbol": "Line symbol",
+  "tileBusLcd": "Bus LCD",
+  "tileJsonEditor": "JSON editor",
+  "tileNamingRule": "Naming rule",
+  "tilePlatformText": "Platform text",
+  "tileDepartureText": "Departure text",
+  "tileArrivalText": "Arrival text",
+  "tileOperationDirectionLegacy": "Operation direction (Legacy)",
+  "tileLegacyLcdWarning": "Legacy LCD (Warning)",
+  "tileLinearRoute": "Linear route",
+  "tileRoadSign": "Road sign",
+  "commentPanelTitle": "Comments",
+  "commentTotalCount": "{count} comments",
+  "@commentTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSortHeat": "By popularity",
+  "commentSortTime": "By time",
+  "commentLoading": "Loading comments...",
+  "commentLoadFail": "Failed to load comments, check network",
+  "commentLoadMoreFail": "Failed to load more comments",
+  "commentNoMore": "No more comments",
+  "commentLoadingMore": "Loading...",
+  "commentEmpty": "No comments yet",
+  "commentPinned": "Pinned",
+  "commentDeleted": "Comment deleted",
+  "commentExpand": "Expand",
+  "commentCollapse": "Collapse",
+  "commentTranslateNeedEnable": "Enable AI translation in Language settings first",
+  "commentTranslateNone": "No translation available",
+  "commentSubCount": "{count} replies",
+  "@commentSubCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSubLoadMore": "Load more replies ({hint})",
+  "@commentSubLoadMore": {
+    "placeholders": {
+      "hint": {
+        "type": "String"
+      }
+    }
+  },
+  "commentYesterday": "Yesterday",
+  "articleLoadFailed": "Failed to load article",
+  "articleNoContent": "Article content is empty or not supported yet",
+  "articleOpenBrowser": "Open in browser",
+  "articleShare": "Share",
+  "articleAuthorUnknown": "Unknown author",
+  "browserLinkPageTitle": "Web link",
+  "articleViews": "{count} reads",
+  "@articleViews": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerTitle": "Send to contact",
+  "contactPickerContentLabel": "Content",
+  "contactPickerContentHint": "Enter content to send",
+  "contactPickerContentEmpty": "Content cannot be empty",
+  "contactPickerSearchHint": "Search contacts",
+  "contactPickerEmpty": "No contacts yet",
+  "contactPickerNoMatch": "No matching contacts",
+  "contactPickerSelectAll": "Select all",
+  "contactPickerSendToCount": "Send to {count} contact(s)",
+  "@contactPickerSendToCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contactPickerSent": "Sent to {count} contact(s)",
+  "@contactPickerSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contactPickerNotConnected": "{name} is not connected, cannot send",
+  "@contactPickerNotConnected": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerSendFailed": "Send failed: {error}",
+  "@contactPickerSendFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerOnline": "Online",
+  "contactPickerOffline": "Offline",
+  "articleShareToContact": "Share via chat",
+  "playerDanmakuList": "Danmaku list",
+  "playerDanmakuListCount": "Danmaku list · {count} total",
+  "playerDanmakuListEmpty": "No danmaku yet",
+  "playerDanmakuListNoMatch": "No matching danmaku",
+  "playerDanmakuListSearchHint": "Search danmaku",
+  "playerDanmakuListJumpCurrent": "Jump to current position",
+  "playerViewNotes": "View notes",
+  "playerNotesTitle": "Notes",
+  "playerNotesCount": "Notes ({count})",
+  "playerNotesEmpty": "No public notes yet",
+  "playerNotesNoMore": "No more",
+  "playerNotesLoadFailed": "Failed to load notes",
+  "playerNotesViewFull": "View full",
+  "playerWriteNote": "Write note",
+  "noteEditorWrite": "Write note",
+  "noteEditorTitle": "Write note",
+  "noteEditorTitleHint": "Title (optional)",
+  "noteEditorContentHint": "Start taking notes…",
+  "noteEditorEmoji": "Emoji",
+  "noteEditorPublish": "Publish",
+  "noteEditorEmptyContent": "Note content cannot be empty",
+  "noteEditorContentTooShort": "Content must be at least 10 characters to publish",
+  "noteEditorNotLoggedIn": "Not logged in: note saved as local draft; log in to publish",
+  "noteEditorPublished": "Note published",
+  "noteEditorPublishNetworkError": "Publish failed (network error); draft saved",
+  "noteEditorPublishRejected": "Publish rejected by server; draft kept",
+  "noteEditorDraftSaved": "Draft auto-saved",
+  "noteEditorLoggedInHint": "Logged in: publishing available",
+  "noteEditorGuestHint": "Not logged in: local drafts only, cannot publish",
+  "noteEditorSavedAt": "Draft saved {hour}:{minute}",
+  "noteEditorCharCount": "{count} chars",
+  "noteEditorMyDraft": "My draft",
+  "noteEditorDeleteDraft": "Delete draft",
+  "playerMoreTooltip": "More actions",
+  "commentComposerBarHint": "Say something…",
+  "commentComposerHint": "Write a comment…",
+  "commentComposerReplyHint": "Reply to @{name}",
+  "commentComposerReplyTo": "Replying to @{name}",
+  "commentComposerEmote": "Emotes",
+  "commentComposerSend": "Send",
+  "commentComposerEmpty": "Comment cannot be empty",
+  "commentComposerEmoteUnavailable": "Emote panel unavailable (not logged in?)",
+  "commentComposerPickImage": "Pick image",
+  "commentComposerMore": "More",
+  "commentComposerVideoProgress": "Video progress",
+  "commentComposerVideoScreenshot": "Video screenshot",
+  "commentComposerImageLimit": "Up to {count} images",
+  "commentComposerCaptureFailed": "Screenshot failed; start playback first",
+  "commentComposerUploadFailed": "Image upload failed, please retry",
+  "commentComposerFabLabel": "Post comment",
+  "commentComposerFabReply": "Post reply",
+  "danmakuSendTitle": "Send danmaku",
+  "danmakuSendModeLabel": "Mode",
+  "danmakuSendFontSizeLabel": "Size",
+  "danmakuSendColorLabel": "Color",
+  "danmakuFontSizeSmall": "Small",
+  "danmakuFontSizeStandard": "Normal",
+  "danmakuFontSizeLarge": "Large",
+  "danmakuSendCustomColor": "Custom color",
+  "danmakuSendColorOk": "OK",
+  "danmakuSendPreviewPlaceholder": "Send a friendly danmaku",
+  "drawerHistory": "History",
+  "drawerWatchLater": "Watch Later",
+  "drawerMyCache": "My Cache",
+  "historyCenterTitle": "History",
+  "historyTabWatch": "Watch History",
+  "historyTabPlay": "Playback",
+  "historySearchHint": "Search history...",
+  "historyPauseHistory": "Pause history",
+  "historyResumeHistory": "Resume history",
+  "historyPausedTip": "History is paused",
+  "historyPausedTipAction": "Tap to resume",
+  "historyClearWatchHistory": "Clear watch history",
+  "historyClearPlayHistory": "Clear playback history",
+  "historyClearAllTitle": "Clear history",
+  "historyClearAllConfirm": "Clear all {label}? This cannot be undone.",
+  "@historyClearAllConfirm": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "historyNoWatchHistory": "No watch history",
+  "historyNoPlayHistory": "No playback records",
+  "historyDeleteSelected": "Delete selected",
+  "historySelectedCount": "{count} selected",
+  "@historySelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "historySearchNoResult": "No results",
+  "historyPauseOnSnack": "History paused",
+  "historyResumeOnSnack": "History resumed",
+  "historyDeleteToast": "Deleted {count} records",
+  "@historyDeleteToast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "myCacheTitle": "My Cache",
+  "myCacheSearchHint": "Search cached videos...",
+  "myCacheDownloading": "Downloading",
+  "myCacheCached": "Cached",
+  "myCacheNoCache": "No cached videos",
+  "myCacheGroupCount": "{count} videos",
+  "@myCacheGroupCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "myCacheDeleteGroup": "Delete group",
+  "myCacheUpdateDanmaku": "Update danmaku",
+  "myCacheClearAllTitle": "Clear all cache",
+  "myCacheClearAllConfirm": "Delete all cached videos ({count} videos · {size})?",
+  "@myCacheClearAllConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "cacheActionDownload": "Cache",
+  "cacheActionCached": "Cached",
+  "cacheActionCaching": "Caching",
+  "cacheToastSuccess": "Added to download queue",
+  "cacheToastCached": "Already cached",
+  "cacheToastFailed": "Cache failed: {error}",
+  "@cacheToastFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerRecommend": "Recommend",
+  "recommendSourceWeb": "Web",
+  "recommendSourceApp": "App",
+  "recommendEmpty": "No recommendations",
+  "recommendSwitchList": "Switch to list",
+  "recommendSwitchGrid": "Switch to grid",
+"sideBarExpand": "Expand sidebar",
+  "sideBarCollapse": "Collapse sidebar",
+"sideBarMore": "More",
+"recommendTabHot": "Hot",
+  "recommendTabBangumi": "Bangumi",
+  "recommendSourceTitle": "Recommendation source"
+}

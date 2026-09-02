@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 启动 SplashScreen（API 24-30）：
+     背景色随深浅模式自动切换（@color/splash_background），
+     居中显示应用图标（放大 3 倍，配合 scaleGravity 居中）。 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/splash_background" />
+    <item>
+        <scale
+            android:drawable="@mipmap/ic_launcher"
+            android:scaleWidth="300%"
+            android:scaleHeight="300%"
+            android:scaleGravity="center" />
+    </item>
+</layer-list>

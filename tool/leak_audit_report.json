@@ -1,0 +1,622 @@
+[
+ {
+  "file": "screens\\bilibili_bangumi_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": ".",
+    "line": 224
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 480
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 570
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_comments_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollController",
+    "line": 78
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_favorites_page.dart",
+  "issues": [
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "controller",
+    "line": 65
+   },
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_login_screen.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_tabController",
+    "line": 59
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_related_videos_page.dart",
+  "issues": [
+   {
+    "kind": "unreleased:ValueNotifier",
+    "name": "_gridMode",
+    "line": 58
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_search_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": ".",
+    "line": 312
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "_keywordController",
+    "line": 314
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 588
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 591
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_user_space_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_tabController",
+    "line": 106
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollController",
+    "line": 116
+   }
+  ]
+ },
+ {
+  "file": "screens\\bilibili_video_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": ".",
+    "line": 386
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 679
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 711
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 815
+   }
+  ]
+ },
+ {
+  "file": "screens\\browser_page.dart",
+  "issues": [
+   {
+    "kind": "unreleased:WebViewController",
+    "name": "_webviewController",
+    "line": 322
+   },
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "controller",
+    "line": 501
+   },
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "uaController",
+    "line": 570
+   },
+   {
+    "kind": "unreleased:ScreenshotController",
+    "name": "screenshotController",
+    "line": 1087
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 701
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 914
+   }
+  ]
+ },
+ {
+  "file": "screens\\chat_screen.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollController",
+    "line": 140
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 2007
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 2446
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 2750
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 2751
+   }
+  ]
+ },
+ {
+  "file": "screens\\geetest_dialog.dart",
+  "issues": [
+   {
+    "kind": "bare-listen-longlived",
+    "name": "controller.webMessage.listen",
+    "line": 143
+   }
+  ]
+ },
+ {
+  "file": "screens\\history_center_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_tabController",
+    "line": 56
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "_searchCtrl",
+    "line": 78
+   }
+  ]
+ },
+ {
+  "file": "screens\\home.dart",
+  "issues": [
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "controller",
+    "line": 506
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 386
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 622
+   }
+  ]
+ },
+ {
+  "file": "screens\\image_slicer_page.dart",
+  "issues": [
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 50
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 66
+   }
+  ]
+ },
+ {
+  "file": "screens\\legacy_settings_content.dart",
+  "issues": [
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "screens\\my_cache_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_searchCtrl",
+    "line": 50
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 186
+   }
+  ]
+ },
+ {
+  "file": "screens\\m_user_content.dart",
+  "issues": [
+   {
+    "kind": "unreleased:FocusNode",
+    "name": "focusNode",
+    "line": 239
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "focusNode",
+    "line": 240
+   },
+   {
+    "kind": "state-no-dispose-method",
+    "name": "2 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "screens\\network_settings_screen.dart",
+  "issues": [
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "hostController",
+    "line": 164
+   },
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "ipController",
+    "line": 165
+   },
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "localController",
+    "line": 812
+   }
+  ]
+ },
+ {
+  "file": "screens\\note_editor_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_titleCtrl",
+    "line": 77
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "_contentCtrl",
+    "line": 78
+   }
+  ]
+ },
+ {
+  "file": "screens\\player.dart",
+  "issues": [
+   {
+    "kind": "unreleased:VideoController",
+    "name": "controller",
+    "line": 547
+   },
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 2070
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.error.listen",
+    "line": 558
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.error.listen",
+    "line": 582
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.position.listen",
+    "line": 673
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.duration.listen",
+    "line": 678
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.width.listen",
+    "line": 687
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.height.listen",
+    "line": 690
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.buffer.listen",
+    "line": 694
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.buffering.listen",
+    "line": 704
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.completed.listen",
+    "line": 745
+   },
+   {
+    "kind": "bare-listen-longlived",
+    "name": "player.stream.position.listen",
+    "line": 784
+   }
+  ]
+ },
+ {
+  "file": "screens\\player_test_page.dart",
+  "issues": [
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "screens\\remote_control_page.dart",
+  "issues": [
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "controller",
+    "line": 200
+   }
+  ]
+ },
+ {
+  "file": "screens\\theme_selector_screen.dart",
+  "issues": [
+   {
+    "kind": "setState-after-await-no-mounted",
+    "name": "setState",
+    "line": 99
+   },
+   {
+    "kind": "state-no-dispose-method",
+    "name": "2 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "screens\\user_profile_page.dart",
+  "issues": [
+   {
+    "kind": "state-no-dispose-method",
+    "name": "2 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "services\\settings_search_controller.dart",
+  "issues": [
+   {
+    "kind": "unreleased:ValueNotifier",
+    "name": "current",
+    "line": 38
+   }
+  ]
+ },
+ {
+  "file": "services\\video_cache_service.dart",
+  "issues": [
+   {
+    "kind": "unreleased:ValueNotifier",
+    "name": "queueVersion",
+    "line": 230
+   }
+  ]
+ },
+ {
+  "file": "widgets\\bili_note_list_sheet.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollCtrl",
+    "line": 72
+   }
+  ]
+ },
+ {
+  "file": "widgets\\fav_folder_picker.dart",
+  "issues": [
+   {
+    "kind": "unreleased:TextEditingController",
+    "name": "controller",
+    "line": 128
+   },
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "widgets\\frosted_route.dart",
+  "issues": [
+   {
+    "kind": "unreleased:ValueNotifier",
+    "name": "backdropProgress",
+    "line": 42
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "animation",
+    "line": 114
+   }
+  ]
+ },
+ {
+  "file": "widgets\\home_chat_split_screen.dart",
+  "issues": [
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "widgets\\ios_backdrop.dart",
+  "issues": [
+   {
+    "kind": "unreleased:ValueNotifier",
+    "name": "active",
+    "line": 32
+   }
+  ]
+ },
+ {
+  "file": "widgets\\liquid_dom_menu.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_refractionPop",
+    "line": 204
+   },
+   {
+    "kind": "listener-no-remove",
+    "name": "controller",
+    "line": 213
+   }
+  ]
+ },
+ {
+  "file": "widgets\\metrowindow.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_focusNode",
+    "line": 76
+   }
+  ]
+ },
+ {
+  "file": "widgets\\morph_card.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": ".",
+    "line": 112
+   }
+  ]
+ },
+ {
+  "file": "widgets\\playlist_detail_screen.dart",
+  "issues": [
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "widgets\\webdav_file_picker.dart",
+  "issues": [
+   {
+    "kind": "state-no-dispose-method",
+    "name": "1 resources",
+    "line": 0
+   }
+  ]
+ },
+ {
+  "file": "widgets\\comment\\article_comments_panel.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollController",
+    "line": 60
+   }
+  ]
+ },
+ {
+  "file": "widgets\\comment\\comment_detail_page.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollController",
+    "line": 94
+   }
+  ]
+ },
+ {
+  "file": "widgets\\comment\\comment_panel.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollController",
+    "line": 73
+   }
+  ]
+ },
+ {
+  "file": "widgets\\danmaku\\danmaku_list_sheet.dart",
+  "issues": [
+   {
+    "kind": "listener-no-remove",
+    "name": "_scrollCtrl",
+    "line": 82
+   }
+  ]
+ }
+]
