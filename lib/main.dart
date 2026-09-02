@@ -130,7 +130,18 @@ WatchHistoryService? _watchHistoryForJumpList;
 void _handleExternalAction(String action) {
   debugPrint('🎯 外部快捷动作: $action');
   final navigator = globalNavigatorKey.currentState;
-  if (navigator == null) return;
+  if (navigator == null) {
+    // 冷启动极早期（Navigator 尚未挂载）到达的动作：推迟到首帧后再执行，
+    // 避免动作被静默丢弃（表现为长按快捷入口点击无反应）。
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (globalNavigatorKey.currentState != null) {
+        _handleExternalAction(action);
+      } else {
+        debugPrint('⚠️ Navigator 仍不可用，丢弃快捷动作: $action');
+      }
+    });
+    return;
+  }
 
   if (action == 'recommend') {
     // 任务「推荐」：回到主页（根页面即 B站推荐流）
@@ -152,7 +163,7 @@ void _handleExternalAction(String action) {
   if (action == 'search') {
     page = const BilibiliSearchPage();
   } else if (action == 'offline') {
-    page = const MyCachePage();
+    page = const MyCachePage(drawerMode: true);
   }
   if (page == null) {
     debugPrint('⚠️ 未知的外部快捷动作: $action');
