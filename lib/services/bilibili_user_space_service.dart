@@ -1066,6 +1066,36 @@ abstract final class BilibiliUserSpaceService {
     }
   }
 
+  /// 拉取当前账号对目标 UP 的关注关系（x/relation，与 PiliPlus 同源）。
+  /// 未登录 / 查询自己 / 失败返回 null。
+  ///
+  /// 返回 [attribute]：0 = 未关注；2 = 已关注；6 = 互相关注；128 = 已拉黑。
+  static Future<int?> fetchUserRelation({required int mid}) async {
+    try {
+      final account = BilibiliAccountService.instance;
+      if (!account.isLoggedIn) return null;
+      if (mid <= 0 || mid == account.mid) return null;
+      final uri = Uri.parse('https://api.bilibili.com/x/relation').replace(
+        queryParameters: {'fid': mid.toString()},
+      );
+      final client = await NetworkSettingsService.instance.getApiClient();
+      final resp = await client
+          .get(uri, headers: await _buildHeaders())
+          .timeout(const Duration(seconds: 15));
+      if (resp.statusCode != 200) return null;
+      final json = jsonDecode(utf8.decode(resp.bodyBytes));
+      if (json['code'] != 0) {
+        debugPrint('[UserSpace] relation code=${json['code']}');
+        return null;
+      }
+      final data = _asMap(json['data']);
+      return data == null ? null : _toInt(data['attribute']);
+    } catch (e) {
+      debugPrint('[UserSpace] 拉取关注关系异常: $e');
+      return null;
+    }
+  }
+
   // ═════════════════════════════════════
   //  视频列表（WBI 签名）
   // ═════════════════════════════════════

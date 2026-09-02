@@ -10,7 +10,6 @@
 // 顶层主页（推荐流）与这些页面各自 Scaffold 挂 drawer: AppDrawer(currentPage:...)。
 import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'package:naviflash/l10n/app_localizations.dart';
 import 'package:naviflash/screens/bilibili_login_screen.dart';
@@ -23,7 +22,6 @@ import 'package:naviflash/services/bilibili_account_service.dart';
 import 'package:naviflash/services/bilibili_user_space_service.dart';
 import 'package:naviflash/services/cached_image_provider.dart';
 import 'package:naviflash/services/network_settings_service.dart';
-import 'package:naviflash/services/settings_service.dart';
 import 'package:naviflash/widgets/fans_medal_badge.dart';
 import 'package:naviflash/widgets/pendant_avatar.dart';
 
