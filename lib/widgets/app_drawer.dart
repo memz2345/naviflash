@@ -1,42 +1,51 @@
-import 'dart:io';
-import 'dart:ui';
+// lib/widgets/app_drawer.dart
+//
+// 传统抽屉（AppDrawer）：NaviFlash 全局侧边栏。
+// 原为 Navi 本地账号体系；现按 PiliPlus/主页需求改造成 B 站版：
+//   - 可拉伸头部：B 站账号背景（个性/粉丝装扮 top_photo → 头像模糊兜底）
+//     + 账号信息前景（头像挂件 / 昵称 / UID / 粉丝装扮编号徽章 / 登录 CTA）
+//   - 菜单（胶囊样式）：主页 / 离线缓存 / 观看记录 / 订阅 / 稍后再看 / 设置
+//   - 从本抽屉打开的页面以「抽屉模式」进入：顶栏左侧显示菜单按钮（可再次
+//     打开本抽屉），而不是返回箭头 —— 与设置页 standalone 行为一致。
+// 顶层主页（推荐流）与这些页面各自 Scaffold 挂 drawer: AppDrawer(currentPage:...)。
+import 'dart:ui' show ImageFilter;
 import 'package:flutter/material.dart';
-import 'package:naviflash/screens/bilibili_watch_later_page.dart';
-import 'package:naviflash/screens/settings_split_screen.dart';
-import 'package:naviflash/screens/user_profile_page.dart';
-import 'package:naviflash/widgets/app_toast.dart';
-import 'package:naviflash/widgets/liquid_glass.dart';
-import 'package:naviflash/widgets/search_video_menu.dart';
 import 'package:provider/provider.dart';
-import '../services/settings_service.dart';
-import '../services/device.dart';
-import '../screens/bilibili_search_page.dart';
-import '../screens/bilibili_live_page.dart';
-import '../screens/history_center_page.dart';
-import '../screens/my_cache_page.dart';
-import '../widgets/expressive_app_bar.dart';
-import '../build_info.g.dart';
-import '../l10n/app_localizations.dart';
-import '../src/loading_indicator_m3e.dart';
 
+import 'package:naviflash/l10n/app_localizations.dart';
+import 'package:naviflash/screens/bilibili_login_screen.dart';
+import 'package:naviflash/screens/bilibili_user_space_page.dart';
+import 'package:naviflash/screens/my_cache_page.dart';
+import 'package:naviflash/screens/settings_split_screen.dart';
+import 'package:naviflash/screens/watch_history_page.dart';
+import 'package:naviflash/screens/bilibili_watch_later_page.dart';
+import 'package:naviflash/services/bilibili_account_service.dart';
+import 'package:naviflash/services/bilibili_user_space_service.dart';
+import 'package:naviflash/services/cached_image_provider.dart';
+import 'package:naviflash/services/network_settings_service.dart';
+import 'package:naviflash/services/settings_service.dart';
+import 'package:naviflash/widgets/fans_medal_badge.dart';
+import 'package:naviflash/widgets/pendant_avatar.dart';
+
+import '../build_info.g.dart';
+import '../services/device.dart';
+
+/// 全局 B 站版侧边栏。
 class AppDrawer extends StatelessWidget {
+  /// 当前所在页 id（'home' / 'cache' / 'history' / 'watchlater' /
+  /// 'subscribe' / 'settings' / 'space'），用于高亮菜单项。
   final String currentPage;
+
   const AppDrawer({super.key, this.currentPage = 'home'});
 
   @override
   Widget build(BuildContext context) {
-    final settingsService = Provider.of<SettingsService>(
-      context,
-      listen: false,
-    );
-    final currentThemeMode = settingsService.themeMode;
-    final l10n = AppLocalizations.of(context);
-
     return Drawer(
+      width: 304,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(32),
-          bottomRight: Radius.circular(32),
+          topRight: Radius.circular(28),
+          bottomRight: Radius.circular(28),
         ),
       ),
       child: CustomScrollView(
@@ -44,106 +53,74 @@ class AppDrawer extends StatelessWidget {
           parent: AlwaysScrollableScrollPhysics(),
         ),
         slivers: [
-          // ================= 可拉伸头部（前景/背景分层） =================
+          // ── 可拉伸头部：背景层（zoom/blur）+ 前景账号层 ──
           SliverAppBar(
-            expandedHeight: 280.0,
+            expandedHeight: 272.0,
             pinned: false,
             floating: false,
             stretch: true,
-            stretchTriggerOffset: 80,
+            stretchTriggerOffset: 60,
             elevation: 0,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            flexibleSpace: Stack(
-              fit: StackFit.expand,
-              children: [
-                // ─── 背景层：受 zoom + blur 影响 ───
-                FlexibleSpaceBar(
-                  stretchModes: const [
-                    StretchMode.zoomBackground,
-                    StretchMode.blurBackground,
-                  ],
-                  background: _DrawerBackgroundLayer(
-                    settingsService: settingsService,
-                  ),
-                ),
-                // ─── 前景层：不受 blur 影响 ───
-                _DrawerForegroundLayer(
-                  settingsService: settingsService,
-                  currentThemeMode: currentThemeMode,
-                ),
+            flexibleSpace: FlexibleSpaceBar(
+              stretchModes: const [
+                StretchMode.zoomBackground,
+                StretchMode.blurBackground,
               ],
+              background: _DrawerAccountHeader(
+                currentPage: currentPage,
+              ),
             ),
           ),
-
+          // ── 菜单项 ──
           SliverList(
             delegate: SliverChildListDelegate([
-              const SizedBox(height: 8),
-              // 主导航 4 项：搜索 / 主页（B站推荐流）/ 直播 / 设置，其余收进右上角 ⋮
-              _buildDrawerItem(
+              const SizedBox(height: 10),
+              _item(
                 context,
-                icon: Icons.search,
-                title: l10n.drawerBilibiliSearch,
-                pageId: 'search',
-                onTap: () {
-                  Navigator.pop(context);
-                  if (currentPage != 'search') {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const BilibiliSearchPage(),
-                      ),
-                    );
-                  }
-                },
-              ),
-              _buildDrawerItem(
-                context,
-                icon: Icons.home,
-                title: l10n.drawerHome,
+                icon: Icons.home_rounded,
+                title: '主页',
                 pageId: 'home',
-                onTap: () {
-                  Navigator.pop(context);
-                  // 主页即应用根页面（B站推荐流）：清栈回到首页
-                  Navigator.of(context).popUntil((r) => r.isFirst);
-                },
+                onTap: () => _navTo(context, 'home'),
               ),
-              _buildDrawerItem(
+              _item(
                 context,
-                icon: Icons.live_tv_outlined,
-                title: '直播',
-                pageId: 'live',
-                onTap: () {
-                  Navigator.pop(context);
-                  if (currentPage != 'live') {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const BilibiliLivePage(),
-                      ),
-                    );
-                  }
-                },
+                icon: Icons.download_rounded,
+                title: '离线缓存',
+                pageId: 'cache',
+                onTap: () => _navTo(context, 'cache'),
               ),
-              _buildDrawerItem(
+              _item(
                 context,
-                icon: Icons.settings,
-                title: l10n.drawerSettings,
+                icon: Icons.history_rounded,
+                title: '观看记录',
+                pageId: 'history',
+                onTap: () => _navTo(context, 'history'),
+              ),
+              _item(
+                context,
+                icon: Icons.subscriptions_outlined,
+                title: '订阅',
+                pageId: 'subscribe',
+                onTap: () => _navTo(context, 'subscribe'),
+              ),
+              _item(
+                context,
+                icon: Icons.watch_later_outlined,
+                title: '稍后再看',
+                pageId: 'watchlater',
+                onTap: () => _navTo(context, 'watchlater'),
+              ),
+              const SizedBox(height: 14),
+              _item(
+                context,
+                icon: Icons.settings_outlined,
+                title: AppLocalizations.of(context).drawerSettings,
                 pageId: 'settings',
-                onTap: () {
-                  Navigator.pop(context);
-                  if (currentPage != 'settings') {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) =>
-                            const SplitSettingsScreen(isStandalone: true),
-                      ),
-                    );
-                  }
-                },
+                onTap: () => _navTo(context, 'settings'),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 18),
             ]),
           ),
         ],
@@ -151,8 +128,50 @@ class AppDrawer extends StatelessWidget {
     );
   }
 
-  // ================= 菜单项（胶囊形） =================
-  Widget _buildDrawerItem(
+  /// 关闭抽屉并按页跳转；本抽屉进入的页面以「抽屉模式」打开
+  /// （顶栏为菜单按钮，可再开本抽屉）。
+  void _navTo(BuildContext context, String pageId) {
+    if (pageId == currentPage) {
+      Navigator.pop(context);
+      return;
+    }
+    Navigator.pop(context);
+    switch (pageId) {
+      case 'home':
+        Navigator.of(context).popUntil((r) => r.isFirst);
+      case 'cache':
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const MyCachePage(drawerMode: true),
+          ),
+        );
+      case 'history':
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const WatchHistoryPage(drawerMode: true),
+          ),
+        );
+      case 'watchlater':
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const BilibiliWatchLaterPage(drawerMode: true),
+          ),
+        );
+      case 'subscribe':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('订阅功能开发中，敬请期待')),
+        );
+      default:
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => const SplitSettingsScreen(isStandalone: true),
+          ),
+        );
+    }
+  }
+
+  /// 菜单项（胶囊形；选中态主色填充，与旧版抽屉一致）。
+  Widget _item(
     BuildContext context, {
     required IconData icon,
     required String title,
@@ -160,38 +179,38 @@ class AppDrawer extends StatelessWidget {
     required VoidCallback onTap,
   }) {
     final isSelected = currentPage == pageId;
-    final theme = Theme.of(context);
+    final cs = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 2),
       child: Material(
-        color: isSelected
-            ? theme.colorScheme.primaryContainer
-            : Colors.transparent,
+        color: isSelected ? cs.primaryContainer : Colors.transparent,
         borderRadius: BorderRadius.circular(28),
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(28),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
             child: Row(
               children: [
                 Icon(
                   icon,
+                  size: 22,
                   color: isSelected
-                      ? theme.colorScheme.onPrimaryContainer
-                      : theme.colorScheme.onSurfaceVariant,
+                      ? cs.onPrimaryContainer
+                      : cs.onSurfaceVariant,
                 ),
                 const SizedBox(width: 16),
                 Expanded(
                   child: Text(
                     title,
                     style: TextStyle(
+                      fontSize: 14.5,
                       fontWeight: isSelected
-                          ? FontWeight.bold
-                          : FontWeight.normal,
+                          ? FontWeight.w700
+                          : FontWeight.w500,
                       color: isSelected
-                          ? theme.colorScheme.onPrimaryContainer
-                          : theme.colorScheme.onSurfaceVariant,
+                          ? cs.onPrimaryContainer
+                          : cs.onSurfaceVariant,
                     ),
                   ),
                 ),
@@ -200,6 +219,315 @@ class AppDrawer extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// 可拉伸头部：账号背景（装扮/头像模糊）+ 前景信息层（可滚动伸展时
+/// 背景被拉伸模糊，前景保持清晰，与旧版抽屉观感一致）。
+class _DrawerAccountHeader extends StatefulWidget {
+  final String currentPage;
+
+  const _DrawerAccountHeader({required this.currentPage});
+
+  @override
+  State<_DrawerAccountHeader> createState() => _DrawerAccountHeaderState();
+}
+
+class _DrawerAccountHeaderState extends State<_DrawerAccountHeader> {
+  /// 会话级缓存：同一账号只拉一次个人空间卡片（装扮背景 / 挂件 / 粉丝装扮）。
+  static BiliUserSpaceCard? _cachedCard;
+  static int _cachedMid = 0;
+  static bool _loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCardIfNeeded();
+  }
+
+  Future<void> _loadCardIfNeeded() async {
+    final account = BilibiliAccountService.instance;
+    if (!account.isLoggedIn || _loading) return;
+    if (_cachedCard != null && _cachedMid == account.mid) return;
+    _loading = true;
+    final card = await BilibiliUserSpaceService.fetchUserCard(
+      mid: account.mid,
+    );
+    _loading = false;
+    if (!mounted) return;
+    if (card != null) {
+      _cachedCard = card;
+      _cachedMid = account.mid;
+      setState(() {});
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    return ListenableBuilder(
+      listenable: BilibiliAccountService.instance,
+      builder: (context, _) {
+        final account = BilibiliAccountService.instance;
+        final logged = account.isLoggedIn;
+        final card = _cachedCard;
+        return LayoutBuilder(
+          builder: (context, constraints) {
+            return Stack(
+              fit: StackFit.expand,
+              children: [
+                // ── 背景层：装扮背景图（top_photo）→ 头像模糊 → 主题渐变 ──
+                _buildBackground(cs),
+                // 底部渐变：让头部内容（白字）与下方列表衔接
+                DecoratedBox(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.black.withValues(alpha: 0.12),
+                        Colors.transparent,
+                        cs.surfaceContainerLow.withValues(alpha: 0.95),
+                      ],
+                      stops: const [0, 0.45, 1],
+                    ),
+                  ),
+                ),
+                // ── 前景层：左上角关闭/菜单按钮 + 底部账号区 ──
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 6, 10, 14),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            _roundIcon(
+                              context,
+                              Icons.close_rounded,
+                              tooltip: '关闭',
+                              onTap: () => Navigator.pop(context),
+                            ),
+                            const Spacer(),
+                          ],
+                        ),
+                        const Spacer(),
+                        _buildAccountBlock(context, cs, account, card, logged),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget _buildBackground(ColorScheme cs) {
+    final account = BilibiliAccountService.instance;
+    final card = _cachedCard;
+    final photo = card?.topPhoto ?? '';
+    if (loggedCardPhoto(card)) {
+      return Image(
+        image: CachedImageProvider(
+          '$photo@672w_378h_1c.webp',
+          headers: NetworkSettingsService.instance.apiHeaders.isEmpty
+              ? null
+              : NetworkSettingsService.instance.apiHeaders,
+        ),
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => _blurredAvatarBg(cs, account.avatarUrl),
+      );
+    }
+    if (account.isLoggedIn && account.avatarUrl.isNotEmpty) {
+      return _blurredAvatarBg(cs, account.avatarUrl);
+    }
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            cs.primaryContainer,
+            cs.tertiaryContainer,
+            cs.secondaryContainer,
+          ],
+        ),
+      ),
+    );
+  }
+
+  bool loggedCardPhoto(BiliUserSpaceCard? card) {
+    final account = BilibiliAccountService.instance;
+    return account.isLoggedIn && card != null && card.topPhoto.isNotEmpty;
+  }
+
+  Widget _blurredAvatarBg(ColorScheme cs, String avatarUrl) {
+    return Image(
+      image: CachedImageProvider(
+        BilibiliUserSpaceService.avatarUrl(avatarUrl, size: 320),
+        headers: NetworkSettingsService.instance.apiHeaders.isEmpty
+            ? null
+            : NetworkSettingsService.instance.apiHeaders,
+      ),
+      fit: BoxFit.cover,
+      errorBuilder: (_, __, ___) => DecoratedBox(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [cs.primaryContainer, cs.tertiaryContainer],
+          ),
+        ),
+      ),
+      frameBuilder: (context, child, frame, wasSyncLoaded) {
+        if (wasSyncLoaded || frame != null) {
+          return ImageFiltered(
+            imageFilter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+            child: child,
+          );
+        }
+        return DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [cs.primaryContainer, cs.tertiaryContainer],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _roundIcon(
+    BuildContext context,
+    IconData icon, {
+    required String tooltip,
+    required VoidCallback onTap,
+  }) {
+    return Tooltip(
+      message: tooltip,
+      child: Material(
+        color: Colors.black.withValues(alpha: 0.28),
+        shape: const CircleBorder(),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(9),
+            child: Icon(icon, color: Colors.white, size: 21),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildAccountBlock(
+    BuildContext context,
+    ColorScheme cs,
+    BilibiliAccountService account,
+    BiliUserSpaceCard? card,
+    bool logged,
+  ) {
+    if (!logged) {
+      return Material(
+        color: Colors.white.withValues(alpha: 0.14),
+        borderRadius: BorderRadius.circular(18),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => const BilibiliLoginScreen(),
+              ),
+            );
+          },
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(Icons.login, color: Colors.white, size: 20),
+                SizedBox(width: 8),
+                Text(
+                  '未登录 B 站账号 · 点击登录',
+                  style: TextStyle(color: Colors.white, fontSize: 13.5),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+    }
+    final name = (card?.name.isNotEmpty ?? false) ? card!.name : account.uname;
+    final faceUrl = card?.face.isNotEmpty ?? false
+        ? BilibiliUserSpaceService.avatarUrl(card!.face)
+        : account.avatarUrl.isEmpty
+        ? ''
+        : BilibiliUserSpaceService.avatarUrl(account.avatarUrl);
+    return Row(
+      children: [
+        PendantAvatar(
+          size: 60,
+          pendOffset: 8,
+          avatarUrl: faceUrl,
+          pendantUrl: card?.pendantImage,
+          ringWidth: 2,
+          ringColor: Colors.white.withValues(alpha: 0.85),
+          fallback: const Icon(
+            Icons.account_circle,
+            size: 44,
+            color: Colors.white70,
+          ),
+          onTap: () {
+            Navigator.pop(context);
+            if (account.mid > 0) {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => BilibiliUserSpacePage(mid: account.mid),
+                ),
+              );
+            }
+          },
+        ),
+        const SizedBox(width: 14),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                name.isNotEmpty ? name : 'B 站账号',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 17,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  shadows: [Shadow(blurRadius: 6, color: Colors.black54)],
+                ),
+              ),
+              const SizedBox(height: 3),
+              Text(
+                'UID ${account.mid} · 点击进入我的空间',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 11.5,
+                  color: Colors.white.withValues(alpha: 0.85),
+                  shadows: const [
+                    Shadow(blurRadius: 4, color: Colors.black45),
+                  ],
+                ),
+              ),
+              if (card?.fansDetail case final fansDetail?)
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: FansMedalBadge(detail: fansDetail),
+                ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -229,126 +557,118 @@ void showDrawerInfoDialog(BuildContext context) {
             maxWidth: 400,
             maxHeight: MediaQuery.of(context).size.height * 0.7,
           ),
-          child: StretchableNaviGlass(
-            radius: 24.0,
-            blur: 16.0,
-            stretch: 0.3,
-            child: Material(
-              color: Colors.transparent,
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(24, 24, 24, 12),
-                    child: Row(
-                      children: [
-                        Icon(
-                          Icons.info_outline,
-                          size: 26,
-                          color: theme.colorScheme.primary,
-                        ),
-                        const SizedBox(width: 10),
-                        Text(
-                          l10n.drawerAbout,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                            color: theme.colorScheme.onSurface,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const Divider(height: 1, thickness: 0.5),
-                  Flexible(
-                    child: SingleChildScrollView(
-                      padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
-                      child: FutureBuilder<Widget>(
-                        future: getHostSystemInfo(),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return const Center(
-                              child: Padding(
-                                padding: EdgeInsets.all(20),
-                                child: LoadingIndicatorM3E(),
-                              ),
-                            );
-                          }
-                          if (snapshot.hasError) {
-                            return Text(
-                              l10n.drawerFetchFailed(
-                                snapshot.error.toString(),
-                              ),
-                              style: TextStyle(
-                                color: Theme.of(context).colorScheme.error,
-                              ),
-                            );
-                          }
-                          final deviceInfo =
-                              snapshot.data ??
-                              Text(
-                                l10n.drawerNoDeviceInfo,
-                                style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurfaceVariant,
-                                ),
-                              );
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              deviceInfo,
-                              const Divider(height: 20, thickness: 0.5),
-                              _drawerInfoTile(
-                                context,
-                                Icons.code,
-                                'Codename',
-                                BuildInfo.buildCodename,
-                              ),
-                              const SizedBox(height: 10),
-                              _drawerInfoTile(
-                                context,
-                                Icons.access_time,
-                                'Build Time',
-                                BuildInfo.buildTimestamp,
-                              ),
-                              const SizedBox(height: 10),
-                              _drawerInfoTile(
-                                context,
-                                BuildInfo.isDebug
-                                    ? Icons.bug_report
-                                    : Icons.shield,
-                                'Running',
-                                BuildInfo.isDebug ? 'Debug' : 'Release',
-                              ),
-                            ],
-                          );
-                        },
+          child: Material(
+            color: theme.colorScheme.surfaceContainerHigh,
+            borderRadius: BorderRadius.circular(24),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(24, 24, 24, 12),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.info_outline,
+                        size: 26,
+                        color: theme.colorScheme.primary,
                       ),
+                      const SizedBox(width: 10),
+                      Text(
+                        l10n.drawerAbout,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: theme.colorScheme.onSurface,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const Divider(height: 1, thickness: 0.5),
+                Flexible(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(24, 12, 24, 8),
+                    child: FutureBuilder<Widget>(
+                      future: getHostSystemInfo(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return const Center(
+                            child: Padding(
+                              padding: EdgeInsets.all(20),
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        }
+                        if (snapshot.hasError) {
+                          return Text(
+                            l10n.drawerFetchFailed(snapshot.error.toString()),
+                            style: TextStyle(
+                              color: theme.colorScheme.error,
+                            ),
+                          );
+                        }
+                        final deviceInfo =
+                            snapshot.data ??
+                            Text(
+                              l10n.drawerNoDeviceInfo,
+                              style: TextStyle(
+                                color: theme.colorScheme.onSurfaceVariant,
+                              ),
+                            );
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            deviceInfo,
+                            const Divider(height: 20, thickness: 0.5),
+                            _drawerInfoTile(
+                              context,
+                              Icons.code,
+                              'Codename',
+                              BuildInfo.buildCodename,
+                            ),
+                            const SizedBox(height: 10),
+                            _drawerInfoTile(
+                              context,
+                              Icons.access_time,
+                              'Build Time',
+                              BuildInfo.buildTimestamp,
+                            ),
+                            const SizedBox(height: 10),
+                            _drawerInfoTile(
+                              context,
+                              BuildInfo.isDebug
+                                  ? Icons.bug_report
+                                  : Icons.shield,
+                              'Running',
+                              BuildInfo.isDebug ? 'Debug' : 'Release',
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 8, 16, 12),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: Text(
-                            l10n.commonOk,
-                            style: TextStyle(
-                              color: theme.colorScheme.primary,
-                            ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 8, 16, 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text(
+                          l10n.commonOk,
+                          style: TextStyle(
+                            color: theme.colorScheme.primary,
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -401,468 +721,4 @@ Widget _drawerInfoTile(
       ),
     ],
   );
-}
-
-// ================= 背景层（受 stretch blur/zoom 影响） =================
-class _DrawerBackgroundLayer extends StatelessWidget {
-  final SettingsService settingsService;
-  const _DrawerBackgroundLayer({required this.settingsService});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final bgPath = settingsService.drawerBackgroundPath;
-    final hasBg = bgPath != null && File(bgPath).existsSync();
-
-    return GestureDetector(
-      onTap: () => _showChangeBackgroundDialog(context),
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          // 背景图片或默认渐变
-          if (hasBg)
-            Image.file(
-              File(bgPath),
-              fit: BoxFit.cover,
-              errorBuilder: (_, __, ___) => _defaultGradient(theme),
-            )
-          else
-            _defaultGradient(theme),
-          // 底部渐变遮罩（保证前景文字可读）
-          Positioned(
-            left: 0,
-            right: 0,
-            bottom: 0,
-            height: 140,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Colors.black.withOpacity(0.65)],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _defaultGradient(ThemeData theme) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            theme.colorScheme.primary,
-            theme.colorScheme.primaryContainer,
-            theme.colorScheme.tertiaryContainer,
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showChangeBackgroundDialog(BuildContext context) {
-    final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context);
-    final hasBg =
-        settingsService.drawerBackgroundPath != null &&
-        File(settingsService.drawerBackgroundPath!).existsSync();
-    showModalBottomSheet(
-      context: context,
-      backgroundColor: Colors.transparent,
-      isScrollControlled: true,
-      builder: (sheetContext) {
-        return FrostedSheet(
-          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
-          child: Container(
-            color: Colors.transparent,
-            padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
-            child: SafeArea(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Center(
-                    child: Container(
-                      width: 40,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.onSurface.withOpacity(0.2),
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.wallpaper,
-                        color: theme.colorScheme.primary,
-                        size: 24,
-                      ),
-                      const SizedBox(width: 12),
-                      Text(
-                        l10n.drawerBackgroundTitle,
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: theme.colorScheme.onSurface,
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    hasBg
-                        ? l10n.drawerBackgroundHasCustom
-                        : l10n.drawerBackgroundNoCustom,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: theme.colorScheme.onSurface.withOpacity(0.6),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  FilledButton.icon(
-                    onPressed: () async {
-                      Navigator.pop(sheetContext);
-                      try {
-                        final success = await settingsService
-                            .pickAndSaveDrawerBackground();
-                        if (success && context.mounted) {
-                          showAppToast(context, l10n.drawerBackgroundUpdated);
-                        }
-                      } catch (e) {
-                        if (context.mounted) {
-                          showAppToast(
-                            context,
-                            l10n.drawerBackgroundSetFailed(e.toString()),
-                          );
-                        }
-                      }
-                    },
-                    icon: const Icon(Icons.photo_library_outlined),
-                    label: Text(
-                      hasBg
-                          ? l10n.drawerBackgroundChange
-                          : l10n.drawerBackgroundSelect,
-                    ),
-                    style: FilledButton.styleFrom(
-                      padding: const EdgeInsets.symmetric(vertical: 14),
-                    ),
-                  ),
-                  if (hasBg) ...[
-                    const SizedBox(height: 12),
-                    OutlinedButton.icon(
-                      onPressed: () async {
-                        Navigator.pop(sheetContext);
-                        await settingsService.removeDrawerBackground();
-                        if (context.mounted) {
-                          showAppToast(context, l10n.drawerBackgroundRestored);
-                        }
-                      },
-                      icon: const Icon(Icons.delete_outline),
-                      label: Text(l10n.drawerBackgroundRemove),
-                      style: OutlinedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        foregroundColor: theme.colorScheme.error,
-                        side: BorderSide(
-                          color: theme.colorScheme.error.withOpacity(0.5),
-                        ),
-                      ),
-                    ),
-                  ],
-                  const SizedBox(height: 12),
-                  TextButton(
-                    onPressed: () => Navigator.pop(sheetContext),
-                    child: Text(l10n.commonCancel),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-// ================= 前景层（不受 stretch blur 影响） =================
-class _DrawerForegroundLayer extends StatelessWidget {
-  final SettingsService settingsService;
-  final ThemeMode currentThemeMode;
-
-  const _DrawerForegroundLayer({
-    required this.settingsService,
-    required this.currentThemeMode,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context);
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Positioned(
-          top: MediaQuery.of(context).padding.top + 8,
-          left: 12,
-          child: _headerIconButton(
-            icon: Icons.menu,
-            tooltip: l10n.drawerCloseMenu,
-            onPressed: () => Navigator.pop(context),
-          ),
-        ),
-
-        // ─── 右上角：主题切换 + ⋮ 溢出（与宽屏侧边栏一致） ───
-        Positioned(
-          top: MediaQuery.of(context).padding.top + 8,
-          right: 12,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _headerIconButton(
-                icon: currentThemeMode == ThemeMode.dark
-                    ? Icons.brightness_4
-                    : currentThemeMode == ThemeMode.light
-                    ? Icons.brightness_7
-                    : Icons.brightness_auto,
-                tooltip: _getThemeModeTooltip(context, currentThemeMode),
-                onPressed: () => _toggleThemeMode(context, settingsService),
-              ),
-              const SizedBox(width: 8),
-              const _DrawerHeaderOverflowButton(),
-            ],
-          ),
-        ),
-
-        // ─── 底部：头像 + 昵称 ───
-        Positioned(
-          left: 20,
-          bottom: 16,
-          right: 20,
-          child: Row(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (_) => const UserProfilePage()),
-                  );
-                },
-                child: _buildAvatar(settingsService.avatarPath),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      settingsService.nickname?.isNotEmpty == true
-                          ? settingsService.nickname!
-                          : l10n.drawerNoNickname,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        shadows: [Shadow(blurRadius: 4, color: Colors.black45)],
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      '',
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.7),
-                        fontSize: 12,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildAvatar(String? avatarPath) {
-    final hasAvatar = avatarPath != null && File(avatarPath).existsSync();
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.white.withOpacity(0.8), width: 2.5),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.3),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: CircleAvatar(
-        radius: 32,
-        backgroundColor: Colors.white.withOpacity(0.3),
-        backgroundImage: hasAvatar ? FileImage(File(avatarPath)) : null,
-        child: !hasAvatar
-            ? const Icon(Icons.account_circle, size: 44, color: Colors.white)
-            : null,
-      ),
-    );
-  }
-
-  Widget _headerIconButton({
-    required IconData icon,
-    required String tooltip,
-    required VoidCallback onPressed,
-  }) {
-    return Tooltip(
-      message: tooltip,
-      child: Material(
-        color: Colors.white.withOpacity(0.2),
-        shape: const CircleBorder(),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: onPressed,
-          child: Padding(
-            padding: const EdgeInsets.all(8),
-            child: Icon(icon, color: Colors.white, size: 20),
-          ),
-        ),
-      ),
-    );
-  }
-
-  String _getThemeModeTooltip(BuildContext context, ThemeMode mode) {
-    final l10n = AppLocalizations.of(context);
-    switch (mode) {
-      case ThemeMode.light:
-        return l10n.drawerSwitchToDark;
-      case ThemeMode.dark:
-        return l10n.drawerSwitchToLight;
-      case ThemeMode.system:
-        return l10n.drawerSwitchToLight;
-    }
-  }
-
-  void _toggleThemeMode(BuildContext context, SettingsService settingsService) {
-    final l10n = AppLocalizations.of(context);
-    ThemeMode currentMode = settingsService.themeMode;
-    ThemeMode newMode;
-    switch (currentMode) {
-      case ThemeMode.system:
-        newMode = ThemeMode.light;
-        break;
-      case ThemeMode.light:
-        newMode = ThemeMode.dark;
-        break;
-      case ThemeMode.dark:
-        newMode = ThemeMode.system;
-        break;
-    }
-    settingsService.setThemeMode(newMode);
-    String modeName = newMode == ThemeMode.light
-        ? l10n.drawerLightMode
-        : newMode == ThemeMode.dark
-        ? l10n.drawerDarkMode
-        : l10n.drawerSystemMode;
-    showAppToast(context, l10n.drawerThemeSwitched(modeName));
-  }
-}
-
-/// 侧边栏右上角 ⋮ 溢出菜单（传统抽屉专用，精简后与宽屏侧边栏一致）
-/// 仅保留 4 项主导航，其余历史/缓存/稍后再看/关于收进此菜单（液态玻璃菜单）
-class _DrawerHeaderOverflowButton extends StatefulWidget {
-  const _DrawerHeaderOverflowButton();
-
-  @override
-  State<_DrawerHeaderOverflowButton> createState() =>
-      _DrawerHeaderOverflowButtonState();
-}
-
-class _DrawerHeaderOverflowButtonState
-    extends State<_DrawerHeaderOverflowButton> {
-  final GlobalKey _key = GlobalKey();
-
-  void _showMenu() {
-    final l10n = AppLocalizations.of(context);
-    final box = _key.currentContext?.findRenderObject() as RenderBox?;
-    if (box == null) return;
-    // 捕获抽屉的 BuildContext，用于先关闭抽屉再跳转
-    final drawerContext = context;
-    showGlassDropdownMenu(
-      drawerContext,
-      actions: [
-        GlassMenuAction(
-          icon: Icons.history,
-          text: l10n.drawerHistory,
-          onTap: () {
-            Navigator.pop(drawerContext);
-            Navigator.of(drawerContext).push(
-              MaterialPageRoute(builder: (_) => const HistoryCenterPage()),
-            );
-          },
-        ),
-        GlassMenuAction(
-          icon: Icons.watch_later_outlined,
-          text: l10n.drawerWatchLater,
-          onTap: () {
-            Navigator.pop(drawerContext);
-            Navigator.of(drawerContext).push(
-              MaterialPageRoute(
-                builder: (_) => const BilibiliWatchLaterPage(),
-              ),
-            );
-          },
-        ),
-        GlassMenuAction(
-          icon: Icons.download_rounded,
-          text: l10n.drawerMyCache,
-          onTap: () {
-            Navigator.pop(drawerContext);
-            Navigator.of(drawerContext).push(
-              MaterialPageRoute(builder: (_) => const MyCachePage()),
-            );
-          },
-        ),
-        GlassMenuAction(
-          icon: Icons.info_outline,
-          text: l10n.drawerAbout,
-          onTap: () {
-            Navigator.pop(drawerContext);
-            // 抽屉关闭后弹关于弹窗，需用外层 context
-            Future.delayed(const Duration(milliseconds: 220), () {
-              if (drawerContext.mounted) showDrawerInfoDialog(drawerContext);
-            });
-          },
-        ),
-      ],
-      globalPosition: box.localToGlobal(Offset.zero),
-      originSize: box.size,
-      menuWidth: 224,
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Tooltip(
-      message: AppLocalizations.of(context).sideBarMore,
-      child: Material(
-        key: _key,
-        color: Colors.white.withOpacity(0.2),
-        shape: const CircleBorder(),
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: _showMenu,
-          child: const Padding(
-            padding: EdgeInsets.all(8),
-            child: Icon(Icons.more_vert, color: Colors.white, size: 20),
-          ),
-        ),
-      ),
-    );
-  }
 }

@@ -12,11 +12,16 @@ import 'package:naviflash/screens/bilibili_login_screen.dart';
 import 'package:naviflash/screens/bilibili_video_page.dart';
 import 'package:naviflash/services/bilibili_watch_later_service.dart';
 import 'package:naviflash/services/cached_image_provider.dart';
+import 'package:naviflash/widgets/app_drawer.dart';
 import 'package:naviflash/widgets/app_toast.dart';
 import 'package:naviflash/widgets/load_retry_pill.dart';
 
 class BilibiliWatchLaterPage extends StatefulWidget {
-  const BilibiliWatchLaterPage({super.key});
+  /// 从全局侧边栏进入：顶栏显示「菜单」按钮并可再次打开侧边栏，
+  /// 而非返回箭头（与设置页一致）。
+  final bool drawerMode;
+
+  const BilibiliWatchLaterPage({super.key, this.drawerMode = false});
 
   @override
   State<BilibiliWatchLaterPage> createState() => _BilibiliWatchLaterPageState();
@@ -132,7 +137,19 @@ class _BilibiliWatchLaterPageState extends State<BilibiliWatchLaterPage> {
   Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
     return Scaffold(
+      drawer: widget.drawerMode
+          ? const AppDrawer(currentPage: 'watchlater')
+          : null,
       appBar: AppBar(
+        leading: widget.drawerMode
+            ? Builder(
+                builder: (ctx) => IconButton(
+                  icon: const Icon(Icons.menu),
+                  tooltip: '侧边栏',
+                  onPressed: () => Scaffold.of(ctx).openDrawer(),
+                ),
+              )
+            : null,
         title: const Text('稍后再看'),
         actions: [
           if (_items.isNotEmpty)

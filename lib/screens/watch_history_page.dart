@@ -13,6 +13,7 @@ import 'package:naviflash/services/settings_service.dart';
 import 'package:naviflash/services/webdav_service.dart';
 import 'package:naviflash/services/playlist_service.dart';
 import 'package:naviflash/services/cloud_sync_service.dart';
+import 'package:naviflash/widgets/app_drawer.dart';
 import 'package:naviflash/widgets/app_toast.dart';
 import 'package:naviflash/widgets/expressive_app_bar.dart';
 import 'package:naviflash/widgets/liquid_glass_menu_button.dart';
@@ -23,7 +24,11 @@ import 'package:naviflash/screens/bilibili_video_page.dart';
 import 'package:naviflash/l10n/app_localizations.dart';
 
 class WatchHistoryPage extends StatelessWidget {
-  const WatchHistoryPage({super.key});
+  /// 从全局侧边栏进入：顶栏显示「菜单」按钮并可再次打开侧边栏，
+  /// 而非返回箭头（与设置页一致）。
+  final bool drawerMode;
+
+  const WatchHistoryPage({super.key, this.drawerMode = false});
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +40,7 @@ class WatchHistoryPage extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     return Scaffold(
       backgroundColor: cs.surfaceContainerLow,
+      drawer: drawerMode ? const AppDrawer(currentPage: 'history') : null,
       body: Stack(
         children: [
           PageBackground(baseColor: cs.surfaceContainerLow),
@@ -44,11 +50,19 @@ class WatchHistoryPage extends StatelessWidget {
               ExpressiveSliverAppBar(
                 title: '观看历史',
                 expandedHeight: 120,
-                leading: MorphIconButton(
-                  icon: Icons.arrow_back,
-                  tooltip: AppLocalizations.of(context).commonBackTooltip,
-                  onTap: () => Navigator.of(context).pop(),
-                ),
+                leading: drawerMode
+                    ? Builder(
+                        builder: (ctx) => MorphIconButton(
+                          icon: Icons.menu,
+                          tooltip: '侧边栏',
+                          onTap: () => Scaffold.of(ctx).openDrawer(),
+                        ),
+                      )
+                    : MorphIconButton(
+                        icon: Icons.arrow_back,
+                        tooltip: AppLocalizations.of(context).commonBackTooltip,
+                        onTap: () => Navigator.of(context).pop(),
+                      ),
                 actions: [
                   LiquidGlassMenuButton(
                     icon: Icons.cloud_sync_outlined,

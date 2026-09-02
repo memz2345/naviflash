@@ -17,6 +17,7 @@ import 'package:naviflash/widgets/expressive_app_bar.dart';
 import 'package:naviflash/widgets/liquid_glass.dart';
 import 'package:naviflash/widgets/liquid_glass_menu_button.dart';
 import 'package:naviflash/widgets/morph_card.dart';
+import 'package:naviflash/widgets/app_drawer.dart';
 import 'package:naviflash/widgets/page_background.dart';
 import 'package:naviflash/widgets/search_video_menu.dart';
 import 'package:naviflash/src/loading_indicator_m3e.dart';
@@ -26,7 +27,15 @@ class MyCachePage extends StatefulWidget {
   /// （由 Shell 画布统一提供）。
   final bool embeddedInShell;
 
-  const MyCachePage({super.key, this.embeddedInShell = false});
+  /// 从全局侧边栏进入：顶栏显示「菜单」按钮并可再次打开侧边栏，
+  /// 而非返回箭头（与设置页一致）。
+  final bool drawerMode;
+
+  const MyCachePage({
+    super.key,
+    this.embeddedInShell = false,
+    this.drawerMode = false,
+  });
 
   @override
   State<MyCachePage> createState() => _MyCachePageState();
@@ -341,6 +350,9 @@ class _MyCachePageState extends State<MyCachePage> {
       backgroundColor: widget.embeddedInShell
           ? Colors.transparent
           : cs.surfaceContainerLow,
+      drawer: widget.drawerMode && !widget.embeddedInShell
+          ? const AppDrawer(currentPage: 'cache')
+          : null,
       floatingActionButton: _buildFab(cs),
       body: Stack(
         children: [
@@ -359,6 +371,14 @@ class _MyCachePageState extends State<MyCachePage> {
                   )
                 : widget.embeddedInShell
                 ? null
+                : widget.drawerMode
+                ? Builder(
+                    builder: (ctx) => MorphIconButton(
+                      icon: Icons.menu,
+                      tooltip: '侧边栏',
+                      onTap: () => Scaffold.of(ctx).openDrawer(),
+                    ),
+                  )
                 : MorphIconButton(
                     icon: Icons.arrow_back,
                     tooltip: L10n.current.startScreenGoBack,

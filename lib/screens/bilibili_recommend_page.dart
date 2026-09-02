@@ -11,7 +11,6 @@
 //   - 单列 / 多列切换为视频页同款 FAB（状态全局共享 + 持久化）
 //   - 下拉刷新 / 触底加载更多 / 长按右键菜单 / 封面 Hero / AI 标题翻译
 import 'dart:async';
-import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -20,16 +19,12 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:naviflash/l10n/app_localizations.dart';
 import 'package:naviflash/screens/bilibili_bangumi_page.dart';
-import 'package:naviflash/screens/bilibili_login_screen.dart';
 import 'package:naviflash/screens/bilibili_popular_list_page.dart';
 import 'package:naviflash/screens/bilibili_region_page.dart';
 import 'package:naviflash/screens/bilibili_search_page.dart';
-import 'package:naviflash/screens/bilibili_user_space_page.dart';
 import 'package:naviflash/screens/bilibili_video_page.dart';
 import 'package:naviflash/screens/bilibili_live_room_page.dart';
 import 'package:naviflash/screens/browser_page.dart';
-import 'package:naviflash/screens/my_cache_page.dart';
-import 'package:naviflash/screens/watch_history_page.dart';
 import 'package:naviflash/services/bilibili_account_service.dart';
 import 'package:naviflash/services/bilibili_hot_service.dart';
 import 'package:naviflash/services/bilibili_live_service.dart';
@@ -37,26 +32,22 @@ import 'package:naviflash/services/bilibili_recommend_service.dart';
 import 'package:naviflash/services/bilibili_title_cache.dart';
 import 'package:naviflash/services/bilibili_translate_api.dart';
 import 'package:naviflash/services/bilibili_translate_service.dart';
-import 'package:naviflash/services/bilibili_user_space_service.dart';
 import 'package:naviflash/services/cached_image_provider.dart';
 import 'package:naviflash/services/link_utils.dart';
 import 'package:naviflash/services/network_settings_service.dart';
 import 'package:naviflash/services/settings_service.dart';
 import 'package:naviflash/src/loading_indicator_m3e.dart';
 import 'package:naviflash/widgets/app_toast.dart';
+import 'package:naviflash/widgets/app_drawer.dart';
 import 'package:naviflash/widgets/expressive_app_bar.dart';
-import 'package:naviflash/widgets/fans_medal_badge.dart';
 import 'package:naviflash/widgets/feed_loading_overlay.dart';
 import 'package:naviflash/widgets/frosted_route.dart';
 import 'package:naviflash/widgets/ios_backdrop.dart';
 import 'package:naviflash/widgets/long_press_glass_tab_switcher.dart';
 import 'package:naviflash/widgets/load_retry_pill.dart';
 import 'package:naviflash/widgets/MetroTile.dart';
-import 'package:naviflash/widgets/pendant_avatar.dart';
 import 'package:naviflash/widgets/cover_menu_sheet.dart';
 import 'package:naviflash/widgets/search_video_menu.dart';
-import 'package:naviflash/screens/bilibili_watch_later_page.dart';
-import 'package:naviflash/screens/settings_split_screen.dart';
 
 /// 单个 tab 的分页状态（推荐 / 热门 / 番剧 / 直播 共用）。
 class _TabState<T> {
@@ -187,6 +178,9 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   final List<GlobalKey<RefreshIndicatorState>> _feedRefreshKeys =
       List.generate(4, (_) => GlobalKey<RefreshIndicatorState>());
 
+  /// 主页 Scaffold key：左上入口用它打开全局侧边栏（AppDrawer）。
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   /// 顶栏以 oval tab 形式展示的页（分区走右侧图标按钮，不占 oval 位）。
   /// 物理顺序即视觉顺序（直播 0 在最前，推荐 1 次之……），这样从推荐页
   /// 向左滑可直接滑到直播 tab；默认进入仍是推荐页（initialIndex = 1）。
@@ -208,10 +202,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   final Set<String> _showOriginalTitles = {};
 
   bool _gridMode = true;
-
-  /// 左侧侧边栏是否打开（竖屏主页：面板悬浮于顶栏下方，
-  /// 入口按钮常驻顶栏，点它关闭）。
-  bool _sideOpen = false;
 
   /// 热门 tab「相关搜索」是否展开（默认折叠，点击标题行右侧 v 展开）。
   bool _hotSearchExpanded = false;
@@ -337,32 +327,12 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   }
 
   // ═════════════════════════════════════════
-  //  左侧 PiliPlus 风格侧边栏（竖屏推荐页入口）
+  //  全局侧边栏（AppDrawer，B 站版传统抽屉）
   // ═════════════════════════════════════════
 
-  /// 打开 / 关闭左侧侧边栏（面板悬浮在顶栏下方，入口按钮常驻顶栏）。
-  void _toggleSideMenu() {
-    setState(() => _sideOpen = !_sideOpen);
-  }
-
-  /// 关闭侧边栏后打开目标页。
-  void _sideOpenFull(Widget page) {
-    setState(() => _sideOpen = false);
-    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
-  }
-
-  void _sideOpenLogin() => _sideOpenFull(const BilibiliLoginScreen());
-
-  void _sideOpenMySpace() {
-    final mid = BilibiliAccountService.instance.mid;
-    if (mid > 0) {
-      _sideOpenFull(BilibiliUserSpacePage(mid: mid));
-    }
-  }
-
-  void _sideSubscribeTap() {
-    setState(() => _sideOpen = false);
-    showAppToast(context, '订阅功能开发中，敬请期待');
+  /// 打开全局侧边栏（主页入口/从侧边栏进入的页面共用同一抽屉）。
+  void _openSideMenu() {
+    _scaffoldKey.currentState?.openDrawer();
   }
 
   Future<void> _loadGridState() async {
@@ -1141,6 +1111,11 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
         currentFeed.error != null &&
         currentFeed.items.isEmpty;
     final scaffold = Scaffold(
+      key: _scaffoldKey,
+      // 全局侧边栏（B 站版传统抽屉 AppDrawer；宽屏 Shell 内嵌时由 Shell 提供）
+      drawer: widget.embeddedInShell
+          ? null
+          : const AppDrawer(currentPage: 'home'),
       backgroundColor: widget.embeddedInShell
           ? Colors.transparent
           : cs.surfaceContainer,
@@ -1249,16 +1224,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
               alignment: Alignment.topCenter,
               child: _buildTabBar(cs, l10n),
             ),
-            // ── 左侧侧边栏（悬浮面板，位于顶栏下方；入口按钮常驻顶栏） ──
-            if (!widget.embeddedInShell)
-              _SideMenuOverlay(
-                visible: _sideOpen,
-                onClose: _toggleSideMenu,
-                onOpenLogin: _sideOpenLogin,
-                onOpenMySpace: _sideOpenMySpace,
-                onOpenFull: _sideOpenFull,
-                onSubscribeTap: _sideSubscribeTap,
-              ),
           ],
         ),
       ),
@@ -1299,7 +1264,7 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
                     onTap: () => Navigator.pop(context),
                   )
                 else
-                  _SideBarEntry(onTap: _toggleSideMenu),
+                  _SideBarEntry(onTap: _openSideMenu),
                 const SizedBox(width: 4),
               ],
               // tab 数量增加后窄屏可能排不下：空间够时居中不变，
@@ -3702,479 +3667,6 @@ class _SideBarEntry extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-/// 左侧侧边栏浮层：遮罩铺满 + 贴左全高面板（右侧圆角，样式改回旧版）
-/// + 入口按钮常驻浮于面板上方（点击关闭，不随面板消失）。
-class _SideMenuOverlay extends StatefulWidget {
-  final bool visible;
-  final VoidCallback onClose;
-  final VoidCallback onOpenLogin;
-  final VoidCallback onOpenMySpace;
-  final void Function(Widget page) onOpenFull;
-  final VoidCallback onSubscribeTap;
-
-  const _SideMenuOverlay({
-    required this.visible,
-    required this.onClose,
-    required this.onOpenLogin,
-    required this.onOpenMySpace,
-    required this.onOpenFull,
-    required this.onSubscribeTap,
-  });
-
-  @override
-  State<_SideMenuOverlay> createState() => _SideMenuOverlayState();
-}
-
-class _SideMenuOverlayState extends State<_SideMenuOverlay>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _ctrl = AnimationController(
-    vsync: this,
-    duration: const Duration(milliseconds: 260),
-    reverseDuration: const Duration(milliseconds: 200),
-  );
-  late final Animation<double> _fade = CurvedAnimation(
-    parent: _ctrl,
-    curve: Curves.easeOut,
-  );
-  late final Animation<Offset> _slide = Tween<Offset>(
-    begin: const Offset(-1.05, 0),
-    end: Offset.zero,
-  ).animate(CurvedAnimation(parent: _ctrl, curve: Curves.easeOutCubic));
-
-  bool _built = false;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.visible) _open();
-  }
-
-  @override
-  void didUpdateWidget(_SideMenuOverlay oldWidget) {
-    super.didUpdateWidget(oldWidget);
-    if (widget.visible == oldWidget.visible) return;
-    if (widget.visible) {
-      _open();
-    } else if (_built) {
-      _ctrl.reverse().whenComplete(() {
-        if (mounted) setState(() => _built = false);
-      });
-    }
-  }
-
-  void _open() {
-    setState(() => _built = true);
-    _ctrl.forward(from: 0);
-  }
-
-  @override
-  void dispose() {
-    _ctrl.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    if (!_built) return const SizedBox.shrink();
-    final mq = MediaQuery.of(context);
-    final cs = Theme.of(context).colorScheme;
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        // 遮罩铺满（点击关闭）
-        Positioned.fill(
-          child: FadeTransition(
-            opacity: _fade,
-            child: GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: widget.onClose,
-              child: ColoredBox(
-                color: Colors.black.withValues(alpha: 0.38),
-              ),
-            ),
-          ),
-        ),
-        // 面板：贴左、全高、右侧圆角（与旧版样式一致；内容含装扮背景头）
-        Positioned(
-          left: 0,
-          top: 0,
-          bottom: 0,
-          width: math.min(300.0, mq.size.width * 0.86),
-          child: SlideTransition(
-            position: _slide,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.horizontal(
-                right: Radius.circular(22),
-              ),
-              child: ColoredBox(
-                color: cs.surfaceContainerLow,
-                child: _SideMenuPanel(
-                  account: BilibiliAccountService.instance,
-                  onOpenLogin: widget.onOpenLogin,
-                  onOpenMySpace: widget.onOpenMySpace,
-                  onOpenFull: widget.onOpenFull,
-                  onSubscribeTap: widget.onSubscribeTap,
-                ),
-              ),
-            ),
-          ),
-        ),
-        // 侧边栏入口：常驻顶栏原位置并浮于面板上方（点击关闭）
-        Positioned(
-          left: 0,
-          top: 8,
-          child: FadeTransition(
-            opacity: _fade,
-            child: _SideBarEntry(onTap: widget.onClose),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-/// PiliPlus 风格侧边栏内容（外壳由 [_SideMenuOverlay] 提供）：
-///  - 顶部：账号信息区 —— 登录后拉取个人空间卡片，背景铺「粉丝/个性
-///    装扮」空间背景图，头像佩戴挂件，下发 fans_detail 时展示装扮名 +
-///    #编号（参考 PiliPlus 个人空间头部样式）
-///  - 主体：离线缓存 / 观看记录 / 订阅 / 稍后再看
-///  - 底部：设置（原 ⋮ 菜单入口收口于此）
-class _SideMenuPanel extends StatefulWidget {
-  final BilibiliAccountService account;
-  final VoidCallback onOpenLogin;
-  final VoidCallback onOpenMySpace;
-  final void Function(Widget page) onOpenFull;
-  final VoidCallback onSubscribeTap;
-
-  const _SideMenuPanel({
-    required this.account,
-    required this.onOpenLogin,
-    required this.onOpenMySpace,
-    required this.onOpenFull,
-    required this.onSubscribeTap,
-  });
-
-  @override
-  State<_SideMenuPanel> createState() => _SideMenuPanelState();
-}
-
-class _SideMenuPanelState extends State<_SideMenuPanel> {
-  /// 会话级缓存：同一账号只拉一次个人空间卡片（装扮背景 / 挂件 / 粉丝装扮）。
-  static BiliUserSpaceCard? _cachedCard;
-  static int _cachedMid = 0;
-
-  bool _cardLoading = false;
-
-  BilibiliAccountService get account => widget.account;
-
-  @override
-  void initState() {
-    super.initState();
-    _loadCardIfNeeded();
-  }
-
-  /// 登录后拉取个人空间卡片；未登录 / 已有同账号缓存时不重复请求。
-  Future<void> _loadCardIfNeeded() async {
-    if (!account.isLoggedIn || _cardLoading) return;
-    if (_cachedCard != null && _cachedMid == account.mid) return;
-    _cardLoading = true;
-    final card = await BilibiliUserSpaceService.fetchUserCard(
-      mid: account.mid,
-    );
-    if (!mounted) return;
-    if (card != null) {
-      _cachedCard = card;
-      _cachedMid = account.mid;
-    }
-    setState(() => _cardLoading = false);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        _buildHeader(context, cs),
-        const Divider(height: 1),
-        Expanded(
-          child: ListView(
-            padding: const EdgeInsets.symmetric(vertical: 4),
-            children: [
-              _itemRow(
-                cs,
-                icon: Icons.download_rounded,
-                title: '离线缓存',
-                onTap: () => widget.onOpenFull(const MyCachePage()),
-              ),
-              _itemRow(
-                cs,
-                icon: Icons.history_rounded,
-                title: '观看记录',
-                onTap: () => widget.onOpenFull(const WatchHistoryPage()),
-              ),
-              _itemRow(
-                cs,
-                icon: Icons.subscriptions_outlined,
-                title: '订阅',
-                onTap: widget.onSubscribeTap,
-              ),
-              _itemRow(
-                cs,
-                icon: Icons.watch_later_outlined,
-                title: '稍后再看',
-                onTap: () =>
-                    widget.onOpenFull(const BilibiliWatchLaterPage()),
-              ),
-            ],
-          ),
-        ),
-        const Divider(height: 1),
-        // ── 底部：设置（原 ⋮ 更多菜单入口收口于此） ──
-        _itemRow(
-          cs,
-          icon: Icons.settings_outlined,
-          title: '设置',
-          onTap: () =>
-              widget.onOpenFull(const SplitSettingsScreen(isStandalone: true)),
-        ),
-        const SizedBox(height: 6),
-      ],
-    );
-  }
-
-  /// 顶部账号信息区：
-  ///  - 未登录：普通入口行；
-  ///  - 已登录：铺「粉丝 / 个性装扮」空间背景图（card.top_photo，参考
-  ///    PiliPlus 个人空间头部）+ 头像挂件 + 昵称 / UID；服务端下发
-  ///    fans_detail 时再展示「装扮名 + #编号」徽章。
-  Widget _buildHeader(BuildContext context, ColorScheme cs) {
-    final logged = account.isLoggedIn;
-    if (!logged) {
-      return InkWell(
-        onTap: widget.onOpenLogin,
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 18, 14, 18),
-          child: Row(
-            children: [
-              ClipOval(
-                child: Container(
-                  width: 46,
-                  height: 46,
-                  color: cs.surfaceContainerHighest,
-                  child: Icon(
-                    Icons.account_circle,
-                    size: 34,
-                    color: cs.onSurfaceVariant,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '未登录 B 站账号',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                        color: cs.onSurface,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      '登录后同步观看记录 / 稍后再看',
-                      style: TextStyle(
-                        fontSize: 11.5,
-                        color: cs.onSurfaceVariant,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 6),
-              Icon(Icons.login, size: 20, color: cs.onSurfaceVariant),
-              const SizedBox(width: 4),
-            ],
-          ),
-        ),
-      );
-    }
-    final card = _cachedCard;
-    return InkWell(
-      onTap: widget.onOpenMySpace,
-      child: SizedBox(
-        height: 156,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            _buildDressBackground(cs),
-            // 顶部轻微压暗保证白字可读；底部渐隐过渡到面板底色
-            DecoratedBox(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.black.withValues(alpha: 0.22),
-                    Colors.transparent,
-                    cs.surfaceContainerLow.withValues(alpha: 0.9),
-                  ],
-                  stops: const [0.0, 0.55, 1.0],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(20, 14, 14, 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-                      PendantAvatar(
-                        size: 50,
-                        pendOffset: 7,
-                        avatarUrl: _faceUrl,
-                        pendantUrl: card?.pendantImage,
-                        ringWidth: 2,
-                        ringColor: Colors.white.withValues(alpha: 0.85),
-                        fallback: Icon(
-                          Icons.account_circle,
-                          size: 40,
-                          color: Colors.white.withValues(alpha: 0.9),
-                        ),
-                      ),
-                      const SizedBox(width: 12),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              (card?.name ?? account.uname).isNotEmpty
-                                  ? (card?.name ?? account.uname)
-                                  : 'B 站账号',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 16.5,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                                shadows: const [
-                                  Shadow(blurRadius: 6, color: Colors.black54),
-                                ],
-                              ),
-                            ),
-                            const SizedBox(height: 3),
-                            Text(
-                              'UID ${account.mid} · 点击进入我的空间',
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.white.withValues(alpha: 0.8),
-                                shadows: const [
-                                  Shadow(blurRadius: 4, color: Colors.black45),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  // ── 粉丝装扮：装扮名 + #编号（fans_detail 下发时） ──
-                  if (card?.fansDetail case final fansDetail?)
-                    Padding(
-                      padding: const EdgeInsets.only(top: 7),
-                      child: FansMedalBadge(detail: fansDetail),
-                    ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  /// 头像地址：优先个人空间卡片头像，其次账号头像（均带尺寸压缩）。
-  String get _faceUrl {
-    final card = _cachedCard;
-    if (card != null && card.face.isNotEmpty) {
-      return BilibiliUserSpaceService.avatarUrl(card.face);
-    }
-    final url = account.avatarUrl;
-    return url.isEmpty ? '' : BilibiliUserSpaceService.avatarUrl(url);
-  }
-
-  /// 装扮背景图：card.top_photo（个性装扮 / 官方默认空间背景）。
-  Widget _buildDressBackground(ColorScheme cs) {
-    final photo = _cachedCard?.topPhoto ?? '';
-    if (photo.isNotEmpty) {
-      return Image(
-        image: CachedImageProvider(
-          '$photo@672w_378h_1c.webp',
-          headers: NetworkSettingsService.instance.apiHeaders.isEmpty
-              ? null
-              : NetworkSettingsService.instance.apiHeaders,
-        ),
-        fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) => _dressFallback(cs),
-      );
-    }
-    return _dressFallback(cs);
-  }
-
-  Widget _dressFallback(ColorScheme cs) {
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            cs.primaryContainer,
-            cs.tertiaryContainer,
-            cs.secondaryContainer,
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _itemRow(
-    ColorScheme cs, {
-    required IconData icon,
-    required String title,
-    required VoidCallback onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-        child: Row(
-          children: [
-            Icon(icon, size: 22, color: cs.onSurfaceVariant),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Text(
-                title,
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: cs.onSurface,
-                ),
-              ),
-            ),
-            Icon(Icons.chevron_right, size: 18, color: cs.outline),
-          ],
-        ),
-      ),
     );
   }
 }
