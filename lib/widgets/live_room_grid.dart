@@ -8,6 +8,7 @@
 import 'package:flutter/material.dart';
 import 'package:naviflash/src/content_reveal_gate.dart';
 import 'package:naviflash/widgets/load_retry_pill.dart';
+import 'package:naviflash/widgets/MetroTile.dart';
 import 'package:naviflash/screens/bilibili_live_room_page.dart';
 import 'package:naviflash/screens/browser_page.dart';
 import 'package:naviflash/services/bilibili_live_service.dart';
@@ -217,7 +218,6 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
           final width = constraints.maxWidth;
           final columns =
               (width / 200).floor().clamp(2, widget.maxColumns);
-          final cardW = (width - (columns - 1) * 12 - 32) / columns;
           return GridView.builder(
             controller: _scroll,
             physics: const ClampingScrollPhysics(
@@ -227,9 +227,12 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
                 const EdgeInsets.fromLTRB(16, 8, 16, 16),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: columns,
-              mainAxisSpacing: 14,
+              // 与视频卡片网格同款几何（推荐页 / 分类房间页均为 0.78 + 12 间距）：
+              // 之前这里公式写反（cover 按 1.6 倍宽预留），Cell 过长、
+              // 空白全堆在卡片肚子里。
+              mainAxisSpacing: 12,
               crossAxisSpacing: 12,
-              childAspectRatio: cardW / (cardW / 0.625 + 58),
+              childAspectRatio: 0.78,
             ),
             itemCount: _items.length + (_hasMore ? 1 : 0),
             itemBuilder: (context, i) {
@@ -257,7 +260,10 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
 }
 
 // ════════════════════════════════════════
-//  直播间卡片
+//  直播间卡片（视频卡片同款外观）：
+//  16/10 封面 + 底部渐变 + 左下白字人气（≈视频播放量）+
+//  右下分区角标（≈视频时长角标）+ 双行标题 + 主播行（右附直播中）。
+//  数据缺时长/弹幕，用分区/直播中占位；行为不变（点进房/长按浏览器兜底）。
 // ════════════════════════════════════════
 
 class LiveRoomCard extends StatelessWidget {
@@ -281,7 +287,7 @@ class LiveRoomCard extends StatelessWidget {
       maxDimension: 480,
     );
 
-    return Material(
+    final card = Material(
       color: cs.surfaceBright,
       borderRadius: BorderRadius.circular(12),
       clipBehavior: Clip.antiAlias,
@@ -297,65 +303,135 @@ class LiveRoomCard extends StatelessWidget {
                 fit: StackFit.expand,
                 children: [
                   cover,
-                  // 左下：人气
+                  // 底部渐变（视频卡片同款，衬左下人气/右下角标）
                   Positioned(
-                    left: 6,
-                    bottom: 6,
-                    child: _badge(
-                      Icons.visibility_outlined,
-                      _onlineText,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    height: 36,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withValues(alpha: 0.6),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
-                  // 右上：分区
+                  // 左下：人气（视频卡片播放量同款）
+                  Positioned(
+                    left: 8,
+                    bottom: 6,
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.play_arrow_rounded,
+                          size: 14,
+                          color: Colors.white,
+                        ),
+                        Text(
+                          _onlineText,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  // 右下：分区（视频卡片时长角标同款位置）
                   if (_areaText.isNotEmpty)
                     Positioned(
                       right: 6,
-                      top: 6,
-                      child: _badge(null, _areaText),
+                      bottom: 6,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 5,
+                          vertical: 1,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.black.withValues(alpha: 0.65),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Text(
+                          _areaText,
+                          style: const TextStyle(
+                            fontSize: 10,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(8, 6, 8, 6),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    item.title.isEmpty ? '未命名直播间' : item.title,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12,
-                      height: 1.3,
-                      fontWeight: FontWeight.w500,
-                      color: cs.onSurface,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      item.title.isEmpty ? '未命名直播间' : item.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 13,
+                        height: 1.35,
+                        fontWeight: FontWeight.w500,
+                        color: cs.onSurface,
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    children: [
-                      _avatar(headers),
-                      const SizedBox(width: 5),
-                      Expanded(
-                        child: Text(
-                          item.uname.isEmpty ? '未知主播' : item.uname,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: cs.onSurfaceVariant,
+                    const Spacer(),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            item.uname.isEmpty ? '未知主播' : item.uname,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: cs.onSurfaceVariant,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        Container(
+                          width: 6,
+                          height: 6,
+                          decoration: const BoxDecoration(
+                            color: Colors.redAccent,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        const SizedBox(width: 4),
+                        const Text(
+                          '直播中',
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.redAccent,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
         ),
       ),
+    );
+    // 视频卡片同款磁贴包装（桌面端悬停倾斜；分类页直播卡片同款）。
+    return MetroTileInteraction(
+      onTapStart: (_, __) {},
+      showBorder: false,
+      child: card,
     );
   }
 
@@ -381,52 +457,6 @@ class LiveRoomCard extends StatelessWidget {
           initialUrl: item.url,
           title: item.title.isEmpty ? '直播间' : item.title,
         ),
-      ),
-    );
-  }
-
-  Widget _avatar(Map<String, String>? headers) {
-    if (item.face.isEmpty) {
-      return const Icon(Icons.account_circle, size: 14, color: Colors.white38);
-    }
-    // 头像只占 14 逻辑像素：按目标尺寸请求 CDN 缩图，避免原图全尺寸解码
-    return ClipOval(
-      child: LazyCoverImage(
-        item.face,
-        headers: headers,
-        width: 14,
-        height: 14,
-        fit: BoxFit.cover,
-        maxDimension: 96,
-        errorBuilder: (_, __, ___) =>
-            const Icon(Icons.account_circle, size: 14, color: Colors.white38),
-      ),
-    );
-  }
-
-  Widget _badge(IconData? icon, String text) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.55),
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (icon != null) ...[
-            Icon(icon, size: 11, color: Colors.white.withValues(alpha: 0.9)),
-            const SizedBox(width: 3),
-          ],
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 10,
-              height: 1.2,
-              color: Colors.white.withValues(alpha: 0.92),
-            ),
-          ),
-        ],
       ),
     );
   }

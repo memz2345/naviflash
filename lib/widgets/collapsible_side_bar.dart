@@ -57,6 +57,7 @@ class CollapsibleSideBar extends StatefulWidget {
   // ── 宽度 ──
   /// 收起态宽度 = NavigationRail 的 minWidth（竖向导航栏）。
   static const double minWidth = 80;
+
   /// 展开态宽度（胶囊 list）。
   static const double expandedWidth = 224;
 
@@ -171,78 +172,87 @@ class _CollapsibleSideBarState extends State<CollapsibleSideBar> {
   /// - 最下面：⋮ 更多菜单（历史 / 缓存 / 设置 / 关于）
   Widget _buildCollapsedRail(ColorScheme cs, AppLocalizations l10n) {
     final isSearchSelected = widget.currentPage == 'search';
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        // ── 最顶部：menu 胶囊按钮（按需求“最上面加上 menu 按钮”） ──
-        SafeArea(
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 8),
-            child: Align(
-              alignment: Alignment.centerLeft,
-child: SizedBox(
-                  width: CollapsibleSideBar.minWidth,
-                  height: 40,
-                  child: Center(
-                    child: _CapsuleIconButton(
-                      icon: Icons.menu,
-                      tooltip: l10n.sideBarExpand,
-                      onTap: () => _onMenuTap(),
+    // 锁定 80 宽左对齐盒：收起/展开宽度动画期间容器宽度在 80↔224 渐变，
+    // 若内容直接 stretch 到动画中的宽度，Center 居中的搜索方块会跟着滑动；
+    // 锁死 80 后动画只裁剪/露出右侧空白，内容横向纹丝不动。
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: SizedBox(
+        width: CollapsibleSideBar.minWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // ── 最顶部：menu 胶囊按钮（按需求“最上面加上 menu 按钮”） ──
+            SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 8, bottom: 8),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: SizedBox(
+                    width: CollapsibleSideBar.minWidth,
+                    height: 40,
+                    child: Center(
+                      child: _CapsuleIconButton(
+                        icon: Icons.menu,
+                        tooltip: l10n.sideBarExpand,
+                        onTap: () => _onMenuTap(),
+                      ),
                     ),
                   ),
                 ),
-            ),
-          ),
-        ),
-        // ── 搜索：方形大圆角（截图顶部浅绿圆角，~56x56, radius 18） ──
-        Padding(
-          padding: const EdgeInsets.only(top: 4),
-          child: Center(
-            child: _CollapsedSearchButton(
-              isSelected: isSearchSelected,
-              onTap: () => widget.onNavigate('search'),
-            ),
-          ),
-        ),
-        const Spacer(),
-        // ── 底部导航：图标纵列（首页 / 推荐 / 用户） ──
-        Padding(
-          padding: const EdgeInsets.only(bottom: 8),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _CollapsedNavItem(
-                icon: Icons.home,
-                outlinedIcon: Icons.home_outlined,
-                label: l10n.drawerHome,
-                isSelected: widget.currentPage == 'home',
-                onTap: () => widget.onNavigate('home'),
               ),
-              const SizedBox(height: 6),
-              _CollapsedNavItem(
-                icon: Icons.person,
-                outlinedIcon: Icons.person_outline,
-                label: l10n.settingsUser,
-                isSelected: false,
-                onTap: () {
-                  // 用户页全屏打开（推路由），与抽屉头像入口一致
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (_) => const UserProfilePage(),
-                    ),
-                  );
-                },
+            ),
+            // ── 搜索：方形大圆角（截图顶部浅绿圆角，~56x56, radius 18） ──
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Center(
+                child: _CollapsedSearchButton(
+                  isSelected: isSearchSelected,
+                  onTap: () => widget.onNavigate('search'),
+                ),
               ),
-            ],
-          ),
+            ),
+            const Spacer(),
+            // ── 底部导航：图标纵列（首页 / 推荐 / 用户） ──
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  _CollapsedNavItem(
+                    icon: Icons.home,
+                    outlinedIcon: Icons.home_outlined,
+                    label: l10n.drawerHome,
+                    isSelected: widget.currentPage == 'home',
+                    onTap: () => widget.onNavigate('home'),
+                  ),
+                  const SizedBox(height: 6),
+                  _CollapsedNavItem(
+                    icon: Icons.person,
+                    outlinedIcon: Icons.person_outline,
+                    label: l10n.settingsUser,
+                    isSelected: false,
+                    onTap: () {
+                      // 用户页全屏打开（推路由），与抽屉头像入口一致
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (_) => const UserProfilePage(),
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 8),
+            // ── ⋮ 更多菜单（历史 / 缓存 / 设置 / 关于） ──
+            _MoreMenuButton(isExpanded: false),
+            // 底部安全区占位（与截图底部留白一致）
+            SafeArea(top: false, child: const SizedBox(height: 4)),
+          ],
         ),
-        const SizedBox(height: 8),
-        // ── ⋮ 更多菜单（历史 / 缓存 / 设置 / 关于） ──
-        _MoreMenuButton(isExpanded: false),
-        // 底部安全区占位（与截图底部留白一致）
-        SafeArea(top: false, child: const SizedBox(height: 4)),
-      ],
+      ),
     );
   }
 
@@ -363,7 +373,9 @@ child: SizedBox(
                   Icon(
                     isSelected ? selectedIcon : icon,
                     size: 22,
-                    color: isSelected ? cs.onPrimaryContainer : cs.onSurfaceVariant,
+                    color: isSelected
+                        ? cs.onPrimaryContainer
+                        : cs.onSurfaceVariant,
                   ),
                   const SizedBox(width: 16),
                   Flexible(
@@ -373,8 +385,12 @@ child: SizedBox(
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: 14,
-                        fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-                        color: isSelected ? cs.onPrimaryContainer : cs.onSurfaceVariant,
+                        fontWeight: isSelected
+                            ? FontWeight.bold
+                            : FontWeight.normal,
+                        color: isSelected
+                            ? cs.onPrimaryContainer
+                            : cs.onSurfaceVariant,
                       ),
                     ),
                   ),
@@ -385,7 +401,9 @@ child: SizedBox(
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
-                        color: isSelected ? cs.onPrimaryContainer : cs.onSurfaceVariant,
+                        color: isSelected
+                            ? cs.onPrimaryContainer
+                            : cs.onSurfaceVariant,
                       ),
                     ),
                   ],
@@ -398,7 +416,9 @@ child: SizedBox(
     );
   }
 
-  /// 展开态搜索：Gmail 类 FAB，颜色与收起态搜索一致（Material 主题色）
+  /// 展开态搜索：Gmail 类 FAB，颜色与收起态搜索一致（Material 主题色）。
+  /// 图标几何与收起态方块像素级一致（左 12 外边距 + 15 内边距 + 26 图标，
+  /// 56 高）：收起/展开切换时图标本身不动，只有容器向右生长 + 文字出现。
   Widget _expandedSearchTile(
     ColorScheme cs, {
     required bool isSelected,
@@ -420,11 +440,11 @@ child: SizedBox(
             onTap: onTap,
             borderRadius: BorderRadius.circular(16),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 14),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.search, size: 20, color: fg),
+                  Icon(Icons.search, size: 26, color: fg),
                   const SizedBox(width: 12),
                   Text(
                     title,
@@ -450,10 +470,7 @@ class _CollapsedSearchButton extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onTap;
 
-  const _CollapsedSearchButton({
-    required this.isSelected,
-    required this.onTap,
-  });
+  const _CollapsedSearchButton({required this.isSelected, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -512,11 +529,7 @@ class _CollapsedNavItem extends StatelessWidget {
             ),
             child: Center(child: iconWidget),
           )
-        : SizedBox(
-            width: 56,
-            height: 32,
-            child: Center(child: iconWidget),
-          );
+        : SizedBox(width: 56, height: 32, child: Center(child: iconWidget));
     return Material(
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(16),
@@ -603,9 +616,7 @@ class _MoreMenuButtonState extends State<_MoreMenuButton> {
   final GlobalKey _buttonKey = GlobalKey();
 
   void _openFull(BuildContext context, Widget page) {
-    Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => page),
-    );
+    Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
   }
 
   void _showMenu() {
@@ -670,7 +681,9 @@ class _MoreMenuButtonState extends State<_MoreMenuButton> {
         child: SizedBox(
           width: CollapsibleSideBar.minWidth,
           height: 40,
-          child: Center(child: Tooltip(message: l10n.sideBarMore, child: capsule)),
+          child: Center(
+            child: Tooltip(message: l10n.sideBarMore, child: capsule),
+          ),
         ),
       );
     }
@@ -718,7 +731,8 @@ class _BottomSection extends StatelessWidget {
     final cs = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context);
     final settingsService = context.read<SettingsService>();
-    final hasAvatar = settingsService.avatarPath != null &&
+    final hasAvatar =
+        settingsService.avatarPath != null &&
         File(settingsService.avatarPath!).existsSync();
 
     final avatar = Container(
@@ -732,8 +746,9 @@ class _BottomSection extends StatelessWidget {
       child: CircleAvatar(
         radius: 18,
         backgroundColor: cs.primaryContainer,
-        backgroundImage:
-            hasAvatar ? FileImage(File(settingsService.avatarPath!)) : null,
+        backgroundImage: hasAvatar
+            ? FileImage(File(settingsService.avatarPath!))
+            : null,
         child: !hasAvatar
             ? Icon(Icons.account_circle, size: 30, color: cs.onSurfaceVariant)
             : null,
@@ -776,11 +791,7 @@ class _BottomSection extends StatelessWidget {
               )
             : Column(
                 mainAxisSize: MainAxisSize.min,
-                children: [
-                  avatar,
-                  const SizedBox(height: 4),
-                  themeBtn,
-                ],
+                children: [avatar, const SizedBox(height: 4), themeBtn],
               ),
       ),
     );

@@ -1030,8 +1030,8 @@ class _BilibiliLiveCategoryRoomsPageState
 //  直播卡片（每周必看 _PopularGridCard / _PopularListCard 同款 chrome）
 // ════════════════════════════════════════
 
-/// 网格卡片：封面 Hero 位改为直播封面（16:10 + 渐变 + 左下人气 +
-/// 右上分区）+ 双行标题 + 主播 + 直播中。
+/// 网格卡片：视频卡片同款（16:10 + 渐变 + 左下人气 +
+/// 右下分区角标≈时长角标）+ 双行标题 + 主播 + 直播中。
 class _LiveGridCard extends StatelessWidget {
   final LiveRoomItem item;
   final VoidCallback onTap;
@@ -1106,7 +1106,7 @@ class _LiveGridCard extends StatelessWidget {
                   if (areaText.isNotEmpty)
                     Positioned(
                       right: 6,
-                      top: 6,
+                      bottom: 6,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
                           horizontal: 5,
@@ -1223,13 +1223,10 @@ class _LiveListCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: SizedBox(
-                  width: 148,
-                  height: 84,
-                  child: _liveCover(item.cover),
-                ),
+              SizedBox(
+                width: 148,
+                height: 84,
+                child: _liveCover(item.cover),
               ),
               const SizedBox(width: 12),
               Expanded(

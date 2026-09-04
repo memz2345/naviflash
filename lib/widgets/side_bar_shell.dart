@@ -37,7 +37,7 @@ class _SideBarShellState extends State<SideBarShell> {
   ];
 
   /// 悬停展开延迟（鼠标在侧边栏上停留多久后自动浮层展开）。
-  static const Duration _hoverDelay = Duration(milliseconds: 300);
+  static const Duration _hoverDelay = Duration(milliseconds: 800);
 
   String _currentPageId = 'home';
 
@@ -132,9 +132,18 @@ class _SideBarShellState extends State<SideBarShell> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 RepaintBoundary(
-                  child: CollapsibleSideBar(
-                    currentPage: _currentPageId,
-                    onNavigate: _onNavigate,
+                  // 悬停浮层展开时底层 rail 藏掉：浮层是半透明毛玻璃，
+                  // 底层图标透出来会形成重影；浮层 224 宽全覆盖 80 宽底层，
+                  // 藏掉不影响布局与点击（点击本来就落在浮层上）。
+                  child: Visibility(
+                    visible: !_hoverExpanded,
+                    maintainSize: true,
+                    maintainState: true,
+                    maintainAnimation: true,
+                    child: CollapsibleSideBar(
+                      currentPage: _currentPageId,
+                      onNavigate: _onNavigate,
+                    ),
                   ),
                 ),
                 // 内容区卡片：外向圆角 24，上下左右留 8-12 空隙露出侧边栏底色
