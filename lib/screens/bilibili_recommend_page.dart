@@ -1,14 +1,15 @@
 // lib/screens/bilibili_recommend_page.dart
 //
 // B 站推荐页（参考 PiliPlus 首页布局）：
-//   - 五个 tab：推荐 / 热门 / 番剧 / 分区 / 直播（替代标题位置）
+//   - 五个 tab：直播 / 推荐 / 热门 / 番剧 / 分区（替代标题位置；
+//     默认进入推荐 tab，向左滑直达直播 tab）
 //   - 推荐 tab 支持 Web 端 / APP 端两种数据源（在设置 → 账号页切换，
 //     持久化到设置）；未登录也可获取基础推荐
 //   - 热门 tab：x/web-interface/popular；番剧 tab：/pgc/season/index/result
-//   - 直播 tab：services/bilibili_live_service.dart（推荐直播间，
-//     卡片与视频卡片同款，点击进直播间查看页）
+//   - 直播 tab：PiliPlus 式直播标签浏览（LiveTagFeed：关注横条 +
+//     推荐/分区标签行 + 二级标签/排序行 + 房间流），见 widgets/live_tag_feed.dart
 //   - 触底加载动画与搜索页一致（LoadingIndicatorM3E + 已全部加载）
-//   - 单列 / 多列切换为视频页同款 FAB（状态全局共享 + 持久化）
+//   - 单列 / 多列切换为视频页同款 FAB（状态全局共享 + 持久化；仅视频类 tab）
 //   - 下拉刷新 / 触底加载更多 / 长按右键菜单 / 封面 Hero / AI 标题翻译
 import 'dart:async';
 
@@ -23,11 +24,9 @@ import 'package:naviflash/screens/bilibili_popular_list_page.dart';
 import 'package:naviflash/screens/bilibili_region_page.dart';
 import 'package:naviflash/screens/bilibili_search_page.dart';
 import 'package:naviflash/screens/bilibili_video_page.dart';
-import 'package:naviflash/screens/bilibili_live_room_page.dart';
 import 'package:naviflash/screens/browser_page.dart';
 import 'package:naviflash/services/bilibili_account_service.dart';
 import 'package:naviflash/services/bilibili_hot_service.dart';
-import 'package:naviflash/services/bilibili_live_service.dart';
 import 'package:naviflash/services/bilibili_recommend_service.dart';
 import 'package:naviflash/services/bilibili_title_cache.dart';
 import 'package:naviflash/services/bilibili_translate_api.dart';
@@ -43,13 +42,14 @@ import 'package:naviflash/widgets/expressive_app_bar.dart';
 import 'package:naviflash/widgets/feed_loading_overlay.dart';
 import 'package:naviflash/widgets/frosted_route.dart';
 import 'package:naviflash/widgets/ios_backdrop.dart';
+import 'package:naviflash/widgets/live_tag_feed.dart';
 import 'package:naviflash/widgets/long_press_glass_tab_switcher.dart';
 import 'package:naviflash/widgets/load_retry_pill.dart';
 import 'package:naviflash/widgets/MetroTile.dart';
 import 'package:naviflash/widgets/cover_menu_sheet.dart';
 import 'package:naviflash/widgets/search_video_menu.dart';
 
-/// 单个 tab 的分页状态（推荐 / 热门 / 番剧 / 直播 共用）。
+/// 单个 tab 的分页状态（推荐 / 热门 / 番剧 共用）。
 class _TabState<T> {
   List<T> items = [];
   bool loading = false;
@@ -107,7 +107,11 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   static final _TabState<BiliRecommendItem> _rcmd = _TabState();
   static final _TabState<BiliRecommendItem> _hot = _TabState();
   static final _TabState<BiliBangumiItem> _bangumi = _TabState();
-  static final _TabState<LiveRoomItem> _live = _TabState();
+
+  /// 直播 tab（索引 0）= PiliPlus 式直播标签浏览组件 LiveTagFeed；
+  /// 点击当前 tab 时用它滚回顶部并刷新。
+  final GlobalKey<LiveTagFeedState> _liveFeedKey =
+      GlobalKey<LiveTagFeedState>();
 
   /// 番剧 tab 顶部轮播图（/pgc/page/channel BANNER 模块，增强内容，
   /// 拉取失败时留空自动隐藏轮播）。
@@ -160,7 +164,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   final ScrollController _rcmdScroll = ScrollController();
   final ScrollController _hotScroll = ScrollController();
   final ScrollController _bangumiScroll = ScrollController();
-  final ScrollController _liveScroll = ScrollController();
 
   /// 推荐数据源（从设置读取，设置里改动后自动重新加载推荐 tab）。
   BiliRecommendSource _source = BiliRecommendSource.web;
@@ -172,9 +175,10 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   final GlobalKey<BilibiliRegionPageState> _regionKey =
       GlobalKey<BilibiliRegionPageState>();
 
-  /// 各 feed 的下拉刷新 key（0 直播 / 1 推荐 / 2 热门 / 3 番剧）。
+  /// 各 feed 的下拉刷新 key（1 推荐 / 2 热门 / 3 番剧）。
   /// 点击当前 tab / 长按刷新时用 show() 亮出下拉加载器；
   /// 全屏 3e 只保留给该 feed 首次进入（无内容）时。
+  /// 0 直播 tab 为 LiveTagFeed（自带下拉刷新），不使用这里的 key。
   final List<GlobalKey<RefreshIndicatorState>> _feedRefreshKeys =
       List.generate(4, (_) => GlobalKey<RefreshIndicatorState>());
 
@@ -231,7 +235,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
     _bangumiScroll.addListener(
       () => _onScroll(_bangumiScroll, _loadBangumiMore),
     );
-    _liveScroll.addListener(() => _onScroll(_liveScroll, _loadLiveMore));
     // 设置里切换推荐数据源 → 自动刷新推荐 tab
     _settings.addListener(_onSettingsChanged);
     // 底栏切换不刷新：静态缓存已有一屏数据时跳过首屏加载
@@ -257,7 +260,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
     _rcmdScroll.dispose();
     _hotScroll.dispose();
     _bangumiScroll.dispose();
-    _liveScroll.dispose();
     _gridRowAnimCtrl.dispose();
     super.dispose();
   }
@@ -281,10 +283,18 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
         _regionKey.currentState?.scrollToTop();
         return;
       }
+      if (index == 0) {
+        // 直播 tab：PiliPlus 式 LiveTagFeed 自带滚动与下拉刷新
+        final live = _liveFeedKey.currentState;
+        if (live != null) {
+          live.scrollToTop();
+          live.refresh();
+          return;
+        }
+      }
       final sc = switch (index) {
         1 => _rcmdScroll,
         2 => _hotScroll,
-        0 => _liveScroll,
         _ => _bangumiScroll,
       };
       if (sc.hasClients && sc.offset > 0) {
@@ -303,6 +313,7 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
 
   /// 用下拉加载器刷新指定 feed：show() 会自行调用该 feed 的
   /// onRefresh（load(forceRefresh: true, viaRefresh: true)）。
+  /// [tabIndex] ∈ {1 推荐, 2 热门, 3 番剧}（0 直播为 LiveTagFeed，不进来）。
   void _refreshCurrentFeed(int index) {
     final state = _feedRefreshKeys[index].currentState;
     if (state != null) {
@@ -320,7 +331,8 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
       case 2:
         _loadHot(forceRefresh: true);
       case 0:
-        _loadLive(forceRefresh: true);
+        // 直播 tab：LiveTagFeed 内部兜底刷新
+        _liveFeedKey.currentState?.refresh();
       default:
         _loadBangumi(forceRefresh: true);
     }
@@ -477,72 +489,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
   void _loadRcmdMore() {
     if (_rcmd.loading || _rcmd.loadingMore || !_rcmd.hasMore) return;
     _loadRcmd();
-  }
-
-  /// 直播 tab（结构对齐 [_loadVideoTab]：按 roomId 去重，不参与 AI 标题翻译）。
-  Future<void> _loadLive({
-    bool forceRefresh = false,
-    bool viaRefresh = false,
-  }) async {
-    final data = _live;
-    if (!forceRefresh && (data.loading || data.loadingMore)) return;
-    setState(() {
-      if (forceRefresh) {
-        data.loading = data.items.isEmpty && !viaRefresh;
-        data.loadingMore = false;
-        data.error = null;
-        // 直播推荐是分页接口（page 1/2/3 内容不同），下拉刷新要回到第 1 页
-        // （视频 tab 的推荐走 freshIdx 递增流，不需要归零）
-        data.page = 0;
-      } else {
-        data.loadingMore = true;
-      }
-    });
-    final result =
-        await BilibiliLiveService.fetchRecommend(page: data.page + 1);
-    if (!mounted) return;
-    switch (result) {
-      case LiveOk<LiveRoomItem>(:final items, :final hasMore):
-        final seen = <int>{};
-        final deduped = items
-            .where((v) => v.roomId > 0 && seen.add(v.roomId))
-            .toList();
-        setState(() {
-          if (forceRefresh) {
-            data.items = deduped;
-            data.freshKeys
-              ..clear()
-              ..addAll(deduped.map((v) => v.roomId.toString()));
-          } else {
-            final existing = data.items.map((v) => v.roomId).toSet();
-            final fresh =
-                deduped.where((v) => !existing.contains(v.roomId)).toList();
-            data.items = [...data.items, ...fresh];
-          }
-          data.page += 1;
-          data.hasMore = hasMore && deduped.isNotEmpty;
-          data.loading = false;
-          data.loadingMore = false;
-          data.error = null;
-        });
-        if (forceRefresh && deduped.isNotEmpty) {
-          // 与视频 tab 同款：入场动画播完后清空标记
-          Future.delayed(const Duration(milliseconds: 600), () {
-            if (mounted) setState(() => data.freshKeys.clear());
-          });
-        }
-      case LiveError<LiveRoomItem>(:final detail):
-        setState(() {
-          data.loading = false;
-          data.loadingMore = false;
-          if (forceRefresh || data.items.isEmpty) data.error = detail;
-        });
-    }
-  }
-
-  void _loadLiveMore() {
-    if (_live.loading || _live.loadingMore || !_live.hasMore) return;
-    _loadLive();
   }
 
   /// 热门 tab。
@@ -1098,10 +1044,11 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
     final l10n = AppLocalizations.of(context);
     final isPortraitBottomBar = !widget.embeddedInShell &&
         MediaQuery.of(context).orientation == Orientation.portrait;
-    // 当前 tab（0-3）为 feed：加载失败且无内容时，右下角换成「重新加载」FAB
+    // 当前 tab（1-3）为视频/番剧 feed：加载失败且无内容时，右下角换成
+    // 「重新加载」FAB；0 直播 tab 是 PiliPlus 式 LiveTagFeed（自带错误重试），
+    // 且不再跟随全局单列 / 多列切换，故 0 时右下角无 FAB。
     final tabIndex = _tabController.index;
     final currentFeed = switch (tabIndex) {
-      0 => _live,
       1 => _rcmd,
       2 => _hot,
       3 => _bangumi,
@@ -1120,23 +1067,26 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
           ? Colors.transparent
           : cs.surfaceContainer,
       // ── 右下角 FAB：加载失败 = 重新加载；正常 = 单列 / 多列切换
-      //（标准 FAB，竖屏底栏时抬起避免被玻璃底栏遮挡） ──
-      floatingActionButton: Padding(
-        padding: EdgeInsets.only(bottom: isPortraitBottomBar ? 72 : 0),
-        child: feedError
-            ? LoadRetryPill(onRetry: () => _forceLoadTab(tabIndex))
-            : FloatingActionButton(
-                tooltip: _gridMode
-                    ? l10n.searchSwitchSingleCol
-                    : l10n.searchSwitchMulti,
-                onPressed: BilibiliRecommendPage.toggleGridMode,
-                child: Icon(
-                  _gridMode
-                      ? Icons.view_agenda_outlined
-                      : Icons.grid_view_rounded,
-                ),
-              ),
-      ),
+      //（标准 FAB，竖屏底栏时抬起避免被玻璃底栏遮挡；直播 tab 不显示） ──
+      floatingActionButton: tabIndex == 0
+          ? null
+          : Padding(
+              padding:
+                  EdgeInsets.only(bottom: isPortraitBottomBar ? 72 : 0),
+              child: feedError
+                  ? LoadRetryPill(onRetry: () => _forceLoadTab(tabIndex))
+                  : FloatingActionButton(
+                      tooltip: _gridMode
+                          ? l10n.searchSwitchSingleCol
+                          : l10n.searchSwitchMulti,
+                      onPressed: BilibiliRecommendPage.toggleGridMode,
+                      child: Icon(
+                        _gridMode
+                            ? Icons.view_agenda_outlined
+                            : Icons.grid_view_rounded,
+                      ),
+                    ),
+            ),
       body: SafeArea(
         child: Stack(
           children: [
@@ -1150,17 +1100,13 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
                   _tabWithHeroMode(
                     0,
                     _LazyKeepAliveTab(
-                      onFirstBuild: _loadLive,
-                      child: _buildVideoFeed<LiveRoomItem>(
-                        cs,
-                        l10n,
-                        _live,
-                        _liveScroll,
-                        refreshKey: _feedRefreshKeys[0],
-                        load: _loadLive,
-                        keyOf: (v) => v.roomId.toString(),
-                        gridCard: _gridLiveCard,
-                        listCard: _listLiveCard,
+                      // PiliPlus 式直播标签浏览：关注横条 + 分区标签行 +
+                      // 二级标签/排序行 + 房间流（点分区即在本页切换）。
+                      // headerInset = 悬浮顶栏高度，避免标签行被顶栏盖住。
+                      child: LiveTagFeed(
+                        key: _liveFeedKey,
+                        headerInset: kTabBarHeight,
+                        gridMaxColumns: 8,
                       ),
                     ),
                   ),
@@ -1392,11 +1338,10 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
     );
   }
 
-  /// 通用 feed（推荐 / 热门 / 直播 共用）：网格 / 单列 + 触底加载动画（搜索页同款）。
+  /// 通用 feed（推荐 / 热门共用）：网格 / 单列 + 触底加载动画（搜索页同款）。
   ///
   /// [keyOf] 给列表项提供唯一 key（入场动画 / 网格变化动画用），
-  /// [gridCard] / [listCard] 决定卡片外观 —— 直播 tab 传入与视频卡片同款的
-  /// [_gridLiveCard] / [_listLiveCard]，其余交互完全一致。
+  /// [gridCard] / [listCard] 决定卡片外观。
   Widget _buildVideoFeed<T>(
     ColorScheme cs,
     AppLocalizations l10n,
@@ -2787,68 +2732,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
     );
   }
 
-  // ═════════════════════════════════════════
-  //  直播卡片
-  //  外观与视频卡片 [_gridCard] / [_listCard] 同款（圆角 12、16:10 封面、
-  //  底部渐变遮罩 + 双角标、13px 标题、11px 底部信息行），
-  //  只把数据换成直播间：角标为「人气 / 分区」，底部为主播名。
-  // ═════════════════════════════════════════
-
-  /// 直播封面右下角标文本：二级分区优先，其次一级分区，都没有则「直播中」。
-  String _liveAreaText(LiveRoomItem item) {
-    if (item.areaName.isNotEmpty) return item.areaName;
-    if (item.parentAreaName.isNotEmpty) return item.parentAreaName;
-    return '直播中';
-  }
-
-  /// 人气展示：网格角标用与视频播放数同款格式（[_fmtCount]），
-  /// 单列卡片用服务端给的原文（如「2551.7万人气」）。
-  String _liveOnlineText(LiveRoomItem item) => _fmtCount(item.online);
-
-  /// 打开直播间：进直播间查看页（弹幕 / 聊天 / 清晰度 / 线路）。
-  void _openLive(LiveRoomItem item) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (_) => BilibiliLiveRoomPage(
-          roomId: item.roomId,
-          title: item.title,
-          uname: item.uname,
-          face: item.face,
-          cover: item.cover,
-        ),
-      ),
-    );
-  }
-
-  /// 直播卡片右键液态玻璃菜单（需要落点位置）。
-  void _showLiveMenu(LiveRoomItem item, Offset globalPosition) {
-    showGlassDropdownMenu(
-      context,
-      actions: _liveActions(item),
-      globalPosition: globalPosition,
-      menuWidth: 200,
-    );
-  }
-
-  /// 直播卡片长按：与视频卡片同款「大封面 + 玻璃菜单」底部弹层
-  /// （封面 Hero 与卡片缩略图同名 tag，长按飞入）。
-  void _showLiveLongPressMenu(LiveRoomItem item) {
-    showCoverMenuBottomSheet(
-      context,
-      cover: item.cover,
-      title: item.title,
-      subtitle: item.uname.isEmpty
-          ? _liveOnlineText(item)
-          : '${item.uname} · ${_liveOnlineText(item)}',
-      heroTag: 'bili_live_${item.roomId}',
-      actions: [
-        for (final a
-            in _liveActions(item, closeMenu: () => Navigator.of(context).pop()))
-          (icon: a.icon, text: a.text, onTap: a.onTap),
-      ],
-    );
-  }
-
   /// 番剧卡片长按：与视频卡片同款「大封面 + 玻璃菜单」底部弹层
   /// （封面 Hero 与卡片缩略图同名 tag，长按飞入）。
   void _showBangumiLongPressMenu(BiliBangumiItem item) {
@@ -2890,289 +2773,6 @@ class _BilibiliRecommendPageState extends State<BilibiliRecommendPage>
           },
         ),
       ],
-    );
-  }
-
-  /// 直播卡片动作（长按底部弹层 / 右键下拉菜单共用）。
-  ///
-  /// [closeMenu] 用于底部弹层的手动关闭；右键下拉菜单由
-  /// [showGlassDropdownMenu] 自行 dismiss，传 null 即可。
-  List<GlassMenuAction> _liveActions(
-    LiveRoomItem item, {
-    VoidCallback? closeMenu,
-  }) =>
-      [
-        GlassMenuAction(
-          icon: Icons.open_in_browser,
-          text: '在浏览器打开',
-          onTap: () {
-            closeMenu?.call();
-            _openLive(item);
-          },
-        ),
-        GlassMenuAction(
-          icon: Icons.link,
-          text: '复制直播间链接',
-          onTap: () {
-            closeMenu?.call();
-            _copyText(item.url);
-          },
-        ),
-        GlassMenuAction(
-          icon: Icons.tag_outlined,
-          text: '复制房间号',
-          onTap: () {
-            closeMenu?.call();
-            _copyText(item.roomId.toString());
-          },
-        ),
-      ];
-
-  /// 直播网格卡片（与 [_gridCard] 同款外观）。
-  Widget _gridLiveCard(ColorScheme cs, LiveRoomItem item) {
-    final card = Material(
-      color: cs.surfaceBright,
-      borderRadius: BorderRadius.circular(12),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () => _openLive(item),
-        onLongPress: () => _showLiveLongPressMenu(item),
-        onSecondaryTapDown: (details) =>
-            _showLiveMenu(item, details.globalPosition),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            AspectRatio(
-              aspectRatio: 16 / 10,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  Hero(
-                    tag: 'bili_live_${item.roomId}',
-                    child: _coverImage(item.cover, aspect: 16 / 10),
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    height: 36,
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Colors.transparent,
-                            Colors.black.withValues(alpha: 0.6),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  if (item.online > 0)
-                    Positioned(
-                      left: 8,
-                      bottom: 6,
-                      child: Row(
-                        children: [
-                          const Icon(
-                            Icons.visibility_rounded,
-                            size: 14,
-                            color: Colors.white,
-                          ),
-                          Text(
-                            _liveOnlineText(item),
-                            style: const TextStyle(
-                              fontSize: 11,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  Positioned(
-                    right: 6,
-                    bottom: 6,
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
-                        vertical: 1,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withValues(alpha: 0.65),
-                        borderRadius: BorderRadius.circular(4),
-                      ),
-                      child: Text(
-                        _liveAreaText(item),
-                        style: const TextStyle(
-                          fontSize: 10,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      item.title.isEmpty ? '未命名直播间' : item.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 13,
-                        height: 1.35,
-                        fontWeight: FontWeight.w500,
-                        color: cs.onSurface,
-                      ),
-                    ),
-                    const Spacer(),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.live_tv_rounded,
-                          size: 12,
-                          color: cs.primary,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '直播中',
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: cs.primary,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(
-                            item.uname.isEmpty ? '未知主播' : item.uname,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            textAlign: TextAlign.end,
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: cs.onSurfaceVariant,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-    return MetroTileInteraction(
-      onTapStart: (_, __) {},
-      showBorder: false,
-      child: card,
-    );
-  }
-
-  /// 直播单列卡片（与 [_listCard] 同款外观）。
-  Widget _listLiveCard(ColorScheme cs, LiveRoomItem item) {
-    final thumb = Hero(
-      tag: 'bili_live_${item.roomId}',
-      child: _coverImage(item.cover, width: 148, height: 84),
-    );
-    final card = Material(
-      color: cs.surfaceBright,
-      borderRadius: BorderRadius.circular(12),
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () => _openLive(item),
-        onLongPress: () => _showLiveLongPressMenu(item),
-        onSecondaryTapDown: (details) =>
-            _showLiveMenu(item, details.globalPosition),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              thumb,
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      item.title.isEmpty ? '未命名直播间' : item.title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 13,
-                        height: 1.35,
-                        fontWeight: FontWeight.w500,
-                        color: cs.onSurface,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      item.uname.isEmpty ? '未知主播' : item.uname,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 11,
-                        color: cs.onSurfaceVariant,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.visibility_rounded,
-                          size: 13,
-                          color: cs.onSurfaceVariant,
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          item.onlineText.isNotEmpty
-                              ? item.onlineText
-                              : _fmtCount(item.online),
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: cs.onSurfaceVariant,
-                          ),
-                        ),
-                        const SizedBox(width: 10),
-                        Icon(
-                          Icons.tag_rounded,
-                          size: 13,
-                          color: cs.onSurfaceVariant,
-                        ),
-                        const SizedBox(width: 2),
-                        Text(
-                          _liveAreaText(item),
-                          style: TextStyle(
-                            fontSize: 11,
-                            color: cs.onSurfaceVariant,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-    return MetroTileInteraction(
-      onTapStart: (_, __) {},
-      showBorder: false,
-      child: card,
     );
   }
 

@@ -181,12 +181,16 @@ class _BilibiliLiveRoomPageState extends State<BilibiliLiveRoomPage> {
       unawaited(platform.setProperty('osd-level', '0'));
     }
     _controller = VideoController(_player);
+    // NOTE: VideoController(1.3.1) 无 dispose 方法，原生纹理随 _player.dispose()
+    // 经 release 钩子释放，此处无需/不可手动释放 controller。
     _danmaku = DanmakuController()
       ..restoreSettings().then((_) {
+        // dispose 后晚到的 then 若继续 play() 会重建永久常驻的 Ticker。
+        if (_disposed) return;
         // 直播覆盖层只受自己的开关控制，不继承视频弹幕的启停档位
         _danmaku.enabled = true;
         _danmaku.danmakuWeight = 0;
-        if (_playing) _danmaku.play();
+        if (_playing && !_disposed) _danmaku.play();
       });
     _loadOverlayPref();
     _playingSub = _player.stream.playing.listen((v) {
@@ -218,12 +222,18 @@ class _BilibiliLiveRoomPageState extends State<BilibiliLiveRoomPage> {
     _completedSub?.cancel();
     _dmSub?.cancel();
     _dmClient?.dispose();
+    _dmClient = null;
     _liveTimeTicker?.cancel();
     _fsSCTimer?.cancel();
     _hideTimer?.cancel();
-    _danmaku.dispose();
-    _player.dispose();
-    if (_fullscreen) _setSystemFullscreen(false);
+    try {
+      _danmaku.dispose();
+    } catch (_) {}
+    // player.dispose() 是 Future：不 await，错误吞掉，避免退出时 unhandled。
+    unawaited(_player.dispose().catchError((_) {}));
+    if (_fullscreen) {
+      unawaited(_setSystemFullscreen(false).catchError((_) {}));
+    }
     super.dispose();
   }
 

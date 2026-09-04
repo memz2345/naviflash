@@ -6,11 +6,12 @@
 //     长按仍可用内置浏览器打开网页兜底
 // 数据来源见 services/bilibili_live_service.dart。
 import 'package:flutter/material.dart';
+import 'package:naviflash/src/content_reveal_gate.dart';
 import 'package:naviflash/widgets/load_retry_pill.dart';
 import 'package:naviflash/screens/bilibili_live_room_page.dart';
 import 'package:naviflash/screens/browser_page.dart';
 import 'package:naviflash/services/bilibili_live_service.dart';
-import 'package:naviflash/services/cached_image_provider.dart';
+import 'package:naviflash/widgets/lazy_cover_image.dart';
 import 'package:naviflash/services/network_settings_service.dart';
 
 // ════════════════════════════════════════
@@ -29,12 +30,25 @@ class LiveRoomGrid extends StatefulWidget {
   /// 每页条数（仅用于「是否还有更多」的推断，实际由 loader 决定）。
   final int pageSize;
 
+  /// 外部滚动控制器（宿主需要「滚回顶部 / 统一监听」时传入；
+  /// 不传则内部自建，并随组件销毁）。
+  final ScrollController? scrollController;
+
+  /// 网格内边距（默认 16/8/16/16）。
+  final EdgeInsets? padding;
+
+  /// 网格最大列数（宽屏想更密时调大；默认 4，与旧直播页一致）。
+  final int maxColumns;
+
   const LiveRoomGrid({
     super.key,
     required this.loader,
     this.resetKey,
     this.emptyText = '暂无内容',
     this.pageSize = 30,
+    this.scrollController,
+    this.padding,
+    this.maxColumns = 4,
   });
 
   @override
@@ -43,7 +57,10 @@ class LiveRoomGrid extends StatefulWidget {
 
 class _LiveRoomGridState extends State<LiveRoomGrid>
     with AutomaticKeepAliveClientMixin {
-  final ScrollController _scroll = ScrollController();
+  ScrollController? _ownedScroll;
+
+  ScrollController get _scroll =>
+      widget.scrollController ?? (_ownedScroll ??= ScrollController());
 
   List<LiveRoomItem> _items = [];
   bool _loading = true;
@@ -51,6 +68,10 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
   bool _hasMore = true;
   int _page = 1;
   String? _error;
+
+  /// 内容延迟显示门控：大量直播间卡片在转场动画途中一次上屏会把动画顶掉
+  /// 帧，故动画未结束前即便数据已就绪也继续显示加载指示器。
+  ContentRevealGate? _revealGate;
 
   @override
   bool get wantKeepAlive => true;
@@ -72,9 +93,28 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
 
   @override
   void dispose() {
-    _scroll.dispose();
+    _revealGate?.dispose();
+    _revealGate = null;
+    // 仅释放自建的控制器；外部传入的由宿主负责
+    _ownedScroll?.dispose();
+    _ownedScroll = null;
     super.dispose();
   }
+
+  /// 起一个内容显示门控：路由转场动画结束后才允许显示列表。
+  /// 详见 [ContentRevealGate]。
+  void _armRevealGate() {
+    _revealGate?.dispose();
+    _revealGate = ContentRevealGate(
+      // 门控解锁后自身的 isGated 已翻转，这里只需触发一次重建。
+      onUnlock: () {
+        if (mounted) setState(() {});
+      },
+    )..arm(context);
+  }
+
+  /// 列表是否仍需显示加载指示器（= 动画未结束，内容先压着不上屏）。
+  bool get _isContentGated => _revealGate?.isGated ?? false;
 
   void _onScroll() {
     if (!_scroll.hasClients) return;
@@ -90,6 +130,11 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
       _loadingMore = false;
       _error = null;
     });
+    // 仅整屏换内容这一轮门控（首屏 / 切换 resetKey），加载更多保留时不门控
+    // —— 否则列表会被门控的保守帧闪回成整屏加载圈。
+    if (forceRefresh || _items.isEmpty) {
+      _armRevealGate();
+    }
     final targetPage = forceRefresh ? 1 : _page + 1;
     final result = await widget.loader(targetPage);
     if (!mounted) return;
@@ -133,7 +178,8 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
     super.build(context);
     final cs = Theme.of(context).colorScheme;
 
-    if (_loading) {
+    // [_isContentGated]：数据已就绪但动画未结束，继续压着不上屏。
+    if (_loading || _isContentGated) {
       return const Center(child: CircularProgressIndicator());
     }
     if (_error != null && _items.isEmpty) {
@@ -169,14 +215,16 @@ class _LiveRoomGridState extends State<LiveRoomGrid>
       child: LayoutBuilder(
         builder: (context, constraints) {
           final width = constraints.maxWidth;
-          final columns = (width / 200).floor().clamp(2, 4);
+          final columns =
+              (width / 200).floor().clamp(2, widget.maxColumns);
           final cardW = (width - (columns - 1) * 12 - 32) / columns;
           return GridView.builder(
             controller: _scroll,
             physics: const ClampingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics(),
             ),
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            padding: widget.padding ??
+                const EdgeInsets.fromLTRB(16, 8, 16, 16),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: columns,
               mainAxisSpacing: 14,
@@ -224,24 +272,14 @@ class LiveRoomCard extends StatelessWidget {
         ? null
         : NetworkSettingsService.instance.apiHeaders;
 
-    final cover = item.cover.isEmpty
-        ? Container(
-            color: Colors.grey.shade800,
-            child: const Center(
-              child: Icon(Icons.live_tv_outlined, color: Colors.white24),
-            ),
-          )
-        : Image(
-            image: CachedImageProvider(item.cover, headers: headers),
-            fit: BoxFit.cover,
-            width: double.infinity,
-            errorBuilder: (_, __, ___) => Container(
-              color: Colors.grey.shade800,
-              child: const Center(
-                child: Icon(Icons.live_tv_outlined, color: Colors.white24),
-              ),
-            ),
-          );
+    // 封面：可视区门控 + ≤480 CDN 缩略图（直播封面原图较大，逐格
+    // 全尺寸解码会在滚动时造成 decode 尖峰与 ImageCache 颠簸）。
+    final cover = LazyCoverImage(
+      item.cover,
+      headers: headers,
+      fit: BoxFit.cover,
+      maxDimension: 480,
+    );
 
     return Material(
       color: cs.surfaceBright,
@@ -351,12 +389,15 @@ class LiveRoomCard extends StatelessWidget {
     if (item.face.isEmpty) {
       return const Icon(Icons.account_circle, size: 14, color: Colors.white38);
     }
+    // 头像只占 14 逻辑像素：按目标尺寸请求 CDN 缩图，避免原图全尺寸解码
     return ClipOval(
-      child: Image(
-        image: CachedImageProvider(item.face, headers: headers),
+      child: LazyCoverImage(
+        item.face,
+        headers: headers,
         width: 14,
         height: 14,
         fit: BoxFit.cover,
+        maxDimension: 96,
         errorBuilder: (_, __, ___) =>
             const Icon(Icons.account_circle, size: 14, color: Colors.white38),
       ),

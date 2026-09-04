@@ -2,14 +2,20 @@
 //
 // B 站直播服务（接口选型对照 PiliPlus 的 LiveHttp / Api 常量表）。
 //
-// 全部走 Web 端接口，不需要 APP 签名（appkey/appsec），只依赖
-// 浏览器风格 UA + Referer，登录态通过「携带 Cookie 请求」开关附加：
+// 推荐 / 分区树 / 关注 / 房间 / 播放走 Web 端接口，不需要 APP 签名
+// （appkey/appsec），只依赖浏览器风格 UA + Referer，登录态通过
+// 「携带 Cookie 请求」开关附加。唯一的例外是分区房间列表：
+//   - Web 端 xlive/web-interface/v1/second/getList 风控码 -352 频发
+//     （点进任意分类全是 -352，与 PiliPlus 之前踩过的坑一致），
+//   - 故该接口改走 PiliPlus 同款 APP 端
+//     xlive/app-interface/v2/second/getList + AppSign
+//     （platform=android / mobi_app=android / build=8430300，
+//      详见 PiliPlus LiveHttp.liveSecondList）。
 //   - 推荐直播：api.live.bilibili.com/room/v1/room/get_user_recommend
 //       （PiliPlus 的 Api.liveList 注释即 page/page_size/platform=web；
 //        分区列表接口 xlive/web-interface/v1/second/getUserRecommend
 //        风控码 -352 频发，故推荐列表改用这条老但稳定的接口）
 //   - 分区树：api.live.bilibili.com/room/v1/Area/getList
-//   - 分区直播：api.live.bilibili.com/xlive/web-interface/v1/second/getList
 //   - 关注直播：api.live.bilibili.com/xlive/web-ucenter/user/following（需登录）
 //   - 房间信息：api.live.bilibili.com/xlive/web-room/v1/index/getH5InfoByRoom
 //   - 播放地址：api.live.bilibili.com/xlive/web-room/v2/index/getRoomPlayInfo
@@ -20,9 +26,12 @@
 // Cookie 遵循「携带 Cookie 请求」开关（直播读接口复用 video 作用域，
 // 避免新增作用域后老用户的本地开关列表缺少该项导致 Cookie 不生效）。
 import 'dart:convert';
+import 'dart:math';
 import 'dart:ui' show Color;
 
+import 'package:crypto/crypto.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'bilibili_account_service.dart';
 import 'bilibili_user_space_service.dart' show WbiSign;
@@ -327,7 +336,10 @@ class LiveOk<T> extends LiveResult<T> {
   /// 是否还有下一页（由上层的返回数量推断）。
   final bool hasMore;
 
-  LiveOk(this.items, {this.hasMore = true});
+  /// 服务端给的总条数（关注列表等接口才有；null = 未知）。
+  final int? total;
+
+  LiveOk(this.items, {this.hasMore = true, this.total});
 }
 
 /// 请求失败（网络 / 非 0 业务码 / 解析失败）。
@@ -354,6 +366,162 @@ abstract final class BilibiliLiveService {
             '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'Referer': 'https://live.bilibili.com',
   };
+
+  // ── APP 端分区列表专用的签名与请求头（对照 PiliPlus Constants + AppSign）──
+  // 与 BilibiliAccountService 的扫码登录用同一对 appkey/appsec。
+  static const String _appKey = 'dfca71928277209b';
+  static const String _appSec = 'b5475a8825547a4fc26c7d518eaaa02e';
+  static const String _appUA =
+      'Mozilla/5.0 BiliDroid/8.43.0 (bbcallen@gmail.com) os/android '
+      'model/android mobi_app/android build/8430300 channel/master '
+      'innerVer/8430300 osVer/15 network/2';
+  static const String _appStatistics =
+      '{"appId":1,"platform":3,"version":"8.43.0","abtest":""}';
+  static const String _spiApi =
+      'https://api.bilibili.com/x/frontend/finger/spi';
+
+  /// 设备指纹（buvid3/buvid4）：优先从 spi 接口取服务端下发的真实值，
+  /// 会话内缓存；失败时回退随机生成。APP 接口不带 buvid 也常被 -352。
+  static String? _fpBuvid3;
+  static String? _fpBuvid4;
+
+  static Future<void> _ensureDeviceFp() async {
+    if (_fpBuvid3 != null) return;
+    try {
+      final client = await NetworkSettingsService.instance.getApiClient();
+      final resp = await client
+          .get(Uri.parse(_spiApi), headers: _webHeaders)
+          .timeout(const Duration(seconds: 15));
+      if (resp.statusCode != 200) return;
+      final decoded = jsonDecode(utf8.decode(resp.bodyBytes));
+      if (decoded is! Map<String, dynamic> || _toInt(decoded['code']) != 0) {
+        return;
+      }
+      final data = decoded['data'];
+      if (data is! Map<String, dynamic>) return;
+      final b3 = _toStr(data['b_3']);
+      if (b3.isNotEmpty) {
+        _fpBuvid3 = b3;
+        _fpBuvid4 = _toStr(data['b_4']);
+      }
+    } catch (e) {
+      debugPrint('[Live] 获取设备指纹失败: $e');
+    }
+  }
+
+  static String _genBuvid3() {
+    final r = Random();
+    String hex(int n) =>
+        List.generate(n, (_) => r.nextInt(16).toRadixString(16)).join();
+    final uuid =
+        '${hex(8)}-${hex(4)}-4${hex(3)}-'
+                '${'89ab'[r.nextInt(4)]}${hex(3)}-${hex(12)}'
+            .toUpperCase();
+    return '$uuid${r.nextInt(100000).toString().padLeft(5, '0')}infoc';
+  }
+
+  /// APP 端 `buvid` 请求头（对照 PiliPlus LoginUtils.buvid = Pref.buvid）：
+  /// XY 开头的 APP 格式设备 ID（形如 XYabc…共 37 位），与网页 Cookie 里的
+  /// buvid3（UUID+infoc）不是一回事。之前误把 buvid3 填进 `buvid` 头，
+  /// 格式对不上是游客态 -352 的一大嫌疑。持久化保存，跨启动复用。
+  static String? _appBuvid;
+
+  static Future<String> _ensureAppBuvid() async {
+    final cached = _appBuvid;
+    if (cached != null && cached.isNotEmpty) return cached;
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      var buvid = prefs.getString('liveAppBuvid') ?? '';
+      if (buvid.isEmpty) {
+        final r = Random();
+        final md5Str = md5
+            .convert(List<int>.generate(16, (_) => r.nextInt(256)))
+            .toString();
+        buvid = 'XY${md5Str[2]}${md5Str[12]}${md5Str[22]}$md5Str';
+        await prefs.setString('liveAppBuvid', buvid);
+      }
+      _appBuvid = buvid;
+      return buvid;
+    } catch (_) {
+      final r = Random();
+      final md5Str = md5
+          .convert(List<int>.generate(16, (_) => r.nextInt(256)))
+          .toString();
+      return 'XY${md5Str[2]}${md5Str[12]}${md5Str[22]}$md5Str';
+    }
+  }
+
+  /// APP 签名：参数排序后拼成 query 串，再拼接 appsec 取 MD5
+  /// （对照 PiliPlus AppSign.appSign：key/value 均用 Uri.encodeComponent）。
+  static Map<String, String> _appSignedParams(
+    Map<String, String> params,
+  ) {
+    final all = <String, String>{
+      ...params,
+      'appkey': _appKey,
+      'ts': (DateTime.now().millisecondsSinceEpoch ~/ 1000).toString(),
+    };
+    final sortedKeys = all.keys.toList()..sort();
+    final query = sortedKeys
+        .map((k) =>
+            '${Uri.encodeComponent(k)}='
+            '${Uri.encodeComponent(all[k] ?? '')}')
+        .join('&');
+    final sign = md5.convert(utf8.encode('$query$_appSec')).toString();
+    return {...all, 'sign': sign};
+  }
+
+  /// 拼装 APP 端 Cookie：登录 Cookie（如有）+ buvid3 指纹。
+  ///
+  /// 若登录 Cookie 里已带 buvid3（TV 扫码登录会下发），直接复用它；
+  /// 否则追加本次会话的指纹。只返回 cookie 串，`buvid` 请求头另用
+  /// [_ensureAppBuvid] 的 XY 格式设备 ID（与 PiliPlus 一致：头与 Cookie
+  /// 是两套 ID，不能混用）。
+  static String _buildAppCookie(String? account) {
+    final buvid3 = _fpBuvid3 ?? _genBuvid3();
+    if (account == null || account.isEmpty) {
+      final extra =
+          (_fpBuvid4?.isNotEmpty ?? false) ? '; buvid4=$_fpBuvid4' : '';
+      return 'buvid3=$buvid3$extra';
+    }
+    if (account.contains('buvid3=')) return _appendBuvid4(account);
+    return _appendBuvid4('$account; buvid3=$buvid3');
+  }
+
+  static String _appendBuvid4(String cookie) {
+    if (!cookie.contains('buvid4=') && (_fpBuvid4?.isNotEmpty ?? false)) {
+      return '$cookie; buvid4=$_fpBuvid4';
+    }
+    return cookie;
+  }
+
+  static Future<Map<String, String>> _buildAppHeaders() async {
+    await _ensureDeviceFp();
+    final account = BilibiliAccountService.instance
+        .cookieHeaderFor(BiliCookieScope.video)?['Cookie'];
+    final cookie = _buildAppCookie(account);
+    final buvid = await _ensureAppBuvid();
+    // 注意顺序：用户自定义头（UA/Referer/翻译头）在前，APP 必需头在后，
+    // 防止自定义 UA 把 BiliDroid 伪装头覆盖掉导致 -352。
+    final mid = BilibiliAccountService.instance.mid;
+    return {
+      ...NetworkSettingsService.instance.apiHeaders,
+      'User-Agent': _appUA,
+      'Cookie': cookie,
+      'buvid': buvid,
+      'fp_local': '1' * 64,
+      'fp_remote': '1' * 64,
+      'session_id': '11111111',
+      'env': 'prod',
+      'app-key': 'android',
+      'x-bili-trace-id':
+          '11111111111111111111111111111111:1111111111111111:0:0',
+      'x-bili-aurora-eid': '',
+      'x-bili-aurora-zone': '',
+      if (mid > 0) 'x-bili-mid': mid.toString(),
+      'bili-http-engine': 'cronet',
+    };
+  }
 
   static Future<Map<String, String>> _buildHeaders() async {
     final cookie = BilibiliAccountService.instance
@@ -498,16 +666,144 @@ abstract final class BilibiliLiveService {
 
   // ── 分区直播 ──
 
-  /// 分区直播间（xlive/web-interface/v1/second/getList，[page] 从 1 起）。
+  /// 分区直播间（[page] 从 1 起）。
   ///
-  /// [areaId] 传 0 表示该父分区下的全部；[sortType] 取
-  /// [sortDefault] / [sortOnline] / [sortLiveTime]。
+  /// 主链路走 PiliPlus 同款 APP 端 xlive/app-interface/v2/second/getList +
+  /// AppSign（Web 端 xlive/web-interface/v1/second/getList 风控码 -352
+  /// 频发，点进任意分类全是 -352）。APP 端也被风控时自动回退到 Web 端
+  /// 再试一次，两边都失败才返回错误。
+  ///
+  /// [areaId] 传 0 表示该父分区下的全部；[sortType] 取 [sortDefault] /
+  /// [sortOnline] / [sortLiveTime]，为空（推荐）时省略该参数
+  /// （与 PiliPlus 传 null 等价）。
   static Future<LiveResult<LiveRoomItem>> fetchAreaRooms({
     required int parentAreaId,
     int areaId = 0,
     String sortType = sortDefault,
     int page = 1,
-    int pageSize = 30,
+    int pageSize = 20,
+  }) async {
+    debugPrint(
+        '[Live] 分区房间 parent=$parentAreaId area=$areaId sort=$sortType page=$page');
+    final app = await _fetchAreaRoomsApp(
+      parentAreaId: parentAreaId,
+      areaId: areaId,
+      sortType: sortType,
+      page: page,
+      pageSize: pageSize,
+    );
+    if (app case LiveOk<LiveRoomItem>()) {
+      debugPrint('[Live] 分区房间 APP 端成功 ${app.items.length} 条');
+      return app;
+    }
+    final appErr = (app as LiveError<LiveRoomItem>).detail;
+    debugPrint('[Live] 分区房间 APP 端失败，回退 Web 端: $appErr');
+    final web = await _fetchAreaRoomsWeb(
+      parentAreaId: parentAreaId,
+      areaId: areaId,
+      sortType: sortType,
+      page: page,
+      pageSize: pageSize,
+    );
+    if (web case LiveOk<LiveRoomItem>()) {
+      debugPrint('[Live] 分区房间 Web 端成功 ${web.items.length} 条');
+      return web;
+    }
+    final webErr = (web as LiveError<LiveRoomItem>).detail;
+    debugPrint('[Live] 分区房间 Web 端也失败: $webErr');
+    // 两条链路都挂了：优先返回 APP 端的错误（通常更接近真实原因）
+    return _err(appErr);
+  }
+
+  /// APP 端分区房间（PiliPlus LiveHttp.liveSecondList 同款参数 + 签名 + 头）。
+  static Future<LiveResult<LiveRoomItem>> _fetchAreaRoomsApp({
+    required int parentAreaId,
+    required int areaId,
+    required String sortType,
+    required int page,
+    required int pageSize,
+  }) async {
+    try {
+      final params = _appSignedParams({
+        'actionKey': 'appkey',
+        'channel': 'master',
+        'area_id': areaId.toString(),
+        'parent_area_id': parentAreaId.toString(),
+        'build': '8430300',
+        'version': '8.43.0',
+        'c_locale': 'zh_CN',
+        'device': 'android',
+        'device_name': 'android',
+        'device_type': '0',
+        'fnval': '912',
+        'disable_rcmd': '0',
+        'https_url_req': '1',
+        'mobi_app': 'android',
+        'module_select': '0',
+        'network': 'wifi',
+        'page': page.toString(),
+        'page_size': pageSize.toString(),
+        'platform': 'android',
+        'qn': '0',
+        if (sortType.isNotEmpty) 'sort_type': sortType,
+        'tag_version': '1',
+        's_locale': 'zh_CN',
+        'scale': '2',
+        'statistics': _appStatistics,
+      });
+      final uri = Uri.parse(
+              '$_liveApi/xlive/app-interface/v2/second/getList')
+          .replace(queryParameters: params);
+      final client = await NetworkSettingsService.instance.getApiClient();
+      final resp = await client
+          .get(uri, headers: await _buildAppHeaders())
+          .timeout(const Duration(seconds: 15));
+      if (resp.statusCode != 200) {
+        return _err('HTTP ${resp.statusCode}');
+      }
+      final decoded = jsonDecode(utf8.decode(resp.bodyBytes));
+      if (decoded is! Map<String, dynamic>) {
+        return _err('返回内容不是 JSON 对象');
+      }
+      final code = _toInt(decoded['code']);
+      if (code != 0) {
+        final raw = _toStr(decoded['message'] ?? decoded['msg']);
+        debugPrint('[Live] APP 端业务码 $code $raw');
+        return _err(_friendlyMessage(code, raw));
+      }
+
+      final data = decoded['data'];
+      if (data is! Map<String, dynamic>) return _err('分区直播数据为空');
+
+      final rawList = data['list'];
+      final items = (rawList is List ? rawList : const [])
+          .whereType<Map<String, dynamic>>()
+          .map(_parseSecondList)
+          .where((v) => v != null)
+          .cast<LiveRoomItem>()
+          .toList();
+
+      // APP 端回传 count（总数），用它判断翻页终点；缺失时按「本页是否满」推断
+      final count = _toInt(data['count']);
+      final hasMore = count > 0
+          ? page * pageSize < count
+          : (data['hasMore'] is bool
+              ? data['hasMore'] as bool
+              : items.length >= pageSize);
+      if (items.isEmpty && page == 1) return _err('这个分区现在没人开播');
+      return LiveOk(items, hasMore: hasMore);
+    } catch (e) {
+      return _err('网络异常：${e.runtimeType}');
+    }
+  }
+
+  /// Web 端分区房间（老链路，仅作 APP 端 -352 时的回退）。
+  static Future<LiveResult<LiveRoomItem>> _fetchAreaRoomsWeb({
+    required int parentAreaId,
+    required int areaId,
+    required String sortType,
+    required int page,
+    required int pageSize,
   }) async {
     final (:json, :err) =
         await _get('/xlive/web-interface/v1/second/getList', {
@@ -531,7 +827,6 @@ abstract final class BilibiliLiveService {
         .cast<LiveRoomItem>()
         .toList();
 
-    // 服务端会回传 hasMore / count，两者都没有时按「本页是否满」推断
     final hasMore = data['hasMore'] is bool
         ? data['hasMore'] as bool
         : items.length >= pageSize;
@@ -539,7 +834,12 @@ abstract final class BilibiliLiveService {
     return LiveOk(items, hasMore: hasMore);
   }
 
-  /// 解析分区接口条目（data.list 数组）。
+  /// 解析分区接口条目（data.list 数组，兼容 Web 端与 APP 端字段）。
+  ///
+  /// APP 端（PiliPlus CardLiveItem）字段：roomid / uid / uname / face /
+  /// cover / system_cover / title / area_name / area_v2_id /
+  /// area_v2_parent_id / watched_show（无 online 字段，人气看
+  /// watched_show.text_large）。
   static LiveRoomItem? _parseSecondList(Map<String, dynamic> json) {
     final roomId = _toInt(_pickRaw(json, ['roomid', 'room_id']));
     if (roomId <= 0) return null;
@@ -555,7 +855,8 @@ abstract final class BilibiliLiveService {
       online: _toInt(_pickRaw(json, ['online', 'online_num'])),
       onlineText: watched is Map ? _toStr(watched['text_large']) : '',
       areaId: _toInt(_pickRaw(json, ['area_id', 'area_v2_id'])),
-      parentAreaId: _toInt(_pickRaw(json, ['parent_area_id'])),
+      parentAreaId: _toInt(
+          _pickRaw(json, ['parent_area_id', 'area_v2_parent_id'])),
       areaName: _pick(json, ['area_name', 'areaName', 'area_v2_name']),
       parentAreaName: _pick(json, ['parent_area_name', 'parentName']),
     );
@@ -593,7 +894,7 @@ abstract final class BilibiliLiveService {
     // 关注页返回的 count 是总条数，用来判断翻页终点更准
     final total = _toInt(data['count']);
     final hasMore = total > 0 ? items.isNotEmpty : items.length >= pageSize;
-    return LiveOk(items, hasMore: hasMore);
+    return LiveOk(items, hasMore: hasMore, total: total);
   }
 
   /// 解析关注接口条目（data.list 数组，字段与推荐接口接近）。
