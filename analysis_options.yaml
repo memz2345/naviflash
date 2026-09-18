@@ -13,6 +13,13 @@ analyzer:
   exclude:
     # vendored copies not referenced by lib/ (kept for local tooling)
     - third_party/**
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
 include: package:flutter_lints/flutter.yaml
 
 linter:
