@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.memz2345.navi.flash"
+    android:versionCode="20"
+    android:versionName="1.2.0">
+
+    <!-- AGP 9 起不允许在 manifest 里写 <uses-sdk>（SDK 版本一律由
+         app/build.gradle.kts 的 minSdk / targetSdk 决定） -->
+
+<uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- ✅ DLNA 投屏：允许接收局域网组播(SSDP)发现投屏设备 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- ✅ Android 16（API 36）实时更新：ProgressStyle 提升通知（非运行时权限） -->
+    <uses-permission android:name="android.permission.POST_PROMOTED_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <!-- TTS 导出保存到公共 Download：仅 Android 9(API28) 及以下需要；
+         Android 10+ 走 MediaStore，免存储权限 -->
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="http" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.PROCESS_TEXT"/>
+            <data android:mimeType="text/plain"/>
+        </intent>
+    </queries>
+
+    <application
+        android:label="NaviFlash"
+        android:name="${applicationName}"
+        android:enableOnBackInvokedCallback="true"
+        android:icon="@mipmap/ic_launcher"
+        android:usesCleartextTraffic="true"
+        android:localeConfig="@xml/locales_config">
+
+        <!-- 高通 Hexagon NPU（QNN/HTP FastRPC）：targetSdk 31+ 必须显式声明
+             CDSP vendor 库，否则普通 App 命名空间看不到 libcdsprpc.so，
+             QNN/Hexagon 设备创建会失败。非高通设备 required=false 无影响。 -->
+        <uses-native-library
+            android:name="libcdsprpc.so"
+            android:required="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:taskAffinity=""
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize"
+            android:supportsPictureInPicture="true">
+
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme" />
+
+            <!-- 桌面长按快捷入口：搜索 / 离线缓存 / 推荐（静态保底；
+                 应用启动后同 id 动态版会替换为跟随主题色的图标） -->
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+
+            <!-- 「打开受支持的链接」：http(s) 的 B 站域名 + 自建域名 memz2345.top。
+                 故意不加 autoVerify：bilibili.com 的 assetlinks 不归我们控，
+                 声明成已验证只会失败；改为让用户到系统「默认打开」里确认
+                 （入口见设置 → 偏好设置 → 链接打开方式，对应 AppLinkChannel）。
+                 host 用 *.xxx 覆盖子域（如 www / m / space / live / b23.tv）。 -->
+            <intent-filter android:label="NaviFlash">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+                <data android:host="bilibili.com" />
+                <data android:host="*.bilibili.com" />
+                <data android:host="bilibili.cn" />
+                <data android:host="*.bilibili.cn" />
+                <data android:host="bilibili.tv" />
+                <data android:host="*.bilibili.tv" />
+                <data android:host="b23.tv" />
+                <data android:host="*.b23.tv" />
+                <data android:host="memz2345.top" />
+                <data android:host="*.memz2345.top" />
+            </intent-filter>
+
+            <!-- B 站原生 scheme（bilibili://video/123 等）：站内 URI 路由复用
+                 openBiliUri，与消息中心的 native_uri 走同一套。 -->
+            <intent-filter android:label="NaviFlash">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="bilibili" />
+            </intent-filter>
+
+            <!-- ✅ 从其他应用「打开方式」选择视频文件 → 直接用本应用播放 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="video/*" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.memz2345.navi.flash.EasterEggActivity"
+            android:exported="false"
+            android:theme="@style/EasterEggTheme"
+            android:launchMode="singleTop" />
+
+        <!-- 长按快捷菜单自定义页（纯 Compose，从偏好设置打开）。
+             主题单独一份：LaunchTheme 会播启动画面，不适合普通子页。 -->
+        <activity
+            android:name="com.memz2345.navi.flash.ShortcutEditorActivity"
+            android:exported="false"
+            android:theme="@style/ShortcutEditorTheme"
+            android:launchMode="singleTop" />
+
+        <!-- 音频后台服务 -->
+        <service
+            android:name="com.ryanheise.audioservice.AudioService"
+            android:foregroundServiceType="mediaPlayback"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService" />
+            </intent-filter>
+        </service>
+
+        <!-- 模型后台下载：前台服务（dataSync 类型）+ 实时更新通知。
+             Android 14（API 34）起必须声明具体的前台服务类型，否则 startForeground
+             会抛 MissingForegroundServiceTypeException。 -->
+        <service
+            android:name=".ModelDownloadService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- 下载通知上的「取消」按钮 -->
+        <receiver
+            android:name=".ModelDownloadReceiver"
+            android:exported="false" />
+
+        <!-- 媒体按钮接收器 -->
+        <receiver
+            android:name="com.ryanheise.audioservice.MediaButtonReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ✅ 桌面小组件：收藏夹最新收藏预览（4×2，可缩放）。
+             预览图在 Android 15+ 由 App 运行时生成（generated previews），
+             低版本回退 fav_widget_info.xml 里的静态占位图。 -->
+        <receiver
+            android:name=".FavWidgetProvider"
+            android:exported="false"
+            android:label="@string/fav_widget_label">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/fav_widget_info" />
+        </receiver>
+
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+</manifest>

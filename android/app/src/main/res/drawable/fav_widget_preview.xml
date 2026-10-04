@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  微件选择器里的占位预览图（示意图，纯矢量）。
+  Android 15+ 会用运行时生成的预览覆盖它；更早的版本就用这张兜底。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="480dp"
+    android:height="240dp"
+    android:viewportWidth="480"
+    android:viewportHeight="240">
+
+    <!-- 卡片底 -->
+    <path
+        android:fillColor="#1B1C1F"
+        android:pathData="M0,0 h480 v240 h-480 z" />
+
+    <!-- 标题占位 -->
+    <path
+        android:fillColor="#9AA0A6"
+        android:pathData="M20,16 h170 v14 h-170 z" />
+
+    <!-- 第一行：封面 + 标题 -->
+    <path
+        android:fillColor="#2E3034"
+        android:pathData="M20,42 h212 v64 h-212 z" />
+    <path
+        android:fillColor="#5F6368"
+        android:pathData="M20,110 h150 v10 h-150 z" />
+    <path
+        android:fillColor="#2E3034"
+        android:pathData="M248,42 h212 v64 h-212 z" />
+    <path
+        android:fillColor="#5F6368"
+        android:pathData="M248,110 h150 v10 h-150 z" />
+
+    <!-- 第二行：封面 + 标题 -->
+    <path
+        android:fillColor="#2E3034"
+        android:pathData="M20,126 h212 v64 h-212 z" />
+    <path
+        android:fillColor="#5F6368"
+        android:pathData="M20,194 h150 v10 h-150 z" />
+    <path
+        android:fillColor="#2E3034"
+        android:pathData="M248,126 h212 v64 h-212 z" />
+    <path
+        android:fillColor="#5F6368"
+        android:pathData="M248,194 h150 v10 h-150 z" />
+</vector>

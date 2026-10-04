@@ -1,0 +1,18 @@
+<resources>
+    <string name="shortcut_search">搜索</string>
+    <string name="shortcut_search_long">B站搜索</string>
+    <string name="shortcut_offline">离线缓存</string>
+    <string name="shortcut_offline_long">离线缓存（我的缓存）</string>
+    <string name="shortcut_recommend">推荐</string>
+    <string name="shortcut_recommend_long">推荐主页</string>
+    <string name="shortcut_dynamics">动态</string>
+    <string name="shortcut_dynamics_long">B站动态</string>
+    <string name="shortcut_history">历史</string>
+    <string name="shortcut_history_long">观看历史</string>
+
+    <!-- ✅ 桌面小组件：收藏夹最新收藏预览 -->
+    <string name="fav_widget_label">收藏夹预览</string>
+    <string name="fav_widget_description">显示收藏夹里最新收藏的几个封面，点击直接播放</string>
+    <string name="fav_widget_empty">打开 NaviFlash 后，这里会显示收藏夹最新内容</string>
+    <string name="fav_widget_folder_fallback">收藏夹</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SplashScreen 背景色（深色模式） -->
+    <color name="splash_background">#121316</color>
+
+    <!-- 桌面小组件（收藏夹预览）深色配色 -->
+    <color name="fav_widget_background">#1B1C1F</color>
+    <color name="fav_widget_text_primary">#E8E9EB</color>
+    <color name="fav_widget_text_secondary">#9AA0A6</color>
+    <color name="fav_widget_placeholder">#2E3034</color>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+：快捷方式图标跟随系统 Material 动态取色。
+         浅色模式用 accent1-600（在浅色启动器上对比度足够）。 -->
+    <color name="shortcut_tint">@android:color/system_accent1_600</color>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 桌面小组件根背景：圆角卡片（浅/深色由 colors.xml / values-night 决定） -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/fav_widget_background" />
+    <corners android:radius="18dp" />
+</shape>

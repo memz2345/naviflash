@@ -1,0 +1,17 @@
+{
+  // ── ARB Editor（google/arb-editor）─────────────────────────────
+  // 该扩展要求「模板 arb 里每个消息键都必须带 @key 元数据描述」，
+  // 否则每条消息报一个 missing_metadata_for_key。
+  //
+  // 本项目的模板是 lib/l10n/app_zh_CN.arb：2054 条文案里有 1776 条是
+  // 无占位符、无特殊格式的简单短句，逐条补一个空的 "@key": {} 只会让
+  // 文件膨胀三十多个百分点，没有任何信息量，所以整体抑制这一条规则。
+  //
+  // 与占位符 / ICU 相关的校验保持开启——那些才是真正会导致生成代码
+  // 出错的问题：
+  //   invalid_placeholder / placeholder_without_metadata /
+  //   missing_placeholder_with_metadata / mismatched_brackets /
+  //   missing_other_in_icu / unknown_icu_message_type /
+  //   metadata_for_missing_key / invalid_key / missing_messages_from_template
+  "arb-editor.suppressedWarnings": ["missing_metadata_for_key"]
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  静态快捷方式已废弃（2026-09-22）：
+  旧版三项（搜索/离线/推荐）写死在这里，但静态快捷方式运行时不能删除、
+  不能排序，无法配合用户自定义。现在长按菜单全部改为动态版：
+  应用启动时由 DynamicShortcutPublisher 按用户在偏好设置里的配置
+  （FlutterSharedPreferences: flutter.appShortcutIds）发布。
+  文件保留为空，仅为满足 AndroidManifest 里的 meta-data 引用。
+-->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android" />

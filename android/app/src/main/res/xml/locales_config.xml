@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ✅ Android 13+ (API 33) 按应用设置语言：
+     声明应用支持的语言列表，系统「设置 → 应用 → 应用信息 → 语言」
+     会据此展示选项，用户无需进入应用即可切换语言。
+     必须与 AndroidManifest.xml 中 application 节点的
+     android:localeConfig="@xml/locales_config" 配合使用。 -->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="zh-CN" />
+    <locale android:name="zh-TW" />
+    <locale android:name="zh-HK" />
+    <locale android:name="en-US" />
+</locale-config>

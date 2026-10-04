@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+（API 31+）深色模式：系统级 SplashScreen。
+         必须同时带 night + v31 限定符：
+         night 优先级高于 v31，若只有 values-v31，
+         深色模式下会被 values-night 的 LaunchTheme 覆盖，导致 Splash 不生效。 -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:windowSplashScreenBackground">@color/splash_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
+        <item name="android:windowSplashScreenAnimationDuration">400</item>
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+</resources>

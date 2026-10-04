@@ -1,0 +1,4488 @@
+{
+  "@@locale": "zh_HK",
+  "metroDate": "{month}月{day}日",
+  "@metroDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "metroSunday": "星期日",
+  "metroMonday": "星期一",
+  "metroTuesday": "星期二",
+  "metroWednesday": "星期三",
+  "metroThursday": "星期四",
+  "metroFriday": "星期五",
+  "metroSaturday": "星期六",
+  "metroLogin": "登入",
+  "metroWelcome": "歡迎",
+  "imageViewerNoFile": "找不到圖片檔案",
+  "syncPassphraseEmpty": "同步口令不能為空",
+  "imageBytesRequired": "imageUrl 或 imageBytes 必須提供其一",
+  "webdavConnectSuccess": "✅ 連線成功！",
+  "webdavConfigSaved": "設定已儲存",
+  "webdavConfigureFirst": "請先設定並測試 WebDAV 連線",
+  "webdavSelectContactsFirst": "請先在下方面選要備份的聯絡人",
+  "webdavNoFiles": "選中的聯絡人沒有可備份的檔案",
+  "webdavConfirmBackup": "確認備份",
+  "webdavBackupConfirm": "將備份 {contacts} 位聯絡人的 {files} 個檔案到 WebDAV 伺服器。\n遠端路徑：{path}/chats/<暱稱>/",
+  "@webdavBackupConfirm": {
+    "placeholders": {
+      "contacts": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      },
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStartBackup": "開始備份",
+  "webdavBackingUpTitle": "正在備份",
+  "webdavBackupDoneTitle": "備份完成",
+  "webdavTotalFiles": "總計：{count} 個檔案",
+  "@webdavTotalFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSuccessCount": "成功：{count}",
+  "@webdavSuccessCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavFailCount": "失敗：{count}",
+  "@webdavFailCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavMoreErrors": "...還有 {count} 個錯誤",
+  "@webdavMoreErrors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavBackupFab": "備份",
+  "webdavShowInfo": "顯示我的資訊",
+  "webdavHideInfo": "隱藏我的資訊",
+  "webdavScanToFill": "掃碼填入伺服器地址",
+  "webdavScanFilled": "已透過掃碼填入地址",
+  "webdavServerConfig": "伺服器設定",
+  "webdavServerUrlLabel": "伺服器地址",
+  "webdavUsernameLabel": "使用者名稱",
+  "webdavPasswordLabel": "密碼",
+  "webdavRemotePathLabel": "遠端備份路徑",
+  "webdavTesting": "測試中...",
+  "webdavSaveAndTest": "儲存並測試連線",
+  "webdavSaveOnly": "僅儲存",
+  "webdavConnectVerified": "連線驗證通過",
+  "webdavAutoBackup": "自動備份",
+  "webdavAutoBackupOnReceive": "接收檔案時自動備份",
+  "webdavAutoBackupSubtitle": "僅對下方面選的聯絡人生效",
+  "webdavMediaSync": "媒體同步",
+  "webdavSyncPlaylists": "同步播放清單",
+  "webdavSyncDanmaku": "同步彈幕",
+  "webdavPassphraseEncrypted": "同步密碼（AES-256 加密）",
+  "webdavPassphrasePlain": "同步密碼（留空 = 明文上傳）",
+  "webdavPassphraseHint": "填寫密碼後播放清單將加密上傳",
+  "webdavGeneratePassphrase": "產生隨機密碼",
+  "webdavMediaSyncHint": "播放清單（含背景圖）與彈幕儲存到雲端的獨立目錄（playlists/、danmaku/），不會與聊天備份混在一起。多台裝置共用同一遠端路徑即可互相合併；播放清單可在播放清單頁手動同步或從雲端還原。",
+  "webdavEncryptionOn": "已啟用加密：播放清單將以 AES-256-GCM 加密後上傳（含內嵌的 WebDAV 鑑權資訊），伺服器無法讀取內容。多台裝置需填寫相同密碼才能解密。",
+  "webdavEncryptionOff": "未加密：播放清單（含內嵌的 WebDAV 鑑權資訊）將明文上傳，任何能讀取伺服器檔案的人都能看到，不推薦。",
+  "webdavBackupContacts": "備份聯絡人",
+  "webdavSelectedContacts": "已選 {selected} / {total} 位聯絡人",
+  "@webdavSelectedContacts": {
+    "placeholders": {
+      "selected": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSearchContacts": "搜尋聯絡人或 IP...",
+  "webdavDeselectAll": "取消全選",
+  "webdavFileCount": "{count} 個檔案",
+  "@webdavFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNoContacts": "暫無聯絡人",
+  "webdavNoMatch": "無相符結果",
+  "webdavContactSubtitle": "{ip}  ·  {count} 個檔案",
+  "@webdavContactSubtitle": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavManage": "管理",
+  "webdavLastSync": "上次同步",
+  "webdavLastError": "最近錯誤",
+  "webdavClearConfig": "清除 WebDAV 設定",
+  "webdavClearConfigSubtitle": "刪除所有伺服器資訊和憑證",
+  "webdavUserLabel": "用戶",
+  "webdavStatusActive": "{name}已啟用",
+  "@webdavStatusActive": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStatusConfigured": "{name}已設定",
+  "@webdavStatusConfigured": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStatusNotConfigured": "未設定",
+  "webdavNotSynced": "尚未同步",
+  "webdavJustNow": "上次同步：剛剛",
+  "webdavMinutesAgo": "上次同步：{minutes} 分鐘前",
+  "@webdavMinutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavHoursAgo": "上次同步：{hours} 小時前",
+  "@webdavHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSyncedDate": "上次同步：{month}月{day}日 {time}",
+  "@webdavSyncedDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPassphraseGenerated": "已產生同步密碼並複製到剪貼簿，請在其他裝置上填入相同密碼",
+  "webdavConfirmClear": "確認清除",
+  "webdavClearConfirmText": "將刪除所有 WebDAV 設定（伺服器、憑證、聯絡人選取）。\n已上傳的檔案不受影響。",
+  "profileEditProfile": "編輯資料",
+  "profileAccountSection": "帳戶管理",
+  "profileWebdavBackup": "WebDAV 備份",
+  "profileWebdavLoggedIn": "{username} 已登入",
+  "@profileWebdavLoggedIn": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "profileNotLoggedIn": "未登入",
+  "profileAvatarSection": "頭像",
+  "profileChangeAvatar": "更換頭像",
+  "profileRemoveAvatar": "移除頭像",
+  "profilePickFromGallery": "從相簿選擇圖片",
+  "profileRestoreDefaultAvatar": "還原預設頭像",
+  "profileSetBackground": "設定背景",
+  "profileBgSubtitle": "為側邊欄選擇一張背景圖",
+  "profileRestoreDefault": "還原預設",
+  "profileBgRemoveSubtitle": "移除自訂背景，使用主題色漸變",
+  "profileInfoSection": "個人資訊",
+  "profileNicknameLabel": "暱稱",
+  "profileNotSet": "未設定",
+  "profileBgTitle": "個人資料背景",
+  "profileAvatarUpdated": "✅ 頭像已更新",
+  "profileAvatarFailed": "❌ 選擇頭像失敗: {error}",
+  "@profileAvatarFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "profileRemoveAvatarConfirm": "確定要刪除目前頭像嗎？此操作無法還原。",
+  "profileAvatarRemoved": "頭像已移除",
+  "profileSetNickname": "設定暱稱",
+  "profileNicknameHint": "輸入暱稱",
+  "profileNicknameEmpty": "暱稱不能為空",
+  "profileNicknameUpdated": "✅ 暱稱已更新",
+  "colorDefaultGreen": "預設綠",
+  "colorPink": "粉紅色",
+  "colorRed": "紅色",
+  "colorOrange": "橙色",
+  "colorAmber": "琥珀色",
+  "colorYellow": "黃色",
+  "colorLime": "酸橙色",
+  "colorLightGreen": "淺綠色",
+  "colorGreen": "綠色",
+  "colorCyan": "青色",
+  "colorTeal": "藍綠色",
+  "colorLightBlue": "淺藍色",
+  "colorBlue": "藍色",
+  "colorIndigo": "靛藍色",
+  "colorPurple": "紫色",
+  "colorDeepPurple": "深紫色",
+  "colorBlueGrey": "藍灰色",
+  "colorBrown": "棕色",
+  "colorGrey": "灰色",
+  "themeColorExtracted": "已從圖片提取主題色",
+  "themeColorFailed": "取色失敗: {error}",
+  "@themeColorFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "themeImageOnly": "僅支援圖片格式",
+  "themeTitle": "主題",
+  "themeColorCopied": "已複製色號: {hex}",
+  "@themeColorCopied": {
+    "placeholders": {
+      "hex": {
+        "type": "String"
+      }
+    }
+  },
+  "themeAppearance": "外觀",
+  "themeDarkBlackened": "深色模式（已黑化）",
+  "themeOff": "已關閉",
+  "themeEnabled": "已啟用",
+  "themeColorsSection": "配色",
+  "themePaletteStyle": "調色板風格",
+  "themeFollowSystem": "跟隨系統配色",
+  "themePickColor": "選擇顏色",
+  "themeDropHint": "放開以從圖片提取主題色",
+  "themeNewTheme": "新增主題",
+  "themeSwitched": "已切換至 {name} 主題",
+  "@themeSwitched": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDeleteTitle": "刪除主題",
+  "themeDeleteConfirm": "確定要刪除自訂主題「{name}」嗎？",
+  "@themeDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDeleted": "已刪除「{name}」",
+  "@themeDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeCreateTitle": "建立自訂主題",
+  "themeNameLabel": "主題名稱",
+  "themeNameHint": "請輸入文字",
+  "themeHexLabel": "十六進位/RGB",
+  "themeHexHint": "例如 #FF0000 或 255,0,0",
+  "themeCreated": "主題「{name}」已建立並儲存",
+  "@themeCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeCopyColor": "複製色號",
+  "themePickFromImage": "從圖片取色",
+  "searchBack": "返回設定",
+  "searchHint": "搜尋設定項目…",
+  "searchPrompt": "輸入關鍵詞搜尋設定項目",
+  "searchExamples": "例如：更新率 / 解碼 / UA / 彈幕",
+  "searchNoResults": "找不到「{query}」相關設定",
+  "@searchNoResults": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "searchThemeMode": "主題模式",
+  "searchPureBlack": "純黑深色模式",
+  "searchThemeColor": "主題配色",
+  "searchFontWeight": "文字粗細",
+  "searchDisplayScale": "顯示縮放",
+  "searchDisplayMode": "顯示模式 / 螢幕更新率",
+  "searchStatusBar": "狀態列",
+  "searchKeepWindowRatio": "等比例拉伸視窗",
+  "searchLongPressSpeed": "長按鍵加速",
+  "searchScreenshot": "截圖功能",
+  "searchScreenshotDanmaku": "截圖時顯示彈幕",
+  "searchPlayProgress": "播放進度",
+  "searchHwdec": "硬件解碼",
+  "searchVideoSync": "影片同步",
+  "searchImmersiveLongPress": "沉浸模式長按加速",
+  "searchMpvLog": "記錄 mpv 日誌",
+  "searchMpvLogLevel": "mpv 日誌細度",
+  "searchNetworkMode": "網絡模式",
+  "searchInsecureCert": "允許不安全的憑證",
+  "searchChatIpv6": "聊天 IPv6",
+  "searchConnectivityTest": "連通性測試",
+  "searchHostOverrides": "Host 對應",
+  "searchDohQuery": "DoH 查詢",
+  "searchReferer": "請求頭 Referer",
+  "searchUserAgent": "請求頭 User-Agent",
+  "searchSystemSettings": "系統設定",
+  "searchUserSettings": "用戶設定",
+  "settingsDisplaySub": "主題、字型、版面配置",
+  "settingsSystem": "系統",
+  "settingsSystemSub": "語言、儲存、權限",
+  "settingsStorage": "儲存",
+  "settingsStorageSub": "圖片快取、彈幕快取",
+  "settingsNetwork": "網絡",
+  "settingsNetworkSub": "Wi-Fi、Proxy、同步",
+  "settingsLanguage": "語言",
+  "settingsLanguageSub": "應用語言、B 站翻譯（AI 翻譯）",
+  "ttsDownloadCancel": "取消下載",
+  "ttsDownloadDoneTitle": "AI 朗讀模型下載完成",
+  "ttsDownloadDoneBody": "現在可以在評論和專欄裡點朗讀了（下載支援斷點與背景，中途退出不用重來）。",
+  "ttsNoInstallTitle": "AI 朗讀",
+  "ttsNoInstallHeading": "還沒有安裝 TTS，您希望怎麼做？",
+  "ttsNoInstallDownload": "下載 TTS",
+  "ttsNoInstallDownloadSub": "從 Hugging Face 拉取模型",
+  "ttsNoInstallLater": "算了吧",
+  "ttsNoInstallLaterSub": "下次再說！",
+  "ttsInstallPageTitle": "下載 AI 朗讀模型",
+  "ugcFilterWindowTitle": "尋找與取代",
+  "ugcFilterResultPrefix": "搜尋結果：",
+  "ugcFilterDeleteMatchesPlain": "刪除匹配項",
+  "ugcFilterTitle": "過濾設定",
+  "ugcFilterSectionScopes": "UGC 關鍵詞過濾",
+  "ugcFilterScopeRecommend": "首頁推薦",
+  "ugcFilterScopeRecommendSub": "命中標題的影片不顯示",
+  "ugcFilterScopeZone": "影片分區",
+  "ugcFilterScopeZoneSub": "只作用於 App 端推薦 / 熱門 / 排行榜",
+  "ugcFilterScopeReply": "評論",
+  "ugcFilterScopeReplySub": "命中正文的評論不顯示",
+  "ugcFilterScopeDyn": "動態",
+  "ugcFilterScopeDynSub": "命中正文的動態不顯示",
+  "ugcFilterEmpty": "還沒有關鍵詞，在上方輸入後點「新增」",
+  "ugcFilterAddHint": "關鍵詞或正規表達式",
+  "ugcFilterAdd": "新增",
+  "ugcFilterEdit": "編輯關鍵詞",
+  "ugcFilterDelete": "刪除",
+  "ugcFilterClear": "清空全部",
+  "ugcFilterDup": "已存在，跳過",
+  "ugcFilterInvalid": "不是合法的正規表達式",
+  "ugcFilterDeleted": "已刪除",
+  "ugcFilterCleared": "已清空",
+  "ugcFilterNoResult": "沒有匹配項",
+  "ugcFilterMenuMore": "更多",
+  "ugcFilterMenuClipboard": "從剪貼簿匯入",
+  "ugcFilterMenuFile": "從檔案匯入",
+  "ugcFilterMenuExport": "匯出",
+  "ugcFilterMenuWebdav": "匯出到 WebDAV",
+  "ugcFilterImportEmpty": "剪貼簿裡沒有文字",
+  "ugcFilterExportEmpty": "沒有可匯出的關鍵詞",
+  "ugcFilterFindReplace": "尋找取代",
+  "ugcFilterFind": "尋找",
+  "ugcFilterReplace": "取代",
+  "ugcFilterPrev": "上一個",
+  "ugcFilterNext": "下一個",
+  "ugcFilterReplaceOne": "取代",
+  "ugcFilterReplaceAll": "全部",
+  "ugcFilterHistory": "歷史紀錄",
+  "ugcFilterClearHistory": "清空尋找歷史",
+  "ugcFilterCaseSensitive": "區分大小寫",
+  "ugcFilterWholeWord": "全詞匹配（整條關鍵詞一致）",
+  "ugcFilterRegex": "正規表達式",
+  "ugcFilterTip": "每條關鍵詞都是一段正規表達式（忽略大小寫）。Cc = 區分大小寫，W = 整條關鍵詞一致才算命中，.* = 尋找框按正規表達式處理。匯入是合併去重（不會覆蓋既有），匯出是純文字、每行一條。",
+  "ugcFilterRulesCount": "{count} 條",
+  "@ugcFilterRulesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterAdded": "已新增 {count} 條",
+  "@ugcFilterAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterResultCount": "搜尋結果：{count}",
+  "@ugcFilterResultCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterReplaced": "已取代 {count} 條",
+  "@ugcFilterReplaced": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterDeletedMatches": "刪除匹配項（{count}）",
+  "@ugcFilterDeletedMatches": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterImported": "匯入 {added} 條，重複 {skipped} 條",
+  "@ugcFilterImported": {
+    "placeholders": {
+      "added": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterImportFailed": "匯入失敗：{error}",
+  "@ugcFilterImportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ugcFilterExportFailed": "匯出失敗：{error}",
+  "@ugcFilterExportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ugcFilterWebdavOk": "已上傳到 WebDAV：{name}",
+  "@ugcFilterWebdavOk": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ugcFilterWebdavFail": "上傳失敗：{error}",
+  "@ugcFilterWebdavFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "prefLinkSection": "連結開啟方式",
+  "settingsRecommend": "推薦流設定",
+  "settingsRecommendSub": "推薦來源、過濾器與重新整理行為",
+  "rcmdSectionSource": "推薦來源",
+  "rcmdUseAppSource": "首頁使用 App 端推薦",
+  "rcmdUseAppSourceSub": "若 Web 端推薦不符預期，可切換至 App 端推薦",
+  "rcmdSectionBehavior": "重新整理與保留",
+  "rcmdKeepLastData": "保留首頁推薦重新整理",
+  "rcmdKeepLastDataSub": "下拉重新整理時保留上次內容",
+  "rcmdSavedPositionTip": "顯示上次看到位置提示",
+  "rcmdSavedPositionTipSub": "保留上次內容時，在上次重新整理位置顯示提示",
+  "rcmdSavedPositionTipText": "上次看到這裡",
+  "rcmdSectionFilter": "過濾器",
+  "rcmdNoFilter": "不過濾",
+  "rcmdMinLikeRatio": "點讚率",
+  "rcmdMinLikeRatioSub": "低於該點讚率的影片不顯示",
+  "rcmdMinDuration": "影片時長",
+  "rcmdMinDurationSub": "短於該時長的影片不顯示",
+  "rcmdMinPlay": "播放量",
+  "rcmdMinPlaySub": "低於該播放量的影片不顯示",
+  "rcmdBanWord": "標題關鍵詞過濾",
+  "rcmdBanWordSub": "正規表達式，命中標題的影片不顯示",
+  "rcmdBanWordHint": "未設定",
+  "rcmdBanZone": "分區關鍵詞過濾",
+  "rcmdBanZoneSub": "只作用於 App 端推薦 / 熱門 / 排行榜",
+  "rcmdBanZoneHint": "未設定",
+  "rcmdExemptFollowed": "已關注 UP 豁免推薦過濾",
+  "rcmdExemptFollowedSub": "推薦中已關注使用者發佈的內容不會被過濾",
+  "rcmdFilterRelated": "過濾器也套用於詳情頁相關影片",
+  "rcmdFilterRelatedSub": "熱門影片、搜尋等其它入口不受影響",
+  "rcmdFilterHint": "過濾器在下次拉取推薦時生效；關鍵詞按正規表達式匹配，留空表示不過濾。",
+  "rcmdFilterSaved": "已儲存，下次拉取推薦時生效",
+  "prefOpenSupportedLinks": "開啟支援的連結",
+  "prefOpenSupportedLinksSub": "到系統設定裡把本應用設為 bilibili / memz2345.top 連結的預設開啟方式",
+  "linkSettingsUnavailable": "未能開啟系統設定頁，請在系統設定裡手動尋找「預設開啟」",
+  "appLangSection": "應用語言",
+  "appLangFollowSystem": "跟隨系統",
+  "biliLangSection": "翻譯目標語言",
+  "biliAiSection": "AI 翻譯",
+  "biliAiTranslateEnable": "啟用 AI 翻譯",
+  "biliAiTranslateOnDesc": "已開啟：B 站請求將攜帶翻譯頭，返回該語言內容",
+  "biliAiTranslateOffDesc": "關閉：按原始語言返回內容",
+  "langZhCn": "簡體中文",
+  "langZhHk": "繁體中文（香港）",
+  "langZhTw": "繁體中文（台灣）",
+  "langEnUs": "English（英語）",
+  "langJaJp": "日本語",
+  "langKoKr": "한국어",
+  "settingsPlayer": "播放器",
+  "settingsPlayerSub": "狀態列、加速、截圖",
+  "settingsStartScreenSub": "開始螢幕、Charm",
+  "settingsLogs": "日誌",
+  "settingsLogsSub": "錯誤日誌、mpv 日誌",
+  "settingsAccounts": "帳號",
+  "settingsAccountsSub": "B 站、WebDAV",
+  "settingsUser": "用戶",
+  "settingsUserSub": "帳戶、私隱、安全",
+  "settingsAboutSub": "版本、授權",
+  "settingsLicenses": "開源授權",
+  "settingsLicensesSub": "本專案引用的開源專案",
+  "settingsSearch": "搜尋設定",
+  "openSidebar": "開啟側邊欄",
+  "settingsPlaceholderEasterEgg": "唔，有咩問題點解唔問下神奇嘅芙莉蓮呢",
+  "storageClearTitle": "清理{label}",
+  "@storageClearTitle": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "storageClearConfirm": "確定要清理{label}嗎？清理後重新瀏覽圖片會再次下載。",
+  "@storageClearConfirm": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "storageClear": "清理",
+  "storageCleared": "{label}已清理",
+  "@storageCleared": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "refreshAction": "重新整理",
+  "storageCacheSection": "快取",
+  "storageUsageBreakdown": "佔用分佈",
+  "storageUsageTotal": "總佔用",
+  "storageUsageEmpty": "還沒有可統計的佔用",
+  "storageDataCache": "數據快取",
+  "storageAiDeps": "AI 元件",
+  "storageImageCache": "圖片快取",
+  "storageCounting": "正在統計…",
+  "storageFileCount": "{count} 個檔案 · {size}",
+  "@storageFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "storageDanmakuCache": "彈幕快取",
+  "storageVideoCount": "{count} 個影片 · {size}",
+  "@storageVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAutoOfflineCache": "自動離線快取播放過的影片",
+  "settingsAutoOfflineCacheHint": "觀看過的影片會自動下載到本機（約 2GB 上限，超出自動淘汰最舊），下次開啟直接從本機播放、不再重複拉取；關閉後不再新增快取。",
+  "storageVideoCache": "離線影片快取",
+  "storageVideoCacheDesc": "播放過的影片媒體流（容量上限內自動快取、LRU 淘汰），下次開啟直接從本機播放",
+  "storageMemoryCache": "記憶體圖片快取",
+  "storageMemoryCacheDesc": "本次執行中已解碼的圖片，結束後自動釋放",
+  "storageClearing": "正在清理…",
+  "storageClearAll": "一鍵清理全部快取",
+  "storageCacheHint": "圖片快取為應用程式私有目錄（image_cache），清理後瀏覽過的評論配圖會重新下載；彈幕快取用於離線彈幕載入。",
+  "storageClearAllTitle": "清理全部快取",
+  "storageClearAllConfirm": "將清空圖片快取、彈幕快取與記憶體圖片快取，清理後重新瀏覽圖片會再次下載。",
+  "storageAllCleared": "快取已全部清理",
+  "storageLocationSection": "儲存位置",
+  "storageLocationAutoCache": "自動緩存位置",
+  "storageLocationAutoCacheDesc": "播放緩存 / 圖片 / 彈幕 / 專欄等自動緩存的落盤位置",
+  "storageLocationVideo": "影片下載位置",
+  "storageLocationVideoDesc": "主動「緩存」的離線影片落盤位置",
+  "storageLocationModels": "AI 模型位置",
+  "storageLocationModelsDesc": "AI 朗讀模型與智能防遮擋依賴",
+  "storageLocationDefault": "跟隨系統預設",
+  "storageLocationUnsupported": "目前平台不支援自訂",
+  "storageLocationChoose": "變更",
+  "storageLocationPick": "選擇資料夾",
+  "storageLocationNewFolder": "新增子資料夾",
+  "storageLocationFolderName": "資料夾名稱",
+  "storageLocationCreateFailed": "建立失敗，換個名稱試試",
+  "storageLocationReset": "恢復預設",
+  "storageLocationResetDone": "已恢復預設位置",
+  "storageLocationCurrent": "目前：{path}",
+  "@storageLocationCurrent": { "placeholders": { "path": { "type": "String" } } },
+  "storageLocationSetDone": "已設為 {path}",
+  "@storageLocationSetDone": { "placeholders": { "path": { "type": "String" } } },
+  "storageLocationFree": "可用 {size}",
+  "@storageLocationFree": { "placeholders": { "size": { "type": "String" } } },
+  "storageLocationNotWritable": "此目錄無法寫入，已退回預設位置",
+  "storageLocationAndroidHint": "安卓只能在系統提供的標準目錄（電影 / 下載 / 文件等，含外接 SD 卡）與 App 私有目錄中選擇，並可在其中新增子資料夾",
+  "storageLocationKeepOld": "切換後舊位置的檔案會保留、仍可讀取，新下載寫入新位置",
+  "ttsLiveDownloadTitle": "AI 朗讀模型下載",
+  "settingsAi": "AI",
+  "settingsAiSub": "智能防遮擋、AI 朗讀的模型與推理設定",
+  "bottomNavPreviewHint": "底部即為即時預覽：安卓上直接使用原生玻璃底欄，改順序 / 顯示隱藏當場可見",
+  "bottomNavResetDone": "已恢復預設",
+  "verificationPendingRequests": "待處理請求",
+  "verificationNoPending": "暫無待處理請求",
+  "verificationIpAddress": "IP 地址：{ip}",
+  "@verificationIpAddress": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationNickname": "暱稱：{name}",
+  "@verificationNickname": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationRequestTime": "請求時間：{time}",
+  "@verificationRequestTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationRejectInvalid": "無法拒絕：IP 地址無效",
+  "verificationRejected": "已拒絕連線請求",
+  "verificationReject": "拒絕",
+  "verificationAcceptInvalid": "無法接受：IP 地址無效",
+  "verificationAccepted": "已接受連線請求",
+  "verificationAccept": "同意",
+  "startScreenWarning": "我們可能不再更新此專案",
+  "startScreenTitle": "開始螢幕",
+  "startScreenGoBack": "向上瀏覽",
+  "enableStartScreen": "啟用開始螢幕",
+  "startScreenEnableSubtitle": "允許從 Charm 的 Start 按鈕進入開始螢幕",
+  "enableCharm": "啟用 Charm",
+  "charmEnableSubtitle": "在螢幕右側提供 Charm 快捷欄",
+  "charmGestureTitle": "手勢拉出 Charm",
+  "charmGestureSubtitle": "從螢幕右邊緣向左滑動或懸停右上角拉出 Charm",
+  "externalVideo": "外部影片",
+  "audioChannelName": "影片媒體播放",
+  "foregroundChannelName": "Navi 保活",
+  "foregroundChannelDesc": "主人~保持我在背景執行~",
+  "foregroundTitle": "保活中",
+  "foregroundText": "我驗牌",
+  "drawerBilibiliSearch": "B站搜尋",
+  "recommendBottomHome": "主頁",
+  "recommendBottomLive": "直播",
+  "commentImageLoadFail": "圖片載入失敗",
+  "commentDetailTitle": "評論詳情",
+  "commentLikeLoginRequired": "請先登入 B 站帳號（並開啟攜帶 Cookie）後再點讚",
+  "commentLikeFail": "點讚失敗：{error}",
+  "@commentLikeFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "relatedEmpty": "暫無相關推薦",
+  "biliLoadFailed": "載入失敗",
+  "countWan": "{count}萬",
+  "@countWan": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "countYi": "{count}億",
+  "@countYi": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "searchNoNewContent": "暫無新內容",
+  "searchNewContentRefreshed": "已為您刷新一組新內容",
+  "biliDialogNeedLogin": "需要登入",
+  "biliDialogInteractDesc": "點讚 / 投幣 / 三連等互動需要登入 B 站帳號",
+  "biliGoLogin": "去登入",
+  "biliCookieScopeHint": "請在帳號設定中開啟「攜帶 Cookie 請求」與「互動操作」範圍",
+  "videoTabRelated": "相關影片",
+  "videoTabComments": "評論",
+  "videoTabCommentsCount": "評論 {count}",
+  "@videoTabCommentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTabEpisodes": "選集 {count}",
+  "@videoTabEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTabIntro": "簡介",
+  "danmakuWatching": "{count}人正在看",
+  "@danmakuWatching": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuLoadedBar": "已裝填{count}條彈幕",
+  "@danmakuLoadedBar": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuToggleOn": "開啟彈幕",
+  "danmakuDisable": "關閉彈幕",
+  "danmakuInputHint": "發個友善的彈幕見證當下",
+  "danmakuToastEmpty": "彈幕內容不能為空",
+  "danmakuToastSendFail": "傳送失敗：{error}",
+  "@danmakuToastSendFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuToastSent": "彈幕已傳送",
+  "videoLikeTooltip": "點讚（長按一鍵三連）",
+  "videoUnlikeTooltip": "取消點讚",
+  "videoCoinTooltip": "投幣",
+  "videoFavTooltip": "收藏",
+  "videoUnfavTooltip": "取消收藏",
+  "videoShareLabel": "分享",
+  "videoStatRating": "{count}人評分",
+  "@videoStatRating": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoStatFollowing": "{count}追番",
+  "@videoStatFollowing": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoStatWatching": "{count}人在看",
+  "@videoStatWatching": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoFollowLabel": "關注",
+  "videoFollowedLabel": "已關注",
+  "commentDetailEmpty": "還沒有回覆",
+  "commentDetailNoMore": "沒有更多回覆了（共 {count} 則）",
+  "@commentDetailNoMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentDetailLoadMore": "滑動載入更多",
+  "commentDetailRootBadge": "樓主",
+  "commentDetailDeleted": "(評論已刪除)",
+  "commentMenuCopy": "複製評論",
+  "commentMenuSelectText": "選取文字",
+  "commentDialogTitle": "評論內容",
+  "commentDialogEmpty": "(這裡空空的)",
+  "danmakuInputBvPrompt": "請輸入 BV 號",
+  "danmakuInputCidPrompt": "請輸入 CID",
+  "danmakuInputCidNumeric": "CID 必須為純數字",
+  "danmakuInputCacheHit": "命中本機快取：{count} 條彈幕 (oid={oid})",
+  "@danmakuInputCacheHit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuInputFetchSuccess": "獲取成功：{count} 條彈幕 (oid={oid})",
+  "@danmakuInputFetchSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuInputFetchFail": "取得失敗",
+  "danmakuInputTitle": "Bilibili 彈幕",
+  "danmakuInputTypeLabel": "類型：",
+  "danmakuInputBvHint": "輸入 BV 號，將自動取得第一個分P的 CID",
+  "danmakuInputCidHint": "直接輸入 CID 純數字（例如從 API 取得）",
+  "danmakuInputFetching": "取得中...",
+  "danmakuInputFetchDanmaku": "取得彈幕",
+  "danmakuInputEmpty": "輸入不能為空",
+  "danmakuCidFetchFail": "無法取得 CID，請檢查 BV 號",
+  "danmakuNoData": "未取得彈幕資料（oid={oid}）",
+  "@danmakuNoData": {
+    "placeholders": {
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuSettingsTitle": "彈幕設定",
+  "danmakuDataSource": "資料來源",
+  "danmakuDisplayControl": "顯示控制",
+  "danmakuEnable": "啟用彈幕",
+  "danmakuSmartMask": "智能防遮擋",
+  "danmakuSmartMaskDesc": "識別人物，彈幕不遮擋畫面主體",
+  "danmakuTypeFilter": "彈幕類型",
+  "danmakuTypeScroll": "滾動彈幕",
+  "danmakuTypeTop": "頂部彈幕",
+  "danmakuTypeBottom": "底部彈幕",
+  "danmakuTypeAdvanced": "進階彈幕 (BAS)",
+  "danmakuAdvancedSubtitle": "動畫彈幕，開啟可能影響效能",
+  "danmakuParameters": "參數調整",
+  "danmakuScrollSpeed": "滾動速度",
+  "danmakuOpacity": "不透明度",
+  "danmakuFontSize": "字體大小",
+  "danmakuMaxLines": "顯示行數",
+  "danmakuLinesCount": "{count} 行",
+  "@danmakuLinesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuQuickActions": "快速操作",
+  "danmakuResetParams": "重設參數",
+  "danmakuClearDanmaku": "清空彈幕",
+  "danmakuLoadLocalXml": "載入本機 XML 彈幕",
+  "danmakuFetchOnline": "取得 Bilibili 線上彈幕",
+  "danmakuNotLoaded": "尚未載入彈幕",
+  "danmakuLoadedCount": "已載入 {count} 條彈幕",
+  "@danmakuLoadedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuBlockColorful": "彩色彈幕",
+  "danmakuCloudFilter": "智慧雲端遮蔽",
+  "danmakuCloudFilterOff": "關閉",
+  "danmakuCloudFilterLevel": "{level} 級",
+  "@danmakuCloudFilterLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuFontSizeFS": "全螢幕字型大小",
+  "danmakuSeconds": "{value} 秒",
+  "@danmakuSeconds": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuOthers": "其他",
+  "danmakuMassiveMode": "海量彈幕",
+  "danmakuStatic2Scroll": "固定轉滾動",
+  "danmakuShowArea": "顯示區域",
+  "danmakuFontWeight": "字體粗細",
+  "danmakuStrokeWidth": "描邊粗細",
+  "danmakuScrollDuration": "滾動彈幕時長",
+  "danmakuStaticDuration": "靜態彈幕時長",
+  "danmakuLineHeight": "彈幕行高",
+  "danmakuResetTo": "恢復默認：{value}",
+  "@danmakuResetTo": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "naviAddAction": "新增",
+  "playlistImportAdded": "已新增 {count} 個檔案",
+  "@playlistImportAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistAddEpisodeTitle": "新增集數",
+  "playlistTitleLabel": "標題",
+  "playlistEpisodeHint": "第 1 集",
+  "playlistVideoUrlLabel": "影片 URL",
+  "playlistAdd": "新增",
+  "playlistNameRequired": "請輸入播放清單名稱",
+  "playlistAtLeastOneVideo": "請至少新增一個影片",
+  "playlistEditTitle": "編輯播放清單",
+  "playlistCreateTitle": "建立播放清單",
+  "playlistNameLabel": "播放清單名稱",
+  "playlistNameHint": "我的追番清單",
+  "playlistWebdavMulti": "WebDAV 多選",
+  "playlistItemsCount": "{count} 集",
+  "@playlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistNoItems": "還沒有新增任何影片",
+  "playlistImportHint": "點擊上方按鈕匯入",
+  "playlistSaveChanges": "儲存變更",
+  "playlistEpisodePanelTitle": "選集",
+  "playlistEpisodeCurrent": "目前：第 {index} 集",
+  "@playlistEpisodeCurrent": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistSyncResult": "{what}：{message}",
+  "@playlistSyncResult": {
+    "placeholders": {
+      "what": {
+        "type": "String"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistSyncTwoWay": "雙向同步播放清單",
+  "playlistSyncTwoWaySubtitle": "下載雲端並合併，再上傳合併結果（含背景圖）",
+  "playlistRestoreFromCloud": "從雲端還原",
+  "playlistRestoreFromCloudSubtitle": "用雲端資料整體覆寫本機播放清單（含背景圖）",
+  "playlistUploadToCloud": "上傳到雲端",
+  "playlistUploadToCloudSubtitle": "把本機播放清單全量上傳（含背景圖，不合併）",
+  "playlistSyncDanmaku": "同步彈幕快取",
+  "playlistSyncDanmakuSubtitle": "與雲端彈幕快取互相合併（取較新）",
+  "playlistCreated": "已建立：{name}",
+  "@playlistCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistDeleteTitle": "刪除播放清單",
+  "playlistDeleteConfirm": "確定要刪除「{name}」嗎？",
+  "@playlistDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistNewTooltip": "新增播放清單",
+  "playlistListTitle": "播放清單",
+  "playlistCloudSync": "雲端同步",
+  "playlistMyLists": "我的清單",
+  "playlistNoLists": "暫無播放清單",
+  "playlistListSummary": "共 {count} 個 · 點擊清單檢視全部劇集",
+  "@playlistListSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistEmptyTitle": "還沒有播放清單",
+  "playlistEmptyHint": "點擊右下角「建立」按鈕新建一個吧",
+  "playlistResume": "續播",
+  "playlistEditAction": "編輯",
+  "playlistTileProgress": "{total} 集 · 看到第 {current} 集",
+  "@playlistTileProgress": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "current": {
+        "type": "int"
+      }
+    }
+  },
+  "subtitleOff": "關閉字幕",
+  "subtitleTrackFallback": "軌道 {id}",
+  "@subtitleTrackFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleLoadedLocal": "已載入字幕：{name}",
+  "@subtitleLoadedLocal": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleWebdavNotConfigured": "WebDAV 未設定，請先登入",
+  "subtitleWebdavFolderEmpty": "WebDAV 字幕資料夾為空",
+  "subtitleSelectFile": "選擇字幕檔案",
+  "subtitleDownloadFailed": "字幕下載失敗：HTTP {code}",
+  "@subtitleDownloadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "subtitleLoadedRemote": "已載入遠端字幕：{name}",
+  "@subtitleLoadedRemote": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleLoadError": "字幕載入異常：{error}",
+  "@subtitleLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitlePanelTitle": "字幕 (CC)",
+  "subtitleLoadLocal": "載入本機字幕",
+  "subtitleLoadWebdav": "從 WebDAV 載入字幕",
+  "subtitleFontSize": "字號",
+  "subtitleFontColor": "字體顏色",
+  "subtitleBgColor": "背景顏色",
+  "subtitleDragToggle": "字幕拖曳（自由拖放）",
+  "subtitleDragHint": "開啟後可在畫面上自由拖曳字幕位置",
+  "subtitlePositionReset": "重設字幕位置",
+  "webdavInputPath": "輸入路徑",
+  "webdavGoTo": "前往",
+  "webdavLoginRequired": "請先登入 WebDAV 帳號",
+  "webdavLoginSubtitle": "設定伺服器後可瀏覽遠端影片",
+  "webdavLoginSubtitleMulti": "登入後可多選遠端影片建立播放清單",
+  "webdavRefresh": "重新整理",
+  "webdavRoot": "根",
+  "webdavParent": "上層",
+  "webdavFolderEmpty": "此資料夾為空",
+  "webdavPullToRefresh": "下拉重新整理試試？",
+  "webdavSelectVideo": "請選擇影片檔案",
+  "webdavPlay": "播放",
+  "webdavMultiSelectTitle": "多選檔案",
+  "webdavNoSelection": "未選擇檔案",
+  "webdavSelectedCount": "已選 {count} 個影片",
+  "@webdavSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSelectionOrder": "依選擇順序：{names}",
+  "@webdavSelectionOrder": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavClear": "清空",
+  "webdavConfirmSelection": "確認選擇",
+  "webdavGoLogin": "去登入",
+  "profileTitle": "個人資訊",
+  "settingsAvatarTitle": "頭像",
+  "settingsAvatarSet": "已設定",
+  "settingsNotSet": "未設定",
+  "settingsAvatarChangeTooltip": "更換頭像",
+  "settingsAvatarDeleteTooltip": "刪除頭像",
+  "settingsAvatarUpdated": "頭像已更新",
+  "settingsPickAvatarFailed": "選擇頭像失敗：{error}",
+  "@settingsPickAvatarFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAvatarDeleteTitle": "刪除頭像",
+  "settingsAvatarDeleteConfirm": "確定要刪除目前的頭像嗎？",
+  "settingsAvatarDeleteConfirmPermanent": "確定要刪除目前的頭像嗎？此操作無法復原。",
+  "settingsAvatarDeleted": "頭像已刪除",
+  "settingsNickname": "暱稱",
+  "settingsNicknameEditTooltip": "編輯暱稱",
+  "settingsSetNickname": "設定暱稱",
+  "settingsNicknamePrompt": "請輸入您的暱稱",
+  "settingsNicknameHint": "輸入暱稱",
+  "settingsNicknameEmpty": "暱稱不能為空",
+  "settingsNicknameTooLong": "暱稱長度不能超過 20 個字元",
+  "settingsNicknameUpdated": "暱稱已更新",
+  "settingsLockWallpaper": "鎖定螢幕桌布",
+  "settingsWallpaperCustomSet": "已設定自訂桌布",
+  "settingsWallpaperDefaultBg": "使用預設深色背景",
+  "settingsWallpaperUpdated": "桌布已更新",
+  "settingsWallpaperPickTooltip": "選擇桌布",
+  "settingsWallpaperDelete": "刪除桌布",
+  "settingsWallpaperDeleteConfirm": "確定要刪除鎖定螢幕桌布並恢復預設嗎？",
+  "settingsWallpaperDeleted": "桌布已刪除",
+  "settingsDecoImage": "右下角裝飾圖",
+  "settingsDecoImageSet": "已設定 (支援透明 PNG/WebP)",
+  "settingsDecoImageUpdated": "裝飾圖已更新",
+  "settingsPickImageFailed": "選擇圖片失敗：{error}",
+  "@settingsPickImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsPickImageTooltip": "選擇圖片",
+  "settingsDecoImageDelete": "刪除裝飾圖",
+  "settingsDecoImageDeleteConfirm": "確定要刪除右下角裝飾圖嗎？",
+  "settingsDecoImageDeleted": "裝飾圖已刪除",
+  "settingsSize": "大小",
+  "settingsSizePxLabel": "{size} px",
+  "@settingsSizePxLabel": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsSizePxValue": "{size}px",
+  "@settingsSizePxValue": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsOpacity": "透明度",
+  "settingsOpacityPercentValue": "{percent}%",
+  "@settingsOpacityPercentValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsDisplay": "顯示",
+  "settingsDisplaySubtitle": "主題 · 配色 · 文字 · 縮放",
+  "settingsAppTheme": "應用程式主題",
+  "settingsCurrentColor": "目前配色：#{color}",
+  "@settingsCurrentColor": {
+    "placeholders": {
+      "color": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsFontWeight": "文字粗細",
+  "settingsCurrentFontWeight": "目前粗細：{weight}",
+  "@settingsCurrentFontWeight": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsDisplayScale": "顯示縮放",
+  "settingsCurrentScale": "目前比例：{percent}%",
+  "@settingsCurrentScale": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsRestrictIp": "限制內網 IP 連線",
+  "settingsRestrictIpSubtitle": "僅允許 A 類、B 類、C 類內網 IP 地址",
+  "settingsDefaultPort": "預設連接埠",
+  "settingsAdjustFontWeight": "調整文字粗細",
+  "settingsFontWeightPreview": "預覽：{weight}",
+  "@settingsFontWeightPreview": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsWeightHairline": "極細",
+  "settingsWeightThin": "細",
+  "settingsWeightRegular": "一般",
+  "settingsWeightMedium": "中等",
+  "settingsWeightBold": "粗體",
+  "settingsWeightBlack": "極粗",
+  "settingsFontWeightUpdated": "字體粗細已更新",
+  "logTitle": "日誌",
+  "logBackTooltip": "向上瀏覽",
+  "logRefresh": "重新整理",
+  "logClearAll": "清空日誌",
+  "logClearTitle": "清空日誌",
+  "logClearConfirm": "將刪除 error/ 與 mpv/ 目錄下的全部日誌檔案，確定嗎？",
+  "logClearAction": "清空",
+  "logDeletedCount": "已刪除 {count} 個日誌檔案",
+  "@logDeletedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "logCopyContent": "複製內容",
+  "logShare": "分享日誌",
+  "logDeleteThis": "刪除此日誌",
+  "logEmptyContent": "（空日誌）",
+  "logStorageLocation": "儲存位置：{path}",
+  "@logStorageLocation": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logErrorSection": "錯誤日誌（當機時必寫）",
+  "logNoErrorLogs": "暫無錯誤日誌",
+  "logMpvSection": "mpv 日誌（選用）",
+  "logNoMpvLogs": "暫無 mpv 日誌",
+  "logReadingLogs": "正在讀取日誌…",
+  "lockFollowThemeColor": "跟隨主題色 (時間)",
+  "lockShowBattery": "顯示電池",
+  "lockShowNetwork": "顯示網絡",
+  "lockDate": "{month}月{day}日",
+  "@lockDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "weekdaySunday": "星期日",
+  "weekdayMonday": "星期一",
+  "weekdayTuesday": "星期二",
+  "weekdayWednesday": "星期三",
+  "weekdayThursday": "星期四",
+  "weekdayFriday": "星期五",
+  "weekdaySaturday": "星期六",
+  "myQrSelectIpHint": "點擊選擇二維碼使用的 IP",
+  "myQrNoIpType": "沒有此類型的 IP",
+  "myQrInUse": "使用中",
+  "myQrSetAsQr": "設為二維碼",
+  "netLanDiscoveryPort": "本機探索連接埠",
+  "netDohNoRecord": "查無 {domain} 的 A 紀錄",
+  "@netDohNoRecord": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      }
+    }
+  },
+  "netDohQueryFailed": "查詢失敗：{error}",
+  "@netDohQueryFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "netMappingSaved": "已儲存對應：{domain} → {ip}",
+  "@netMappingSaved": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netAddHostMapping": "新增 Host 對應",
+  "netDomainLabel": "網域名稱",
+  "netIpLabel": "IP 地址",
+  "netAdd": "新增",
+  "netMappingAdded": "已新增對應：{host} → {ip}",
+  "@netMappingAdded": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netMappingRemoved": "已移除對應：{host}",
+  "@netMappingRemoved": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "netTitle": "網絡",
+  "netBackTooltip": "向上瀏覽",
+  "netRetestAll": "全部重新測試",
+  "netConnectionModeSection": "連線模式",
+  "netNetworkMode": "網絡模式",
+  "netModeStandardLabel": "標準模式",
+  "netModeCompatLabel": "相容直連",
+  "netModeStandardDesc": "使用系統預設網絡堆疊",
+  "netAllowInsecureCert": "允許不安全的憑證",
+  "netAllowInsecureCertDesc": "相容直連時略過憑證驗證（IP 直連情境）",
+  "netChatIpv6": "聊天 IPv6",
+  "netChatIpv6On": "已開啟：支援 IPv6 聊天、探索與二維碼",
+  "netChatIpv6Off": "已關閉：僅使用 IPv4 聊天",
+  "netChatIpv6EnabledSnack": "已開啟聊天 IPv6（重新啟動應用程式後生效）",
+  "netChatIpv6DisabledSnack": "已關閉聊天 IPv6（重新啟動應用程式後生效）",
+  "netLocalSendCompat": "LocalSend 相容",
+  "netLocalSendCompatOn": "已開啟：啟用 LocalSend 協定（連接埠 53317），可與 LocalSend 官方客戶端互傳檔案",
+  "netLocalSendCompatOff": "已關閉：使用 navi 原生協定方案",
+  "netLocalSendCompatEnabledSnack": "已開啟 LocalSend 相容",
+  "netLocalSendCompatDisabledSnack": "已關閉 LocalSend 相容（恢復原生方案）",
+  "lsSectionTitle": "LocalSend 裝置",
+  "lsHintEnable": "LocalSend 相容未開啟",
+  "lsHintEnableDesc": "開啟後可與 LocalSend 官方客戶端（Android/iOS/Windows/macOS/Linux）互傳檔案",
+  "lsEnableNow": "開啟",
+  "lsEnabledSnack": "已開啟 LocalSend 相容",
+  "lsNoDevices": "未發現 LocalSend 裝置",
+  "lsHttpScan": "HTTP 掃描",
+  "lsHttpScanning": "正在掃描區域網路（群播不通時的備援）...",
+  "lsHttpScanDone": "掃描完成",
+  "lsSendFile": "傳送檔案",
+  "lsSendFileDesc": "透過 LocalSend 協定傳送到該裝置",
+  "lsProbe": "重新探測",
+  "lsProbing": "正在探測...",
+  "lsProbeFound": "探測成功",
+  "lsProbeNotFound": "裝置無回應",
+  "lsPickFailed": "選擇檔案失敗：{error}",
+  "@lsPickFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "lsNoPath": "無法取得檔案路徑",
+  "lsSendingTitle": "正在傳送到 {alias}",
+  "@lsSendingTitle": {
+    "placeholders": {
+      "alias": {
+        "type": "String"
+      }
+    }
+  },
+  "lsSendSuccess": "成功傳送 {count} 個檔案",
+  "@lsSendSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lsSendFailed": "有 {count} 個檔案傳送成功，其餘失敗",
+  "@lsSendFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lsReceiveRequestTitle": "接收檔案請求",
+  "lsReceiveRequestDesc": "對方傳送了 {count} 個檔案，共 {size}",
+  "@lsReceiveRequestDesc": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "lsAccept": "接受",
+  "lsReject": "拒絕",
+  "lsOpenFile": "開啟檔案",
+  "lsReceiveCompleteTitle": "檔案接收完成",
+  "lsReceiveCompleteDesc": "{fileName} 已儲存到：\n{path}",
+  "@lsReceiveCompleteDesc": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "lsFileReceived": "已接收檔案：{fileName}",
+  "@lsFileReceived": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "netConnectivitySection": "連通性測試",
+  "netHostMappingSection": "Host 對應",
+  "netMappingReset": "已恢復內建預設 IP 表",
+  "netRestoreDefaults": "恢復預設",
+  "netNoMappings": "暫無對應",
+  "netAddMapping": "新增對應",
+  "netDohQuerySection": "DoH 查詢",
+  "netDohQueryDesc": "透過 Cloudflare JSON DNS API 查詢網域名稱 A 紀錄，結果可一鍵儲存為 Host 對應",
+  "netDohResultDisplay": "{domain} → {ip}",
+  "@netDohResultDisplay": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netSaveAsMapping": "儲存為對應",
+  "netHeadersSection": "請求標頭",
+  "netRefererNotSet": "未設定（範例：https://www.bilibili.com/）",
+  "netNotSet": "未設定",
+  "netHeaderEditorTitle": "設定 {title}",
+  "@netHeaderEditorTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "netHeaderSaved": "{title} 已儲存",
+  "@netHeaderSaved": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ossTitle": "開放原始碼授權",
+  "ossBackTooltip": "向上瀏覽",
+  "ossCopyFullText": "複製全文",
+  "ossLicenseCopied": "授權文字已複製到剪貼簿",
+  "playHistoryTitle": "播放記錄",
+  "playHistoryBackTooltip": "向上瀏覽",
+  "playHistoryClearAll": "清空全部",
+  "playHistoryEmpty": "這裡空空的",
+  "playHistoryEmptySub": "嗯，今天真是寂寞如雪啊",
+  "playHistoryClearTitle": "清空播放記錄",
+  "playHistoryClearConfirm": "您確定要刪除所有已儲存的播放進度嗎？此操作無法復原。",
+  "playHistoryClearAction": "清空",
+  "playHistoryResume": "繼續播放",
+  "playHistoryDeleteRecord": "刪除記錄",
+  "playHistoryDeleted": "已刪除「{title}」的播放記錄",
+  "@playHistoryDeleted": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "timeJustNow": "剛剛",
+  "timeMinutesAgo": "{count} 分鐘前",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHoursAgo": "{count} 小時前",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeDaysAgo": "{count} 天前",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerArtistVideo": "影片播放",
+  "playerArtistPlaylist": "播放清單",
+  "playerArtistWebdav": "WebDAV 影片",
+  "playerWebdavSubtitle": "WebDAV 字幕",
+  "playerResumeFrom": "已從 {position} 繼續播放",
+  "@playerResumeFrom": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "playerNowPlaying": "正在播放：{title}",
+  "@playerNowPlaying": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "playerDanmakuCache": "彈幕快取（{count} 條）",
+  "@playerDanmakuCache": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuBilibili": "Bilibili 彈幕（{count} 條）",
+  "@playerDanmakuBilibili": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuNoData": "未解析到彈幕資料",
+  "playerDanmakuLoaded": "已載入 {count} 條彈幕",
+  "@playerDanmakuLoaded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuOnline": "Bilibili 在線彈幕（{count} 條）",
+  "@playerDanmakuOnline": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuLoadedFromCache": "已從本機快取載入 {count} 條彈幕",
+  "@playerDanmakuLoadedFromCache": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuLoadedOnline": "已載入 {count} 條在線彈幕",
+  "@playerDanmakuLoadedOnline": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerScreenshotFailed": "截圖失敗：{error}",
+  "@playerScreenshotFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSavedToAlbum": "已儲存到相簿",
+  "playerScreenshotSavedToAlbum": "截圖 {fileName} 已儲存到相簿",
+  "@playerScreenshotSavedToAlbum": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSaveFailed": "儲存失敗：{error}",
+  "@playerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPipFailed": "畫中畫呼叫失敗：{error}",
+  "@playerPipFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerFitAdapt": "適配",
+  "playerFitStretch": "拉伸",
+  "playerFitFill": "填滿",
+  "playerEndPause": "播完暫停",
+  "playerEndLoop": "循環播放",
+  "playerEndExit": "播完結束",
+  "playerSubtitleSettings": "字幕設定",
+  "playerAdvancedSettings": "進階設定",
+  "playerFlipHorizontal": "水平鏡像",
+  "playerFlipHorizontalDesc": "左右翻轉畫面",
+  "playerFlipVertical": "垂直翻轉",
+  "playerFlipVerticalDesc": "上下翻轉畫面",
+  "playerShowStats": "顯示影片統計資訊",
+  "playerShowStatsDesc": "編碼/解析度/碼率/幀率",
+  "playerAutoPip": "回到桌面自動畫中畫",
+  "playerLoadDanmakuOnResume": "恢復播放時載入彈幕",
+  "playerLoadDanmakuOnResumeDesc": "從播放記錄繼續時自動讀取/取得彈幕",
+  "playerDefaultRate": "預設播放速度",
+  "playerDefaultEndBehavior": "預設結束行為",
+  "playerTimePickerTitle": "跳轉到指定進度",
+  "playerTimeUnitHour": "時",
+  "playerTimeUnitMinute": "分",
+  "playerTimeUnitSecond": "秒",
+  "playerBuffering": "緩衝中…",
+  "playerHwdecSoftware": "軟解（SW）",
+  "playerHwdecHardware": "硬解（{mode}）",
+  "@playerHwdecHardware": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSourceLocal": "本機檔案",
+  "playerStatResolution": "解析度",
+  "playerStatVideoCodec": "影片編碼",
+  "playerStatAudioCodec": "音訊編碼",
+  "playerStatBitrate": "碼率",
+  "playerStatFps": "幀率",
+  "playerStatDecode": "解碼",
+  "playerStatSubtitle": "字幕",
+  "playerOn": "開啟",
+  "playerOff": "關閉",
+  "playerStatDanmaku": "彈幕",
+  "playerStatDownload": "下載",
+  "playerStatSource": "來源",
+  "playerStatPosition": "進度",
+  "playerStatDuration": "時長",
+  "playerCopyLink": "複製影片連結",
+  "playerCopyLinkAt": "複製空降連結（{time}）",
+  "@playerCopyLinkAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "playerCopyLinkAt0": "複製空降連結",
+  "playerCopyLinkDone": "已複製：{url}",
+  "@playerCopyLinkDone": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerCopyLinkNotBili": "僅 B 站影片支援複製連結",
+  "playerColorAdjust": "影片色彩調整",
+  "playerColorBrightness": "亮度",
+  "playerColorContrast": "對比度",
+  "playerColorSaturation": "飽和度",
+  "playerColorHue": "色相",
+  "playerColorGamma": "伽馬",
+  "playerColorReset": "重設",
+  "playerColorUnavailable": "目前播放器不支援色彩調整",
+  "playerStats": "統計資訊",
+  "playerAlignAspectRatio": "對齊寬高比",
+  "playerAlignAspectRatioDone": "視窗已對齊影片比例",
+  "playerAlignAspectRatioFailed": "無法取得影片尺寸",
+  "commonClose": "關閉",
+  "playerPlaybackError": "播放錯誤",
+  "playerAllEpisodesPlayed": "已播放完全部 {count} 集",
+  "@playerAllEpisodesPlayed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerFastForwarding": "{rate} 倍速播放中",
+  "@playerFastForwarding": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "playerTapToSave": "點我儲存",
+  "playerResetScreen": "還原螢幕",
+  "playerBackTooltip": "向上瀏覽",
+  "playerRotate90": "旋轉90度",
+  "playerQuality": "畫質",
+  "playerQualityLocked": "該畫質不可用（需登入或大會員）",
+  "playerFullscreen": "全螢幕",
+  "playerBiliSubtitle": "B站字幕",
+  "playerDecodeFormat": "解碼格式",
+  "playerDecodeFormatSwitchFailed": "切換解碼格式失敗",
+  "playerDecodeAuto": "自動",
+  "playerDecodeAutoShort": "自動",
+  "playerDecodeAvc": "AVC / H.264",
+  "playerDecodeHevc": "HEVC / H.265",
+  "playerDecodeAv1": "AV1",
+  "playerSubtitleLoadFailed": "字幕載入失敗",
+  "playerSubtitleBilingual": "雙語字幕",
+  "playerSubtitleBilingualOn": "雙語字幕：{primary} / {secondary}",
+  "@playerSubtitleBilingualOn": {
+    "placeholders": {
+      "primary": { "type": "String" },
+      "secondary": { "type": "String" }
+    }
+  },
+  "playerSubtitleBilingualUnavailable": "目前影片僅提供單一語言字幕，無法雙語對照",
+  "playerSubtitleSecondLang": "譯文語言",
+  "playerSubtitleDrag": "字幕拖曳",
+  "playerSubtitleDragOn": "已開啟字幕拖曳：拖曳畫面可自由調整字幕位置",
+  "playerSubtitleDragOff": "已關閉字幕拖曳",
+  "playerSubtitleDragging": "拖曳字幕中…",
+  "playerSubtitleDragHint": "拖曳畫面中字幕調整位置",
+  "playerSubtitlePositionSaved": "字幕位置已儲存",
+  "playerSubtitlePositionReset": "重設字幕位置",
+  "playerPortraitMode": "直屏模式",
+  "playerLandscapeMode": "橫屏模式",
+  "playerDescription": "簡介",
+  "playerWebdavSource": "WebDAV 影片來源",
+  "playerCast": "投屏",
+  "playerWatchTogether": "一齊睇",
+  "watchInviteTitle": "邀請你一齊睇影片",
+  "watchWaitingAccept": "等待對方接受…",
+  "watchSelectPeer": "選擇一齊睇嘅好友",
+  "watchNoOnlinePeer": "沒有在線嘅聯絡人",
+  "watchInviteSent": "已發送一齊睇邀請畀 {name}",
+  "@watchInviteSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "watchActiveWith": "正在同 {name} 一齊睇",
+  "@watchActiveWith": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "watchPeerRejected": "對方拒絕咗你嘅邀請",
+  "watchPeerNoAnswer": "對方冇接受邀請",
+  "watchPeerLeft": "對方已退出一齊睇",
+  "watchTcpFailed": "無法建立連線，一齊睇失敗",
+  "watchConnectionDropped": "連線已中斷，一齊睇失敗",
+  "watchUrlInvalid": "影片地址不可用，無法發起一齊睇",
+  "rcInviteTitle": "請求遠端控制你的裝置",
+  "rcInviteHint": "同意後對方可以睇到你嘅螢幕並操作你嘅裝置",
+  "rcPeerRejected": "對方拒絕咗遠端控制請求",
+  "rcTcpFailed": "無法建立連線，遠端控制失敗",
+  "rcConnectionDropped": "連線已中斷，遠端控制失敗",
+  "rcTimeout": "等待對方回應超時",
+  "rcShizukuNotInstalled": "對方裝置未安裝 Shizuku",
+  "rcShizukuNotInstalledHint": "被控端需要安裝並啟動 Shizuku 服務（shizuku.rikka.app）",
+  "rcShizukuGrantTitle": "需要 Shizuku 授權",
+  "rcShizukuGrantHint": "被控端授予 Navi Shizuku 權限後，對方先可以遠端操作螢幕",
+  "rcShizukuGrant": "授權 Shizuku",
+  "rcRequesting": "請求中…",
+  "rcShizukuNotGranted": "Shizuku 未授權",
+  "rcScreenCaptureFailed": "螢幕擷取失敗：{error}",
+  "@rcScreenCaptureFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "rcShareFailed": "螢幕分享失敗",
+  "rcRetry": "重試",
+  "rcClose": "關閉",
+  "rcCancel": "取消",
+  "rcSend": "傳送",
+  "rcConnecting": "正在連接…",
+  "rcControlling": "正在遠端控制 {name}",
+  "@rcControlling": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rcBeingControlled": "{name} 正在遠端控制你嘅裝置",
+  "@rcBeingControlled": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rcEnd": "結束遠端控制",
+  "rcConnectionLost": "遠端控制連線已中斷",
+  "rcSessionEnded": "遠端控制已結束",
+  "rcInputText": "輸入文字",
+  "rcInputTextHint": "要傳送到對方裝置上嘅文字",
+  "rcKeyBack": "返回",
+  "rcKeyHome": "主頁",
+  "rcKeyRecents": "最近工作",
+  "rcKeyVolumeUp": "音量+",
+  "rcKeyVolumeDown": "音量-",
+  "dlnaPageTitle": "投屏",
+  "dlnaRefresh": "重新搜尋",
+  "dlnaSearching": "正在搜尋區域網絡投屏裝置…",
+  "dlnaNoDevice": "未發現可投屏裝置",
+  "dlnaNoDeviceHint": "請確認電視/盒子與本機處於同一區域網絡，且已開啟 DLNA/投屏功能",
+  "dlnaSearchAgain": "重新搜尋",
+  "dlnaFoundDevices": "發現裝置",
+  "dlnaCastStarted": "已投屏到 {device}",
+  "@dlnaCastStarted": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaCastFailed": "投屏失敗：{device}",
+  "@dlnaCastFailed": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaCastingTo": "正在投屏到 {device}",
+  "@dlnaCastingTo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaStopCast": "停止投屏",
+  "dlnaPlay": "播放",
+  "dlnaPause": "暫停",
+  "dlnaVolumeUp": "增大音量",
+  "dlnaVolumeDown": "減小音量",
+  "dlnaFileMissing": "影片檔案不存在",
+  "dlnaServerStartFailed": "本地檔案服務啟動失敗：{error}",
+  "@dlnaServerStartFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "選集",
+  "playerDanmakuSettings": "彈幕設定",
+  "psTitle": "播放器",
+  "psBackTooltip": "向上瀏覽",
+  "psStaffEntrance": "員工通道",
+  "psDisplaySection": "顯示",
+  "psStatusBar": "狀態列",
+  "psStatusBarDesc": "在播放器頂端顯示時間、電量與網絡圖示",
+  "psKeepWindowRatio": "等比例鎖定視窗",
+  "psKeepWindowRatioDesc": "播放時視窗僅允許按目前比例縮放",
+  "psKeepWindowRatioDesktopOnly": "僅 Windows / macOS / Linux 桌面平台生效",
+  "psInteractionSection": "互動",
+  "psLongPressSpeed": "長按加速",
+  "psLongPressSpeedDesc": "長按螢幕或鍵盤 D 鍵以 2× 倍速快轉",
+  "psScreenshot": "截圖功能",
+  "psScreenshotDesc": "允許在播放器中擷取目前畫面並儲存至相簿",
+  "psScreenshotDanmaku": "截圖時顯示彈幕",
+  "psScreenshotDanmakuDesc": "截圖時將目前彈幕一併擷入畫面",
+  "psProgressSection": "進度",
+  "psPlayProgress": "播放進度",
+  "psNoHistory": "暫無已儲存的播放記錄",
+  "psHistoryCount": "您有 {count} 筆記錄",
+  "@psHistoryCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "psMiscSection": "其他",
+  "psHwdec": "硬體解碼",
+  "psHwdecAuto": "自動選擇最佳解碼器",
+  "psHwdecSoftware": "強制使用 CPU 軟體解碼",
+  "psHwdecAutoShort": "自動",
+  "psHwdecPureSoftware": "純軟解",
+  "psHwdecDisabledTag": "硬解已關閉",
+  "hwdecPageTitle": "硬解模式",
+  "hwdecEnabled": "開啟硬解",
+  "hwdecEnabledHint": "以較低功耗播放影片，若異常卡死請關閉",
+  "hwdecOnlySupported": "僅顯示目前平台支援的選項",
+  "hwdecOnlySupportedHint": "依裝置平台（Windows / macOS / Linux / Android / iOS）過濾選項",
+  "hwdecHint": "點選選項依順序組成 mpv --hwdec 降級鏈：優先使用靠前的解碼器，失敗後自動嘗試後面的，全部失敗則退回軟體解碼。支援多選、可選擇只顯示目前平台支援的選項。",
+  "hwdecSelectedPrefix": "已選 {n} 項",
+  "@hwdecSelectedPrefix": {
+    "placeholders": {
+      "n": { "type": "String" }
+    }
+  },
+  "hwdecEmptyWarning": "請至少保留一項硬解模式，建議保留 auto / auto-safe 作為回退",
+  "psVideoSync": "影片同步",
+  "psVsyncAudioDefault": "以音訊時鐘為基準（預設）",
+  "psVsyncResample": "重新取樣音訊以符合顯示更新率",
+  "psVsyncAdrop": "丟棄 / 重複音訊影格以符合顯示",
+  "psVsyncVdrop": "丟棄 / 重複影片影格以符合顯示",
+  "psVsyncAudio": "音訊",
+  "psVsyncDisplayResample": "顯示重取樣",
+  "psVsyncDisplayAdrop": "顯示音訊丟棄",
+  "psVsyncDisplayVdrop": "顯示影片丟棄",
+  "psImmersiveLongPress": "沉浸模式長按加速",
+  "psImmersiveLongPressDesc": "控制列隱藏時仍可透過長按觸發 2× 倍速",
+  "psLogSection": "日誌",
+  "psMpvLog": "記錄 mpv 日誌",
+  "psMpvLogEnabled": "已開啟，下次播放生效（細度：{level}）",
+  "@psMpvLogEnabled": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "psMpvLogDisabled": "關閉。當機日誌始終記錄，不受此開關影響",
+  "psMpvLogLevel": "mpv 日誌細度",
+  "psMpvLogLevelDesc": "細度越高日誌越詳細，佔用空間也越大",
+  "psMpvLogError": "僅錯誤",
+  "psMpvLogWarn": "警告",
+  "psMpvLogWarnDefault": "警告（預設）",
+  "psMpvLogInfo": "資訊",
+  "psMpvLogVerbose": "詳細",
+  "psMpvLogDebug": "偵錯",
+  "psMpvLogTrace": "全部（極詳細）",
+  "psViewLogs": "檢視日誌",
+  "psViewLogsDesc": "瀏覽錯誤日誌與 mpv 日誌，支援分享與清除",
+  "testPlaylistCreated": "已建立：{name}",
+  "@testPlaylistCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "testPageTitle": "測試頁",
+  "testVideoSourceSection": "影片來源",
+  "testVideoSourceSubtitle": "選擇一個來源開始播放",
+  "testWebdavVideo": "WebDAV 影片",
+  "testWebdavVideoDesc": "從 WebDAV 伺服器瀏覽並播放",
+  "testLocalVideo": "本機影片",
+  "testLocalVideoDesc": "從裝置儲存空間選擇影片檔案",
+  "testRecentSection": "最近播放",
+  "testLastPlayedSubtitle": "上次播放記錄",
+  "testNoRecords": "暫無播放記錄",
+  "testPlaylistSection": "播放清單",
+  "testPlaylistSectionSubtitle": "建立、管理播放清單，選集播放",
+  "testPlaylistManage": "播放清單管理",
+  "testPlaylistManageDesc": "檢視 / 編輯 / 刪除播放清單，點擊直接播放",
+  "testPlaylistCreate": "新增播放清單",
+  "testPlaylistCreateDesc": "WebDAV 多選檔案建表 / 手動逐集匯入",
+  "testQuickActionsSection": "快速操作",
+  "testQuickActionsSubtitle": "常用測試入口",
+  "testUrlDirectPlay": "URL 直接播放",
+  "testUrlDirectPlayDesc": "輸入影片 URL 直接播放",
+  "testVideoWithSubtitle": "影片 + 字幕",
+  "testVideoWithSubtitleDesc": "同時選擇影片和字幕檔案",
+  "testNoVideoPlayed": "還沒有播放過任何影片",
+  "testEnterUrlTitle": "輸入影片 URL",
+  "testPlay": "播放",
+  "testAddSubtitleTitle": "新增字幕？",
+  "testAddSubtitlePrompt": "已選擇影片：{name}\n是否要載入外掛字幕？",
+  "@testAddSubtitlePrompt": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "testSkip": "略過",
+  "testSelectSubtitle": "選擇字幕",
+  "testAboutLegalese": "播放器前端測試頁面",
+  "testAboutBody": "此頁面用於測試 MpvPlayerPage 的各種入口：\n• WebDAV 遠端影片\n• 本機影片檔案\n• URL 直接播放\n• 影片 + 外掛字幕",
+  "testSourceLocal": "本機檔案",
+  "testSourceLocalSubtitle": "本機 + 字幕",
+  "accountsBiliLoginSuccess": "B 站登入成功",
+  "accountsBiliLogoutTitle": "登出 B 站？",
+  "accountsBiliLogoutHint": "登出後將不再攜帶 Cookie 請求 B 站 API。",
+  "accountsClearWebviewCookieTitle": "同時清除內置瀏覽器 Cookie",
+  "accountsClearWebviewCookieSubtitle": "不勾選也沒關係，之後可在帳號設定中手動清除",
+  "accountsLogout": "登出",
+  "accountsLoggedOutWithCookie": "已登出並清除瀏覽器 Cookie",
+  "accountsLoggedOut": "已登出",
+  "accountsClearCookieTitle": "清除內置瀏覽器 Cookie？",
+  "accountsClearCookieContent": "將清除內置瀏覽器儲存的所有 Cookie，包括網頁端的登入狀態。",
+  "accountsClearAction": "清除",
+  "accountsCookieCleared": "已清除內置瀏覽器 Cookie",
+  "accountsCookieEmpty": "暫無內置瀏覽器 Cookie 可清除（瀏覽器未使用過）",
+  "accountsBiliLoginTitle": "登入 B 站帳號",
+  "accountsBiliLoginSubtitle": "掃碼 / 貼上 Cookie / 密碼登入",
+  "accountsClearBrowserCookie": "清除內置瀏覽器 Cookie",
+  "accountsClearBrowserCookieSubtitle": "清除網頁端殘留登入狀態",
+  "accountsLoggedIn": "已登入",
+  "accountsLoggedInUid": "已登入 · UID {mid}",
+  "@accountsLoggedInUid": {
+    "placeholders": {
+      "mid": {
+        "type": "int"
+      }
+    }
+  },
+  "accountsCarryCookie": "攜帶 Cookie 請求",
+  "accountsCarryCookieOn": "已開啟：B 站 API 以登入身份請求",
+  "accountsCarryCookieOff": "已關閉：B 站 API 以訪客身份請求",
+  "accountsCookieScope": "Cookie 使用範圍",
+  "accountsCookieScopeSubtitle": "選擇哪些請求使用帳號 Cookie",
+  "cookieScopeTitle": "Cookie 使用範圍",
+  "cookieScopeHint": "僅影響以下請求類型；「攜帶 Cookie 請求」總開關關閉時，下列設定不生效。B 站在線收藏夾操作始終攜帶登入 Cookie。",
+  "cookieScopeVideo": "影片詳情與播放",
+  "cookieScopeVideoDesc": "影片詳情、播放位址與歷史進度回報",
+  "cookieScopeComments": "評論",
+  "cookieScopeCommentsDesc": "評論區列表請求",
+  "cookieScopeSearch": "搜尋",
+  "cookieScopeSearchDesc": "搜尋建議與搜尋結果請求",
+  "cookieScopeArticle": "專欄與動態",
+  "cookieScopeArticleDesc": "專欄文章與動態內容請求",
+  "cookieScopeUserSpace": "使用者空間",
+  "cookieScopeUserSpaceDesc": "UP 主空間、投稿與粉絲列表請求",
+  "cookieScopeSeason": "番劇與劇集",
+  "cookieScopeSeasonDesc": "番劇詳情與劇集列表請求",
+  "cookieScopeInteractions": "互動操作",
+  "cookieScopeInteractionsDesc": "按讚、投幣、收藏、追蹤、發送彈幕等；關閉後無法互動",
+  "cookieScopeEnableAll": "全部開啟",
+  "cookieScopeDisableAll": "全部關閉",
+  "accountsWebdavCloud": "WebDAV 雲端硬碟",
+  "accountsWebdavConfiguredOn": "已設定 · 自動備份已開啟",
+  "accountsWebdavConfiguredOff": "已設定 · 自動備份未開啟",
+  "accountsWebdavNotConfigured": "未設定 · 點擊進入設定",
+  "accountsTitle": "帳號",
+  "accountsSectionBili": "B 站帳號",
+  "commonBackTooltip": "向上瀏覽",
+  "biliLoginFetchingQr": "正在取得 QR Code…",
+  "biliLoginQrFetchFailed": "取得 QR Code 失敗，請檢查網絡",
+  "biliLoginScanWithApp": "請使用 B 站 App 掃碼登入",
+  "biliLoginInputAccountPwd": "請輸入帳號和密碼",
+  "biliLoginFailedRetry": "登入失敗，請重試",
+  "biliLoginTitle": "B 站登入",
+  "biliLoginScanMode": "掃碼登入",
+  "biliLoginCookieMode": "貼上 Cookie",
+  "biliLoginPwdMode": "密碼登入",
+  "biliLoginViaBrowser": "使用內置瀏覽器登入",
+  "biliLoginCookieHint": "登入後「攜帶 Cookie 請求」預設開啟，可在 設定 → 帳號 中關閉",
+  "biliLoginWebTitle": "網頁版登入",
+  "biliLoginCookieImportFailed": "網頁登入 Cookie 匯入失敗，請重試或改用其他方式",
+  "biliLoginRefetch": "重新取得",
+  "biliLoginRefreshQr": "重新整理 QR Code",
+  "biliLoginScanTip": "提示：開啟 B 站 App → 掃一掃，或使用「嗶哩嗶哩」小程式掃碼",
+  "biliLoginCookieInstruction": "在電腦瀏覽器登入 bilibili.com，按 F12 開啟開發者工具 → Application → Cookies → bilibili.com，複製全部 Cookie（以 SESSDATA= 開頭的一串），貼到下方輸入框",
+  "biliLoginVerifying": "驗證中…",
+  "biliLoginVerifyAndLogin": "登入並驗證",
+  "biliLoginAccountLabel": "帳號（手機號碼 / 信箱 / 用戶名稱）",
+  "biliLoginPasswordLabel": "密碼",
+  "biliLoginLoggingIn": "登入中…",
+  "biliLoginLoginAction": "登入",
+  "biliLoginSliderHint": "帳號密碼登入可能觸發滑塊驗證碼，完成驗證後會自動重試",
+  "searchFilterAny": "不限",
+  "searchFilterLastDay": "最近一天",
+  "searchFilterLastWeek": "最近一週",
+  "searchFilterHalfYear": "最近半年",
+  "searchFilterAllDuration": "全部時長",
+  "searchFilterDur0to10": "0-10 分鐘",
+  "searchFilterDur10to30": "10-30 分鐘",
+  "searchFilterDur30to60": "30-60 分鐘",
+  "searchFilterDur60plus": "60 分鐘以上",
+  "searchZoneAll": "全部",
+  "searchZoneAnime": "動畫",
+  "searchZoneGuochuang": "國創",
+  "searchZoneMusic": "音樂",
+  "searchZoneDance": "舞蹈",
+  "searchZoneGame": "遊戲",
+  "searchZoneKnowledge": "知識",
+  "searchZoneTech": "科技",
+  "searchZoneSports": "運動",
+  "searchZoneCar": "汽車",
+  "searchZoneLife": "生活",
+  "searchZoneFood": "美食",
+  "searchZoneAnimal": "動物",
+  "searchZoneKichiku": "鬼畜",
+  "searchZoneFashion": "時尚",
+  "searchZoneInfo": "資訊",
+  "searchZoneEnt": "娛樂",
+  "searchZoneDoc": "紀錄",
+  "searchZoneFilm": "電影",
+  "searchZoneTv": "電視",
+  "searchCaptchaInitFailed": "驗證碼初始化失敗",
+  "searchCaptchaIncomplete": "未完成滑塊驗證",
+  "searchCaptchaValidateFailed": "驗證碼校驗失敗",
+  "searchCaptchaValidateFailedRetry": "驗證碼校驗失敗，請重試",
+  "searchCaptchaPassed": "驗證通過，正在重新搜尋",
+  "searchBiliHint": "搜尋 B 站…",
+  "searchHistoryTitle": "搜尋歷史",
+  "searchHistoryClear": "清空",
+  "searchHistoryClearConfirm": "確定清空目前分區的搜尋歷史？",
+  "searchHistoryEmpty": "暫無搜尋歷史",
+  "drawerSearch": "搜尋",
+  "drawerDynamics": "動態",
+  "drawerMessages": "訊息",
+  "drawerMine": "我的",
+  "biliAccountNotLoggedIn": "帳號未登入",
+  "bottomNavMoveUp": "上移",
+  "bottomNavMoveDown": "下移",
+  "bottomNavSettingsTitle": "底欄導航",
+  "bottomNavSettingsSubtitle": "拖動調整順序（第一個為啟動時的預設頁），取消勾選可隱藏",
+  "bottomNavItemHome": "首頁",
+  "bottomNavItemDynamics": "動態",
+  "bottomNavItemLive": "直播",
+  "bottomNavSettingsReset": "重設",
+  "bottomNavSettingsKeepOne": "至少保留一個導航項",
+  "prefSearchSection": "搜尋",
+  "prefSearchTrending": "熱搜（大家都在搜）",
+  "prefSearchTrendingSub": "搜尋頁展示熱搜詞條與完整榜單入口",
+  "prefSearchDiscovery": "搜尋發現",
+  "prefSearchDiscoverySub": "搜尋頁展示「搜尋發現」推薦詞",
+  "searchTrendingTitle": "大家都在搜",
+  "searchTrendingFullList": "完整榜單",
+  "searchDiscoveryTitle": "搜尋發現",
+  "hotSearchTitle": "bilibili熱搜",
+  "searchDiscoveryFailed": "載入失敗",
+  "searchDiscoveryEmpty": "暫無推薦",
+  "searchVideoFilter": "影片搜尋篩選",
+  "searchFilterWithCount": "篩選 · {count}",
+  "@searchFilterWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchFilter": "篩選",
+  "searchSwitchSingleCol": "單欄",
+  "searchSwitchMulti": "多欄",
+  "searchLayoutMulti": "多欄",
+  "searchLayoutSingle": "單欄",
+  "searchPickStartDate": "選擇開始日期",
+  "searchPickEndDate": "選擇結束日期",
+  "searchPubTimeSection": "發佈時間",
+  "searchDateBegin": "開始",
+  "searchDateTo": "至",
+  "searchDateEnd": "結束",
+  "searchDurationSection": "內容時長",
+  "searchZoneSection": "內容分區",
+  "searchAntiFuzzy": "防模糊搜尋",
+  "searchAntiFuzzyHint": "限定 2009-06-26 至今的結果，避免異常早期數據干擾",
+  "searchFilterReset": "重設",
+  "searchAllLoaded": "— 已全部載入 —",
+  "searchKeywordHint": "輸入關鍵字搜尋 B 站",
+  "searchPressToSearch": "點擊「搜尋」或按 Enter 開始搜尋",
+  "searchNoResultInType": "「{keyword}」在{type}中暫無結果",
+  "@searchNoResultInType": {
+    "placeholders": {
+      "keyword": {
+        "type": "String"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "searchResultsCount": "{type} · 共 {count} 個結果",
+  "@searchResultsCount": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "userSpaceLoadFailed": "載入失敗",
+  "userSpaceAvatarLoadFailed": "頭像載入失敗",
+  "userSpaceTitle": "UP 主空間",
+  "userSpaceLoading": "正在載入 UP 主空間…",
+  "userSpaceLoadingName": "載入中…",
+  "userSpaceStatFans": "粉絲",
+  "userSpaceStatFollowing": "關注",
+  "userSpaceStatVideos": "影片",
+  "userSpaceStatLikes": "獲讚",
+  "userSpaceVideoCount": "共 {count} 部影片",
+  "@userSpaceVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userSpaceSectionAllVideos": "全部影片",
+  "userSpaceNoVideos": "暫無投稿",
+  "userSpaceDynLoadFailed": "動態載入失敗",
+  "userSpaceNoDynamics": "暫無動態",
+  "userSpaceBangumiLoadFailed": "追番清單載入失敗",
+  "userSpaceNoBangumi": "暫無追番",
+  "userSpaceBangumiCount": "追番 · 共 {count} 部",
+  "@userSpaceBangumiCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userSpaceLazySign": "這個人很懶，什麼都沒有留下",
+  "userSpaceTabHome": "主頁",
+  "userSpaceTabDynamic": "動態",
+  "userSpaceTabBangumi": "追番",
+  "userSpaceToday": "今天",
+  "userSpaceBangumiFinished": "完結",
+  "userSpaceBangumiSerializing": "連載中",
+  "userSpaceBangumiAiringDate": "開播 {date}",
+  "@userSpaceBangumiAiringDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "browserApp": "應用程式",
+  "browserOpenAppAttempt": "網頁嘗試開啟: {app}",
+  "@browserOpenAppAttempt": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "browserNoAppForLink": "找不到可開啟此連結的應用程式",
+  "browserOpenFailedSystem": "開啟失敗: 未安裝對應應用程式或受系統限制",
+  "browserEmptyCookieHint": "這裡空空的",
+  "browserCopyAll": "複製全部",
+  "browserCookieCopied": "Cookie 已複製",
+  "browserCookieEmpty": "Cookie 空空如也",
+  "browserSetUaTitle": "設定 User-Agent",
+  "browserUaHint": "輸入自訂 User-Agent",
+  "browserApplyAndReload": "套用並重新整理",
+  "browserUaUpdated": "UA 已更新並重新整理頁面",
+  "browserUaSetFailed": "設定 UA 失敗: {error}",
+  "@browserUaSetFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "browserWindowsInitFailed": "Windows WebView 初始化失敗，請檢查是否已安裝 WebView2",
+  "browserBiliCookieReadFailed": "無法讀取完整的登入 Cookie（SESSDATA 為 HttpOnly，目前平台無法自動讀取），請改用掃碼登入或貼上 Cookie",
+  "browserCookieImportFailed": "Cookie 匯入失敗，請重試",
+  "browserStoppedLoading": "已停止載入",
+  "browserClipboardAllowed": "已允許網頁寫入剪貼簿",
+  "browserClipboardBlocked": "已禁止網頁自動寫入剪貼簿",
+  "browserNoCurrentUrl": "無法取得目前連結",
+  "browserTroubleshootFailed": "開啟失敗，請檢查「取得說明」是否存在",
+  "browserSystemBrowserMissing": "系統瀏覽器不見了(",
+  "browserQrTitle": "掃我",
+  "browserSaveToDevice": "儲存到裝置",
+  "browserQrSaved": "QR Code 已儲存到相簿/圖片庫",
+  "browserSaveFailed": "儲存失敗: {error}",
+  "@browserSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "browserStopLoading": "停止載入",
+  "browserImporting": "匯入中…",
+  "browserLoginDoneImport": "登入完成，匯入",
+  "browserClipboardAccess": "剪貼簿存取",
+  "browserShareQr": "分享 QR Code",
+  "browserCopyLink": "複製連結",
+  "browserViewCookies": "檢視 Cookies",
+  "browserSetUa": "設定 UA",
+  "browserUaModeAuto": "自動（跟隨系統）",
+  "browserUaModeDesktop": "電腦端",
+  "browserUaModeMobile": "手機端",
+  "browserRefresh": "重新整理",
+  "browserSystemBrowser": "系統瀏覽器",
+  "browserTroubleshootNetwork": "偵測連線問題",
+  "browserUnsupportedPlatform": "目前平台不支援內置瀏覽器",
+  "browserOpenedInSystem": "已嘗試在系統瀏覽器中開啟",
+  "browserReopenInSystem": "重新用系統瀏覽器開啟",
+  "browserAndroidErrorTitle": "沒有指令",
+  "browserAndroidErrorCause": "原因",
+  "browserAndroidErrorDetail": "WebView 元件初始化失敗\n可能是系統 WebView 未更新或已停用",
+  "browserUpdateWebview": "前往 Google Play 更新 Android System WebView",
+  "browserOpenDevOptions": "開啟開發者選項檢視 WebView 實作",
+  "browserAppleErrorTitle": "應用程式未預期的結束",
+  "browserAppleErrorReport": "問題報告",
+  "browserAppleErrorDetail": "無法在此裝置上初始化內嵌瀏覽器。請確認作業系統已更新至最新版本。",
+  "browserBsodMessage": "你的 Webview2 發生問題，我們需要收集一些錯誤資訊，然後為你重新啟動應用程式。",
+  "browserBsodNoRestart": "（其實不用重新啟動，安裝完元件即可）",
+  "browserBsodComplete": "100% 完成",
+  "browserBsodSolutions": "檢視解決方案：",
+  "browserBsodDownload": "下載 Webview2 執行階段",
+  "browserBsodWinUpdate": "開啟 Windows 更新設定",
+  "browserBsodScanQr": "掃描此 QR Code 取得解決方案",
+  "browserBsodStopCode": "終止代碼：WEBVIEW2_RUNTIME_MISSING",
+  "browserCantOpenExternal": "無法開啟外部連結",
+  "callOutgoing": "正在撥打...",
+  "callIncoming": "來電...",
+  "callConnecting": "連線中...",
+  "chatConnectionNotEstablishedImage": "連線未建立，無法傳送圖片",
+  "chatImageSent": "✅ 圖片已傳送",
+  "chatImageSendFailed": "傳送圖片失敗",
+  "chatClipboardImageProcessFailed": "處理剪貼簿圖片失敗：{error}",
+  "@chatClipboardImageProcessFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatImageStaged": "🖼️ 圖片已加入輸入框",
+  "chatClipboardNoImage": "剪貼簿沒有圖片資料",
+  "chatClipboardImageFetchFailed": "取得剪貼簿圖片失敗：{error}",
+  "@chatClipboardImageFetchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatClipboardEmptyOrUnsupported": "剪貼簿為空或格式不支援",
+  "chatConnectionNotEstablishedFile": "連線未建立，無法傳送檔案",
+  "chatFileNotExist": "檔案不存在",
+  "chatFileSendFailed": "傳送檔案失敗",
+  "chatFileSentSuccess": "✅ {fileName} 傳送成功",
+  "@chatFileSentSuccess": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFileSendError": "傳送檔案失敗：{error}",
+  "@chatFileSendError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatIpUnknown": "IP 未知",
+  "chatReconnecting": "正在重新建立連線...",
+  "chatReconnectFailed": "重新連線失敗，請檢查網絡或對方是否在線",
+  "chatStatusUnknown": "狀態未知",
+  "chatStatusWaiting": "等待連線",
+  "chatMe": "我",
+  "chatFileInfoLost": "（檔案資訊遺失）",
+  "chatOpenFileFailed": "無法開啟檔案：{message}",
+  "@chatOpenFileFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFileNotDownloaded": "檔案尚未下載",
+  "chatOpenFileError": "開啟檔案失敗：{error}",
+  "@chatOpenFileError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFilePathUnavailable": "無法取得檔案路徑（Android 權限限制？）",
+  "chatPickFileFailed": "選擇檔案失敗：{error}",
+  "@chatPickFileFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatImagePathUnavailable": "無法取得圖片路徑",
+  "chatPickImageFailed": "選擇圖片失敗：{error}",
+  "@chatPickImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatCopyText": "複製文字",
+  "chatSelectText": "選取文字",
+  "chatOpenFile": "開啟檔案",
+  "chatCopyImage": "複製圖片",
+  "chatSaveImage": "儲存圖片",
+  "chatCopyingImage": "正在複製圖片...",
+  "chatImageCopied": "✅ 圖片已複製到剪貼簿",
+  "chatCopyFailed": "複製失敗",
+  "chatCopyImageFailed": "複製圖片失敗: {error}",
+  "@chatCopyImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatSaving": "正在儲存...",
+  "chatSaveSuccess": "✅ 儲存成功",
+  "chatSaveFailed": "儲存失敗: {error}",
+  "@chatSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatMessageContent": "訊息內容",
+  "chatEmptyContent": "（這裡空空的）",
+  "chatDeleteMessageConfirm": "確定要刪除這則訊息嗎？",
+  "chatMessageDeleted": "訊息已刪除",
+  "chatOpenLinkTitle": "開啟連結",
+  "chatWillOpen": "將開啟：{url}",
+  "@chatWillOpen": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "chatBrowserTitle": "內置網頁瀏覽器",
+  "chatCantOpenLink": "無法開啟連結",
+  "chatOpenLinkFailed": "開啟連結失敗：{error}",
+  "@chatOpenLinkFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatPlusImage": "圖片",
+  "chatPlusFile": "檔案",
+  "chatImageReady": "圖片已就緒",
+  "chatMore": "更多",
+  "chatPasteImage": "貼上圖片",
+  "chatInputHint": "輸入訊息...",
+  "chatEmoji": "表情符號",
+  "chatSend": "傳送",
+  "chatInvalidAddress": "連線地址無效，無法傳送",
+  "chatImageSendError": "圖片傳送失敗",
+  "chatSendFailed": "傳送失敗：{error}",
+  "@chatSendFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatConnStatusUnknown": "連線狀態未知，無法傳送訊息",
+  "chatPendingCannotSend": "等待對方驗證，無法傳送訊息",
+  "chatConnRejected": "連線已被拒絕",
+  "chatConnDisconnected": "對方已中斷連線",
+  "chatConnNotEstablished": "連線尚未建立，無法傳送訊息",
+  "chatNoMessages": "暫無訊息，開始聊天吧",
+  "chatDisconnectedRetry": "連線已中斷，點擊嘗試重新連線",
+  "chatRejectedRetry": "連線被拒絕，點擊重試",
+  "chatExpandInput": "展開輸入欄",
+  "discoverMyLanIps": "我的區域網絡 IP",
+  "discoverNoIpOfType": "找不到此類型的有效 IP，請檢查網絡連線。",
+  "discoverIpCopied": "已複製 {ip}",
+  "@discoverIpCopied": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "discoverTitle": "發現附近裝置",
+  "discoverMyIp": "我的 IP",
+  "discoverRefreshBroadcast": "重新整理/廣播",
+  "discoverLanDevices": "區域網絡裝置",
+  "discoverSearching": "正在尋找附近的裝置...",
+  "discoverSendRequest": "點擊傳送連線請求",
+  "discoverPendingVerify": "等待對方驗證...",
+  "discoverRejectedRetry": "已被拒絕，點擊重試",
+  "discoverDisconnectedRetry": "已中斷，點擊重新連線",
+  "discoverUnknownDevice": "未知裝置",
+  "discoverAlreadyConnected": "此裝置已連線",
+  "discoverAlreadyPending": "正在等待對方驗證，請勿重複傳送",
+  "discoverConnectFailed": "連線失敗，請檢查網絡或對方是否在線",
+  "discoverManualConnect": "手動連線到對等端",
+  "discoverConnectIpHint": "輸入 IP 地址（例如：192.168.1.100 / fe80::1）",
+  "displayScaleCompact": "緊湊模式 · 顯示更多內容",
+  "displayScaleSmall": "略小 · 適合大螢幕",
+  "displayScaleDefault": "預設",
+  "displayScaleLarge": "略大 · 更容易閱讀",
+  "displayScaleLargeFont": "大字體 · 無障礙友善",
+  "displayScaleHuge": "超大 · 輔助功能",
+  "displayScaleMin": "最小 · 資訊密度最高",
+  "displayScaleCompactBig": "緊湊 · 適合大螢幕",
+  "displayScaleSystemDefault": "系統預設",
+  "displayScaleLargeFontShort": "大字體 · 無障礙",
+  "displayScaleTitle": "顯示縮放",
+  "displaySplashBackground": "啟動頁背景",
+  "displaySplashBackgroundCustom": "已自訂，下次冷啟動生效",
+  "displaySplashBackgroundDefault": "預設",
+  "displaySplashBackgroundSetDone": "已設定啟動頁背景，下次啟動生效",
+  "displaySplashBackgroundSetFailed": "設定啟動頁背景失敗",
+  "displaySplashBackgroundCleared": "已恢復預設啟動頁",
+  "displaySplashBackgroundClearTooltip": "恢復預設",
+  "displayHeroTransitionBlur": "使用新版動畫",
+  "displayIosPushTransition": "iOS 風格頁面切換",
+  "displayIosPushTransitionCorner": "轉場圓角",
+  "displayIosPushTransitionCornerAuto": "自動適配螢幕圓角",
+  "displayIosPushTransitionCornerUnsupported": "目前裝置未提供螢幕圓角資訊，使用下方手動值",
+  "searchIosPushTransition": "iOS 頁面切換動畫",
+  "pageBgTitle": "頁面背景圖",
+  "pageBgSubtitle": "設定類頁面共用的背景圖，選擇後可裁剪",
+  "pageBgEnabled": "顯示頁面背景圖",
+  "pageBgOpacity": "背景強度",
+  "pageBgBlur": "背景模糊",
+  "pageBgNotSet": "未設置",
+  "pageBgPick": "選擇並裁剪圖片",
+  "pageBgClear": "清除背景圖",
+  "pageBgContentSection": "內容頁共享",
+  "pageBgContentEnabled": "在內容頁啟用",
+  "pageBgContentSubtitle": "搜尋 / 推薦 / 熱門 / 番劇 / 直播頁共用這一張背景圖",
+  "pageBgContentOpacity": "內容頁強度",
+  "pageBgContentBlur": "內容頁模糊",
+  "pageBgContentPick": "為內容頁選擇並裁切",
+  "pageBgContentClear": "清除內容頁背景圖",
+  "pageBgSaved": "背景圖已更新",
+  "pageBgCleared": "背景圖已清除",
+  "pageBgPickFailed": "選擇圖片失敗",
+  "cropTitle": "裁剪背景圖",
+  "cropAspectFree": "自由",
+  "cropApply": "應用",
+  "cropReset": "重置",
+  "displayAdvancedGlass": "高級渲染",
+  "displayDisableLiquidGlassMenus": "減弱效果",
+  "displayMenuJelly": "選單果凍動畫",
+  "displayMenuJellyHint": "彈出選單的液態形態變形動畫（關閉後選單瞬時出現）",
+  "displayBottomBarJelly": "底欄果凍效果",
+  "displayBottomBarJellyHint": "底部導覽指示器的果凍物理（關閉後退回簡單變色）",
+  "displayVideoCardGlass": "影片卡片玻璃材質",
+  "displayVideoCardGlassHint": "開啟後影片卡片使用液態玻璃材質（較吃效能：一屏多卡全玻璃渲染）",
+  "displayChatGlass": "私訊 / 訊息玻璃材質",
+  "displayChatGlassHint": "開啟後聊天氣泡、訊息卡片使用液態玻璃材質",
+  "displayLiquidGlassTuner": "液態玻璃調校",
+  "displayLiquidGlassTunerSubtitle": "調整玻璃厚度、模糊、著色、折射率等材質參數",
+  "lgTunerPreview": "即時預覽",
+  "lgTunerSectionMaterial": "材質參數",
+  "lgTunerThickness": "玻璃厚度",
+  "lgTunerBlur": "背景模糊",
+  "lgTunerTint": "著色強度",
+  "lgTunerSaturation": "飽和度",
+  "lgTunerRefractiveIndex": "折射率",
+  "lgTunerLightIntensity": "高光強度",
+  "lgTunerAmbient": "環境光",
+  "lgTunerLightAngle": "光源角度",
+  "lgTunerAberration": "色散",
+  "lgTunerReset": "恢復預設",
+  "lgTunerNote": "調整即時生效並全域套用：未單獨指定參數的玻璃表面（下拉選單、彈窗等）都會跟隨；聊天頁頂欄等顯式設定的表面保持獨立樣式。",
+  "lgTunerFallbackNote": "目前平台不支援進階玻璃渲染（Impeller），預覽為 FakeGlass 效果；厚度、折射率、飽和度等參數僅行動端生效。",
+  "displayScaleReset": "重設為 100%",
+  "displayScaleFineTune": "精細調整",
+  "displayScalePresets": "快捷預設",
+  "displayScaleNote": "縮放比例會全域套用於文字與部分版面尺寸。設為 100% 可恢復預設。修改立即生效，無需重新啟動。",
+  "displayScaleConnCount": "{count} 個連線",
+  "@displayScaleConnCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "displayThemeLight": "淺色",
+  "displayThemeDark": "深色",
+  "displaySettingsTitle": "顯示",
+  "displaySectionAppearance": "外觀",
+  "displayThemeMode": "主題模式",
+  "displayPureBlack": "純黑深色模式",
+  "displayPureBlackOn": "深色模式（已黑化）",
+  "displayOff": "已關閉",
+  "displaySectionPersonalize": "個人化",
+  "displayThemeColor": "主題配色",
+  "displayFollowSystemColor": "跟隨系統配色",
+  "displayFontWeight": "文字粗細",
+  "displaySeedDefaultGreen": "預設綠",
+  "displaySeedPink": "粉紅色",
+  "displaySeedRed": "紅色",
+  "displaySeedOrange": "橙色",
+  "displaySeedAmber": "琥珀色",
+  "displaySeedYellow": "黃色",
+  "displaySeedLime": "酸橙色",
+  "displaySeedLightGreen": "淺綠色",
+  "displaySeedGreen": "綠色",
+  "displaySeedCyan": "青色",
+  "displaySeedTeal": "藍綠色",
+  "displaySeedLightBlue": "淺藍色",
+  "displaySeedBlue": "藍色",
+  "displaySeedIndigo": "靛藍色",
+  "displaySeedPurple": "紫色",
+  "displaySeedDeepPurple": "深紫色",
+  "displaySeedBlueGrey": "藍灰色",
+  "displaySeedBrown": "棕色",
+  "displaySeedGrey": "灰色",
+  "displaySeedCustom": "自訂",
+  "displayWeightThin": "極細 ({weight})",
+  "@displayWeightThin": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightLight": "細 ({weight})",
+  "@displayWeightLight": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightRegular": "標準 ({weight})",
+  "@displayWeightRegular": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightMedium": "中等 ({weight})",
+  "@displayWeightMedium": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightBold": "粗 ({weight})",
+  "@displayWeightBold": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightBlack": "極粗 ({weight})",
+  "@displayWeightBlack": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightCustom": "自訂 ({weight})",
+  "@displayWeightCustom": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "fontWeightThin": "極細",
+  "fontWeightLight": "細",
+  "fontWeightRegular": "標準",
+  "fontWeightMedium": "中等",
+  "fontWeightBold": "粗",
+  "fontWeightBlack": "極粗",
+  "fontWeightSampleText": "The quick brown fox jumps over the lazy dog.\n敏捷的棕色狐狸跳過懶惰的狗。",
+  "fontWeightSaveApply": "儲存並套用",
+  "geetestTitle": "完成滑塊驗證",
+  "geetestInitFailed": "驗證碼元件初始化失敗，請重試或改用其他登入方式",
+  "geetestUnsupported": "目前平台不支援內置驗證碼，請使用掃碼或 Cookie 登入",
+  "slicerPickImageFirst": "請先選擇圖片",
+  "slicerRowColInvalid": "行數與列數必須大於 0",
+  "slicerSuccess": "切割成功，已加入開始畫面",
+  "slicerSaveFailed": "儲存失敗: {error}",
+  "@slicerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "slicerTitle": "圖片切割磁貼",
+  "slicerTileSize": "磁貼尺寸（所有碎片皆相同）",
+  "slicerColsLabel": "列數 (Cols)",
+  "slicerRowsLabel": "行數 (Rows)",
+  "slicerPreview": "預覽：將切割為 {count} 個 {type} 磁貼",
+  "@slicerPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "slicerProcessing": "處理中...",
+  "slicerSaveToStart": "儲存到開始畫面",
+  "viewerSaving": "正在儲存...",
+  "viewerSaveSuccess": "儲存成功",
+  "viewerSaveFailed": "儲存失敗: {error}",
+  "@viewerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerShareImage": "分享圖片",
+  "viewerShareFailed": "分享失敗: {error}",
+  "@viewerShareFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerCopying": "正在複製...",
+  "viewerCopyFailed": "複製失敗: {error}",
+  "@viewerCopyFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerSaveToAlbum": "儲存到相簿",
+  "viewerCopyToClipboard": "複製到剪貼簿",
+  "viewerImageLoadFailed": "圖片載入失敗",
+  "viewerImageDataNotFound": "找不到圖片資料",
+  "userSpaceMidInvalid": "mid 無效",
+  "userSpaceNoCard": "回應缺少 card",
+  "userSpaceNoList": "回應缺少 list",
+  "searchTypeVideo": "影片",
+  "searchTypeBangumi": "番劇",
+  "searchTypeFt": "影視",
+  "searchTypeLive": "直播間",
+  "searchTypeUser": "用戶",
+  "searchTypeArticle": "專欄",
+  "tenThousandUnit": "萬",
+  "searchVideoMeta": "{play}播放 · {danmaku}彈幕",
+  "@searchVideoMeta": {
+    "placeholders": {
+      "play": {
+        "type": "String"
+      },
+      "danmaku": {
+        "type": "String"
+      }
+    }
+  },
+  "searchScore": "評分 {score}",
+  "@searchScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "searchOnline": "{count}人在線",
+  "@searchOnline": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "searchUserMeta": "{fans}粉絲 · {videos}影片",
+  "@searchUserMeta": {
+    "placeholders": {
+      "fans": {
+        "type": "String"
+      },
+      "videos": {
+        "type": "String"
+      }
+    }
+  },
+  "searchArticleMeta": "{views}閱讀 · {replies}評論",
+  "@searchArticleMeta": {
+    "placeholders": {
+      "views": {
+        "type": "String"
+      },
+      "replies": {
+        "type": "String"
+      }
+    }
+  },
+  "searchBadgeCourse": "課堂",
+  "searchBadgeLive": "直播",
+  "searchBadgeCoop": "合作",
+  "searchBadgeLiveNow": "直播中",
+  "searchKeywordEmpty": "關鍵詞為空",
+  "searchBadResponse": "回應格式異常",
+  "searchFailed": "搜尋失敗",
+  "searchGaiaParamMissing": "gaia register 參數缺失",
+  "searchGaiaRegisterError": "gaia register 異常: {error}",
+  "@searchGaiaRegisterError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchGaiaValidateFailed": "gaia validate 未通過 (is_valid={isValid})",
+  "@searchGaiaValidateFailed": {
+    "placeholders": {
+      "isValid": {
+        "type": "int"
+      }
+    }
+  },
+  "searchGaiaValidateError": "gaia validate 異常: {error}",
+  "@searchGaiaValidateError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentOidEmpty": "oid 為空",
+  "commentException": "異常: {error}",
+  "@commentException": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentSubHttpError": "樓中樓 HTTP {code}",
+  "@commentSubHttpError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSubNoData": "樓中樓回應缺少 data",
+  "commentSubException": "樓中樓異常: {error}",
+  "@commentSubException": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentNotLoggedIn": "未登入或未開啟「攜帶 Cookie 請求」",
+  "commentMissingJct": "Cookie 缺少 bili_jct，請重新登入",
+  "commentNetworkError": "網絡異常: {error}",
+  "@commentNetworkError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentApiError": "{message}（code={code}）",
+  "@commentApiError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      },
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "deviceOs": "作業系統",
+  "deviceBuild": "內部建置編號",
+  "deviceSecurityPatch": "安全性修補程式",
+  "deviceOem": "OEM 廠商",
+  "deviceBrand": "品牌",
+  "deviceModel": "型號",
+  "deviceRomVersion": "ROM/顯示版本",
+  "deviceFingerprint": "裝置指紋",
+  "deviceName": "裝置名稱",
+  "deviceComputerName": "電腦名稱",
+  "deviceHardwareModel": "硬件型號",
+  "deviceKernel": "核心版本",
+  "deviceDistro": "發行版",
+  "deviceVersion": "版本",
+  "devicePlatform": "平台",
+  "deviceInfoFailed": "取得資訊失敗: {error}",
+  "@deviceInfoFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "logWebUnsupported": "（Web 不支援檔案日誌）",
+  "logNotInitialized": "（未初始化）",
+  "logAppDataDir": "應用程式資料目錄\n{path}",
+  "@logAppDataDir": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logAppDataRoaming": "AppData（Roaming）\n{path}",
+  "@logAppDataRoaming": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logAppSupport": "Application Support\n{path}",
+  "@logAppSupport": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logLocalDataDir": "本機資料目錄\n{path}",
+  "@logLocalDataDir": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "nowPlayingVideo": "正在播放影片",
+  "commonUnknown": "未知",
+  "unnamedPlaylist": "未命名的播放清單",
+  "unknownVideo": "未知影片",
+  "dohQueryFailed": "DoH 查詢失敗: HTTP {code}",
+  "@dohQueryFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "tcpConnectSuccess": "TCP 連線成功",
+  "netModeCompat": "Host 映射 IP 直連，繞過 SNI 干擾",
+  "netModeStandard": "系統預設網絡堆疊",
+  "netHostResolveFailed": "無法解析主機 {host}",
+  "@netHostResolveFailed": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "biliCookieEmpty": "Cookie 為空",
+  "biliCookieIncomplete": "Cookie 不完整，請從瀏覽器複製全部 Cookie（需包含 SESSDATA）",
+  "biliCookieMissingJct": "Cookie 缺少 bili_jct，請重新從瀏覽器複製完整 Cookie（點讚/發評論等操作依賴它）",
+  "biliCookieInvalid": "Cookie 無效或已過期，請重新從瀏覽器複製",
+  "biliLoginSuccess": "登入成功",
+  "biliHttpError": "HTTP {code}",
+  "@biliHttpError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "biliRiskBlocked": "請求被風控攔截(-412)，請稍後重試",
+  "biliQrExpired": "QR Code 已失效",
+  "biliQrScanned": "已掃描，請在手機上確認",
+  "biliQrWaiting": "等待掃描",
+  "biliRequestFailed": "請求失敗",
+  "biliResponseNoData": "回應缺少 data",
+  "biliQrNoSessionCookie": "未取得工作階段 Cookie，請重新整理 QR Code 後重試",
+  "biliQrMissingJct": "QR Code 登入未取得完整工作階段（缺少 bili_jct），請改用「貼上 Cookie」或「瀏覽器登入」方式",
+  "biliNoSessionCookie": "未取得工作階段 Cookie",
+  "biliWebKeyFailed": "取得登入公鑰失敗，請檢查網絡",
+  "biliPwdEncryptFailed": "密碼加密失敗",
+  "biliNeedGeetest": "需要完成滑塊驗證",
+  "biliUnknownError": "未知錯誤",
+  "csPlaylists": "播放清單",
+  "csDanmaku": "彈幕",
+  "csCloudEncrypted": "雲端數據已加密，請先在 WebDAV 設定中填寫同步密碼",
+  "csCloudPassMismatch": "雲端數據已加密且同步密碼不匹配，無法同步",
+  "csCloudNoFile": "雲端沒有播放清單檔案，無法還原",
+  "csRestoredFromCloud": "已從雲端還原",
+  "csSyncDone": "同步完成",
+  "csUploadBgCount": "上傳背景圖 {count} 張",
+  "@csUploadBgCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDownloadBgCount": "下載背景圖 {count} 張",
+  "@csDownloadBgCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csUploadedFileCount": "上傳 {count} 個檔案",
+  "@csUploadedFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDownloadedFileCount": "下載 {count} 個檔案",
+  "@csDownloadedFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csMergedListsCount": "合併 {count} 個清單",
+  "@csMergedListsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csEncrypted": "已加密",
+  "csSyncFailed": "同步失敗: {error}",
+  "@csSyncFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "csUploadedPlaylists": "已上傳 {count} 個播放清單到雲端",
+  "@csUploadedPlaylists": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDanmakuSummary": "上傳 {uploaded} 個，下載 {downloaded} 個",
+  "@csDanmakuSummary": {
+    "placeholders": {
+      "uploaded": {
+        "type": "int"
+      },
+      "downloaded": {
+        "type": "int"
+      }
+    }
+  },
+  "csDanmakuFailed": "，失敗 {failed} 個（{details}）",
+  "@csDanmakuFailed": {
+    "placeholders": {
+      "failed": {
+        "type": "int"
+      },
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownUser": "未知用戶",
+  "transferSpeedBody": "{fileName}  {speed} KB/s",
+  "@transferSpeedBody": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "sendingFile": "傳送檔案",
+  "receivingFile": "接收: {fileName}",
+  "@receivingFile": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationChannelName": "聊天訊息",
+  "notificationChannelDesc": "接收聊天訊息和快速回覆",
+  "notificationReply": "回覆",
+  "screenshotSavedTitle": "截圖已儲存",
+  "screenshotSavedToAlbum": "截圖已儲存到相簿",
+  "notificationConfirm": "確認",
+  "callInProgressError": "目前有未結束的通話，請先掛斷",
+  "callTcpFailed": "無法連線對方（TCP 建立失敗），請確認對方在線",
+  "callConnectionDropped": "連線建立後立即中斷，請檢查網絡或對方狀態",
+  "callInitFailed": "發起通話失敗：{error}",
+  "@callInitFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "callAcceptFailed": "接聽通話失敗：{error}",
+  "@callAcceptFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "callRecordVoice": "語音通話",
+  "callRecordMissedOutgoing": "未接通話",
+  "callRecordRejected": "已拒絕來電",
+  "callRecordMissedIncoming": "未接來電",
+  "callPeerNoAnswer": "對方未接聽",
+  "callUnknown": "未知",
+  "callInProgress": "通話中",
+  "webdavHttpWarning": "警告：使用 HTTP 連線，憑證將以明文傳輸。建議使用 HTTPS。",
+  "webdavConfigRequired": "請先填寫伺服器地址和使用者名稱",
+  "webdavAuthFailed": "認證失敗：使用者名稱或密碼錯誤",
+  "webdavConnectFailed": "連線失敗：HTTP {code}",
+  "@webdavConnectFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNetworkError": "網絡錯誤：無法連線到伺服器 ({msg})",
+  "@webdavNetworkError": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavUnknownError": "未知錯誤：{error}",
+  "@webdavUnknownError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavNotConfigured": "WebDAV 未設定",
+  "webdavLocalFileMissing": "本機檔案不存在: {path}",
+  "@webdavLocalFileMissing": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavUploadFailed": "上傳失敗：HTTP {code}",
+  "@webdavUploadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavUploadError": "上傳異常：{error}",
+  "@webdavUploadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavDownloadFailed": "下載失敗: HTTP {code}",
+  "@webdavDownloadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavDownloadError": "下載異常: {error}",
+  "@webdavDownloadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavDeleteFailed": "刪除失敗: {error}",
+  "@webdavDeleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavListFailed": "列出檔案失敗: {error}",
+  "@webdavListFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPropfindFailed": "PROPFIND 失敗: HTTP {code}",
+  "@webdavPropfindFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNetworkErr": "網絡錯誤：{msg}",
+  "@webdavNetworkErr": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPreparingBackup": "準備備份 {count} 個檔案...",
+  "@webdavPreparingBackup": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavBackingUp": "正在備份 ({nickname}) {fileName}",
+  "@webdavBackingUp": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      },
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavBackupDone": "備份完成：{success} 成功，{fail} 失敗",
+  "@webdavBackupDone": {
+    "placeholders": {
+      "success": {
+        "type": "int"
+      },
+      "fail": {
+        "type": "int"
+      }
+    }
+  },
+  "commonCancel": "取消",
+  "commonOk": "確定",
+  "commonConnect": "連線",
+  "commonSave": "儲存",
+  "commonCreate": "建立",
+  "commonDelete": "刪除",
+  "drawerHome": "主頁",
+  "drawerVerificationRequests": "驗證請求",
+  "drawerSettings": "設定",
+  "drawerAbout": "關於",
+  "drawerCloseMenu": "關閉選單",
+  "drawerLockNow": "立即鎖定",
+  "drawerNoNickname": "未設定暱稱",
+  "drawerSwitchToDark": "切換到深色模式",
+  "drawerSwitchToLight": "切換到淺色模式",
+  "drawerLightMode": "淺色模式",
+  "drawerDarkMode": "深色模式",
+  "drawerSystemMode": "跟隨系統",
+  "drawerThemeSwitched": "已切換到 {mode}",
+  "@drawerThemeSwitched": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerFetchFailed": "獲取失敗: {error}",
+  "@drawerFetchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerNoDeviceInfo": "暫無裝置資料",
+  "drawerBackgroundTitle": "側邊欄背景",
+  "drawerBackgroundHasCustom": "目前已設定自訂背景，您可以更換或移除。",
+  "drawerBackgroundNoCustom": "為側邊欄設定一張個人化背景圖片。",
+  "drawerBackgroundUpdated": "✅ 側邊欄背景已更新",
+  "drawerBackgroundSetFailed": "❌ 設定失敗: {error}",
+  "@drawerBackgroundSetFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerBackgroundChange": "更換背景",
+  "drawerBackgroundSelect": "選擇背景圖片",
+  "drawerBackgroundRestored": "已還原預設背景",
+  "drawerBackgroundRemove": "移除背景",
+  "homeOpenMenu": "開啟選單",
+  "homeAddConnection": "新增連線",
+  "homeMessages": "訊息",
+  "homeNoConnections": "暫無連線",
+  "homePullToRefreshHint": "下拉重新整理或點擊右上角新增",
+  "homeLoadFailed": "聊天記錄載入失敗，請重試",
+  "homeRetryLoad": "重新載入",
+  "homeUnknownAddress": "未知地址",
+  "homeNoMessages": "暫無訊息",
+  "homeFileMessage": "[檔案] {fileName}",
+  "@homeFileMessage": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "homeFileFallbackName": "檔案",
+  "homeMessagePlaceholder": "[訊息]",
+  "connectionLost": "連線已失效",
+  "openVideoFailed": "無法開啟該影片",
+  "connectDialogTitle": "連線到對等端",
+  "connectIpHint": "輸入 IP 地址 (例如：192.168.1.100 或 fe80::1)",
+  "connectIpEmpty": "請輸入 IP 地址",
+  "connectIpInvalid": "IP 地址格式不正確",
+  "connectIpNotLan": "僅允許內聯網 IP 地址",
+  "connectRequestSent": "已傳送連線請求，等待對方驗證",
+  "connectFailed": "連線失敗，請檢查 IP 地址是否正確或對方是否在線",
+  "homeScanQr": "掃一掃",
+  "homeMyQrCode": "我的 QR Code",
+  "homeManualAdd": "手動新增",
+  "scannedFriends": "透過掃描新增的好友",
+  "scanTitle": "掃一掃",
+  "scanTitleWebdav": "掃描 WebDAV 地址",
+  "scanHint": "將 QR Code / 條碼對準框內",
+  "scanHintWebdav": "將 WebDAV 伺服器地址 QR Code 對準框內",
+  "scanHintAddFriend": "將好友的裝置 QR Code 對準框內",
+  "scanPreparing": "正在準備相機...",
+  "scanPermissionNeeded": "需要相機權限",
+  "scanPermissionNeededMsg": "請在權限彈窗中允許使用相機，才能掃描。",
+  "scanPermissionDenied": "相機權限被拒絕",
+  "scanPermissionDeniedMsg": "權限已被永久拒絕，請前往系統設定手動開啟。",
+  "scanCameraUnavailable": "相機無法使用",
+  "scanRetry": "重試",
+  "scanOpenSettings": "前往系統設定",
+  "scanTorch": "閃光燈",
+  "scanDetectedLink": "偵測到連結",
+  "scanOpenLinkPrompt": "是否在內置瀏覽器中開啟以下連結？",
+  "scanCopy": "複製",
+  "scanOpen": "開啟",
+  "scanLinkCopied": "連結已複製",
+  "scanDetectedBiliVideo": "偵測到 B 站影片連結",
+  "scanBiliVideoPrompt": "是否用內置播放器開啟該影片？",
+  "scanBiliVideoAt": "空降至 {time}",
+  "@scanBiliVideoAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "scanOpenVideo": "開啟影片",
+  "scanDetectedWebdav": "偵測到 WebDAV 地址",
+  "scanWebdavPrompt": "該連結看起來是 WebDAV 伺服器地址，是否自動填入設定？",
+  "scanOpenInBrowser": "瀏覽器開啟",
+  "scanFillConfig": "填入設定",
+  "scanDetectedText": "辨識到文字",
+  "scanCopiedToClipboard": "已複製到剪貼簿",
+  "scanClose": "關閉",
+  "scanResultTitle": "掃描結果",
+  "scanErrorPermission": "相機權限被拒絕",
+  "scanErrorUnsupported": "目前裝置不支援掃描",
+  "scanErrorDisposed": "掃描器已釋放，請重試",
+  "scanErrorGeneric": "相機無法使用（{code}）",
+  "@scanErrorGeneric": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "scanInitFailed": "掃描器初始化失敗：{error}",
+  "@scanInitFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "scanDetectedDevice": "偵測到裝置 QR Code",
+  "scanAddFriendPrompt": "是否將該裝置新增為好友？",
+  "scanAddFriend": "新增好友",
+  "scanFriendAdded": "已傳送好友請求，等待對方驗證",
+  "scanFriendAddFailed": "新增好友失敗，請檢查網絡或對方是否在線",
+  "myQrTitle": "我的 QR Code",
+  "myQrHint": "讓好友掃描此 QR Code 來新增您",
+  "myQrEmbedIp": "QR Code 中已嵌入第一個內聯網 IP",
+  "myQrLocalIps": "目前內聯網 IP",
+  "myQrCopyContent": "複製 QR Code 內容",
+  "myQrCopied": "已複製到剪貼簿",
+  "myQrNoIp": "找不到有效的內聯網 IP，請檢查網絡連線。",
+  "displayModeSectionTitle": "螢幕",
+  "displayModeTitle": "螢幕更新率",
+  "displayModeAuto": "自動",
+  "displayModeSystemTag": "[系統]",
+  "displayModeHint": "沒有生效？重新啟動應用程式試試",
+  "displayModeUnsupported": "目前平台不支援設定螢幕更新率（僅 Android）",
+  "displayModeAndroidOnly": "僅 Android",
+  "displayModeLoading": "正在取得螢幕更新率...",
+  "displayModeEmpty": "未取得可用的螢幕更新率",
+  "playerSectionEnhance": "畫面增強",
+  "superResolutionTitle": "超高解析度",
+  "superResolutionOff": "關閉",
+  "superResolutionEfficiency": "效率（低耗電）",
+  "superResolutionQuality": "畫質（最佳效果）",
+  "superResolutionHint": "透過 mpv 著色器即時增強畫面，建議配合硬件解碼；對動畫內容效果最佳",
+  "skipIntroOutroTitle": "跳過片頭/片尾",
+  "skipIntroOutroHint": "透過社區共享數據辨識片頭片尾，僅在影片有 BV+CID 時提示",
+  "skipIntro": "跳過片頭",
+  "skipOutro": "跳過片尾",
+  "playlistDetailEpisodes": "共 {count} 集",
+  "@playlistDetailEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDetailEmpty": "該播放清單為空，請先編輯新增影片",
+  "playlistDetailEpisodeOf": "第 {index} 集",
+  "@playlistDetailEpisodeOf": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDetailResume": "看到這集 · {position}",
+  "@playlistDetailResume": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistDetailBgTitle": "背景圖",
+  "playlistDetailBgPick": "選擇背景圖片",
+  "playlistDetailBgChange": "更換背景",
+  "playlistDetailBgRemove": "移除背景",
+  "playlistDetailBgUpdated": "✅ 背景圖已更新",
+  "playlistDetailBgRemoved": "已還原預設背景",
+  "playlistDetailBgFail": "設定失敗：{error}",
+  "@playlistDetailBgFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistFabRestart": "從頭開始",
+  "playlistMenuMore": "更多操作",
+  "playlistMenuRename": "編輯名稱",
+  "playlistMenuMultiSelect": "多選",
+  "playlistMenuDanmaku": "彈幕",
+  "playlistRenameTitle": "重新命名播放清單",
+  "playlistRenameHint": "輸入新的清單名稱",
+  "playlistRenameSaved": "已重新命名",
+  "playlistSelectDone": "完成",
+  "playlistSelectEmpty": "請先選擇劇集",
+  "playlistSelectDelete": "刪除選取（{count}）",
+  "@playlistSelectDelete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistSelectDeleted": "已刪除 {count} 集",
+  "@playlistSelectDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuTitle": "匯入番劇彈幕",
+  "playlistDanmakuSsHint": "輸入番劇 SS 號（season_id）",
+  "playlistDanmakuFetchFail": "獲取劇集失敗，請檢查 SS 號",
+  "playlistDanmakuSelectTitle": "選擇劇集（共 {count} 集）",
+  "@playlistDanmakuSelectTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuSelectAll": "全選",
+  "playlistDanmakuImport": "匯入並附加彈幕",
+  "playlistDanmakuAttached": "已為 {count} 集附加彈幕",
+  "@playlistDanmakuAttached": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuExceed": "所選 {selected} 集超過清單 {total} 集，超出部分已忽略",
+  "@playlistDanmakuExceed": {
+    "placeholders": {
+      "selected": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "splitSelectChat": "選擇一個聊天",
+  "statusPending": "待對方驗證",
+  "statusConnected": "已連線",
+  "statusRejected": "已拒絕",
+  "statusDisconnected": "已中斷連線",
+  "homeStart": "開始",
+  "homeDone": "完成",
+  "homeBack": "向上瀏覽",
+  "homeOverview": "鳥瞰視圖",
+  "homeLocalUser": "本機使用者",
+  "homeDefaultGroup": "預設群組",
+  "homeNewGroup": "新群組",
+  "homeUnnamedGroup": "（未命名群組）",
+  "homeDeleteGroupTitle": "確認刪除",
+  "homeDeleteGroupMessage": "刪除該組將同時刪除組內的所有磁貼，是否繼續？",
+  "homeNewGroupTitle": "新增群組",
+  "homeGroupNameHint": "輸入群組名稱",
+  "homeRenameGroupTitle": "為該組命名",
+  "homeNewGroupNameHint": "輸入新組名",
+  "homeImageSlice": "圖片碎片",
+  "tileSizeLabelSmall": "{size} (小)",
+  "@tileSizeLabelSmall": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "tileSizeLabelWide": "{size} (寬)",
+  "@tileSizeLabelWide": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "tileSizeLabelLarge": "{size} (大)",
+  "@tileSizeLabelLarge": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "homeGroupOne": "分組1",
+  "homeGroupTwo": "分組2",
+  "homeGroupProductivity": "生產力工具",
+  "homeGroupLegacy": "舊版",
+  "tileImageSlicer": "圖片切割",
+  "tileSystemSettings": "系統設定",
+  "tileDatabase": "資料庫",
+  "tileLcdDisplay": "LCD 顯示器",
+  "tileLedDynamic": "LED 動態",
+  "tileLedStatic": "LED 靜態",
+  "tilePisScreen": "PIS 螢幕",
+  "tileRoutePreview": "路線預覽",
+  "tileStationEntranceDesign": "出入口設計",
+  "tileStationEntrancePillar": "出入口立柱",
+  "tileStationEntranceSideName": "出入口側名",
+  "tilePlatformSideName": "側邊站名",
+  "tileScreenDoorCover": "月台幕門蓋板",
+  "tileStationNameSign": "站名牌",
+  "tileGeneralSign": "通用標誌",
+  "tileLineSymbol": "路線符號",
+  "tileBusLcd": "巴士 LCD",
+  "tileJsonEditor": "JSON 編輯器",
+  "tileNamingRule": "命名規範",
+  "tilePlatformText": "月台文字",
+  "tileDepartureText": "出發文字",
+  "tileArrivalText": "到站文字",
+  "tileOperationDirectionLegacy": "營運方向(舊)",
+  "tileLegacyLcdWarning": "舊版 LCD（警告）",
+  "tileLinearRoute": "線性路線",
+  "tileRoadSign": "路牌",
+  "commentPanelTitle": "留言區",
+  "commentTotalCount": "共 {count} 則",
+  "@commentTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSortHeat": "按熱門程度",
+  "commentSortTime": "按時間",
+  "commentLoading": "正在載入留言...",
+  "commentLoadFail": "留言載入失敗，請檢查網絡",
+  "commentLoadMoreFail": "載入更多留言失敗",
+  "commentNoMore": "沒有更多留言了",
+  "commentLoadingMore": "載入中...",
+  "commentEmpty": "還沒有留言",
+  "commentViewDialogue": "查看對話",
+  "commentDialogueTitle": "對話詳情",
+  "msgMenuSettings": "訊息設定",
+  "msgSettingsLoadFail": "訊息設定載入失敗",
+  "msgSettingsSaveFail": "儲存失敗",
+  "commentPinned": "置頂",
+  "commentDeleted": "留言已刪除",
+  "commentExpand": "展開",
+  "commentCollapse": "收起",
+  "commentTranslateNeedEnable": "請先在語言設定中開啟 AI 翻譯",
+  "commentTranslateNone": "沒有可用翻譯",
+  "commentReply": "回覆",
+  "commentTranslate": "翻譯",
+  "commentTranslateRestore": "顯示原文",
+  "commentLikeTooltip": "讚好",
+  "commentDislikeTooltip": "踩",
+  "commentSubCount": "共 {count} 則回覆",
+  "@commentSubCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSubLoadMore": "載入更多回覆（{hint}）",
+  "@commentSubLoadMore": {
+    "placeholders": {
+      "hint": {
+        "type": "String"
+      }
+    }
+  },
+  "commentYesterday": "昨天",
+  "articleLoadFailed": "文章載入失敗",
+  "articleNoContent": "文章正文為空或暫不支援渲染",
+  "articleOpenBrowser": "瀏覽器開啟",
+  "articleShare": "分享",
+  "articleAuthorUnknown": "未知作者",
+  "browserLinkPageTitle": "網頁連結",
+  "articleViews": "{count} 閱讀",
+  "@articleViews": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerTitle": "傳送給聯絡人",
+  "contactPickerContentLabel": "傳送內容",
+  "contactPickerContentHint": "輸入要傳送的內容",
+  "contactPickerContentEmpty": "內容不能為空",
+  "contactPickerSearchHint": "搜尋聯絡人",
+  "contactPickerEmpty": "暫無聯絡人",
+  "contactPickerNoMatch": "未找到符合的聯絡人",
+  "contactPickerSelectAll": "全選",
+  "contactPickerSendToCount": "傳送給 {count} 個聯絡人",
+  "@contactPickerSendToCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contactPickerSent": "已傳送給 {count} 個聯絡人",
+  "@contactPickerSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contactPickerNotConnected": "「{name}」未連接，無法傳送",
+  "@contactPickerNotConnected": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerSendFailed": "傳送失敗：{error}",
+  "@contactPickerSendFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerOnline": "在線",
+  "contactPickerOffline": "離線",
+  "articleShareToContact": "私訊分享",
+  "playerDanmakuList": "彈幕列表",
+  "playerDanmakuListCount": "彈幕列表 · 共 {count} 條",
+  "playerDanmakuListEmpty": "暫無彈幕",
+  "playerDanmakuListNoMatch": "無符合的彈幕",
+  "playerDanmakuListSearchHint": "搜尋彈幕內容",
+  "playerDanmakuListJumpCurrent": "定位到目前播放",
+  "playerViewNotes": "查看筆記",
+  "playerNotesTitle": "筆記",
+  "playerNotesCount": "筆記（{count}）",
+  "playerNotesEmpty": "該影片暫無公開筆記",
+  "playerNotesNoMore": "沒有更多了",
+  "playerNotesLoadFailed": "筆記載入失敗",
+  "playerNotesViewFull": "查看全部",
+  "playerWriteNote": "寫筆記",
+  "noteEditorWrite": "寫筆記",
+  "noteEditorTitle": "寫筆記",
+  "noteEditorTitleHint": "標題（選填）",
+  "noteEditorContentHint": "開始記筆記…",
+  "noteEditorEmoji": "表情",
+  "noteEditorPublish": "發布",
+  "noteEditorEmptyContent": "筆記內容不能為空",
+  "noteEditorContentTooShort": "內容至少 10 個字元才能發布",
+  "noteEditorNotLoggedIn": "未登入：筆記已儲存為本機草稿，登入後可發布",
+  "noteEditorPublished": "筆記已發布",
+  "noteEditorPublishNetworkError": "發布失敗（網路異常），草稿已儲存",
+  "noteEditorPublishRejected": "發布被伺服器拒絕，草稿已保留",
+  "noteEditorDraftSaved": "已自動儲存草稿",
+  "noteEditorLoggedInHint": "已登入，可發布公開筆記",
+  "noteEditorGuestHint": "未登入：僅儲存本機草稿，不能發布",
+  "noteEditorSavedAt": "草稿已儲存 {hour}:{minute}",
+  "noteEditorCharCount": "{count} 字",
+  "noteEditorMyDraft": "我的草稿",
+  "noteEditorDeleteDraft": "刪除草稿",
+  "playerMoreTooltip": "更多操作",
+  "commentComposerBarHint": "說點什麼…",
+  "commentComposerHint": "輸入評論內容…",
+  "commentComposerReplyHint": "回覆 @{name}",
+  "commentComposerReplyTo": "回覆 @{name}",
+  "commentComposerEmote": "表情",
+  "commentComposerSend": "發送",
+  "commentComposerEmpty": "評論內容不能為空",
+  "commentComposerEmoteUnavailable": "表情面板不可用（可能未登入）",
+  "commentComposerPickImage": "選擇圖片",
+  "commentComposerMore": "更多",
+  "commentComposerVideoProgress": "影片進度",
+  "commentComposerVideoScreenshot": "影片截圖",
+  "commentComposerImageLimit": "最多選擇 {count} 張圖片",
+  "commentComposerCaptureFailed": "截圖失敗，請先開始播放",
+  "commentComposerUploadFailed": "圖片上傳失敗，請重試",
+  "commentComposerFabLabel": "發評論",
+  "commentComposerFabReply": "發回覆",
+  "danmakuSendTitle": "發彈幕",
+  "danmakuSendModeLabel": "模式",
+  "danmakuSendFontSizeLabel": "字號",
+  "danmakuSendColorLabel": "顏色",
+  "danmakuFontSizeSmall": "小",
+  "danmakuFontSizeStandard": "標準",
+  "danmakuFontSizeLarge": "大",
+  "danmakuSendCustomColor": "自訂顏色",
+  "danmakuSendColorOk": "確定",
+  "danmakuSendPreviewPlaceholder": "發個友善的彈幕見證當下",
+  "drawerHistory": "历史记录",
+  "drawerWatchLater": "稍后再看",
+  "drawerMyCache": "我的缓存",
+  "historyCenterTitle": "历史记录",
+  "historyTabWatch": "观看历史",
+  "historyTabPlay": "播放进度",
+  "historySearchHint": "搜索历史...",
+  "historyPauseHistory": "暂停记录历史",
+  "historyResumeHistory": "恢复记录历史",
+  "historyPausedTip": "历史记录已暂停",
+  "historyPausedTipAction": "点击恢复",
+  "historyClearWatchHistory": "清空观看历史",
+  "historyClearPlayHistory": "清空播放记录",
+  "historyClearAllTitle": "清空历史",
+  "historyClearAllConfirm": "确定要清空全部{label}吗？此操作不可恢复。",
+  "@historyClearAllConfirm": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "historyNoWatchHistory": "暂无观看历史",
+  "historyNoPlayHistory": "暂无播放记录",
+  "historyDeleteSelected": "删除选中",
+  "historySelectedCount": "已选 {count} 项",
+  "@historySelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "historySearchNoResult": "无匹配结果",
+  "historyPauseOnSnack": "已暂停历史记录",
+  "historyResumeOnSnack": "已恢复历史记录",
+  "historyDeleteToast": "已删除 {count} 条记录",
+  "@historyDeleteToast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "myCacheTitle": "我的缓存",
+  "myCacheSearchHint": "搜索缓存视频...",
+  "myCacheDownloading": "正在缓存",
+  "myCacheCached": "已缓存",
+  "myCacheNoCache": "暂无缓存视频",
+  "myCacheGroupCount": "{count}个视频",
+  "@myCacheGroupCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "myCacheDeleteGroup": "删除整组",
+  "myCacheUpdateDanmaku": "更新弹幕",
+  "myCacheClearAllTitle": "清空全部缓存",
+  "myCacheClearAllConfirm": "将删除全部已缓存视频（{count}个视频 · {size}），确定吗？",
+  "@myCacheClearAllConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "cacheActionDownload": "缓存",
+  "cacheActionCached": "已缓存",
+  "cacheActionCaching": "缓存中",
+  "cacheToastSuccess": "已加入缓存队列",
+  "cacheToastCached": "该视频已缓存",
+  "cacheToastFailed": "缓存失败：{error}",
+  "@cacheToastFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerRecommend": "推荐",
+  "recommendSourceWeb": "Web端",
+  "recommendSourceApp": "APP端",
+  "recommendEmpty": "暂无推荐内容",
+  "recommendSwitchList": "切换为单列",
+  "recommendSwitchGrid": "切换为多列",
+  "sideBarExpand": "展开侧边栏",
+  "sideBarCollapse": "收起侧边栏",
+  "sideBarMore": "更多",
+  "recommendTabHot": "热门",
+  "recommendTabBangumi": "番剧",
+  "recommendSourceTitle": "推荐数据来源",
+  "settingsPreferences": "偏好設定",
+  "settingsPreferencesSub": "雜項與個人偏好",
+  "settingsPreferencesEmpty": "暫無偏好項目",
+  "prefBottomBarSection": "底欄樣式",
+  "prefUseM3BottomBar": "使用 M3 底欄",
+  "prefUseM3BottomBarDesc": "以標準 Material 3 NavigationBar 取代玻璃底欄",
+  "prefBottomBarSearch": "底欄搜尋入口",
+  "prefBottomBarSearchDesc": "直屏推薦頁底欄顯示搜尋（玻璃底欄在最右側孤兒位，M3 底欄為附加項；開啟時頂欄搜尋按鈕隱藏）",
+  "prefWindowSection": "預設視窗大小",
+  "prefWindowSize": "啟動視窗",
+  "prefRefreshSection": "重新整理",
+  "prefRefreshDisplacement": "重新整理滑動距離",
+  "prefRefreshDisplacementDesc": "下拉觸發重新整理所需的滑動距離",
+  "prefRefreshEdgeOffset": "重新整理指示器距離",
+  "prefRefreshEdgeOffsetDesc": "重新整理指示器距頂部的偏移",
+  "userSpaceFollowMutual": "互相關注",
+  "userSpaceFollowBlocked": "已封鎖",
+  "userSpaceFollowDone": "已關注",
+  "userSpaceUnfollowDone": "已取消關注",
+  "userSpaceFollowFail": "操作失敗，請稍後重試",
+  "commonTapOutsideToClose": "點擊空白處關閉",
+  "prefFileAssocSection": "檔案關聯",
+  "prefFileAssocDefault": "設為預設開啟方式",
+  "prefFileAssocDefaultSub": "雙擊影片檔案時直接用 NaviFlash 播放",
+  "msgCenterTitle": "訊息中心",
+  "msgCenterSubtitle": "回覆我的 · @我的 · 收到的讚 · 私訊",
+  "msgCenterLoginPrompt": "登入後可以查看訊息中心",
+  "msgReplyMe": "回覆我的",
+  "msgAtMe": "@我的",
+  "msgLikedMe": "收到的讚",
+  "msgSysNotice": "系統通知",
+  "msgMyWhisper": "我的私訊",
+  "msgWhisperSubtitle": "與 UP 主的私訊對話",
+  "msgUnreadCount": "{count} 則未讀",
+  "msgTimeJustNow": "剛剛",
+  "msgTimeMinutesAgo": "{count} 分鐘前",
+  "msgTimeYesterday": "昨天 {time}",
+  "msgGoLogin": "去登入",
+  "msgDeleteNoticeConfirm": "確定刪除這則通知？",
+  "msgDeleted": "已刪除",
+  "msgLoginPromptFeature": "登入後可以查看{title}",
+  "msgNoMore": "沒有更多了",
+  "msgReplyEmpty": "還沒有人回覆你",
+  "msgUserFallback": "用戶{mid}",
+  "msgEtAl": " 等人",
+  "msgReplyTitle": " 對我的{business}發布了{counts}則評論",
+  "msgAtEmpty": "還沒有人 @ 你",
+  "msgAtTitle": " 在{business}裡 @ 了你",
+  "msgDeleteNoticeTitle": "刪除這則通知？",
+  "msgDeleteNoticeBody": "刪除後，當有新點讚時會重新出現在列表。",
+  "msgMuteNotice": "不再通知",
+  "msgMuteNoticeBody": "這則內容的點讚將不再通知，但仍可在列表內查看。",
+  "msgSettingSaved": "設定成功",
+  "msgLoginPromptLikes": "登入後可以查看收到的讚",
+  "msgLikedEmpty": "還沒有人讚過你",
+  "msgLikedEmptySubtitle": "發布內容後會在這裡看到點讚通知",
+  "msgSectionLatest": "最新",
+  "msgSectionTotal": "累計",
+  "msgSomeone": "有人",
+  "msgEtAlCount": "{name} 等 {count} 人",
+  "msgLikedYou": " 讚了你",
+  "msgLikedYourBusiness": " 讚了你的{business}",
+  "msgNoticeMuted": "已關閉通知",
+  "msgUnmuteNotice": "接收通知",
+  "msgLikeDetailTitle": "點讚的人",
+  "msgLikeDetailEmpty": "還沒有人點讚",
+  "msgSysEmpty": "還沒有系統通知",
+  "msgDeleteSessionTitle": "刪除對話？",
+  "msgDeleteSessionBody": "刪除後聊天記錄將從列表移除，對方再發訊息會重新出現。",
+  "msgUnpinned": "已取消置頂",
+  "msgPinned": "已置頂",
+  "msgUnpin": "取消置頂",
+  "msgPin": "置頂對話",
+  "msgDeleteSession": "刪除對話",
+  "msgLoginPromptWhisper": "登入後可以查看私訊",
+  "msgWhisperEmpty": "還沒有私訊對話",
+  "msgWhisperEmptySubtitle": "在 UP 主主頁點「私訊」就能開始聊天",
+  "msgNoMessage": "[暫無訊息]",
+  "msgWithdrawConfirm": "撤回這則訊息？",
+  "msgWithdraw": "撤回",
+  "msgWithdrawn": "已撤回",
+  "msgWithdrawnSelf": "你撤回了一則訊息",
+  "msgWithdrawnOther": "對方撤回了一則訊息",
+  "msgChatEmpty": "還沒有聊天記錄",
+  "msgChatEmptySubtitle": "發則訊息打個招呼吧",
+  "msgNoEarlier": "沒有更早的訊息了",
+  "msgInputHint": "發訊息…",
+  "msgPicture": "[圖片]",
+  "msgPictureFailed": "[圖片載入失敗]",
+  "msgShare": "[分享內容]",
+  "msgUnsupportedType": "[暫不支援的訊息類型 {type}]",
+  "msgVoice": "[語音]",
+  "msgCardVideo": "影片",
+  "msgCardArticle": "專欄",
+  "msgCardLive": "直播",
+  "msgCardDynamic": "動態",
+  "msgCardAlbum": "相簿",
+  "msgCardInvalid": "內容已失效",
+  "msgCardViewDetail": "查看詳情",
+  "msgAutoReply": "此訊息為自動回覆",
+  "msgUploadingImage": "正在上傳圖片…",
+  "msgChatSettings": "聊天設定",
+  "msgPushReceive": "接收訊息推送",
+  "msgPushReceiveDesc": "若關閉此開關，你將不再收到該帳號的圖文訊息與稿件推送，但通知類訊息不受影響",
+  "msgPushCloseConfirm": "確認關閉內容推送嗎？",
+  "msgPinChat": "置頂聊天",
+  "msgChatMute": "訊息免打擾",
+  "msgBlockAdd": "加入黑名單",
+  "msgBlockConfirmTitle": "確認封鎖該使用者",
+  "msgBlockConfirmBody": "加入黑名單後，將自動解除關注關係和對該使用者的合集訂閱關係，禁止該使用者與我互動或檢視我的空間",
+  "msgReport": "舉報",
+  "msgReportTitle": "舉報：{name}",
+  "@msgReportTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "msgReportContentHint": "舉報內容（必選，可多選）",
+  "msgReportReasonHint": "舉報理由（單選，非必選）",
+  "msgReportReasonRequired": "至少選擇一項作為舉報內容",
+  "msgReportSuccess": "舉報成功",
+  "msgReportFailed": "舉報失敗",
+  "msgReportReasonAvatar": "頭像違規",
+  "msgReportReasonNickname": "暱稱違規",
+  "msgReportReasonSign": "簽名違規",
+  "msgReportReasonPorn": "色情低俗",
+  "msgReportReasonFalse": "不實資訊",
+  "msgReportReasonForbidden": "違禁",
+  "msgReportReasonAttack": "人身攻擊",
+  "msgReportReasonFraud": "賭博詐騙",
+  "msgReportReasonLink": "違規引流外鏈",
+  "msgRefresh": "重新整理",
+  "commonSend": "發送",
+  "commonRetry": "重試",
+  "msgInteractions": "社群互動",
+  "msgLoadMore": "載入更多",
+  "dynamicsTitle": "動態",
+  "dynamicsTabAll": "全部",
+  "dynamicsTabVideo": "投稿",
+  "dynamicsTabPgc": "番劇",
+  "dynamicsTabArticle": "專欄",
+  "dynamicsEmpty": "這裡還沒有動態",
+  "dynamicsLoginPrompt": "登入後可以看關注動態",
+  "onnxDepSection": "智能防遮擋依賴",
+  "onnxDepDesc": "彈幕智能防遮擋需要 ONNX Runtime 執行庫與識別模型，兩者預設不隨安裝包提供",
+  "onnxDepNotInstalled": "未安裝",
+  "onnxDepSizeCounting": "計算中…",
+  "onnxDepDownload": "下載",
+  "onnxDepUninstall": "卸載",
+  "onnxDepUninstallTitle": "卸載智能防遮擋依賴？",
+  "onnxDepUninstalled": "已卸載智能防遮擋依賴",
+  "onnxDepInstallDone": "安裝完成，智能防遮擋已可用",
+  "onnxDepUnsupported": "目前平台不支援智能防遮擋",
+  "onnxDepSourceTitle": "下載來源",
+  "onnxDepSourceDesc": "自訂下載位址，留空使用內建預設來源",
+  "onnxDepNeedInstall": "請先在「設定 → AI」中下載智能防遮擋依賴",
+  "onnxDepSourceSaved": "下載來源已更新",
+  "onnxDepInstalled": "已安裝 · {size}",
+  "@onnxDepInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "onnxDepDownloading": "下載中 {percent}",
+  "@onnxDepDownloading": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "onnxDepUninstallConfirm": "將刪除執行庫與識別模型（{size}）。之後智能防遮擋不可用，需要時可重新下載。",
+  "@onnxDepUninstallConfirm": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "onnxDepFailed": "下載失敗：{error}",
+  "@onnxDepFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "favWidgetPickTitle": "選擇收藏夾",
+  "favWidgetPickHint": "小工具會顯示該收藏夾裡最新收藏的內容",
+  "favWidgetNeedLogin": "請先登入後再選擇收藏夾",
+  "favWidgetFolderSwitched": "已切換為「{name}」",
+  "@favWidgetFolderSwitched": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ossSearchHint": "搜尋套件名稱或授權條款",
+  "ossClearSearch": "清除",
+  "ossDepsSection": "第三方依賴",
+  "ossLoading": "正在收集授權資訊…",
+  "ossLoadFailed": "未能讀取授權清單，請稍後重試",
+  "ossEmptySearch": "沒有符合的開放原始碼套件",
+  "ossRetry": "重試",
+  "ossLicensesCount": "{count} 份授權",
+  "@ossLicensesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ossLicenseIndex": "授權 {index} / {total}",
+  "@ossLicenseIndex": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ossPackagesCount": "共 {total} 個開放原始碼套件 · {licenses} 份授權文字",
+  "@ossPackagesCount": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "licenses": {
+        "type": "int"
+      }
+    }
+  },
+  "userPickerTitle": "選擇用戶",
+  "userPickerSearchHint": "搜尋我的關注",
+  "userPickerEmpty": "找不到用戶",
+  "userPickerLoadFailed": "載入失敗",
+  "userPickerDone": "完成",
+  "shortsTitle": "短影片",
+  "shortsEmpty": "暫時沒有內容",
+  "ttsSection": "AI 朗讀引擎",
+  "ttsModelLabel": "Qwen3-TTS 1.7B",
+  "ttsDesc": "用 AI 朗讀專欄、動態和評論，支援聲音克隆。模型不隨安裝包提供，首次使用需下載約 1.4GB。",
+  "ttsNotInstalled": "未下載",
+  "ttsPartial": "下載不完整，繼續下載即可補全",
+  "ttsSizeCounting": "計算中…",
+  "ttsDownload": "下載",
+  "ttsResume": "繼續下載",
+  "ttsUninstall": "刪除",
+  "ttsUninstallTitle": "刪除 AI 朗讀引擎？",
+  "ttsUninstalled": "已刪除 AI 朗讀引擎",
+  "ttsInstallDone": "下載完成，AI 朗讀已可用",
+  "ttsUnsupported": "目前平台不支援 AI 朗讀",
+  "ttsSourceTitle": "下載來源",
+  "ttsSourceDesc": "連不上 HuggingFace 時切換到鏡像站，或填寫自訂位址",
+  "ttsSourceSaved": "下載來源已更新",
+  "ttsMirrorOfficial": "HuggingFace 官方",
+  "ttsMirrorChina": "hf-mirror 鏡像站（推薦）",
+  "ttsMirrorCustom": "自訂位址",
+  "ttsEngineIdle": "未載入，點擊朗讀時自動載入",
+  "ttsEngineLoading": "正在載入朗讀引擎…",
+  "ttsEngineReady": "引擎已就緒",
+  "ttsEngineUnload": "釋放引擎",
+  "ttsEngineUnloaded": "已釋放引擎，下次朗讀時重新載入",
+  "ttsBackendTitle": "推理後端",
+  "ttsBackendAuto": "自動",
+  "ttsBackendNpu": "NPU",
+  "ttsBackendGpu": "GPU",
+  "ttsBackendCpu": "CPU",
+  "ttsBackendAutoDesc": "高通平台優先 NPU，無法使用時回退 CPU",
+  "ttsBackendNpuDesc": "高通驍龍 NPU（Hexagon）加速",
+  "ttsBackendGpuDesc": "Vulkan / Metal 圖形加速",
+  "ttsBackendCpuDesc": "純 CPU 推論，相容性最佳",
+  "ttsBackendNpuRuntimeMissing": "目前安裝包尚未內建 NPU 執行階段，暫以 CPU 執行",
+  "ttsBackendNpuHardwareUnsupported": "NPU 僅支援高通驍龍平台，目前裝置將回退 CPU",
+  "ttsEngineReadyOn": "引擎已就緒 · {name}",
+  "ttsNeedInstall": "請先在「設定 → 儲存」中下載 AI 朗讀引擎",
+  "ttsRuntimePending": "模型已就緒，推論執行環境尚未接入",
+  "ttsVoTitle": "音色（聲音克隆）",
+  "ttsVoDesc": "選一段 3-15 秒的清晰人聲，朗讀時會用它說話",
+  "ttsVoEmpty": "未設定，使用預設音色",
+  "ttsVoPick": "選擇音訊",
+  "ttsVoAdded": "音色已新增",
+  "ttsVoDeleteTitle": "刪除音色？",
+  "ttsVoDeleted": "音色已刪除",
+  "ttsVoDefault": "預設音色",
+  "ttsVoUse": "使用",
+  "ttsPickAudioTitle": "選擇音色音訊",
+  "ttsVoUnsupportedFile": "請選擇一個音訊檔案",
+  "ttsInstalled": "已下載 · {size}",
+  "@ttsInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsDownloading": "下載中 {percent}",
+  "@ttsDownloading": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsDownloadingFile": "下載中 {percent} · {name}",
+  "@ttsDownloadingFile": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsUninstallConfirm": "將刪除模型檔案（{size}）。刪除後 AI 朗讀不可用，需要時可重新下載。",
+  "@ttsUninstallConfirm": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsFailed": "下載失敗：{error}",
+  "@ttsFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsVoPickFailed": "讀取音訊失敗：{error}",
+  "@ttsVoPickFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsVoDeleteConfirm": "將刪除音色「{name}」。",
+  "@ttsVoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsVoCount": "已儲存 {count} 個音色",
+  "@ttsVoCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsReadAloud": "朗讀",
+  "ttsReadAloudStop": "停止朗讀",
+  "ttsSynthesizing": "正在合成語音…",
+  "ttsSpeakFailed": "朗讀失敗：{error}",
+  "@ttsSpeakFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsTruncatedHint": "內容較長，只朗讀前 {count} 字",
+  "@ttsTruncatedHint": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "playerOnlyPlayAudio": "聽影片",
+  "playerOnlyPlayAudioDesc": "只播放聲音，關閉畫面（進度與倍速不受影響）",
+  "videoBgmUsedCount": "{count} 個稿件使用",
+  "@videoBgmUsedCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  }
+,
+  "comic": "漫画",
+  "memberShop": "会员购小店",
+  "audioZone": "音频区",
+  "opusTab": "图文",
+  "matchInfo": "比赛详情",
+  "watchLive": "看直播",
+  "interestStation": "兴趣小站",
+  "noteManage": "笔记管理",
+  "noteUnpublished": "未发布笔记",
+  "notePublished": "公开笔记",
+  "deleteSelected": "删除选中",
+  "confirmDeleteNote": "确定删除已选中的笔记吗？",
+  "favTopic": "我的话题",
+  "cancelFavTopic": "确定取消收藏该话题？",
+  "inputIdTitle": "输入 ID",
+  "inputIdHint": "请输入赛事或兴趣小站的 ID",
+  "noContent": "暂无内容",
+  "bubbleAll": "全部",
+  "cancel": "取消",
+  "deleted": "已删除",
+  "operationFailed": "操作失败",
+  "confirm": "确定"
+,
+  "selectAll": "全选",
+  "loadFailed": "加载失败",
+  "videoMorePanelTitle": "更多",
+  "memberLiteTitle": "UP 主",
+  "memberLiteViewFull": "查看原版主頁",
+  "memberLiteEmpty": "暫無影片",
+  "audioPageTitle": "聽影片",
+  "audioPageSpeed": "倍速",
+  "audioPageRetry": "重新載入",
+  "playerListenPage": "聽影片",
+  "playerOnlyPlayAudioInline": "僅播放音訊（留在目前頁面）",
+  "memberLiteVideoCount": "共 {count} 個影片",
+  "@memberLiteVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "memberLiteGoSpace": "前往空間",
+  "commentSortLatestDesc": "最新評論",
+  "commentSortHottestDesc": "最熱評論",
+  "commentSortLatestShort": "最新",
+  "commentSortHottestShort": "最熱",
+  "memberLiteOrderPubdate": "最新發佈",
+  "memberLiteOrderClick": "最多播放",
+  "videoMenuWatchLater": "稍後再看",
+  "videoMenuReload": "重新載入",
+  "playerMenuStats": "播放資訊",
+  "playerMenuScreenshot": "截圖",
+  "playerMenuAudioNorm": "音量均衡",
+  "playerMenuAudioDevice": "音訊輸出裝置",
+  "playerMenuSource": "換源",
+  "playerMenuEndBehavior": "播放順序",
+  "screenshotCopy": "複製到剪貼簿",
+  "screenshotCopied": "已複製到剪貼簿",
+  "screenshotCopyUnsupported": "目前平台不支援複製圖片到剪貼簿",
+  "commonCopy": "複製",
+  "subtitleDownloadAll": "下載全部字幕",
+  "subtitleDownloadPickDir": "選擇字幕儲存目錄",
+  "subtitleDownloadNone": "目前影片沒有可下載的字幕",
+  "subtitleDownloadAllFailed": "字幕下載失敗",
+  "subtitleDownloadDone": "已儲存 {count} 條字幕到 {dir}",
+  "@subtitleDownloadDone": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "dir": {
+        "type": "String"
+      }
+    }
+  },
+  "prefPerfSection": "效能",
+  "prefEfficiencyMode": "效率模式",
+  "prefEfficiencyModeSub": "按系統低功耗檔調度本應用（EcoQoS），後台掛機更省電，前台操作會略慢",
+  "prefEfficiencyModeUnsupported": "目前系統不支援效率模式",
+  "prefEfficiencyModeReading": "讀取中…",
+  "prefEfficiencyModeActive": "已生效 · 程序按低功耗檔調度",
+  "prefEfficiencyModeInactive": "未生效",
+  "prefEfficiencyModeFailed": "效率模式未能生效（{detail}）",
+  "@prefEfficiencyModeFailed": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "sleepTimer": "定時關閉",
+  "sleepTimerCustom": "自訂…",
+  "sleepTimerStopAfterCurrent": "播完本集後暫停",
+  "sleepTimerStopAfterCurrentShort": "播完本集",
+  "sleepTimerCancel": "取消定時關閉",
+  "sleepTimerArmedToast": "定時關閉已啟動",
+  "sleepTimerCancelledToast": "已取消定時關閉",
+  "sleepTimerStopAfterCurrentArmedToast": "本集播完後將暫停播放",
+  "sleepTimerCustomDialogTitle": "自訂定時關閉",
+  "sleepTimerCustomHint": "分鐘數",
+  "sleepTimerCustomUnit": "分鐘",
+  "sleepTimerInvalidNumber": "請輸入有效的分鐘數",
+  "settingsSleepTimerExitApp": "定時結束後退出應用",
+  "settingsSleepTimerExitAppDesc": "到點暫停播放後退出 NaviFlash（桌面端生效）",
+  "sleepTimerMinutes": "{min} 分鐘",
+  "@sleepTimerMinutes": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistReversePlay": "倒序播放",
+  "playlistReversePlayOn": "已開啟倒序播放",
+  "playlistReversePlayOff": "已關閉倒序播放",
+  "msgSettingsNotifSection": "通知提醒",
+  "msgSettingsReplyNotify": "回覆我的訊息提醒",
+  "msgSettingsReplyNotifyDesc": "（接收誰的評論訊息提醒）",
+  "msgSettingsAtNotify": "@我的訊息提醒",
+  "msgSettingsAtNotifyDesc": "（接收誰的@訊息提醒）",
+  "msgSettingsLikeNotify": "收到的讚提醒",
+  "msgSettingsLikeNotifyDesc": "（接收誰的讚訊息提醒）",
+  "msgSettingsNotifyEveryone": "所有人",
+  "msgSettingsNotifyFollowing": "關注的人",
+  "msgSettingsNotifyNone": "不接收任何訊息提醒",
+  "msgSettingsReceiveSection": "私信接收",
+  "msgSettingsReceiveUnfollow": "接收未關注人訊息",
+  "msgSettingsReceiveUnfollowDesc": "（若關閉此開關，你將不再收到未關注人的私信，但通知類訊息不受影響）",
+  "msgSettingsUnfollowFold": "未關注人訊息摺疊",
+  "msgSettingsUnfollowFoldDesc": "（未關注人訊息將被摺疊起來）",
+  "msgSettingsGroupReceive": "接收應援團訊息",
+  "msgSettingsGroupFold": "應援團訊息摺疊",
+  "msgSettingsSmartIntercept": "私信智能攔截",
+  "msgSettingsSmartInterceptDesc": "（開啟後，7日內僅會接收到指定用戶的私信、彈幕、評論，並不再接收@訊息）",
+  "msgSettingsAntiHarassmentSection": "防騷擾",
+  "msgSettingsAntiHarassment": "防騷擾設定",
+  "msgSettingsScopeSelect": "接收私信的用戶範圍",
+  "msgSettingsValidUntil": "（該設定有效期至 {time}）",
+  "@msgSettingsValidUntil": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "prefEfficiencyModeAutoDesc": "前台保持正常效能；切到後台 3 分鐘後自動進入效率模式，回到前台立即恢復，播放中不生效"
+}

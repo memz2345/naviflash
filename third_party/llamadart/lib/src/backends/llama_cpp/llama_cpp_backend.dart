@@ -1,0 +1,957 @@
+import 'dart:async';
+import 'dart:isolate';
+import 'dart:ffi';
+import 'dart:typed_data';
+
+import 'package:ffi/ffi.dart';
+
+import '../backend.dart';
+import '../../core/models/chat/content_part.dart';
+import '../../core/models/config/gpu_backend.dart';
+import '../../core/models/config/gpu_device_info.dart';
+import '../../core/models/config/log_level.dart';
+import '../../core/models/diagnostics/model_file_type.dart';
+import '../../core/exceptions.dart';
+import '../../core/models/inference/model_params.dart';
+import '../../core/models/inference/generation_params.dart';
+import 'worker.dart';
+
+/// Worker entry point used by [NativeLlamaBackend].
+typedef LlamaWorkerEntrypoint = void Function(SendPort initialSendPort);
+
+/// Native implementation of [LlamaBackend] using isolates and FFI.
+class NativeLlamaBackend
+    implements
+        LlamaBackend,
+        BackendAvailability,
+        BackendRuntimeDiagnostics,
+        BackendModelFileTypeDiagnostics,
+        BackendGpuEnumeration,
+        BackendPerformanceDiagnostics,
+        BackendEmbeddings,
+        BackendBatchEmbeddings,
+        BackendStatePersistence,
+        BackendTextToSpeech,
+        BackendVideoRuntimeSupport {
+  Isolate? _isolate;
+  SendPort? _sendPort;
+  Future<void>? _isolateStart;
+  Future<void>? _disposeStart;
+  int _lifecycleEpoch = 0;
+  final LlamaWorkerEntrypoint _workerEntrypoint;
+  final Duration _workerStartupTimeout;
+  Pointer<Int8>? _activeCancelToken;
+  void Function()? _activeGenerationCleanup;
+  void Function()? _activeFreeToken;
+  bool _textToSpeechActive = false;
+
+  bool _isReady = false;
+  LlamaLogLevel _currentLogLevel = LlamaLogLevel.warn;
+
+  /// Creates a new [NativeLlamaBackend] and initializes its ports.
+  NativeLlamaBackend({
+    SendPort? initialSendPort,
+    LlamaWorkerEntrypoint workerEntrypoint = llamaWorkerEntry,
+    Duration workerStartupTimeout = const Duration(seconds: 30),
+  }) : _workerEntrypoint = workerEntrypoint,
+       _workerStartupTimeout = workerStartupTimeout {
+    if (initialSendPort != null) {
+      _sendPort = initialSendPort;
+      _isReady = true;
+    }
+  }
+
+  @override
+  bool get isReady => _isReady;
+
+  void _expectDoneResponse(Object? response, String operation) {
+    if (response is DoneResponse) {
+      return;
+    }
+    if (response is ErrorResponse) {
+      throw _workerError(response);
+    }
+    throw Exception('Unknown response during $operation');
+  }
+
+  Object _workerError(ErrorResponse response) {
+    switch (response.kind) {
+      case WorkerErrorKind.model:
+        return LlamaModelException(response.message);
+      case WorkerErrorKind.context:
+        return LlamaContextException(response.message);
+      case WorkerErrorKind.inference:
+        return LlamaInferenceException(response.message);
+      case WorkerErrorKind.unsupported:
+        return LlamaUnsupportedException(response.message);
+      case WorkerErrorKind.state:
+        return LlamaStateException(response.message);
+      case WorkerErrorKind.speech:
+        return LlamaSpeechException(response.message);
+      case WorkerErrorKind.audioFormat:
+        return LlamaAudioFormatException(response.message);
+      case WorkerErrorKind.textToSpeech:
+        return LlamaTextToSpeechException(response.message);
+      case WorkerErrorKind.generic:
+        const exceptionPrefix = 'Exception: ';
+        final message = response.message.startsWith(exceptionPrefix)
+            ? response.message.substring(exceptionPrefix.length)
+            : response.message;
+        return Exception(message);
+      case WorkerErrorKind.backendInitialization:
+        return LlamaBackendInitializationException(response.message);
+    }
+  }
+
+  Future<void> _ensureIsolate() async {
+    final activeDispose = _disposeStart;
+    if (activeDispose != null) {
+      await activeDispose;
+    }
+    final lifecycleEpoch = _lifecycleEpoch;
+    final existingStart = _isolateStart;
+    if (existingStart != null) {
+      await existingStart;
+      _throwIfDisposedDuringStartup(lifecycleEpoch);
+      _isReady = _sendPort != null;
+      return;
+    }
+    if (_sendPort != null) {
+      _isReady = true;
+      return;
+    }
+
+    final start = _startIsolate();
+    _isolateStart = start;
+    try {
+      await start;
+      _throwIfDisposedDuringStartup(lifecycleEpoch);
+      _isReady = _sendPort != null;
+    } finally {
+      if (_isolateStart == start) {
+        _isolateStart = null;
+      }
+    }
+  }
+
+  Future<void> _startIsolate() async {
+    final completer = Completer<void>();
+    final tempPort = ReceivePort();
+    SendPort? workerSendPort;
+    tempPort.listen((msg) {
+      if (msg is SendPort && workerSendPort == null) {
+        workerSendPort = msg;
+        workerSendPort!.send(
+          WorkerHandshake(_currentLogLevel, tempPort.sendPort),
+        );
+        return;
+      }
+      if (completer.isCompleted) {
+        return;
+      }
+      if (msg is DoneResponse && workerSendPort != null) {
+        _sendPort = workerSendPort;
+        completer.complete();
+        return;
+      }
+      if (msg is ErrorResponse && workerSendPort != null) {
+        completer.completeError(_workerError(msg));
+        return;
+      }
+      if (msg is List<Object?> && msg.isNotEmpty) {
+        final phase = workerSendPort != null
+            ? 'during backend initialization'
+            : 'before providing its request port';
+        completer.completeError(
+          LlamaBackendInitializationException(
+            'The llama.cpp worker exited $phase: ${msg.first}',
+            msg.length > 1 ? msg[1] : null,
+          ),
+        );
+        return;
+      }
+      final reason = workerSendPort != null
+          ? 'before acknowledging the backend initialization handshake'
+          : 'before providing its request port';
+      completer.completeError(
+        LlamaBackendInitializationException(
+          msg == null
+              ? 'The llama.cpp worker exited $reason.'
+              : 'The llama.cpp worker returned an unexpected startup '
+                    'response (${msg.runtimeType}) $reason. The worker and '
+                    'Dart package may be incompatible.',
+        ),
+      );
+    });
+    try {
+      _isolate = await Isolate.spawn(
+        _workerEntrypoint,
+        tempPort.sendPort,
+        onError: tempPort.sendPort,
+        onExit: tempPort.sendPort,
+        errorsAreFatal: true,
+      );
+      await completer.future.timeout(
+        _workerStartupTimeout,
+        onTimeout: () {
+          throw LlamaBackendInitializationException(
+            'Timed out after ${_workerStartupTimeout.inMilliseconds} ms '
+            'waiting for the llama.cpp worker to initialize its backend. '
+            'The native runtime may be unavailable or unresponsive.',
+          );
+        },
+      );
+    } catch (error) {
+      _isReady = false;
+      _sendPort = null;
+      _isolate?.kill(priority: Isolate.immediate);
+      _isolate = null;
+      if (error is LlamaBackendInitializationException) {
+        rethrow;
+      }
+      throw LlamaBackendInitializationException(
+        'Failed to start the llama.cpp worker isolate: $error',
+      );
+    } finally {
+      tempPort.close();
+    }
+  }
+
+  void _throwIfDisposedDuringStartup(int lifecycleEpoch) {
+    if (lifecycleEpoch != _lifecycleEpoch) {
+      throw LlamaBackendInitializationException(
+        'The llama.cpp worker was disposed during backend initialization.',
+      );
+    }
+  }
+
+  @override
+  void cancelGeneration() {
+    _activeCancelToken?.value = 1;
+  }
+
+  @override
+  Future<void> setLogLevel(LlamaLogLevel level) async {
+    _currentLogLevel = level;
+    final activeDispose = _disposeStart;
+    if (activeDispose != null) {
+      await activeDispose;
+    }
+    final lifecycleEpoch = _lifecycleEpoch;
+    final startup = _isolateStart;
+    if (startup != null) {
+      await startup;
+      _throwIfDisposedDuringStartup(lifecycleEpoch);
+    }
+    final sendPort = _sendPort;
+    if (sendPort != null) {
+      final rp = ReceivePort();
+      try {
+        sendPort.send(LogLevelRequest(level, rp.sendPort));
+        _expectDoneResponse(await rp.first, 'log-level update');
+      } finally {
+        rp.close();
+      }
+    }
+  }
+
+  @override
+  Future<int> modelLoad(String path, ModelParams params) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(ModelLoadRequest(path, params, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is HandleResponse) return res.handle;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception("Unknown response during model load");
+  }
+
+  @override
+  Future<int> modelLoadFromUrl(
+    String url,
+    ModelParams params, {
+    Function(double progress)? onProgress,
+  }) async {
+    throw LlamaUnsupportedException(
+      'The native llama.cpp backend cannot load a model from a URL: '
+      'supportsUrlLoading is false. Download the model first, then call '
+      'modelLoad with a local path.',
+    );
+  }
+
+  @override
+  Future<void> modelFree(int modelHandle) async {
+    if (_sendPort == null) return;
+    final rp = ReceivePort();
+    _sendPort!.send(ModelFreeRequest(modelHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    _expectDoneResponse(res, 'model free');
+  }
+
+  @override
+  Future<int> contextCreate(int modelHandle, ModelParams params) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(ContextCreateRequest(modelHandle, params, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is HandleResponse) return res.handle;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception("Unknown response during context creation");
+  }
+
+  @override
+  Future<void> contextFree(int contextHandle) async {
+    if (_sendPort == null) return;
+    final rp = ReceivePort();
+    _sendPort!.send(ContextFreeRequest(contextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    _expectDoneResponse(res, 'context free');
+  }
+
+  @override
+  Future<int> getContextSize(int contextHandle) async {
+    if (_sendPort == null) return 0;
+    final rp = ReceivePort();
+    _sendPort!.send(GetContextSizeRequest(contextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is GetContextSizeResponse) return res.size;
+    return 0;
+  }
+
+  @override
+  Stream<List<int>> generate(
+    int contextHandle,
+    String prompt,
+    GenerationParams params, {
+    List<LlamaContentPart>? parts,
+  }) {
+    if (_activeCancelToken != null || _activeGenerationCleanup != null) {
+      return Stream<List<int>>.error(
+        StateError('llama.cpp generation is already in progress.'),
+      );
+    }
+
+    late final StreamController<List<int>> controller;
+    final rp = ReceivePort();
+
+    final cancelToken = malloc<Int8>(1);
+    cancelToken.value = 0;
+    _activeCancelToken = cancelToken;
+
+    // The cancel token is shared with the worker isolate, which polls it every
+    // decode iteration. It must only be freed once the worker has stopped
+    // reading it. Cleanup is split in two: detachAndClose() runs eagerly on
+    // cancel and only tears down the Dart-side controller, while freeToken()
+    // frees the native token and closes the response port. The only safe times
+    // to free are when the worker proves it has stopped: a terminal
+    // DoneResponse/ErrorResponse (the worker breaks its decode loop on seeing
+    // the cancel flag and then emits one), or dispose() freeing it after
+    // killing the worker isolate. A timer-based backstop is deliberately
+    // avoided: it could fire mid-decode (e.g. during a slow prompt eval) and
+    // reintroduce the use-after-free. Worst case (a wedged worker that never
+    // responds and is never disposed) leaks a single byte, which is acceptable.
+    var tokenFreed = false;
+    late final void Function() freeToken;
+    freeToken = () {
+      if (tokenFreed) {
+        return;
+      }
+      tokenFreed = true;
+      rp.close();
+      malloc.free(cancelToken);
+      if (_activeCancelToken == cancelToken) {
+        _activeCancelToken = null;
+      }
+      if (_activeFreeToken == freeToken) {
+        _activeFreeToken = null;
+      }
+    };
+    _activeFreeToken = freeToken;
+
+    var detached = false;
+    void detachAndClose() {
+      if (detached) {
+        return;
+      }
+      detached = true;
+      if (!controller.isClosed) {
+        unawaited(controller.close());
+      }
+      if (_activeGenerationCleanup == detachAndClose) {
+        _activeGenerationCleanup = null;
+      }
+    }
+
+    controller = StreamController<List<int>>(
+      onCancel: () {
+        cancelGeneration();
+        // Close the Dart side immediately, but keep the response port open and
+        // the native token alive so the worker can observe the cancel flag and
+        // emit its terminal response, at which point freeToken() runs.
+        detachAndClose();
+      },
+    );
+    _activeGenerationCleanup = detachAndClose;
+
+    _sendPort!.send(
+      GenerateRequest(
+        contextHandle,
+        prompt,
+        params,
+        cancelToken.address,
+        rp.sendPort,
+        parts: parts,
+      ),
+    );
+
+    rp.listen((msg) {
+      if (msg is TokenResponse) {
+        if (!controller.isClosed) {
+          controller.add(msg.bytes);
+        }
+      } else if (msg is DoneResponse) {
+        detachAndClose();
+        freeToken();
+      } else if (msg is ErrorResponse) {
+        if (!controller.isClosed) {
+          controller.addError(_workerError(msg));
+        }
+        detachAndClose();
+        freeToken();
+      }
+    });
+
+    return controller.stream;
+  }
+
+  @override
+  Future<List<int>> tokenize(
+    int modelHandle,
+    String text, {
+    bool addSpecial = true,
+  }) async {
+    final rp = ReceivePort();
+    _sendPort!.send(
+      TokenizeRequest(modelHandle, text, addSpecial, rp.sendPort),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is TokenizeResponse) return res.tokens;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception("Tokenization failed");
+  }
+
+  @override
+  Future<List<double>> embed(
+    int contextHandle,
+    String text, {
+    bool normalize = true,
+  }) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(EmbedRequest(contextHandle, text, normalize, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is EmbedResponse) return res.embedding;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception('Embedding failed');
+  }
+
+  @override
+  Future<List<List<double>>> embedBatch(
+    int contextHandle,
+    List<String> texts, {
+    bool normalize = true,
+  }) async {
+    if (texts.isEmpty) {
+      return const <List<double>>[];
+    }
+
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      EmbedBatchRequest(
+        contextHandle,
+        List<String>.from(texts),
+        normalize,
+        rp.sendPort,
+      ),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is EmbedBatchResponse) return res.embeddings;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception('Batch embedding failed');
+  }
+
+  @override
+  Future<String> detokenize(
+    int modelHandle,
+    List<int> tokens, {
+    bool special = false,
+  }) async {
+    final rp = ReceivePort();
+    _sendPort!.send(
+      DetokenizeRequest(modelHandle, tokens, special, rp.sendPort),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is DetokenizeResponse) return res.text;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception("Detokenization failed");
+  }
+
+  @override
+  Future<Map<String, String>> modelMetadata(int modelHandle) async {
+    final rp = ReceivePort();
+    _sendPort!.send(MetadataRequest(modelHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is MetadataResponse) return res.metadata;
+    return {};
+  }
+
+  @override
+  Future<ModelFileType?> getModelFileType(int modelHandle) async {
+    final rp = ReceivePort();
+    _sendPort!.send(ModelFileTypeRequest(modelHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is ModelFileTypeResponse) return res.modelFileType;
+    if (res is ErrorResponse) throw _workerError(res);
+    return null;
+  }
+
+  @override
+  Future<bool> stateSaveFile(
+    int contextHandle,
+    String path,
+    List<int> tokens,
+  ) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      StateSaveFileRequest(
+        contextHandle,
+        path,
+        List<int>.from(tokens),
+        rp.sendPort,
+      ),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is StateSaveFileResponse) return res.success;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception('State save failed');
+  }
+
+  @override
+  Future<StateLoadResult> stateLoadFile(
+    int contextHandle,
+    String path,
+    int tokenCapacity,
+  ) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      StateLoadFileRequest(contextHandle, path, tokenCapacity, rp.sendPort),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is StateLoadFileResponse) {
+      return StateLoadResult(tokens: res.tokens);
+    }
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception('State load failed');
+  }
+
+  @override
+  Future<void> setLoraAdapter(
+    int contextHandle,
+    String path,
+    double scale,
+  ) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      LoraRequest(
+        contextHandle,
+        'set',
+        path: path,
+        scale: scale,
+        sendPort: rp.sendPort,
+      ),
+    );
+    final res = await rp.first;
+    rp.close();
+    _expectDoneResponse(res, 'set LoRA adapter');
+  }
+
+  @override
+  Future<void> removeLoraAdapter(int contextHandle, String path) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      LoraRequest(contextHandle, 'remove', path: path, sendPort: rp.sendPort),
+    );
+    final res = await rp.first;
+    rp.close();
+    _expectDoneResponse(res, 'remove LoRA adapter');
+  }
+
+  @override
+  Future<void> clearLoraAdapters(int contextHandle) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(LoraRequest(contextHandle, 'clear', sendPort: rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    _expectDoneResponse(res, 'clear LoRA adapters');
+  }
+
+  @override
+  Future<String> getBackendName() async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(BackendInfoRequest(rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    return (res as BackendInfoResponse).name;
+  }
+
+  @override
+  Future<String> getAvailableBackends() async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(AvailableBackendsRequest(rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    return (res as BackendInfoResponse).name;
+  }
+
+  @override
+  Future<int?> getResolvedGpuLayers() async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(ResolvedGpuLayersRequest(rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    return (res as ResolvedGpuLayersResponse).layers;
+  }
+
+  @override
+  Future<BackendPerfContextData?> getPerformanceContext(
+    int contextHandle,
+  ) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(PerformanceContextRequest(contextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is PerformanceContextResponse) {
+      return BackendPerfContextData(
+        loadMs: res.loadMs,
+        promptEvalMs: res.promptEvalMs,
+        evalMs: res.evalMs,
+        sampleMs: res.sampleMs,
+        decodeMs: res.decodeMs,
+        promptEvalTokens: res.promptEvalTokens,
+        evalTokens: res.evalTokens,
+        sampleCount: res.sampleCount,
+        reusedGraphs: res.reusedGraphs,
+        speculativeDraftTokens: res.speculativeDraftTokens,
+        speculativeAcceptedDraftTokens: res.speculativeAcceptedDraftTokens,
+        speculativeDraftAttempts: res.speculativeDraftAttempts,
+        speculativeVerifyTokens: res.speculativeVerifyTokens,
+        speculativeReplayTokens: res.speculativeReplayTokens,
+        speculativeDraftMs: res.speculativeDraftMs,
+        speculativeVerifyMs: res.speculativeVerifyMs,
+      );
+    }
+    if (res is ErrorResponse) {
+      throw _workerError(res);
+    }
+    return null;
+  }
+
+  @override
+  bool get supportsUrlLoading => false;
+
+  @override
+  Future<bool> isGpuSupported() async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(GpuSupportRequest(rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    return (res as GpuSupportResponse).support;
+  }
+
+  @override
+  Future<void> dispose() async {
+    final existingDispose = _disposeStart;
+    if (existingDispose != null) {
+      await existingDispose;
+      return;
+    }
+    final dispose = _disposeWorker();
+    _disposeStart = dispose;
+    try {
+      await dispose;
+    } finally {
+      if (_disposeStart == dispose) {
+        _disposeStart = null;
+      }
+    }
+  }
+
+  Future<void> _disposeWorker() async {
+    _lifecycleEpoch += 1;
+    _isReady = false;
+    final startup = _isolateStart;
+    if (startup != null) {
+      try {
+        await startup;
+      } catch (_) {
+        // Startup already performed its own failure cleanup.
+      }
+    }
+    // Signal any in-flight generation to stop and close the Dart side, but do
+    // not free the shared cancel token yet: the worker may still poll it. The
+    // worker awaits the in-flight generation before acking the dispose, so its
+    // terminal response normally frees the token first. After killing the
+    // worker (below) the token is provably unread, so freeing it there is safe
+    // and idempotent (guarded by the freeToken tokenFreed flag).
+    _activeCancelToken?.value = 1;
+    _activeGenerationCleanup?.call();
+    cancelTextToSpeech();
+
+    if (_sendPort != null) {
+      final rp = ReceivePort();
+      _sendPort!.send(DisposeRequest(rp.sendPort));
+      await rp.first;
+      rp.close();
+    }
+    _isolate?.kill();
+    _isolate = null;
+    _sendPort = null;
+    _isolateStart = null;
+    // Worker is gone; free the token if a terminal response did not already.
+    _activeFreeToken?.call();
+    _activeCancelToken = null;
+    _activeGenerationCleanup = null;
+    _activeFreeToken = null;
+    _isReady = false;
+  }
+
+  @override
+  Future<int?> multimodalContextCreate(
+    int modelHandle,
+    String mmProjPath,
+  ) async {
+    final rp = ReceivePort();
+    _sendPort!.send(
+      MultimodalContextCreateRequest(modelHandle, mmProjPath, rp.sendPort),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is HandleResponse) return res.handle;
+    if (res is ErrorResponse) throw _workerError(res);
+    return null;
+  }
+
+  @override
+  Future<void> multimodalContextFree(int mmContextHandle) async {
+    final rp = ReceivePort();
+    _sendPort!.send(MultimodalContextFreeRequest(mmContextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    _expectDoneResponse(res, 'multimodal context free');
+  }
+
+  @override
+  Future<bool> supportsAudio(int mmContextHandle) async {
+    final rp = ReceivePort();
+    _sendPort!.send(SupportsAudioRequest(mmContextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    return res as bool;
+  }
+
+  @override
+  Future<bool?> supportsVideoRuntime(int mmContextHandle) async {
+    final rp = ReceivePort();
+    _sendPort!.send(SupportsVideoRequest(mmContextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is ErrorResponse) throw _workerError(res);
+    return res as bool;
+  }
+
+  @override
+  Future<BackendTextToSpeechCapabilities> textToSpeechCapabilities(
+    int contextHandle,
+    int mmContextHandle,
+  ) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      TextToSpeechCapabilitiesRequest(
+        contextHandle,
+        mmContextHandle,
+        rp.sendPort,
+      ),
+    );
+    final response = await rp.first;
+    rp.close();
+    if (response is TextToSpeechCapabilitiesResponse) {
+      return response.capabilities;
+    }
+    if (response is ErrorResponse) {
+      throw _workerError(response);
+    }
+    throw LlamaTextToSpeechException(
+      'Unexpected native text-to-speech capability response.',
+    );
+  }
+
+  @override
+  Future<BackendTextToSpeechResult> synthesizeTextToSpeech(
+    int contextHandle,
+    int mmContextHandle,
+    BackendTextToSpeechRequest request, {
+    void Function(BackendTextToSpeechProgress progress)? onProgress,
+  }) async {
+    await _ensureIsolate();
+    if (_textToSpeechActive) {
+      throw LlamaStateException(
+        'llama.cpp text-to-speech synthesis is already in progress.',
+      );
+    }
+    _textToSpeechActive = true;
+    final rp = ReceivePort();
+    final completer = Completer<BackendTextToSpeechResult>();
+    _sendPort!.send(
+      TextToSpeechSynthesizeRequest(
+        contextHandle,
+        mmContextHandle,
+        request,
+        rp.sendPort,
+      ),
+    );
+
+    late final StreamSubscription<dynamic> subscription;
+    subscription = rp.listen((response) {
+      if (response is TextToSpeechProgressResponse) {
+        onProgress?.call(response.progress);
+        return;
+      }
+      if (response is TextToSpeechResultResponse) {
+        final bytes = response.pcm.materialize().asUint8List();
+        final samples = Float32List.view(
+          bytes.buffer,
+          bytes.offsetInBytes,
+          bytes.lengthInBytes ~/ Float32List.bytesPerElement,
+        );
+        if (!completer.isCompleted) {
+          completer.complete(
+            BackendTextToSpeechResult(
+              samples: samples,
+              sampleRateHz: response.sampleRateHz,
+              channelCount: response.channelCount,
+              framesGenerated: response.framesGenerated,
+              truncated: response.truncated,
+            ),
+          );
+        }
+        return;
+      }
+      if (response is ErrorResponse && !completer.isCompleted) {
+        completer.completeError(_workerError(response));
+      }
+    });
+
+    try {
+      return await completer.future;
+    } finally {
+      _textToSpeechActive = false;
+      await subscription.cancel();
+      rp.close();
+    }
+  }
+
+  @override
+  void cancelTextToSpeech() {
+    if (!_textToSpeechActive) {
+      return;
+    }
+    _sendPort?.send(TextToSpeechCancelRequest());
+  }
+
+  @override
+  Future<bool> supportsVision(int mmContextHandle) async {
+    final rp = ReceivePort();
+    _sendPort!.send(SupportsVisionRequest(mmContextHandle, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    return res as bool;
+  }
+
+  @override
+  Future<({int total, int free})> getVramInfo() async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(SystemInfoRequest(rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is SystemInfoResponse) {
+      return (total: res.totalVram, free: res.freeVram);
+    }
+    return (total: 0, free: 0);
+  }
+
+  @override
+  Future<List<GpuDeviceInfo>> listGpuDevices({
+    List<GpuBackend> probeBackends = const [],
+  }) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(ListGpuDevicesRequest(probeBackends, rp.sendPort));
+    final res = await rp.first;
+    rp.close();
+    if (res is ListGpuDevicesResponse) {
+      return res.devices;
+    }
+    return const [];
+  }
+
+  @override
+  Future<String> applyChatTemplate(
+    int modelHandle,
+    List<Map<String, dynamic>> messages, {
+    String? customTemplate,
+    bool addAssistant = true,
+  }) async {
+    await _ensureIsolate();
+    final rp = ReceivePort();
+    _sendPort!.send(
+      ChatTemplateRequest(
+        modelHandle,
+        messages,
+        customTemplate,
+        addAssistant,
+        rp.sendPort,
+      ),
+    );
+    final res = await rp.first;
+    rp.close();
+    if (res is ChatTemplateResponse) return res.result;
+    if (res is ErrorResponse) throw _workerError(res);
+    throw Exception("Unknown response during chat template application");
+  }
+}

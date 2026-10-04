@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme applied to the Android Window while the process is starting when the OS's Dark Mode setting is off -->
+    <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- Show a splash screen on the activity. Automatically removed when
+             the Flutter engine draws its first frame -->
+        <item name="android:windowBackground">@drawable/launch_background</item>
+    </style>
+    <!-- Theme applied to the Android Window as soon as the process has started.
+         This theme determines the color of the Android Window while your
+         Flutter UI initializes, as well as behind your Flutter UI while its
+         running.
+
+         This Theme is only used starting with V2 of Flutter's Android embedding. -->
+    <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <!-- 与 SplashScreen 同色，避免 Splash 结束到 Flutter 首帧之间闪白 -->
+        <item name="android:windowBackground">@color/splash_background</item>
+    </style>
+
+    <style name="EasterEggTheme" parent="@android:style/Theme.Material.Light.NoActionBar" />
+
+    <!-- 长按快捷菜单自定义页（ShortcutEditorActivity）。
+         ⚠️ 刻意不复用 LaunchTheme：LaunchTheme 带 windowSplashScreen* 属性，
+         Android 12+ 每次打开该页都会先播一次「应用启动画面」（图标 + 动画），
+         看起来就不像普通设置页；API 24-30 的 windowBackground
+         (launch_background) 也会在首帧前露出深色底。
+         这里只给一个兜底色，真正的页面底色 / 系统栏样式由 Activity 按
+         Flutter 传来的 ColorScheme 在运行时设置。 -->
+    <style name="ShortcutEditorTheme" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/splash_background</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

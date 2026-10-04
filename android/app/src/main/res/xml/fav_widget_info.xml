@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  收藏夹预览小组件的元数据。
+
+  预览图策略：
+  - previewImage 指向一个矢量占位图（demo 示意图），保证所有 Android 版本
+    在微件选择器里都有东西可显示；
+  - Android 15（API 35+）额外走「生成的预览」——App 运行时会调用
+    AppWidgetManager.setWidgetPreview() 用真实收藏夹数据生成预览，
+    系统优先用它（见 AppWidgetProviderInfo.generatedPreviewCategories）。
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/fav_widget_description"
+    android:initialLayout="@layout/fav_widget"
+    android:minHeight="110dp"
+    android:minResizeHeight="110dp"
+    android:minResizeWidth="180dp"
+    android:minWidth="250dp"
+    android:previewImage="@drawable/fav_widget_preview"
+    android:resizeMode="horizontal|vertical"
+    android:targetCellHeight="2"
+    android:targetCellWidth="4"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen" />

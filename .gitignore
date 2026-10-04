@@ -1,0 +1,70 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# 自编译 llamadart 原生库（含 Hexagon NPU 后端）：源码/构建树/产物均不入库
+/native/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Local temp / tooling
+.tmp_*/
+.workbuddy/
+.idea/
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# Local machine / generated caches (keep the repo lean)
+/android/local.properties
+/android/.gradle/
+/android/media_kit_libs/
+/windows/flutter/ephemeral/
+/ios/Flutter/ephemeral/
+/macos/Flutter/ephemeral/
+/linux/flutter/ephemeral/
+/apk_research/
+/.trae/
+/.zcode/
+*.repaired
+/.flutter
+/.flutter_tool_state
+tool/_t*.json
+.pubtest.txt

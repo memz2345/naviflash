@@ -1,0 +1,32 @@
+name: onnxruntime_v2
+description: >-
+  Vendored pure-Dart fork of onnxruntime_v2 (ONNX Runtime FFI bindings).
+  Upstream bundles the native onnxruntime library into the app on every
+  platform (12 MB dll / 21 MB so / 67 MB dylib / Android AAR). This fork
+  drops the flutter plugin declaration so nothing native is bundled, and
+  lets the host app dlopen a library from an arbitrary path — so the
+  runtime can be downloaded on demand and uninstalled.
+version: 1.23.2+2
+homepage: https://github.com/Persie0/onnxruntime_flutter_1_22_0
+
+environment:
+  # 必须保持与上游一致的 >=2.17 下限：ffigen 生成的 ffi.Struct / ffi.Opaque
+  # 子类没有加 base/final/sealed，Dart 3 的语言版本规则会直接编译报错。
+  # 下限低于 3.0 时本包按 2.17 语言版本解析，规则不生效（上游也是这么绕的）。
+  sdk: '>=2.17.0 <4.0.0'
+  flutter: '>=3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  ffi: ^2.1.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# NOTE: 故意不写 `flutter: plugin:` 段 —— 有了它 Flutter 工具链就会把
+# 包内的 onnxruntime.dll / .so / .dylib / Android AAR 打进产物。
+# 这里是纯 Dart 包，原生库由宿主在运行时 dlopen。
+flutter:
+  uses-material-design: false

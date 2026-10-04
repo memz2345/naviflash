@@ -1,0 +1,4677 @@
+{
+  "@@locale": "zh_CN",
+  "metroDate": "{month}月{day}日",
+  "@metroDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "metroSunday": "星期日",
+  "metroMonday": "星期一",
+  "metroTuesday": "星期二",
+  "metroWednesday": "星期三",
+  "metroThursday": "星期四",
+  "metroFriday": "星期五",
+  "metroSaturday": "星期六",
+  "metroLogin": "登录",
+  "metroWelcome": "欢迎",
+  "imageViewerNoFile": "未找到图片文件",
+  "syncPassphraseEmpty": "同步口令不能为空",
+  "imageBytesRequired": "imageUrl 或 imageBytes 必须提供其一",
+  "webdavConnectSuccess": "✅ 连接成功！",
+  "webdavConfigSaved": "配置已保存",
+  "webdavConfigureFirst": "请先配置并测试 WebDAV 连接",
+  "webdavSelectContactsFirst": "请先在下方选择要备份的联系人",
+  "webdavNoFiles": "选中的联系人没有可备份的文件",
+  "webdavConfirmBackup": "确认备份",
+  "webdavBackupConfirm": "将备份 {contacts} 位联系人的 {files} 个文件到 WebDAV 服务器。\n远程路径：{path}/chats/<昵称>/",
+  "@webdavBackupConfirm": {
+    "placeholders": {
+      "contacts": {
+        "type": "int"
+      },
+      "files": {
+        "type": "int"
+      },
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStartBackup": "开始备份",
+  "webdavBackingUpTitle": "正在备份",
+  "webdavBackupDoneTitle": "备份完成",
+  "webdavTotalFiles": "总计：{count} 个文件",
+  "@webdavTotalFiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSuccessCount": "成功：{count}",
+  "@webdavSuccessCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavFailCount": "失败：{count}",
+  "@webdavFailCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavMoreErrors": "...还有 {count} 个错误",
+  "@webdavMoreErrors": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavBackupFab": "备份",
+  "webdavShowInfo": "显示我的信息",
+  "webdavHideInfo": "隐藏我的信息",
+  "webdavScanToFill": "扫码填入服务器地址",
+  "webdavScanFilled": "已通过扫码填入地址",
+  "webdavServerConfig": "服务器配置",
+  "webdavServerUrlLabel": "服务器地址",
+  "webdavUsernameLabel": "用户名",
+  "webdavPasswordLabel": "密码",
+  "webdavRemotePathLabel": "远程备份路径",
+  "webdavTesting": "测试中...",
+  "webdavSaveAndTest": "保存并测试连接",
+  "webdavSaveOnly": "仅保存",
+  "webdavConnectVerified": "连接验证通过",
+  "webdavAutoBackup": "自动备份",
+  "webdavAutoBackupOnReceive": "接收文件时自动备份",
+  "webdavAutoBackupSubtitle": "仅对下方选中的联系人生效",
+  "webdavMediaSync": "媒体同步",
+  "webdavSyncPlaylists": "同步播放列表",
+  "webdavSyncDanmaku": "同步弹幕",
+  "webdavPassphraseEncrypted": "同步密码（AES-256 加密）",
+  "webdavPassphrasePlain": "同步密码（留空 = 明文上传）",
+  "webdavPassphraseHint": "填写密码后播放列表将加密上传",
+  "webdavGeneratePassphrase": "生成随机密码",
+  "webdavMediaSyncHint": "播放列表（含背景图）与弹幕保存到云端的独立目录（playlists/、danmaku/），不会与聊天备份混在一起。多个设备共用同一远程路径即可互相合并；播放列表可在播放列表页手动同步或从云端恢复。",
+  "webdavEncryptionOn": "已启用加密：播放列表将以 AES-256-GCM 加密后上传（含内嵌的 WebDAV 鉴权信息），服务器无法读取内容。多台设备需填写相同密码才能解密。",
+  "webdavEncryptionOff": "未加密：播放列表（含内嵌的 WebDAV 鉴权信息）将明文上传，任何能读取服务器文件的人都能看到，不推荐。",
+  "webdavBackupContacts": "备份联系人",
+  "webdavSelectedContacts": "已选 {selected} / {total} 位联系人",
+  "@webdavSelectedContacts": {
+    "placeholders": {
+      "selected": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSearchContacts": "搜索联系人或 IP...",
+  "webdavDeselectAll": "取消全选",
+  "webdavFileCount": "{count} 个文件",
+  "@webdavFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNoContacts": "暂无联系人",
+  "webdavNoMatch": "无匹配结果",
+  "webdavContactSubtitle": "{ip}  ·  {count} 个文件",
+  "@webdavContactSubtitle": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavManage": "管理",
+  "webdavLastSync": "上次同步",
+  "webdavLastError": "最近错误",
+  "webdavClearConfig": "清除 WebDAV 配置",
+  "webdavClearConfigSubtitle": "删除所有服务器信息和凭据",
+  "webdavUserLabel": "用户",
+  "webdavStatusActive": "{name}已激活",
+  "@webdavStatusActive": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStatusConfigured": "{name}已配置",
+  "@webdavStatusConfigured": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavStatusNotConfigured": "未配置",
+  "webdavNotSynced": "尚未同步",
+  "webdavJustNow": "上次同步：刚刚",
+  "webdavMinutesAgo": "上次同步：{minutes} 分钟前",
+  "@webdavMinutesAgo": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavHoursAgo": "上次同步：{hours} 小时前",
+  "@webdavHoursAgo": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSyncedDate": "上次同步：{month}月{day}日 {time}",
+  "@webdavSyncedDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPassphraseGenerated": "已生成同步密码并复制到剪贴板，请在其他设备上填入相同密码",
+  "webdavConfirmClear": "确认清除",
+  "webdavClearConfirmText": "将删除所有 WebDAV 配置（服务器、凭据、联系人选择）。\n已上传的文件不受影响。",
+  "profileEditProfile": "编辑资料",
+  "profileAccountSection": "账户管理",
+  "profileWebdavBackup": "WebDAV 备份",
+  "profileWebdavLoggedIn": "{username} 已登录",
+  "@profileWebdavLoggedIn": {
+    "placeholders": {
+      "username": {
+        "type": "String"
+      }
+    }
+  },
+  "profileNotLoggedIn": "未登录",
+  "profileAvatarSection": "头像",
+  "profileChangeAvatar": "更换头像",
+  "profileRemoveAvatar": "移除头像",
+  "profilePickFromGallery": "从相册选择图片",
+  "profileRestoreDefaultAvatar": "恢复默认头像",
+  "profileSetBackground": "设置背景",
+  "profileBgSubtitle": "为侧边栏选择一张背景图",
+  "profileRestoreDefault": "恢复默认",
+  "profileBgRemoveSubtitle": "移除自定义背景，使用主题色渐变",
+  "profileInfoSection": "个人信息",
+  "profileNicknameLabel": "昵称",
+  "profileNotSet": "未设置",
+  "profileBgTitle": "个人资料背景",
+  "profileAvatarUpdated": "✅ 头像已更新",
+  "profileAvatarFailed": "❌ 选择头像失败: {error}",
+  "@profileAvatarFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "profileRemoveAvatarConfirm": "确定要删除当前头像吗？此操作无法撤销。",
+  "profileAvatarRemoved": "头像已移除",
+  "profileSetNickname": "设置昵称",
+  "profileNicknameHint": "输入昵称",
+  "profileNicknameEmpty": "昵称不能为空",
+  "profileNicknameUpdated": "✅ 昵称已更新",
+  "colorDefaultGreen": "默认绿",
+  "colorPink": "粉红色",
+  "colorRed": "红色",
+  "colorOrange": "橙色",
+  "colorAmber": "琥珀色",
+  "colorYellow": "黄色",
+  "colorLime": "酸橙色",
+  "colorLightGreen": "浅绿色",
+  "colorGreen": "绿色",
+  "colorCyan": "青色",
+  "colorTeal": "蓝绿色",
+  "colorLightBlue": "浅蓝色",
+  "colorBlue": "蓝色",
+  "colorIndigo": "靛蓝色",
+  "colorPurple": "紫色",
+  "colorDeepPurple": "深紫色",
+  "colorBlueGrey": "蓝灰色",
+  "colorBrown": "棕色",
+  "colorGrey": "灰色",
+  "themeColorExtracted": "已从图片提取主题色",
+  "themeColorFailed": "取色失败: {error}",
+  "@themeColorFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "themeImageOnly": "仅支持图片格式",
+  "themeTitle": "主题",
+  "themeColorCopied": "已复制色号: {hex}",
+  "@themeColorCopied": {
+    "placeholders": {
+      "hex": {
+        "type": "String"
+      }
+    }
+  },
+  "themeAppearance": "外观",
+  "themeDarkBlackened": "深色模式（已黑化）",
+  "themeOff": "已关闭",
+  "themeEnabled": "已启用",
+  "themeColorsSection": "配色",
+  "themePaletteStyle": "调色板风格",
+  "themeFollowSystem": "跟随系统配色",
+  "themePickColor": "选择颜色",
+  "themeDropHint": "松开以从图片提取主题色",
+  "themeNewTheme": "新建主题",
+  "themeSwitched": "已切换至 {name} 主题",
+  "@themeSwitched": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDeleteTitle": "删除主题",
+  "themeDeleteConfirm": "确定要删除自定义主题 \"{name}\" 吗？",
+  "@themeDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeDeleted": "已删除 \"{name}\"",
+  "@themeDeleted": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeCreateTitle": "创建自定义主题",
+  "themeNameLabel": "主题名称",
+  "themeNameHint": "请输入文本",
+  "themeHexLabel": "十六进制/RGB",
+  "themeHexHint": "例如 #FF0000 或 255,0,0",
+  "themeCreated": "主题 \"{name}\" 已创建并保存",
+  "@themeCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "themeCopyColor": "复制色号",
+  "themePickFromImage": "从图片取色",
+  "searchBack": "返回设置",
+  "searchHint": "搜索设置项…",
+  "searchPrompt": "输入关键词搜索设置项",
+  "searchExamples": "例如: 刷新率 / 解码 / UA / 弹幕",
+  "searchNoResults": "没有找到「{query}」相关设置",
+  "@searchNoResults": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      }
+    }
+  },
+  "searchThemeMode": "主题模式",
+  "searchPureBlack": "纯黑深色模式",
+  "searchThemeColor": "主题配色",
+  "searchFontWeight": "文字粗细",
+  "searchDisplayScale": "显示缩放",
+  "searchDisplayMode": "显示模式 / 屏幕刷新率",
+  "searchStatusBar": "状态栏",
+  "searchKeepWindowRatio": "等比例拉伸窗口",
+  "searchLongPressSpeed": "长按键加速",
+  "searchScreenshot": "截图功能",
+  "searchScreenshotDanmaku": "截图时显示弹幕",
+  "searchPlayProgress": "播放进度",
+  "searchHwdec": "硬件解码",
+  "searchVideoSync": "视频同步",
+  "searchImmersiveLongPress": "沉浸模式长按加速",
+  "searchMpvLog": "记录 mpv 日志",
+  "searchMpvLogLevel": "mpv 日志细度",
+  "searchNetworkMode": "网络模式",
+  "searchInsecureCert": "允许不安全证书",
+  "searchChatIpv6": "聊天 IPv6",
+  "searchConnectivityTest": "连通性测试",
+  "searchHostOverrides": "Host 映射",
+  "searchDohQuery": "DoH 查询",
+  "searchReferer": "请求头 Referer",
+  "searchUserAgent": "请求头 User-Agent",
+  "searchSystemSettings": "系统设置",
+  "searchUserSettings": "用户设置",
+  "settingsDisplaySub": "主题、字体、布局",
+  "settingsSystem": "系统",
+  "settingsSystemSub": "语言、存储、权限",
+  "settingsStorage": "存储",
+  "settingsStorageSub": "图片缓存、弹幕缓存",
+  "settingsNetwork": "网络",
+  "settingsNetworkSub": "Wi-Fi、代理、同步",
+  "settingsLanguage": "语言",
+  "settingsLanguageSub": "应用语言、B 站翻译（AI 翻译）",
+  "ttsDownloadCancel": "取消下载",
+  "ttsDownloadDoneTitle": "AI 朗读模型下载完成",
+  "ttsDownloadDoneBody": "现在可以在评论和专栏里点朗读了（下载支持断点与后台，中途退出不用重来）。",
+  "ttsNoInstallTitle": "AI 朗读",
+  "ttsNoInstallHeading": "还没有安装TTS，您希望怎么做？",
+  "ttsNoInstallDownload": "下载TTS",
+  "ttsNoInstallDownloadSub": "从 Hugging Face 拉取模型",
+  "ttsNoInstallLater": "算了吧",
+  "ttsNoInstallLaterSub": "下次再说!",
+  "ttsInstallPageTitle": "下载 AI 朗读模型",
+  "ugcFilterWindowTitle": "查找和替换",
+  "ugcFilterResultPrefix": "搜索结果：",
+  "ugcFilterDeleteMatchesPlain": "删除匹配项",
+  "ugcFilterTitle": "过滤设置",
+  "ugcFilterSectionScopes": "UGC 关键词过滤",
+  "ugcFilterScopeRecommend": "首页推荐",
+  "ugcFilterScopeRecommendSub": "命中标题的视频不显示",
+  "ugcFilterScopeZone": "视频分区",
+  "ugcFilterScopeZoneSub": "只作用于 App 端推荐 / 热门 / 排行榜",
+  "ugcFilterScopeReply": "评论",
+  "ugcFilterScopeReplySub": "命中正文的评论不显示",
+  "ugcFilterScopeDyn": "动态",
+  "ugcFilterScopeDynSub": "命中正文的动态不显示",
+  "ugcFilterEmpty": "还没有关键词，在上面输入后点「添加」",
+  "ugcFilterAddHint": "关键词或正则",
+  "ugcFilterAdd": "添加",
+  "ugcFilterEdit": "编辑关键词",
+  "ugcFilterDelete": "删除",
+  "ugcFilterClear": "清空全部",
+  "ugcFilterDup": "已存在，跳过",
+  "ugcFilterInvalid": "不是合法正则表达式",
+  "ugcFilterDeleted": "已删除",
+  "ugcFilterCleared": "已清空",
+  "ugcFilterNoResult": "没有匹配项",
+  "ugcFilterMenuMore": "更多",
+  "ugcFilterMenuClipboard": "从剪贴板导入",
+  "ugcFilterMenuFile": "从文件导入",
+  "ugcFilterMenuExport": "导出",
+  "ugcFilterMenuWebdav": "导出到 WebDAV",
+  "ugcFilterImportEmpty": "剪贴板里没有文本",
+  "ugcFilterExportEmpty": "没有可导出的关键词",
+  "ugcFilterFindReplace": "查找替换",
+  "ugcFilterFind": "查找",
+  "ugcFilterReplace": "替换",
+  "ugcFilterPrev": "上个",
+  "ugcFilterNext": "下个",
+  "ugcFilterReplaceOne": "替换",
+  "ugcFilterReplaceAll": "全部",
+  "ugcFilterHistory": "历史记录",
+  "ugcFilterClearHistory": "清空查找历史",
+  "ugcFilterCaseSensitive": "区分大小写",
+  "ugcFilterWholeWord": "全词匹配（整条关键词一致）",
+  "ugcFilterRegex": "正则表达式",
+  "ugcFilterTip": "每条关键词都是一段正则表达式（忽略大小写）。Cc = 区分大小写，W = 整条关键词一致才算命中，.* = 查找框按正则处理。导入是合并去重（不会覆盖已有），导出是纯文本、每行一条。",
+  "ugcFilterRulesCount": "{count} 条",
+  "@ugcFilterRulesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterAdded": "已添加 {count} 条",
+  "@ugcFilterAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterResultCount": "搜索结果：{count}",
+  "@ugcFilterResultCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterReplaced": "已替换 {count} 条",
+  "@ugcFilterReplaced": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterDeletedMatches": "删除匹配项（{count}）",
+  "@ugcFilterDeletedMatches": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterImported": "导入 {added} 条，重复 {skipped} 条",
+  "@ugcFilterImported": {
+    "placeholders": {
+      "added": {
+        "type": "int"
+      },
+      "skipped": {
+        "type": "int"
+      }
+    }
+  },
+  "ugcFilterImportFailed": "导入失败：{error}",
+  "@ugcFilterImportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ugcFilterExportFailed": "导出失败：{error}",
+  "@ugcFilterExportFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ugcFilterWebdavOk": "已上传到 WebDAV：{name}",
+  "@ugcFilterWebdavOk": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ugcFilterWebdavFail": "上传失败：{error}",
+  "@ugcFilterWebdavFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "prefLinkSection": "链接打开方式",
+  "settingsRecommend": "推荐流设置",
+  "settingsRecommendSub": "推荐源、过滤器与刷新行为",
+  "rcmdSectionSource": "推荐源",
+  "rcmdUseAppSource": "首页使用 App 端推荐",
+  "rcmdUseAppSourceSub": "若 Web 端推荐不符预期，可切换至 App 端推荐",
+  "rcmdSectionBehavior": "刷新与保留",
+  "rcmdKeepLastData": "保留首页推荐刷新",
+  "rcmdKeepLastDataSub": "下拉刷新时保留上次内容",
+  "rcmdSavedPositionTip": "显示上次看到位置提示",
+  "rcmdSavedPositionTipSub": "保留上次内容时，在上次刷新位置显示提示",
+  "rcmdSavedPositionTipText": "上次看到这里",
+  "rcmdSectionFilter": "过滤器",
+  "rcmdNoFilter": "不过滤",
+  "rcmdMinLikeRatio": "点赞率",
+  "rcmdMinLikeRatioSub": "低于该点赞率的视频不显示",
+  "rcmdMinDuration": "视频时长",
+  "rcmdMinDurationSub": "短于该时长的视频不显示",
+  "rcmdMinPlay": "播放量",
+  "rcmdMinPlaySub": "低于该播放量的视频不显示",
+  "rcmdBanWord": "标题关键词过滤",
+  "rcmdBanWordSub": "正则表达式，命中标题的视频不显示",
+  "rcmdBanWordHint": "未设置",
+  "rcmdBanZone": "分区关键词过滤",
+  "rcmdBanZoneSub": "只作用于 App 端推荐 / 热门 / 排行榜",
+  "rcmdBanZoneHint": "未设置",
+  "rcmdExemptFollowed": "已关注 UP 豁免推荐过滤",
+  "rcmdExemptFollowedSub": "推荐中已关注用户发布的内容不会被过滤",
+  "rcmdFilterRelated": "过滤器也应用于详情页相关视频",
+  "rcmdFilterRelatedSub": "热门视频、搜索等其它入口不受影响",
+  "rcmdFilterHint": "过滤器在下次拉取推荐时生效；关键词按正则表达式匹配，留空表示不过滤。",
+  "rcmdFilterSaved": "已保存，下次拉取推荐时生效",
+  "prefOpenSupportedLinks": "打开受支持的链接",
+  "prefOpenSupportedLinksSub": "到系统设置里把本应用设为 bilibili / memz2345.top 链接的默认打开方式",
+  "linkSettingsUnavailable": "未能打开系统设置页，请在系统设置里手动查找「默认打开」",
+  "appLangSection": "应用语言",
+  "appLangFollowSystem": "跟随系统",
+  "biliLangSection": "翻译目标语言",
+  "biliAiSection": "AI 翻译",
+  "biliAiTranslateEnable": "启用 AI 翻译",
+  "biliAiTranslateOnDesc": "已开启：B 站请求将携带翻译头，返回该语言内容",
+  "biliAiTranslateOffDesc": "关闭：按原始语言返回内容",
+  "langZhCn": "简体中文",
+  "langZhHk": "繁體中文（香港）",
+  "langZhTw": "繁體中文（台灣）",
+  "langEnUs": "English（英語）",
+  "langJaJp": "日本語",
+  "langKoKr": "한국어",
+  "settingsPlayer": "播放器",
+  "settingsPlayerSub": "状态栏、加速、截图",
+  "settingsStartScreenSub": "开始屏幕、Charm",
+  "settingsLogs": "日志",
+  "settingsLogsSub": "错误日志、mpv 日志",
+  "settingsAccounts": "账号",
+  "settingsAccountsSub": "B 站、WebDAV",
+  "settingsUser": "用户",
+  "settingsUserSub": "账户、隐私、安全",
+  "settingsAboutSub": "版本、许可证",
+  "settingsLicenses": "开源许可",
+  "settingsLicensesSub": "本项目引用的开源项目",
+  "settingsSearch": "搜索设置",
+  "openSidebar": "打开侧边栏",
+  "settingsPlaceholderEasterEgg": "唔,有什么问题为什么不问问神奇的芙莉莲呢",
+  "storageClearTitle": "清理{label}",
+  "@storageClearTitle": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "storageClearConfirm": "确定要清理{label}吗？清理后重新浏览图片会再次下载。",
+  "@storageClearConfirm": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "storageClear": "清理",
+  "storageCleared": "{label}已清理",
+  "@storageCleared": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "refreshAction": "刷新",
+  "storageCacheSection": "缓存",
+  "storageUsageBreakdown": "占用分布",
+  "@storageUsageBreakdown": {
+    "description": "存储设置页饼图卡片标题"
+  },
+  "storageUsageTotal": "总占用",
+  "@storageUsageTotal": {
+    "description": "饼图中心的说明文字（下方为总大小）"
+  },
+  "storageUsageEmpty": "还没有可统计的占用",
+  "@storageUsageEmpty": {
+    "description": "饼图空态文案"
+  },
+  "storageDataCache": "数据缓存",
+  "@storageDataCache": {
+    "description": "饼图分类：视频 JSON / 专栏 / 动态详情等数据缓存"
+  },
+  "storageAiDeps": "AI 依赖",
+  "@storageAiDeps": {
+    "description": "饼图分类：ONNX 防遮挡模型 + AI 朗读模型"
+  },
+  "storageImageCache": "图片缓存",
+  "storageCounting": "正在统计…",
+  "storageFileCount": "{count} 个文件 · {size}",
+  "@storageFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "storageDanmakuCache": "弹幕缓存",
+  "storageVideoCount": "{count} 个视频 · {size}",
+  "@storageVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAutoOfflineCache": "自动离线缓存播放过的视频",
+  "@settingsAutoOfflineCache": {
+    "description": "存储设置页开关：自动离线缓存播放过的视频"
+  },
+  "settingsAutoOfflineCacheHint": "观看过的视频会自动下载到本地（约 2GB 上限，超出自动淘汰最旧），下次打开直接从本地播放、不再重复拉取；关闭后不再新增缓存。",
+  "@settingsAutoOfflineCacheHint": {
+    "description": "自动离线缓存开关的说明文字"
+  },
+  "storageVideoCache": "离线视频缓存",
+  "@storageVideoCache": {
+    "description": "存储设置页离线视频缓存行标题"
+  },
+  "storageVideoCacheDesc": "播放过的视频媒体流（容量上限内自动缓存、LRU 淘汰），下次打开直接从本地播放",
+  "@storageVideoCacheDesc": {
+    "description": "离线视频缓存行的说明文字"
+  },
+  "storageMemoryCache": "内存图片缓存",
+  "storageMemoryCacheDesc": "本次运行中已解码的图片，退出后自动释放",
+  "storageClearing": "正在清理…",
+  "storageClearAll": "一键清理全部缓存",
+  "storageCacheHint": "图片缓存为应用私有目录（image_cache），清理后浏览过的评论配图会重新下载；弹幕缓存用于离线弹幕加载。",
+  "storageClearAllTitle": "清理全部缓存",
+  "storageClearAllConfirm": "将清空图片缓存、弹幕缓存与内存图片缓存，清理后重新浏览图片会再次下载。",
+  "storageAllCleared": "缓存已全部清理",
+  "storageLocationSection": "存储位置",
+  "storageLocationAutoCache": "自动缓存位置",
+  "storageLocationAutoCacheDesc": "播放缓存 / 图片 / 弹幕 / 专栏等自动缓存的落盘位置",
+  "storageLocationVideo": "视频下载位置",
+  "storageLocationVideoDesc": "主动「缓存」的离线视频落盘位置",
+  "storageLocationModels": "AI 模型位置",
+  "storageLocationModelsDesc": "AI 朗读模型与智能防遮挡依赖",
+  "storageLocationDefault": "跟随系统默认",
+  "storageLocationUnsupported": "当前平台不支持自定义",
+  "storageLocationChoose": "更改",
+  "storageLocationPick": "选择目录",
+  "storageLocationNewFolder": "新建子文件夹",
+  "storageLocationFolderName": "文件夹名称",
+  "storageLocationCreateFailed": "创建失败，换一个名字试试",
+  "storageLocationReset": "恢复默认",
+  "storageLocationResetDone": "已恢复默认位置",
+  "storageLocationCurrent": "当前：{path}",
+  "@storageLocationCurrent": { "placeholders": { "path": { "type": "String" } } },
+  "storageLocationSetDone": "已设置为 {path}",
+  "@storageLocationSetDone": { "placeholders": { "path": { "type": "String" } } },
+  "storageLocationFree": "可用 {size}",
+  "@storageLocationFree": { "placeholders": { "size": { "type": "String" } } },
+  "storageLocationNotWritable": "该目录不可写，已回退默认位置",
+  "storageLocationAndroidHint": "安卓只能在系统给定的标准目录（电影 / 下载 / 文档等，含外置 SD 卡）与应用私有目录中选择，可在其下新建子文件夹",
+  "storageLocationKeepOld": "切换后旧位置的文件保留、仍可读取，新下载写入新位置",
+  "ttsLiveDownloadTitle": "AI 朗读模型下载",
+  "settingsAi": "AI",
+  "settingsAiSub": "智能防遮挡、AI 朗读的模型与推理设置",
+  "bottomNavPreviewHint": "底部即为实时预览：安卓上直接使用原生玻璃底栏，改顺序 / 显隐当场可见",
+  "bottomNavResetDone": "已恢复默认",
+  "verificationPendingRequests": "待处理请求",
+  "verificationNoPending": "暂无待处理请求",
+  "verificationIpAddress": "IP 地址：{ip}",
+  "@verificationIpAddress": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationNickname": "昵称：{name}",
+  "@verificationNickname": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationRequestTime": "请求时间：{time}",
+  "@verificationRequestTime": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "verificationRejectInvalid": "无法拒绝：IP 地址无效",
+  "verificationRejected": "已拒绝连接请求",
+  "verificationReject": "拒绝",
+  "verificationAcceptInvalid": "无法接受：IP 地址无效",
+  "verificationAccepted": "已接受连接请求",
+  "verificationAccept": "同意",
+  "startScreenWarning": "我们可能不再更新此项目",
+  "startScreenTitle": "开始屏幕",
+  "startScreenGoBack": "转到上一层级",
+  "enableStartScreen": "启用开始屏幕",
+  "startScreenEnableSubtitle": "允许从 Charm 的 Start 按钮进入开始屏幕",
+  "enableCharm": "启用 Charm",
+  "charmEnableSubtitle": "在屏幕右侧提供 Charm 快捷栏",
+  "charmGestureTitle": "手势拉出 Charm",
+  "charmGestureSubtitle": "从屏幕右边缘向左滑动或悬停右上角拉出 Charm",
+  "externalVideo": "外部视频",
+  "audioChannelName": "视频媒体播放",
+  "foregroundChannelName": "Navi 保活",
+  "foregroundChannelDesc": "主人~保持我后台运行~",
+  "foregroundTitle": "保活中",
+  "foregroundText": "我验牌",
+  "drawerBilibiliSearch": "搜索",
+  "recommendBottomHome": "主页",
+  "recommendBottomLive": "直播",
+  "commentImageLoadFail": "图片加载失败",
+  "commentDetailTitle": "评论详情",
+  "commentLikeLoginRequired": "请先登录 B 站账号（并开启携带 Cookie）后再点赞",
+  "commentLikeFail": "点赞失败：{error}",
+  "@commentLikeFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "relatedEmpty": "暂无相关推荐",
+  "biliLoadFailed": "加载失败",
+  "countWan": "{count}万",
+  "@countWan": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "countYi": "{count}亿",
+  "@countYi": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "searchNoNewContent": "暂无新内容",
+  "searchNewContentRefreshed": "已为您刷新一组新内容",
+  "biliDialogNeedLogin": "需要登录",
+  "biliDialogInteractDesc": "点赞 / 投币 / 三连等互动需要登录 B 站账号",
+  "biliGoLogin": "去登录",
+  "biliCookieScopeHint": "请在账号设置中开启「携带 Cookie 请求」与「互动操作」范围",
+  "videoTabRelated": "相关视频",
+  "videoTabComments": "评论",
+  "videoTabCommentsCount": "评论 {count}",
+  "@videoTabCommentsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTabEpisodes": "选集 {count}",
+  "@videoTabEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "videoTabIntro": "简介",
+  "danmakuWatching": "{count}人正在看",
+  "@danmakuWatching": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuLoadedBar": "已装填{count}条弹幕",
+  "@danmakuLoadedBar": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuToggleOn": "开启弹幕",
+  "danmakuDisable": "关闭弹幕",
+  "danmakuInputHint": "发个友善的弹幕见证当下",
+  "danmakuToastEmpty": "弹幕内容不能为空",
+  "danmakuToastSendFail": "发送失败：{error}",
+  "@danmakuToastSendFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuToastSent": "弹幕已发送",
+  "videoLikeTooltip": "点赞（长按一键三连）",
+  "videoUnlikeTooltip": "取消点赞",
+  "videoCoinTooltip": "投币",
+  "videoFavTooltip": "收藏",
+  "videoUnfavTooltip": "取消收藏",
+  "videoShareLabel": "分享",
+  "videoStatRating": "{count}人评分",
+  "@videoStatRating": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoStatFollowing": "{count}追番",
+  "@videoStatFollowing": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoStatWatching": "{count}人在看",
+  "@videoStatWatching": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "videoFollowLabel": "关注",
+  "videoFollowedLabel": "已关注",
+  "commentDetailEmpty": "还没有回复",
+  "commentDetailNoMore": "没有更多回复了（共 {count} 条）",
+  "@commentDetailNoMore": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentDetailLoadMore": "滑动加载更多",
+  "commentDetailRootBadge": "楼主",
+  "commentDetailDeleted": "(评论已删除)",
+  "commentMenuCopy": "复制评论",
+  "commentMenuSelectText": "选择文本",
+  "commentDialogTitle": "评论内容",
+  "commentDialogEmpty": "(这里空空的)",
+  "danmakuInputBvPrompt": "请输入 BV 号",
+  "danmakuInputCidPrompt": "请输入 CID",
+  "danmakuInputCidNumeric": "CID 必须为纯数字",
+  "danmakuInputCacheHit": "命中本地缓存：{count} 条弹幕 (oid={oid})",
+  "@danmakuInputCacheHit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuInputFetchSuccess": "获取成功：{count} 条弹幕 (oid={oid})",
+  "@danmakuInputFetchSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuInputFetchFail": "获取失败",
+  "danmakuInputTitle": "Bilibili 弹幕",
+  "danmakuInputTypeLabel": "类型：",
+  "danmakuInputBvHint": "输入 BV 号，将自动获取第一个分P的 CID",
+  "danmakuInputCidHint": "直接输入 CID 纯数字（如从 API 获取）",
+  "danmakuInputFetching": "获取中...",
+  "danmakuInputFetchDanmaku": "获取弹幕",
+  "danmakuInputEmpty": "输入不能为空",
+  "danmakuCidFetchFail": "无法获取 CID，请检查 BV 号",
+  "danmakuNoData": "未获取到弹幕数据（oid={oid}）",
+  "@danmakuNoData": {
+    "placeholders": {
+      "oid": {
+        "type": "String"
+      }
+    }
+  },
+  "danmakuSettingsTitle": "弹幕设置",
+  "danmakuDataSource": "数据源",
+  "danmakuDisplayControl": "显示控制",
+  "danmakuEnable": "启用弹幕",
+  "danmakuSmartMask": "智能防遮挡",
+  "danmakuSmartMaskDesc": "识别人物，弹幕不遮挡画面主体",
+  "danmakuTypeFilter": "弹幕类型",
+  "danmakuTypeScroll": "滚动弹幕",
+  "danmakuTypeTop": "顶部弹幕",
+  "danmakuTypeBottom": "底部弹幕",
+  "danmakuTypeAdvanced": "高级弹幕 (BAS)",
+  "danmakuAdvancedSubtitle": "动画弹幕，开启可能影响性能",
+  "danmakuParameters": "参数调节",
+  "danmakuScrollSpeed": "滚动速度",
+  "danmakuOpacity": "不透明度",
+  "danmakuFontSize": "字体大小",
+  "danmakuMaxLines": "显示行数",
+  "danmakuLinesCount": "{count} 行",
+  "@danmakuLinesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuQuickActions": "快捷操作",
+  "danmakuResetParams": "重置参数",
+  "danmakuClearDanmaku": "清空弹幕",
+  "danmakuLoadLocalXml": "加载本地 XML 弹幕",
+  "danmakuFetchOnline": "获取 Bilibili 在线弹幕",
+  "danmakuNotLoaded": "尚未加载弹幕",
+  "danmakuLoadedCount": "已加载 {count} 条弹幕",
+  "@danmakuLoadedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuBlockColorful": "彩色弹幕",
+  "danmakuCloudFilter": "智能云屏蔽",
+  "danmakuCloudFilterOff": "关闭",
+  "danmakuCloudFilterLevel": "{level} 级",
+  "@danmakuCloudFilterLevel": {
+    "placeholders": {
+      "level": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuFontSizeFS": "全屏字体大小",
+  "danmakuSeconds": "{value} 秒",
+  "@danmakuSeconds": {
+    "placeholders": {
+      "value": {
+        "type": "int"
+      }
+    }
+  },
+  "danmakuOthers": "其他",
+  "danmakuMassiveMode": "海量弹幕",
+  "danmakuStatic2Scroll": "固定转滚动",
+  "danmakuShowArea": "显示区域",
+  "danmakuFontWeight": "字体粗细",
+  "danmakuStrokeWidth": "描边粗细",
+  "danmakuScrollDuration": "滚动弹幕时长",
+  "danmakuStaticDuration": "静态弹幕时长",
+  "danmakuLineHeight": "弹幕行高",
+  "danmakuResetTo": "恢复默认：{value}",
+  "@danmakuResetTo": {
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "naviAddAction": "添加",
+  "playlistImportAdded": "已添加 {count} 个文件",
+  "@playlistImportAdded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistAddEpisodeTitle": "添加集数",
+  "playlistTitleLabel": "标题",
+  "playlistEpisodeHint": "第 1 集",
+  "playlistVideoUrlLabel": "视频 URL",
+  "playlistAdd": "添加",
+  "playlistNameRequired": "请输入播放列表名称",
+  "playlistAtLeastOneVideo": "请至少添加一个视频",
+  "playlistEditTitle": "编辑播放列表",
+  "playlistCreateTitle": "创建播放列表",
+  "playlistNameLabel": "播放列表名称",
+  "playlistNameHint": "我的追番列表",
+  "playlistWebdavMulti": "WebDAV 多选",
+  "playlistItemsCount": "{count} 集",
+  "@playlistItemsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistNoItems": "还没有添加任何视频",
+  "playlistImportHint": "点击上方按钮导入",
+  "playlistSaveChanges": "保存修改",
+  "playlistEpisodePanelTitle": "选集",
+  "playlistEpisodeCurrent": "当前: 第 {index} 集",
+  "@playlistEpisodeCurrent": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistSyncResult": "{what}：{message}",
+  "@playlistSyncResult": {
+    "placeholders": {
+      "what": {
+        "type": "String"
+      },
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistSyncTwoWay": "双向同步播放列表",
+  "playlistSyncTwoWaySubtitle": "下载云端并合并，再上传合并结果（含背景图）",
+  "playlistRestoreFromCloud": "从云端恢复",
+  "playlistRestoreFromCloudSubtitle": "用云端数据整体覆盖本地播放列表（含背景图）",
+  "playlistUploadToCloud": "上传到云端",
+  "playlistUploadToCloudSubtitle": "把本地播放列表全量上传（含背景图，不合并）",
+  "playlistSyncDanmaku": "同步弹幕缓存",
+  "playlistSyncDanmakuSubtitle": "与云端弹幕缓存互相合并（取较新）",
+  "playlistCreated": "已创建: {name}",
+  "@playlistCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistDeleteTitle": "删除播放列表",
+  "playlistDeleteConfirm": "确定要删除「{name}」吗？",
+  "@playlistDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistNewTooltip": "新建播放列表",
+  "playlistListTitle": "播放列表",
+  "playlistCloudSync": "云同步",
+  "playlistMyLists": "我的列表",
+  "playlistNoLists": "暂无播放列表",
+  "playlistListSummary": "共 {count} 个 · 点击列表查看全部剧集",
+  "@playlistListSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistEmptyTitle": "还没有播放列表",
+  "playlistEmptyHint": "点击右下角「创建」按钮新建一个吧",
+  "playlistResume": "续播",
+  "playlistEditAction": "编辑",
+  "playlistTileProgress": "{total} 集 · 看到第 {current} 集",
+  "@playlistTileProgress": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "current": {
+        "type": "int"
+      }
+    }
+  },
+  "subtitleOff": "关闭字幕",
+  "subtitleTrackFallback": "轨道 {id}",
+  "@subtitleTrackFallback": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleLoadedLocal": "已加载字幕: {name}",
+  "@subtitleLoadedLocal": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleWebdavNotConfigured": "WebDAV 未配置，请先登录",
+  "subtitleWebdavFolderEmpty": "WebDAV 字幕文件夹为空",
+  "subtitleSelectFile": "选择字幕文件",
+  "subtitleDownloadFailed": "字幕下载失败: HTTP {code}",
+  "@subtitleDownloadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "subtitleLoadedRemote": "已加载远程字幕: {name}",
+  "@subtitleLoadedRemote": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitleLoadError": "字幕加载异常: {error}",
+  "@subtitleLoadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "subtitlePanelTitle": "字幕 (CC)",
+  "subtitleLoadLocal": "加载本地字幕",
+  "subtitleLoadWebdav": "从 WebDAV 加载字幕",
+  "subtitleFontSize": "字号",
+  "subtitleFontColor": "字体颜色",
+  "subtitleBgColor": "背景颜色",
+  "subtitleDragToggle": "字幕拖拽（自由拖放）",
+  "subtitleDragHint": "开启后可在画面上自由拖动字幕位置",
+  "subtitlePositionReset": "重置字幕位置",
+  "webdavInputPath": "输入路径",
+  "webdavGoTo": "前往",
+  "webdavLoginRequired": "请先登录 WebDAV 账号",
+  "webdavLoginSubtitle": "配置服务器后可浏览远程视频",
+  "webdavLoginSubtitleMulti": "登录后可多选远程视频创建播放列表",
+  "webdavRefresh": "刷新",
+  "webdavRoot": "根",
+  "webdavParent": "上级",
+  "webdavFolderEmpty": "此文件夹为空",
+  "webdavPullToRefresh": "下拉刷新试试?",
+  "webdavSelectVideo": "请选择视频文件",
+  "webdavPlay": "播放",
+  "webdavMultiSelectTitle": "多选文件",
+  "webdavNoSelection": "未选择文件",
+  "webdavSelectedCount": "已选 {count} 个视频",
+  "@webdavSelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavSelectionOrder": "按选择顺序: {names}",
+  "@webdavSelectionOrder": {
+    "placeholders": {
+      "names": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavClear": "清空",
+  "webdavConfirmSelection": "确认选择",
+  "webdavGoLogin": "去登录",
+  "profileTitle": "个人信息",
+  "settingsAvatarTitle": "头像",
+  "settingsAvatarSet": "已设置",
+  "settingsNotSet": "未设置",
+  "settingsAvatarChangeTooltip": "更换头像",
+  "settingsAvatarDeleteTooltip": "删除头像",
+  "settingsAvatarUpdated": "头像已更新",
+  "settingsPickAvatarFailed": "选择头像失败：{error}",
+  "@settingsPickAvatarFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsAvatarDeleteTitle": "删除头像",
+  "settingsAvatarDeleteConfirm": "确定要删除当前头像吗？",
+  "settingsAvatarDeleteConfirmPermanent": "确定要删除当前头像吗？此操作无法撤销。",
+  "settingsAvatarDeleted": "头像已删除",
+  "settingsNickname": "昵称",
+  "settingsNicknameEditTooltip": "编辑昵称",
+  "settingsSetNickname": "设置昵称",
+  "settingsNicknamePrompt": "请输入您的昵称",
+  "settingsNicknameHint": "输入昵称",
+  "settingsNicknameEmpty": "昵称不能为空",
+  "settingsNicknameTooLong": "昵称长度不能超过 20 个字符",
+  "settingsNicknameUpdated": "昵称已更新",
+  "settingsLockWallpaper": "锁屏壁纸",
+  "settingsWallpaperCustomSet": "已设置自定义壁纸",
+  "settingsWallpaperDefaultBg": "使用默认深色背景",
+  "settingsWallpaperUpdated": "壁纸已更新",
+  "settingsWallpaperPickTooltip": "选择壁纸",
+  "settingsWallpaperDelete": "删除壁纸",
+  "settingsWallpaperDeleteConfirm": "确定要删除锁屏壁纸并恢复默认吗？",
+  "settingsWallpaperDeleted": "壁纸已删除",
+  "settingsDecoImage": "右下角装饰图",
+  "settingsDecoImageSet": "已设置 (支持透明 PNG/WebP)",
+  "settingsDecoImageUpdated": "装饰图已更新",
+  "settingsPickImageFailed": "选择图片失败：{error}",
+  "@settingsPickImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsPickImageTooltip": "选择图片",
+  "settingsDecoImageDelete": "删除装饰图",
+  "settingsDecoImageDeleteConfirm": "确定要删除右下角装饰图吗？",
+  "settingsDecoImageDeleted": "装饰图已删除",
+  "settingsSize": "大小",
+  "settingsSizePxLabel": "{size} px",
+  "@settingsSizePxLabel": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsSizePxValue": "{size}px",
+  "@settingsSizePxValue": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsOpacity": "透明",
+  "settingsOpacityPercentValue": "{percent}%",
+  "@settingsOpacityPercentValue": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsDisplay": "显示",
+  "settingsDisplaySubtitle": "主题 · 配色 · 文字 · 缩放",
+  "settingsAppTheme": "应用主题",
+  "settingsCurrentColor": "当前配色：#{color}",
+  "@settingsCurrentColor": {
+    "placeholders": {
+      "color": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsFontWeight": "文字粗细",
+  "settingsCurrentFontWeight": "当前粗细：{weight}",
+  "@settingsCurrentFontWeight": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsDisplayScale": "显示缩放",
+  "settingsCurrentScale": "当前比例：{percent}%",
+  "@settingsCurrentScale": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsRestrictIp": "限制内网 IP 连接",
+  "settingsRestrictIpSubtitle": "仅允许 A 类、B 类、C 类内网 IP 地址",
+  "settingsDefaultPort": "默认端口",
+  "settingsAdjustFontWeight": "调整文字粗细",
+  "settingsFontWeightPreview": "预览：{weight}",
+  "@settingsFontWeightPreview": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "settingsWeightHairline": "极细",
+  "settingsWeightThin": "细",
+  "settingsWeightRegular": "常规",
+  "settingsWeightMedium": "中等",
+  "settingsWeightBold": "粗",
+  "settingsWeightBlack": "极粗",
+  "settingsFontWeightUpdated": "字体粗细已更新",
+  "logTitle": "日志",
+  "logBackTooltip": "转到上一层级",
+  "logRefresh": "刷新",
+  "logClearAll": "清空日志",
+  "logClearTitle": "清空日志",
+  "logClearConfirm": "将删除 error/ 与 mpv/ 目录下的全部日志文件，确定吗？",
+  "logClearAction": "清空",
+  "logDeletedCount": "已删除 {count} 个日志文件",
+  "@logDeletedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "logCopyContent": "复制内容",
+  "logShare": "分享日志",
+  "logDeleteThis": "删除此日志",
+  "logEmptyContent": "（空日志）",
+  "logStorageLocation": "存储位置：{path}",
+  "@logStorageLocation": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logErrorSection": "错误日志（崩溃必写）",
+  "logNoErrorLogs": "暂无错误日志",
+  "logMpvSection": "mpv 日志（可选）",
+  "logNoMpvLogs": "暂无 mpv 日志",
+  "logReadingLogs": "正在读取日志…",
+  "lockFollowThemeColor": "跟随主题色 (时间)",
+  "lockShowBattery": "显示电池",
+  "lockShowNetwork": "显示网络",
+  "lockDate": "{month}月{day}日",
+  "@lockDate": {
+    "placeholders": {
+      "month": {
+        "type": "int"
+      },
+      "day": {
+        "type": "int"
+      }
+    }
+  },
+  "weekdaySunday": "星期日",
+  "weekdayMonday": "星期一",
+  "weekdayTuesday": "星期二",
+  "weekdayWednesday": "星期三",
+  "weekdayThursday": "星期四",
+  "weekdayFriday": "星期五",
+  "weekdaySaturday": "星期六",
+  "myQrSelectIpHint": "点击选择二维码使用的 IP",
+  "myQrNoIpType": "无该类型 IP",
+  "myQrInUse": "使用中",
+  "myQrSetAsQr": "设为二维码",
+  "netLanDiscoveryPort": "本机发现端口",
+  "netDohNoRecord": "未查询到 {domain} 的 A 记录",
+  "@netDohNoRecord": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      }
+    }
+  },
+  "netDohQueryFailed": "查询失败: {error}",
+  "@netDohQueryFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "netMappingSaved": "已保存映射: {domain} → {ip}",
+  "@netMappingSaved": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netAddHostMapping": "添加 Host 映射",
+  "netDomainLabel": "域名",
+  "netIpLabel": "IP 地址",
+  "netAdd": "添加",
+  "netMappingAdded": "已添加映射: {host} → {ip}",
+  "@netMappingAdded": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netMappingRemoved": "已移除映射: {host}",
+  "@netMappingRemoved": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "netTitle": "网络",
+  "netBackTooltip": "转到上一层级",
+  "netRetestAll": "全部重测",
+  "netConnectionModeSection": "连接模式",
+  "netNetworkMode": "网络模式",
+  "netModeStandardLabel": "标准模式",
+  "netModeCompatLabel": "兼容直连",
+  "netModeStandardDesc": "使用系统默认网络栈",
+  "netAllowInsecureCert": "允许不安全证书",
+  "netAllowInsecureCertDesc": "兼容直连时跳过证书校验 (IP 直连场景)",
+  "netChatIpv6": "聊天 IPv6",
+  "netChatIpv6On": "已开启：支持 IPv6 聊天、发现与二维码",
+  "netChatIpv6Off": "已关闭：仅使用 IPv4 聊天",
+  "netChatIpv6EnabledSnack": "已开启聊天 IPv6（重启应用生效）",
+  "netChatIpv6DisabledSnack": "已关闭聊天 IPv6（重启应用生效）",
+  "netLocalSendCompat": "LocalSend 兼容",
+  "netLocalSendCompatOn": "已开启：启用 LocalSend 协议（端口 53317），可与 LocalSend 官方客户端互传文件",
+  "netLocalSendCompatOff": "已关闭：使用 navi 原生协议方案",
+  "netLocalSendCompatEnabledSnack": "已开启 LocalSend 兼容",
+  "netLocalSendCompatDisabledSnack": "已关闭 LocalSend 兼容（恢复原生方案）",
+  "lsSectionTitle": "LocalSend 设备",
+  "lsHintEnable": "LocalSend 兼容未开启",
+  "lsHintEnableDesc": "开启后可与 LocalSend 官方客户端（Android/iOS/Windows/macOS/Linux）互传文件",
+  "lsEnableNow": "开启",
+  "lsEnabledSnack": "已开启 LocalSend 兼容",
+  "lsNoDevices": "未发现 LocalSend 设备",
+  "lsHttpScan": "HTTP 扫描",
+  "lsHttpScanning": "正在扫描局域网（组播不通时的兜底）...",
+  "lsHttpScanDone": "扫描完成",
+  "lsSendFile": "发送文件",
+  "lsSendFileDesc": "通过 LocalSend 协议发送到该设备",
+  "lsProbe": "重新探测",
+  "lsProbing": "正在探测...",
+  "lsProbeFound": "探测成功",
+  "lsProbeNotFound": "设备未响应",
+  "lsPickFailed": "选择文件失败：{error}",
+  "@lsPickFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "lsNoPath": "无法获取文件路径",
+  "lsSendingTitle": "正在发送到 {alias}",
+  "@lsSendingTitle": {
+    "placeholders": {
+      "alias": {
+        "type": "String"
+      }
+    }
+  },
+  "lsSendSuccess": "成功发送 {count} 个文件",
+  "@lsSendSuccess": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lsSendFailed": "有 {count} 个文件发送成功，其余失败",
+  "@lsSendFailed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "lsReceiveRequestTitle": "接收文件请求",
+  "lsReceiveRequestDesc": "对方发送了 {count} 个文件，共 {size}",
+  "@lsReceiveRequestDesc": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "lsAccept": "接受",
+  "lsReject": "拒绝",
+  "lsOpenFile": "打开文件",
+  "lsReceiveCompleteTitle": "文件接收完成",
+  "lsReceiveCompleteDesc": "{fileName} 已保存到：\n{path}",
+  "@lsReceiveCompleteDesc": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "lsFileReceived": "已接收文件：{fileName}",
+  "@lsFileReceived": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "netConnectivitySection": "连通性测试",
+  "netHostMappingSection": "Host 映射",
+  "netMappingReset": "已恢复内置默认 IP 表",
+  "netRestoreDefaults": "恢复默认",
+  "netNoMappings": "暂无映射",
+  "netAddMapping": "添加映射",
+  "netDohQuerySection": "DoH 查询",
+  "netDohQueryDesc": "通过 Cloudflare JSON DNS API 查询域名 A 记录，结果可一键保存为 Host 映射",
+  "netDohResultDisplay": "{domain} → {ip}",
+  "@netDohResultDisplay": {
+    "placeholders": {
+      "domain": {
+        "type": "String"
+      },
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "netSaveAsMapping": "保存为映射",
+  "netHeadersSection": "请求头",
+  "netRefererNotSet": "未设置 (示例: https://www.bilibili.com/)",
+  "netNotSet": "未设置",
+  "netHeaderEditorTitle": "设置 {title}",
+  "@netHeaderEditorTitle": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "netHeaderSaved": "{title} 已保存",
+  "@netHeaderSaved": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "ossTitle": "开源许可",
+  "ossBackTooltip": "转到上一层级",
+  "ossCopyFullText": "复制全文",
+  "ossLicenseCopied": "许可文本已复制到剪贴板",
+  "playHistoryTitle": "播放历史",
+  "playHistoryBackTooltip": "转到上一层级",
+  "playHistoryClearAll": "清空全部",
+  "playHistoryEmpty": "这里空空的",
+  "playHistoryEmptySub": "唔,今天真是寂寞如雪啊",
+  "playHistoryClearTitle": "清空播放历史",
+  "playHistoryClearConfirm": "您确定要删除所有保存的播放进度吗？此操作不可撤销。",
+  "playHistoryClearAction": "清空",
+  "playHistoryResume": "继续播放",
+  "playHistoryDeleteRecord": "删除记录",
+  "playHistoryDeleted": "已删除「{title}」的播放记录",
+  "@playHistoryDeleted": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "timeJustNow": "刚刚",
+  "timeMinutesAgo": "{count} 分钟前",
+  "@timeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeHoursAgo": "{count} 小时前",
+  "@timeHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "timeDaysAgo": "{count} 天前",
+  "@timeDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerArtistVideo": "视频播放",
+  "playerArtistPlaylist": "播放列表",
+  "playerArtistWebdav": "WebDAV 视频",
+  "playerWebdavSubtitle": "WebDAV 字幕",
+  "playerResumeFrom": "已从 {position} 继续播放",
+  "@playerResumeFrom": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "playerNowPlaying": "正在播放: {title}",
+  "@playerNowPlaying": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "playerDanmakuCache": "弹幕缓存 ({count}条)",
+  "@playerDanmakuCache": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuBilibili": "Bilibili 弹幕 ({count}条)",
+  "@playerDanmakuBilibili": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuNoData": "未解析到弹幕数据",
+  "playerDanmakuLoaded": "已加载 {count} 条弹幕",
+  "@playerDanmakuLoaded": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuOnline": "Bilibili 在线弹幕 ({count}条)",
+  "@playerDanmakuOnline": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuLoadedFromCache": "已从本地缓存加载 {count} 条弹幕",
+  "@playerDanmakuLoadedFromCache": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuLoadedOnline": "已加载 {count} 条在线弹幕",
+  "@playerDanmakuLoadedOnline": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerScreenshotFailed": "截图失败: {error}",
+  "@playerScreenshotFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSavedToAlbum": "已保存到相册",
+  "playerScreenshotSavedToAlbum": "截图 {fileName} 已保存到相册",
+  "@playerScreenshotSavedToAlbum": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSaveFailed": "保存失败: {error}",
+  "@playerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerPipFailed": "画中画调用失败: {error}",
+  "@playerPipFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerFitAdapt": "适配",
+  "playerFitStretch": "拉伸",
+  "playerFitFill": "填充",
+  "playerEndPause": "播完暂停",
+  "playerEndLoop": "洗脑循环",
+  "playerEndExit": "播完退出",
+  "playerSubtitleSettings": "字幕设置",
+  "playerAdvancedSettings": "高级设置",
+  "playerFlipHorizontal": "水平镜像",
+  "playerFlipHorizontalDesc": "左右翻转画面",
+  "playerFlipVertical": "垂直翻转",
+  "playerFlipVerticalDesc": "上下翻转画面",
+  "playerShowStats": "显示视频统计信息",
+  "playerShowStatsDesc": "编码/分辨率/码率/帧率",
+  "playerAutoPip": "返回桌面自动画中画",
+  "playerLoadDanmakuOnResume": "恢复播放时加载弹幕",
+  "playerLoadDanmakuOnResumeDesc": "从播放历史继续时自动读取/拉取弹幕",
+  "playerDefaultRate": "默认倍速",
+  "playerDefaultEndBehavior": "默认退出行为",
+  "playerTimePickerTitle": "跳转到指定进度",
+  "@playerTimePickerTitle": {
+    "type": "text"
+  },
+  "playerTimeUnitHour": "时",
+  "@playerTimeUnitHour": {
+    "type": "text"
+  },
+  "playerTimeUnitMinute": "分",
+  "@playerTimeUnitMinute": {
+    "type": "text"
+  },
+  "playerTimeUnitSecond": "秒",
+  "@playerTimeUnitSecond": {
+    "type": "text"
+  },
+  "playerBuffering": "缓冲中...",
+  "playerHwdecSoftware": "软解 (SW)",
+  "playerHwdecHardware": "硬解 ({mode})",
+  "@playerHwdecHardware": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "playerSourceLocal": "本地文件",
+  "playerStatResolution": "分辨率",
+  "playerStatVideoCodec": "视频编码",
+  "playerStatAudioCodec": "音频编码",
+  "playerStatBitrate": "码率",
+  "playerStatFps": "帧率",
+  "playerStatDecode": "解码",
+  "playerStatSubtitle": "字幕",
+  "playerOn": "开启",
+  "playerOff": "关闭",
+  "playerStatDanmaku": "弹幕",
+  "playerStatDownload": "下载",
+  "playerStatSource": "来源",
+  "playerStatPosition": "进度",
+  "playerStatDuration": "时长",
+  "playerCopyLink": "复制视频链接",
+  "playerCopyLinkAt": "复制空降链接（{time}）",
+  "@playerCopyLinkAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "playerCopyLinkAt0": "复制空降链接",
+  "playerCopyLinkDone": "已复制：{url}",
+  "@playerCopyLinkDone": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "playerCopyLinkNotBili": "仅 B 站视频支持复制链接",
+  "playerColorAdjust": "视频色彩调节",
+  "playerColorBrightness": "亮度",
+  "playerColorContrast": "对比度",
+  "playerColorSaturation": "饱和度",
+  "playerColorHue": "色相",
+  "playerColorGamma": "伽马",
+  "playerColorReset": "重置",
+  "playerColorUnavailable": "当前播放器不支持色彩调节",
+  "playerStats": "统计信息",
+  "playerAlignAspectRatio": "对齐宽高比",
+  "playerAlignAspectRatioDone": "窗口已对齐视频比例",
+  "playerAlignAspectRatioFailed": "无法获取视频尺寸",
+  "commonClose": "关闭",
+  "playerPlaybackError": "播放出错",
+  "playerAllEpisodesPlayed": "已播放完全部 {count} 集",
+  "@playerAllEpisodesPlayed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerFastForwarding": "{rate} 倍速播放中",
+  "@playerFastForwarding": {
+    "placeholders": {
+      "rate": {
+        "type": "String"
+      }
+    }
+  },
+  "playerTapToSave": "点我保存",
+  "playerResetScreen": "还原屏幕",
+  "playerBackTooltip": "转到上一层级",
+  "playerRotate90": "旋转90度",
+  "playerQuality": "画质",
+  "playerQualityLocked": "该画质不可用（需登录或大会员）",
+  "playerFullscreen": "全屏",
+  "playerBiliSubtitle": "B站字幕",
+  "playerDecodeFormat": "解码格式",
+  "playerDecodeFormatSwitchFailed": "切换解码格式失败",
+  "playerDecodeAuto": "自动",
+  "playerDecodeAutoShort": "自动",
+  "playerDecodeAvc": "AVC / H.264",
+  "playerDecodeHevc": "HEVC / H.265",
+  "playerDecodeAv1": "AV1",
+  "playerSubtitleLoadFailed": "字幕加载失败",
+  "playerSubtitleBilingual": "双语字幕",
+  "playerSubtitleBilingualOn": "双语字幕：{primary} / {secondary}",
+  "@playerSubtitleBilingualOn": {
+    "placeholders": {
+      "primary": { "type": "String" },
+      "secondary": { "type": "String" }
+    }
+  },
+  "playerSubtitleBilingualUnavailable": "当前视频仅提供单一语言字幕，无法双语对照",
+  "playerSubtitleSecondLang": "译文语言",
+  "playerSubtitleDrag": "字幕拖拽",
+  "playerSubtitleDragOn": "已开启字幕拖拽：拖动画面可自由调整字幕位置",
+  "playerSubtitleDragOff": "已关闭字幕拖拽",
+  "playerSubtitleDragging": "拖动字幕中…",
+  "playerSubtitleDragHint": "拖动画面中字幕调整位置",
+  "playerSubtitlePositionSaved": "字幕位置已保存",
+  "playerSubtitlePositionReset": "重置字幕位置",
+  "playerPortraitMode": "竖屏模式",
+  "playerLandscapeMode": "横屏模式",
+  "playerDescription": "简介",
+  "playerWebdavSource": "WebDAV 视频源",
+  "playerCast": "投屏",
+  "playerWatchTogether": "一起看",
+  "watchInviteTitle": "邀请你一起看视频",
+  "watchWaitingAccept": "等待对方接受…",
+  "watchSelectPeer": "选择一起看的好友",
+  "watchNoOnlinePeer": "没有在线的联系人",
+  "watchInviteSent": "已发送一起看邀请给 {name}",
+  "@watchInviteSent": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "watchActiveWith": "正在与 {name} 一起看",
+  "@watchActiveWith": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "watchPeerRejected": "对方拒绝了你的邀请",
+  "watchPeerNoAnswer": "对方没有接受邀请",
+  "watchPeerLeft": "对方已退出一起看",
+  "watchTcpFailed": "无法建立连接，一起看失败",
+  "watchConnectionDropped": "连接已断开，一起看失败",
+  "watchUrlInvalid": "视频地址不可用，无法发起一起看",
+  "rcInviteTitle": "请求远程控制您的设备",
+  "rcInviteHint": "同意后对方可以看到您的屏幕并操作您的设备",
+  "rcPeerRejected": "对方拒绝了远程控制请求",
+  "rcTcpFailed": "无法建立连接，远程控制失败",
+  "rcConnectionDropped": "连接已断开，远程控制失败",
+  "rcTimeout": "等待对方响应超时",
+  "rcShizukuNotInstalled": "对方设备未安装 Shizuku",
+  "rcShizukuNotInstalledHint": "被控端需要安装并启动 Shizuku 服务（shizuku.rikka.app）",
+  "rcShizukuGrantTitle": "需要 Shizuku 授权",
+  "rcShizukuGrantHint": "被控端授予 Navi Shizuku 权限后，对方才能远程操作屏幕",
+  "rcShizukuGrant": "授权 Shizuku",
+  "rcRequesting": "请求中…",
+  "rcShizukuNotGranted": "Shizuku 未授权",
+  "rcScreenCaptureFailed": "屏幕采集失败：{error}",
+  "@rcScreenCaptureFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "rcShareFailed": "屏幕共享失败",
+  "rcRetry": "重试",
+  "rcClose": "关闭",
+  "rcCancel": "取消",
+  "rcSend": "发送",
+  "rcConnecting": "正在连接…",
+  "rcControlling": "正在远程控制 {name}",
+  "@rcControlling": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rcBeingControlled": "{name} 正在远程控制您的设备",
+  "@rcBeingControlled": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "rcEnd": "结束远程控制",
+  "rcConnectionLost": "远程控制连接已断开",
+  "rcSessionEnded": "远程控制已结束",
+  "rcInputText": "输入文字",
+  "rcInputTextHint": "要发送到对方设备上的文字",
+  "rcKeyBack": "返回",
+  "rcKeyHome": "主页",
+  "rcKeyRecents": "最近任务",
+  "rcKeyVolumeUp": "音量+",
+  "rcKeyVolumeDown": "音量-",
+  "dlnaPageTitle": "投屏",
+  "dlnaRefresh": "重新搜索",
+  "dlnaSearching": "正在搜索局域网投屏设备…",
+  "dlnaNoDevice": "未发现可投屏设备",
+  "dlnaNoDeviceHint": "请确认电视/盒子与本机处于同一局域网，且已开启 DLNA/投屏功能",
+  "dlnaSearchAgain": "重新搜索",
+  "dlnaFoundDevices": "发现设备",
+  "dlnaCastStarted": "已投屏到 {device}",
+  "@dlnaCastStarted": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaCastFailed": "投屏失败：{device}",
+  "@dlnaCastFailed": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaCastingTo": "正在投屏到 {device}",
+  "@dlnaCastingTo": {
+    "placeholders": {
+      "device": {
+        "type": "String"
+      }
+    }
+  },
+  "dlnaStopCast": "停止投屏",
+  "dlnaPlay": "播放",
+  "dlnaPause": "暂停",
+  "dlnaVolumeUp": "增大音量",
+  "dlnaVolumeDown": "减小音量",
+  "dlnaFileMissing": "视频文件不存在",
+  "dlnaServerStartFailed": "本地文件服务启动失败：{error}",
+  "@dlnaServerStartFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playerEpisodeSelect": "选集",
+  "playerDanmakuSettings": "弹幕设置",
+  "psTitle": "播放器",
+  "psBackTooltip": "转到上一层级",
+  "psStaffEntrance": "员工通道",
+  "psDisplaySection": "显示",
+  "psStatusBar": "状态栏",
+  "psStatusBarDesc": "在播放器顶部显示时间、电量与网络图标",
+  "psKeepWindowRatio": "等比例拉伸窗口",
+  "psKeepWindowRatioDesc": "播放时窗口仅允许按当前比例缩放",
+  "psKeepWindowRatioDesktopOnly": "仅 Windows / macOS / Linux 桌面平台生效",
+  "psInteractionSection": "交互",
+  "psLongPressSpeed": "长按键加速",
+  "psLongPressSpeedDesc": "按住屏幕或键盘 D 键以 2× 倍速快进",
+  "psScreenshot": "截图功能",
+  "psScreenshotDesc": "允许在播放器中截取当前画面并保存至相册",
+  "psScreenshotDanmaku": "截图时显示弹幕",
+  "psScreenshotDanmakuDesc": "截图时把当前弹幕一并截入画面",
+  "psProgressSection": "进度",
+  "psPlayProgress": "播放进度",
+  "psNoHistory": "暂无保存的播放记录",
+  "psHistoryCount": "您有 {count} 条记录",
+  "@psHistoryCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "psMiscSection": "杂项",
+  "psHwdec": "硬件解码",
+  "psHwdecAuto": "自动选择最佳解码器",
+  "psHwdecSoftware": "强制使用 CPU 软件解码",
+  "psHwdecAutoShort": "自动",
+  "psHwdecPureSoftware": "纯软解",
+  "psHwdecDisabledTag": "硬解已关闭",
+  "hwdecPageTitle": "硬解模式",
+  "hwdecEnabled": "开启硬解",
+  "hwdecEnabledHint": "以较低功耗播放视频，若异常卡死请关闭",
+  "hwdecOnlySupported": "仅显示当前平台支持的选项",
+  "hwdecOnlySupportedHint": "按设备平台（Windows / macOS / Linux / Android / iOS）过滤选项",
+  "hwdecHint": "点击选项按顺序组成 mpv --hwdec 降级链：优先使用靠前的解码器，失败后自动尝试后面的，全部失败则退回软件解码。支持多选、可选择只显示当前平台支持的选项。",
+  "hwdecSelectedPrefix": "已选 {n} 项",
+  "@hwdecSelectedPrefix": {
+    "placeholders": {
+      "n": { "type": "String" }
+    }
+  },
+  "hwdecEmptyWarning": "请至少保留一项硬解模式，建议保留 auto / auto-safe 作为回退",
+  "psVideoSync": "视频同步",
+  "psVsyncAudioDefault": "以音频时钟为基准（默认）",
+  "psVsyncResample": "重采样音频以匹配显示刷新率",
+  "psVsyncAdrop": "丢弃 / 重复音频帧以匹配显示",
+  "psVsyncVdrop": "丢弃 / 重复视频帧以匹配显示",
+  "psVsyncAudio": "音频",
+  "psVsyncDisplayResample": "显示重采样",
+  "psVsyncDisplayAdrop": "显示音频丢弃",
+  "psVsyncDisplayVdrop": "显示视频丢弃",
+  "psImmersiveLongPress": "沉浸模式长按加速",
+  "psImmersiveLongPressDesc": "控制栏隐藏时仍可通过长按触发 2× 倍速",
+  "psLogSection": "日志",
+  "psMpvLog": "记录 mpv 日志",
+  "psMpvLogEnabled": "已开启，下次播放生效（细度：{level}）",
+  "@psMpvLogEnabled": {
+    "placeholders": {
+      "level": {
+        "type": "String"
+      }
+    }
+  },
+  "psMpvLogDisabled": "关闭。崩溃日志始终记录，不受此开关影响",
+  "psMpvLogLevel": "mpv 日志细度",
+  "psMpvLogLevelDesc": "细度越高日志越详细，占用空间也越大",
+  "psMpvLogError": "仅错误",
+  "psMpvLogWarn": "警告",
+  "psMpvLogWarnDefault": "警告（默认）",
+  "psMpvLogInfo": "信息",
+  "psMpvLogVerbose": "详细",
+  "psMpvLogDebug": "调试",
+  "psMpvLogTrace": "全部（极详细）",
+  "psViewLogs": "查看日志",
+  "psViewLogsDesc": "浏览错误日志与 mpv 日志，支持分享与清除",
+  "testPlaylistCreated": "已创建: {name}",
+  "@testPlaylistCreated": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "testPageTitle": "测试页",
+  "testVideoSourceSection": "视频来源",
+  "testVideoSourceSubtitle": "选择一个来源开始播放",
+  "testWebdavVideo": "WebDAV 视频",
+  "testWebdavVideoDesc": "从 WebDAV 服务器浏览并播放",
+  "testLocalVideo": "本地视频",
+  "testLocalVideoDesc": "从设备存储中选择视频文件",
+  "testRecentSection": "最近播放",
+  "testLastPlayedSubtitle": "上次播放记录",
+  "testNoRecords": "暂无播放记录",
+  "testPlaylistSection": "播放列表",
+  "testPlaylistSectionSubtitle": "创建、管理播放列表，选集播放",
+  "testPlaylistManage": "播放列表管理",
+  "testPlaylistManageDesc": "查看 / 编辑 / 删除播放列表，点击直接播放",
+  "testPlaylistCreate": "新建播放列表",
+  "testPlaylistCreateDesc": "WebDAV 多选文件建表 / 手动逐集导入",
+  "testQuickActionsSection": "快捷操作",
+  "testQuickActionsSubtitle": "常用测试入口",
+  "testUrlDirectPlay": "URL 直接播放",
+  "testUrlDirectPlayDesc": "输入视频 URL 直接播放",
+  "testVideoWithSubtitle": "视频 + 字幕",
+  "testVideoWithSubtitleDesc": "同时选择视频和字幕文件",
+  "testNoVideoPlayed": "还没有播放过任何视频",
+  "testEnterUrlTitle": "输入视频 URL",
+  "testPlay": "播放",
+  "testAddSubtitleTitle": "添加字幕？",
+  "testAddSubtitlePrompt": "已选择视频：{name}\n是否要加载外挂字幕？",
+  "@testAddSubtitlePrompt": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "testSkip": "跳过",
+  "testSelectSubtitle": "选择字幕",
+  "testAboutLegalese": "播放器前端测试页面",
+  "testAboutBody": "此页面用于测试 MpvPlayerPage 的各种入口：\n• WebDAV 远程视频\n• 本地视频文件\n• URL 直接播放\n• 视频 + 外挂字幕",
+  "testSourceLocal": "本地文件",
+  "testSourceLocalSubtitle": "本地 + 字幕",
+  "accountsBiliLoginSuccess": "B 站登录成功",
+  "accountsBiliLogoutTitle": "退出 B 站登录？",
+  "accountsBiliLogoutHint": "退出后将不再携带 Cookie 请求 B 站 API。",
+  "accountsClearWebviewCookieTitle": "同时清空内置浏览器 Cookie",
+  "accountsClearWebviewCookieSubtitle": "不勾选也没关系，之后可在账号设置里手动清除",
+  "accountsLogout": "退出",
+  "accountsLoggedOutWithCookie": "已退出登录并清空浏览器 Cookie",
+  "accountsLoggedOut": "已退出登录",
+  "accountsClearCookieTitle": "清空内置浏览器 Cookie？",
+  "accountsClearCookieContent": "将清除内置浏览器保存的全部 Cookie，包括网页端的登录状态。",
+  "accountsClearAction": "清空",
+  "accountsCookieCleared": "已清空内置浏览器 Cookie",
+  "accountsCookieEmpty": "暂无内置浏览器 Cookie 可清（浏览器未使用过）",
+  "accountsBiliLoginTitle": "登录 B 站账号",
+  "accountsBiliLoginSubtitle": "扫码 / 粘贴 Cookie / 密码登录",
+  "accountsClearBrowserCookie": "清空内置浏览器 Cookie",
+  "accountsClearBrowserCookieSubtitle": "清除网页端残留登录态",
+  "accountsLoggedIn": "已登录",
+  "accountsLoggedInUid": "已登录 · UID {mid}",
+  "@accountsLoggedInUid": {
+    "placeholders": {
+      "mid": {
+        "type": "int"
+      }
+    }
+  },
+  "accountsCarryCookie": "携带 Cookie 请求",
+  "accountsCarryCookieOn": "已开启：B 站 API 以登录身份请求",
+  "accountsCarryCookieOff": "已关闭：B 站 API 以游客身份请求",
+  "accountsCookieScope": "Cookie 使用范围",
+  "accountsCookieScopeSubtitle": "选择哪些请求使用账号 Cookie",
+  "cookieScopeTitle": "Cookie 使用范围",
+  "cookieScopeHint": "仅影响以下请求类型；「携带 Cookie 请求」总开关关闭时，下列设置不生效。B 站在线收藏夹操作始终携带登录 Cookie。",
+  "cookieScopeVideo": "视频详情与播放",
+  "cookieScopeVideoDesc": "视频详情、播放地址与历史进度上报",
+  "cookieScopeComments": "评论",
+  "cookieScopeCommentsDesc": "评论区列表请求",
+  "cookieScopeSearch": "搜索",
+  "cookieScopeSearchDesc": "搜索建议与搜索结果请求",
+  "cookieScopeArticle": "专栏与动态",
+  "cookieScopeArticleDesc": "专栏文章与动态内容请求",
+  "cookieScopeUserSpace": "用户空间",
+  "cookieScopeUserSpaceDesc": "UP 主空间、投稿与粉丝列表请求",
+  "cookieScopeSeason": "番剧与剧集",
+  "cookieScopeSeasonDesc": "番剧详情与剧集列表请求",
+  "cookieScopeInteractions": "互动操作",
+  "cookieScopeInteractionsDesc": "点赞、投币、收藏、关注、发送弹幕等；关闭后无法互动",
+  "cookieScopeEnableAll": "全部开启",
+  "cookieScopeDisableAll": "全部关闭",
+  "accountsWebdavCloud": "WebDAV 云盘",
+  "accountsWebdavConfiguredOn": "已配置 · 自动备份已开启",
+  "accountsWebdavConfiguredOff": "已配置 · 自动备份未开启",
+  "accountsWebdavNotConfigured": "未配置 · 点击进入设置",
+  "accountsTitle": "账号",
+  "accountsSectionBili": "B 站账号",
+  "commonBackTooltip": "转到上一层级",
+  "biliLoginFetchingQr": "正在获取二维码…",
+  "biliLoginQrFetchFailed": "获取二维码失败，请检查网络",
+  "biliLoginScanWithApp": "请使用 B 站 App 扫码登录",
+  "biliLoginInputAccountPwd": "请输入账号和密码",
+  "biliLoginFailedRetry": "登录失败，请重试",
+  "biliLoginTitle": "B 站登录",
+  "biliLoginScanMode": "扫码登录",
+  "biliLoginCookieMode": "粘贴 Cookie",
+  "biliLoginPwdMode": "密码登录",
+  "biliLoginViaBrowser": "使用内置浏览器登录",
+  "biliLoginCookieHint": "登录后「携带 Cookie 请求」默认开启，可在 设置 → 账号 中关闭",
+  "biliLoginWebTitle": "网页版登录",
+  "biliLoginCookieImportFailed": "网页登录 Cookie 导入失败，请重试或改用其他方式",
+  "biliLoginRefetch": "重新获取",
+  "biliLoginRefreshQr": "刷新二维码",
+  "biliLoginScanTip": "提示：打开 B 站 App → 扫一扫，或用「哔哩哔哩」小程序扫码",
+  "biliLoginCookieInstruction": "在电脑浏览器登录 bilibili.com，按 F12 打开开发者工具 → Application → Cookies → bilibili.com，复制全部 Cookie（以 SESSDATA= 开头的一串），粘贴到下方输入框",
+  "biliLoginVerifying": "校验中…",
+  "biliLoginVerifyAndLogin": "登录并校验",
+  "biliLoginAccountLabel": "账号（手机号 / 邮箱 / 用户名）",
+  "biliLoginPasswordLabel": "密码",
+  "biliLoginLoggingIn": "登录中…",
+  "biliLoginLoginAction": "登录",
+  "biliLoginSliderHint": "账号密码登录可能触发滑块验证码，完成验证后会自动重试",
+  "searchFilterAny": "不限",
+  "searchFilterLastDay": "最近一天",
+  "searchFilterLastWeek": "最近一周",
+  "searchFilterHalfYear": "最近半年",
+  "searchFilterAllDuration": "全部时长",
+  "searchFilterDur0to10": "0-10分钟",
+  "searchFilterDur10to30": "10-30分钟",
+  "searchFilterDur30to60": "30-60分钟",
+  "searchFilterDur60plus": "60分钟+",
+  "searchZoneAll": "全部",
+  "searchZoneAnime": "动画",
+  "searchZoneGuochuang": "国创",
+  "searchZoneMusic": "音乐",
+  "searchZoneDance": "舞蹈",
+  "searchZoneGame": "游戏",
+  "searchZoneKnowledge": "知识",
+  "searchZoneTech": "科技",
+  "searchZoneSports": "运动",
+  "searchZoneCar": "汽车",
+  "searchZoneLife": "生活",
+  "searchZoneFood": "美食",
+  "searchZoneAnimal": "动物",
+  "searchZoneKichiku": "鬼畜",
+  "searchZoneFashion": "时尚",
+  "searchZoneInfo": "资讯",
+  "searchZoneEnt": "娱乐",
+  "searchZoneDoc": "记录",
+  "searchZoneFilm": "电影",
+  "searchZoneTv": "电视",
+  "searchCaptchaInitFailed": "验证码初始化失败",
+  "searchCaptchaIncomplete": "未完成滑块验证",
+  "searchCaptchaValidateFailed": "验证码校验失败",
+  "searchCaptchaValidateFailedRetry": "验证码校验失败，请重试",
+  "searchCaptchaPassed": "验证通过，正在重新搜索",
+  "searchBiliHint": "搜索 B 站…",
+  "searchHistoryTitle": "搜索历史",
+  "searchHistoryClear": "清空",
+  "searchHistoryClearConfirm": "确定清空当前分区的搜索历史？",
+  "searchHistoryEmpty": "暂无搜索历史",
+  "drawerSearch": "搜索",
+  "drawerDynamics": "动态",
+  "drawerMessages": "消息",
+  "drawerMine": "我的",
+  "biliAccountNotLoggedIn": "账号未登录",
+  "bottomNavMoveUp": "上移",
+  "bottomNavMoveDown": "下移",
+  "bottomNavSettingsTitle": "底栏导航",
+  "bottomNavSettingsSubtitle": "拖动调整顺序（第一个为启动时的默认页），取消勾选可隐藏",
+  "bottomNavItemHome": "首页",
+  "bottomNavItemDynamics": "动态",
+  "bottomNavItemLive": "直播",
+  "bottomNavSettingsReset": "重置",
+  "bottomNavSettingsKeepOne": "至少保留一个导航项",
+  "prefSearchSection": "搜索",
+  "prefSearchTrending": "热搜（大家都在搜）",
+  "prefSearchTrendingSub": "搜索页展示热搜词条与完整榜单入口",
+  "prefSearchDiscovery": "搜索发现",
+  "prefSearchDiscoverySub": "搜索页展示「搜索发现」推荐词",
+  "searchTrendingTitle": "大家都在搜",
+  "searchTrendingFullList": "完整榜单",
+  "searchDiscoveryTitle": "搜索发现",
+  "hotSearchTitle": "bilibili热搜",
+  "searchDiscoveryFailed": "加载失败",
+  "searchDiscoveryEmpty": "暂无推荐",
+  "searchVideoFilter": "视频搜索筛选",
+  "searchFilterWithCount": "筛选 · {count}",
+  "@searchFilterWithCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "searchFilter": "筛选",
+  "searchSwitchSingleCol": "单列",
+  "searchSwitchMulti": "多列",
+  "searchLayoutMulti": "多列",
+  "searchLayoutSingle": "单列",
+  "searchPickStartDate": "选择开始日期",
+  "searchPickEndDate": "选择结束日期",
+  "searchPubTimeSection": "发布时间",
+  "searchDateBegin": "开始",
+  "searchDateTo": "至",
+  "searchDateEnd": "结束",
+  "searchDurationSection": "内容时长",
+  "searchZoneSection": "内容分区",
+  "searchAntiFuzzy": "防模糊搜索",
+  "searchAntiFuzzyHint": "限定 2009-06-26 至今的结果，避免异常早期数据干扰",
+  "searchFilterReset": "重置",
+  "searchAllLoaded": "— 已全部加载 —",
+  "searchKeywordHint": "输入关键词搜索 B 站",
+  "searchPressToSearch": "点击「搜索」或回车开始搜索",
+  "searchNoResultInType": "「{keyword}」在{type}中暂无结果",
+  "@searchNoResultInType": {
+    "placeholders": {
+      "keyword": {
+        "type": "String"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "searchResultsCount": "{type} · 共 {count} 个结果",
+  "@searchResultsCount": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      },
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "userSpaceLoadFailed": "加载失败",
+  "userSpaceAvatarLoadFailed": "头像加载失败",
+  "userSpaceTitle": "UP 主空间",
+  "userSpaceLoading": "正在加载 UP 主空间…",
+  "userSpaceLoadingName": "加载中…",
+  "userSpaceStatFans": "粉丝",
+  "userSpaceStatFollowing": "关注",
+  "userSpaceStatVideos": "视频",
+  "userSpaceStatLikes": "获赞",
+  "userSpaceVideoCount": "共 {count} 个视频",
+  "@userSpaceVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userSpaceSectionAllVideos": "全部视频",
+  "userSpaceNoVideos": "暂无投稿",
+  "userSpaceDynLoadFailed": "动态加载失败",
+  "userSpaceNoDynamics": "暂无动态",
+  "userSpaceBangumiLoadFailed": "追番列表加载失败",
+  "userSpaceNoBangumi": "暂无追番",
+  "userSpaceBangumiCount": "追番 · 共 {count} 部",
+  "@userSpaceBangumiCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "userSpaceLazySign": "这个人很懒，什么都没有留下",
+  "userSpaceTabHome": "主页",
+  "userSpaceTabDynamic": "动态",
+  "userSpaceTabBangumi": "追番",
+  "userSpaceToday": "今天",
+  "userSpaceBangumiFinished": "完结",
+  "userSpaceBangumiSerializing": "连载中",
+  "userSpaceBangumiAiringDate": "开播 {date}",
+  "@userSpaceBangumiAiringDate": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "browserApp": "应用",
+  "browserOpenAppAttempt": "网页尝试打开: {app}",
+  "@browserOpenAppAttempt": {
+    "placeholders": {
+      "app": {
+        "type": "String"
+      }
+    }
+  },
+  "browserNoAppForLink": "未找到可打开该链接的应用",
+  "browserOpenFailedSystem": "打开失败: 未安装对应应用或受系统限制",
+  "browserEmptyCookieHint": "这里空空的",
+  "browserCopyAll": "复制全部",
+  "browserCookieCopied": "Cookie已复制",
+  "browserCookieEmpty": "Cookie空空的",
+  "browserSetUaTitle": "设置 User-Agent",
+  "browserUaHint": "输入自定义 User-Agent",
+  "browserApplyAndReload": "应用并刷新",
+  "browserUaUpdated": "UA 已更新并刷新页面",
+  "browserUaSetFailed": "设置 UA 失败: {error}",
+  "@browserUaSetFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "browserWindowsInitFailed": "Windows WebView 初始化失败，请检查 WebView2 是否已安装",
+  "browserBiliCookieReadFailed": "未能读取到完整登录 Cookie（SESSDATA 为 HttpOnly，当前平台无法自动读取），请改用扫码登录或粘贴 Cookie",
+  "browserCookieImportFailed": "Cookie 导入失败，请重试",
+  "browserStoppedLoading": "已停止加载",
+  "browserClipboardAllowed": "已允许网页写入剪贴板",
+  "browserClipboardBlocked": "已禁止网页自动写入剪贴板",
+  "browserNoCurrentUrl": "无法获取当前链接",
+  "browserTroubleshootFailed": "打开失败,请检查\"获取帮助\"是否存在",
+  "browserSystemBrowserMissing": "系统浏览器不见了(",
+  "browserQrTitle": "扫我",
+  "browserSaveToDevice": "保存到设备",
+  "browserQrSaved": "二维码已保存到相册/图片库",
+  "browserSaveFailed": "保存失败: {error}",
+  "@browserSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "browserStopLoading": "停止加载",
+  "browserImporting": "导入中…",
+  "browserLoginDoneImport": "登录完成，导入",
+  "browserClipboardAccess": "剪贴板访问",
+  "browserShareQr": "分享二维码",
+  "browserCopyLink": "复制链接",
+  "browserViewCookies": "查看 Cookies",
+  "browserSetUa": "设置 UA",
+  "browserUaModeAuto": "自动（跟随系统）",
+  "browserUaModeDesktop": "电脑端",
+  "browserUaModeMobile": "手机端",
+  "browserRefresh": "刷新",
+  "browserSystemBrowser": "系统浏览器",
+  "browserTroubleshootNetwork": "检测连接问题",
+  "browserUnsupportedPlatform": "当前平台不支持内嵌浏览器",
+  "browserOpenedInSystem": "已尝试在系统浏览器中打开",
+  "browserReopenInSystem": "重新用系统浏览器打开",
+  "browserAndroidErrorTitle": "沒有指令",
+  "browserAndroidErrorCause": "原因",
+  "browserAndroidErrorDetail": "WebView 组件初始化失败\n可能是系统 WebView 未更新或已停用",
+  "browserUpdateWebview": "前往 Google Play 更新 Android System WebView",
+  "browserOpenDevOptions": "打开开发者选项查看 WebView 实现",
+  "browserAppleErrorTitle": "應用程式未預期的結束",
+  "browserAppleErrorReport": "問題報告",
+  "browserAppleErrorDetail": "無法在此裝置上初始化內嵌瀏覽器。請確認作業系統已更新至最新版本。",
+  "browserBsodMessage": "你的 Webview2 遇到问题，我们需要收集一些错误信息，然后为你重启应用。",
+  "browserBsodNoRestart": "(其实不用重启，安装完组件即可)",
+  "browserBsodComplete": "100% 完成",
+  "browserBsodSolutions": "查看解决方案：",
+  "browserBsodDownload": "下载 Webview2 运行时",
+  "browserBsodWinUpdate": "打开 Windows 更新设置",
+  "browserBsodScanQr": "扫描此 QR 码获取解决方案",
+  "browserBsodStopCode": "终止代码：WEBVIEW2_RUNTIME_MISSING",
+  "browserCantOpenExternal": "无法打开外部链接",
+  "callOutgoing": "正在呼叫...",
+  "callIncoming": "来电...",
+  "callConnecting": "连接中...",
+  "chatConnectionNotEstablishedImage": "连接未建立，无法发送图片",
+  "chatImageSent": "✅ 图片已发送",
+  "chatImageSendFailed": "发送图片失败",
+  "chatClipboardImageProcessFailed": "处理剪贴板图片失败：{error}",
+  "@chatClipboardImageProcessFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatImageStaged": "🖼️ 图片已添加至输入框",
+  "chatClipboardNoImage": "剪贴板无图片数据",
+  "chatClipboardImageFetchFailed": "获取剪贴板图片失败：{error}",
+  "@chatClipboardImageFetchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatClipboardEmptyOrUnsupported": "剪贴板为空或格式不支持",
+  "chatConnectionNotEstablishedFile": "连接未建立，无法发送文件",
+  "chatFileNotExist": "文件不存在",
+  "chatFileSendFailed": "发送文件失败",
+  "chatFileSentSuccess": "✅ {fileName} 发送成功",
+  "@chatFileSentSuccess": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFileSendError": "发送文件失败：{error}",
+  "@chatFileSendError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatIpUnknown": "IP 未知",
+  "chatReconnecting": "正在重新建立连接...",
+  "chatReconnectFailed": "重连失败，请检查网络或对方是否在线",
+  "chatStatusUnknown": "状态未知",
+  "chatStatusWaiting": "等待连接",
+  "chatMe": "我",
+  "chatFileInfoLost": "(文件信息丢失)",
+  "chatOpenFileFailed": "无法打开文件：{message}",
+  "@chatOpenFileFailed": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFileNotDownloaded": "文件尚未下载",
+  "chatOpenFileError": "打开文件失败：{error}",
+  "@chatOpenFileError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatFilePathUnavailable": "无法获取文件路径 (安卓权限限制?)",
+  "chatPickFileFailed": "选择文件失败：{error}",
+  "@chatPickFileFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatImagePathUnavailable": "无法获取图片路径",
+  "chatPickImageFailed": "选择图片失败：{error}",
+  "@chatPickImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatCopyText": "复制文本",
+  "chatSelectText": "选择文本",
+  "chatOpenFile": "打开文件",
+  "chatCopyImage": "复制图片",
+  "chatSaveImage": "保存图片",
+  "chatCopyingImage": "正在复制图片...",
+  "chatImageCopied": "✅ 图片已复制到剪贴板",
+  "chatCopyFailed": "复制失败",
+  "chatCopyImageFailed": "复制图片失败: {error}",
+  "@chatCopyImageFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatSaving": "正在保存...",
+  "chatSaveSuccess": "✅ 保存成功",
+  "chatSaveFailed": "保存失败: {error}",
+  "@chatSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatMessageContent": "消息内容",
+  "chatEmptyContent": "(这里空空的)",
+  "chatDeleteMessageConfirm": "主人确定要删除这条消息吗？",
+  "chatMessageDeleted": "消息已删除",
+  "chatOpenLinkTitle": "打开链接",
+  "chatWillOpen": "将打开：{url}",
+  "@chatWillOpen": {
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "chatBrowserTitle": "内置网页浏览器",
+  "chatCantOpenLink": "无法打开链接",
+  "chatOpenLinkFailed": "打开链接失败：{error}",
+  "@chatOpenLinkFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatPlusImage": "图片",
+  "chatPlusFile": "文件",
+  "chatImageReady": "图片已就绪",
+  "chatMore": "更多",
+  "chatPasteImage": "粘贴图片",
+  "chatInputHint": "输入消息...",
+  "chatEmoji": "表情符号",
+  "chatSend": "发送",
+  "chatInvalidAddress": "连接地址无效，无法发送",
+  "chatImageSendError": "图片发送失败",
+  "chatSendFailed": "发送失败：{error}",
+  "@chatSendFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "chatConnStatusUnknown": "连接状态未知，无法发送消息",
+  "chatPendingCannotSend": "等待对方验证，无法发送消息",
+  "chatConnRejected": "连接已被拒绝",
+  "chatConnDisconnected": "对方已断开连接",
+  "chatConnNotEstablished": "连接尚未建立，无法发送消息",
+  "chatNoMessages": "暂无消息，开始聊天吧",
+  "chatDisconnectedRetry": "连接已断开，点击尝试重连",
+  "chatRejectedRetry": "连接被拒绝，点击重试",
+  "chatExpandInput": "展开输入栏",
+  "discoverMyLanIps": "我的局域网 IP",
+  "discoverNoIpOfType": "未找到该类型的有效 IP，请检查网络连接。",
+  "discoverIpCopied": "已复制 {ip}",
+  "@discoverIpCopied": {
+    "placeholders": {
+      "ip": {
+        "type": "String"
+      }
+    }
+  },
+  "discoverTitle": "发现附近设备",
+  "discoverMyIp": "我的 IP",
+  "discoverRefreshBroadcast": "刷新/广播",
+  "discoverLanDevices": "局域网设备",
+  "discoverSearching": "正在寻找附近的设备...",
+  "discoverSendRequest": "点击发送连接请求",
+  "discoverPendingVerify": "等待对方验证...",
+  "discoverRejectedRetry": "已被拒绝，点击重试",
+  "discoverDisconnectedRetry": "已断开，点击重连",
+  "discoverUnknownDevice": "未知设备",
+  "discoverAlreadyConnected": "该设备已连接",
+  "discoverAlreadyPending": "正在等待对方验证，请勿重复发送",
+  "discoverConnectFailed": "连接失败，请检查网络或对方是否在线",
+  "discoverManualConnect": "手动连接到对等端",
+  "discoverConnectIpHint": "输入 IP 地址（例如：192.168.1.100 / fe80::1）",
+  "displayScaleCompact": "紧凑模式 · 显示更多内容",
+  "displayScaleSmall": "略小 · 适合大屏",
+  "displayScaleDefault": "默认",
+  "displayScaleLarge": "略大 · 更易阅读",
+  "displayScaleLargeFont": "大字体 · 无障碍友好",
+  "displayScaleHuge": "超大 · 辅助功能",
+  "displayScaleMin": "最小 · 信息密度最高",
+  "displayScaleCompactBig": "紧凑 · 适合大屏",
+  "displayScaleSystemDefault": "系统默认",
+  "displayScaleLargeFontShort": "大字体 · 无障碍",
+  "displayScaleTitle": "显示缩放",
+  "displaySplashBackground": "启动页背景",
+  "displaySplashBackgroundCustom": "已自定义，下次冷启动生效",
+  "displaySplashBackgroundDefault": "默认",
+  "displaySplashBackgroundSetDone": "已设置启动页背景，下次启动生效",
+  "displaySplashBackgroundSetFailed": "设置启动页背景失败",
+  "displaySplashBackgroundCleared": "已恢复默认启动页",
+  "displaySplashBackgroundClearTooltip": "恢复默认",
+  "displayHeroTransitionBlur": "使用新版动画",
+  "displayIosPushTransition": "iOS 风格页面切换",
+  "displayIosPushTransitionCorner": "转场圆角",
+  "displayIosPushTransitionCornerAuto": "自动适配屏幕圆角",
+  "displayIosPushTransitionCornerUnsupported": "当前设备未提供屏幕圆角信息，使用下方手动值",
+  "searchIosPushTransition": "iOS 页面切换动画",
+  "pageBgTitle": "页面背景图",
+  "pageBgSubtitle": "设置类页面共用的背景图，选择后可裁剪",
+  "pageBgEnabled": "显示页面背景图",
+  "pageBgOpacity": "背景强度",
+  "pageBgBlur": "背景模糊",
+  "pageBgNotSet": "未设置",
+  "pageBgPick": "选择并裁剪图片",
+  "pageBgClear": "清除背景图",
+  "pageBgContentSection": "内容页共享",
+  "pageBgContentEnabled": "在内容页启用",
+  "pageBgContentSubtitle": "搜索 / 推荐 / 热门 / 番剧 / 直播页共用这一张背景图",
+  "pageBgContentOpacity": "内容页强度",
+  "pageBgContentBlur": "内容页模糊",
+  "pageBgContentPick": "为内容页选择并裁剪",
+  "pageBgContentClear": "清除内容页背景图",
+  "pageBgSaved": "背景图已更新",
+  "pageBgCleared": "背景图已清除",
+  "pageBgPickFailed": "选择图片失败",
+  "cropTitle": "裁剪背景图",
+  "cropAspectFree": "自由",
+  "cropApply": "应用",
+  "cropReset": "重置",
+  "displayAdvancedGlass": "高级渲染",
+  "displayDisableLiquidGlassMenus": "减弱效果",
+  "displayMenuJelly": "菜单果冻动画",
+  "displayMenuJellyHint": "弹出菜单的液态形态变形动画（关闭后菜单瞬时出现）",
+  "displayBottomBarJelly": "底栏果冻效果",
+  "displayBottomBarJellyHint": "底部导航指示器的果冻物理（关闭后退回简单变色）",
+  "displayVideoCardGlass": "视频卡片玻璃材质",
+  "displayVideoCardGlassHint": "开启后视频卡片使用液态玻璃材质（较吃性能：一屏多卡全玻璃渲染）",
+  "displayChatGlass": "私信 / 消息玻璃材质",
+  "displayChatGlassHint": "开启后聊天气泡、消息卡片使用液态玻璃材质",
+  "displayLiquidGlassTuner": "液态玻璃调校",
+  "displayLiquidGlassTunerSubtitle": "调节玻璃厚度、模糊、着色、折射率等材质参数",
+  "lgTunerPreview": "实时预览",
+  "lgTunerSectionMaterial": "材质参数",
+  "lgTunerThickness": "玻璃厚度",
+  "lgTunerBlur": "背景模糊",
+  "lgTunerTint": "着色强度",
+  "lgTunerSaturation": "饱和度",
+  "lgTunerRefractiveIndex": "折射率",
+  "lgTunerLightIntensity": "高光强度",
+  "lgTunerAmbient": "环境光",
+  "lgTunerLightAngle": "光源角度",
+  "lgTunerAberration": "色散",
+  "lgTunerReset": "恢复默认",
+  "lgTunerNote": "调整即时生效并全局应用：未单独指定参数的玻璃表面（下拉菜单、弹窗等）都会跟随；聊天页顶栏等显式设定的表面保持独立样式。",
+  "lgTunerFallbackNote": "当前平台不支持高级玻璃渲染（Impeller），预览为 FakeGlass 效果；厚度、折射率、饱和度等参数仅移动端生效。",
+  "displayScaleReset": "重置为 100%",
+  "displayScaleFineTune": "精细调节",
+  "displayScalePresets": "快捷预设",
+  "displayScaleNote": "缩放比例会全局应用于文字与部分布局尺寸。设为 100% 可恢复默认。修改即时生效，无需重启。",
+  "displayScaleConnCount": "{count} 个连接",
+  "@displayScaleConnCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "displayThemeLight": "浅色",
+  "displayThemeDark": "深色",
+  "displaySettingsTitle": "显示",
+  "displaySectionAppearance": "外观",
+  "displayThemeMode": "主题模式",
+  "displayPureBlack": "纯黑深色模式",
+  "displayPureBlackOn": "深色模式（已黑化）",
+  "displayOff": "已关闭",
+  "displaySectionPersonalize": "个性化",
+  "displayThemeColor": "主题配色",
+  "displayFollowSystemColor": "跟随系统配色",
+  "displayFontWeight": "文字粗细",
+  "displaySeedDefaultGreen": "默认绿",
+  "displaySeedPink": "粉红色",
+  "displaySeedRed": "红色",
+  "displaySeedOrange": "橙色",
+  "displaySeedAmber": "琥珀色",
+  "displaySeedYellow": "黄色",
+  "displaySeedLime": "酸橙色",
+  "displaySeedLightGreen": "浅绿色",
+  "displaySeedGreen": "绿色",
+  "displaySeedCyan": "青色",
+  "displaySeedTeal": "蓝绿色",
+  "displaySeedLightBlue": "浅蓝色",
+  "displaySeedBlue": "蓝色",
+  "displaySeedIndigo": "靛蓝色",
+  "displaySeedPurple": "紫色",
+  "displaySeedDeepPurple": "深紫色",
+  "displaySeedBlueGrey": "蓝灰色",
+  "displaySeedBrown": "棕色",
+  "displaySeedGrey": "灰色",
+  "displaySeedCustom": "自定义",
+  "displayWeightThin": "极细 ({weight})",
+  "@displayWeightThin": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightLight": "细 ({weight})",
+  "@displayWeightLight": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightRegular": "常规 ({weight})",
+  "@displayWeightRegular": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightMedium": "中等 ({weight})",
+  "@displayWeightMedium": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightBold": "粗 ({weight})",
+  "@displayWeightBold": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightBlack": "极粗 ({weight})",
+  "@displayWeightBlack": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "displayWeightCustom": "自定义 ({weight})",
+  "@displayWeightCustom": {
+    "placeholders": {
+      "weight": {
+        "type": "int"
+      }
+    }
+  },
+  "fontWeightThin": "极细",
+  "fontWeightLight": "细",
+  "fontWeightRegular": "常规",
+  "fontWeightMedium": "中等",
+  "fontWeightBold": "粗",
+  "fontWeightBlack": "极粗",
+  "fontWeightSampleText": "The quick brown fox jumps over the lazy dog.\n敏捷的棕色狐狸跳过懒惰的狗。",
+  "fontWeightSaveApply": "保存并应用",
+  "geetestTitle": "完成滑块验证",
+  "geetestInitFailed": "验证码组件初始化失败，请重试或改用其他登录方式",
+  "geetestUnsupported": "当前平台不支持内嵌验证码，请使用扫码或 Cookie 登录",
+  "slicerPickImageFirst": "请先选择图片",
+  "slicerRowColInvalid": "行列数必须大于0",
+  "slicerSuccess": "切割成功，已添加到开始屏幕",
+  "slicerSaveFailed": "保存失败: {error}",
+  "@slicerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "slicerTitle": "图片切割磁贴",
+  "slicerTileSize": "磁贴尺寸 (所有碎片均相同)",
+  "slicerColsLabel": "列数 (Cols)",
+  "slicerRowsLabel": "行数 (Rows)",
+  "slicerPreview": "预览：将切割为 {count} 个 {type} 磁贴",
+  "@slicerPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "slicerProcessing": "处理中...",
+  "slicerSaveToStart": "保存到开始屏幕",
+  "viewerSaving": "正在保存...",
+  "viewerSaveSuccess": "保存成功",
+  "viewerSaveFailed": "保存失败: {error}",
+  "@viewerSaveFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerShareImage": "分享图片",
+  "viewerShareFailed": "分享失败: {error}",
+  "@viewerShareFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerCopying": "正在复制...",
+  "viewerCopyFailed": "复制失败: {error}",
+  "@viewerCopyFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "viewerSaveToAlbum": "保存到相册",
+  "viewerCopyToClipboard": "复制到剪贴板",
+  "viewerImageLoadFailed": "图片加载失败",
+  "viewerImageDataNotFound": "未找到图片数据",
+  "userSpaceMidInvalid": "mid 无效",
+  "userSpaceNoCard": "响应缺少 card",
+  "userSpaceNoList": "响应缺少 list",
+  "searchTypeVideo": "视频",
+  "searchTypeBangumi": "番剧",
+  "searchTypeFt": "影视",
+  "searchTypeLive": "直播间",
+  "searchTypeUser": "用户",
+  "searchTypeArticle": "专栏",
+  "tenThousandUnit": "万",
+  "searchVideoMeta": "{play}播放 · {danmaku}弹幕",
+  "@searchVideoMeta": {
+    "placeholders": {
+      "play": {
+        "type": "String"
+      },
+      "danmaku": {
+        "type": "String"
+      }
+    }
+  },
+  "searchScore": "评分 {score}",
+  "@searchScore": {
+    "placeholders": {
+      "score": {
+        "type": "String"
+      }
+    }
+  },
+  "searchOnline": "{count}人在线",
+  "@searchOnline": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "searchUserMeta": "{fans}粉丝 · {videos}视频",
+  "@searchUserMeta": {
+    "placeholders": {
+      "fans": {
+        "type": "String"
+      },
+      "videos": {
+        "type": "String"
+      }
+    }
+  },
+  "searchArticleMeta": "{views}阅读 · {replies}评论",
+  "@searchArticleMeta": {
+    "placeholders": {
+      "views": {
+        "type": "String"
+      },
+      "replies": {
+        "type": "String"
+      }
+    }
+  },
+  "searchBadgeCourse": "课堂",
+  "searchBadgeLive": "直播",
+  "searchBadgeCoop": "合作",
+  "searchBadgeLiveNow": "直播中",
+  "searchKeywordEmpty": "关键词为空",
+  "searchBadResponse": "响应格式异常",
+  "searchFailed": "搜索失败",
+  "searchGaiaParamMissing": "gaia register 参数缺失",
+  "searchGaiaRegisterError": "gaia register 异常: {error}",
+  "@searchGaiaRegisterError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchGaiaValidateFailed": "gaia validate 未通过 (is_valid={isValid})",
+  "@searchGaiaValidateFailed": {
+    "placeholders": {
+      "isValid": {
+        "type": "int"
+      }
+    }
+  },
+  "searchGaiaValidateError": "gaia validate 异常: {error}",
+  "@searchGaiaValidateError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentOidEmpty": "oid 为空",
+  "commentException": "异常: {error}",
+  "@commentException": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentSubHttpError": "楼中楼 HTTP {code}",
+  "@commentSubHttpError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSubNoData": "楼中楼响应缺少 data",
+  "commentSubException": "楼中楼异常: {error}",
+  "@commentSubException": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentNotLoggedIn": "未登录或未开启「携带 Cookie 请求」",
+  "commentMissingJct": "Cookie 缺少 bili_jct，请重新登录",
+  "commentNetworkError": "网络异常: {error}",
+  "@commentNetworkError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "commentApiError": "{message}（code={code}）",
+  "@commentApiError": {
+    "placeholders": {
+      "message": {
+        "type": "String"
+      },
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "deviceOs": "操作系统",
+  "deviceBuild": "内部构建",
+  "deviceSecurityPatch": "安全补丁",
+  "deviceOem": "OEM 厂商",
+  "deviceBrand": "品牌",
+  "deviceModel": "型号",
+  "deviceRomVersion": "ROM/显示版本",
+  "deviceFingerprint": "设备指纹",
+  "deviceName": "设备名称",
+  "deviceComputerName": "计算机名",
+  "deviceHardwareModel": "硬件型号",
+  "deviceKernel": "内核版本",
+  "deviceDistro": "发行版",
+  "deviceVersion": "版本",
+  "devicePlatform": "平台",
+  "deviceInfoFailed": "获取信息失败: {error}",
+  "@deviceInfoFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "logWebUnsupported": "（Web 不支持文件日志）",
+  "logNotInitialized": "（未初始化）",
+  "logAppDataDir": "应用数据目录\n{path}",
+  "@logAppDataDir": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logAppDataRoaming": "AppData（Roaming）\n{path}",
+  "@logAppDataRoaming": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logAppSupport": "Application Support\n{path}",
+  "@logAppSupport": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "logLocalDataDir": "本地数据目录\n{path}",
+  "@logLocalDataDir": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "nowPlayingVideo": "正在播放视频",
+  "commonUnknown": "未知",
+  "unnamedPlaylist": "未命名播放列表",
+  "unknownVideo": "未知视频",
+  "dohQueryFailed": "DoH 查询失败: HTTP {code}",
+  "@dohQueryFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "tcpConnectSuccess": "TCP 连接成功",
+  "netModeCompat": "Host 映射 IP 直连, 绕过 SNI 干扰",
+  "netModeStandard": "系统默认网络栈",
+  "netHostResolveFailed": "无法解析主机 {host}",
+  "@netHostResolveFailed": {
+    "placeholders": {
+      "host": {
+        "type": "String"
+      }
+    }
+  },
+  "biliCookieEmpty": "Cookie 为空",
+  "biliCookieIncomplete": "Cookie 不完整，请从浏览器复制全部 Cookie（需包含 SESSDATA）",
+  "biliCookieMissingJct": "Cookie 缺少 bili_jct，请重新从浏览器复制完整 Cookie（点赞/发评论等操作依赖它）",
+  "biliCookieInvalid": "Cookie 无效或已过期，请重新从浏览器复制",
+  "biliLoginSuccess": "登录成功",
+  "biliHttpError": "HTTP {code}",
+  "@biliHttpError": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "biliRiskBlocked": "请求被风控拦截(-412)，请稍后重试",
+  "biliQrExpired": "二维码已失效",
+  "biliQrScanned": "已扫码，请在手机上确认",
+  "biliQrWaiting": "等待扫码",
+  "biliRequestFailed": "请求失败",
+  "biliResponseNoData": "响应缺少 data",
+  "biliQrNoSessionCookie": "未获取到会话 Cookie，请刷新二维码重试",
+  "biliQrMissingJct": "扫码登录未获取到完整会话（缺少 bili_jct），请改用「粘贴 Cookie」或「浏览器登录」方式",
+  "biliNoSessionCookie": "未获取到会话 Cookie",
+  "biliWebKeyFailed": "获取登录公钥失败，请检查网络",
+  "biliPwdEncryptFailed": "密码加密失败",
+  "biliNeedGeetest": "需要完成滑块验证",
+  "biliUnknownError": "未知错误",
+  "csPlaylists": "播放列表",
+  "csDanmaku": "弹幕",
+  "csCloudEncrypted": "云端数据已加密，请先在 WebDAV 设置中填写同步密码",
+  "csCloudPassMismatch": "云端数据已加密且同步密码不匹配，无法同步",
+  "csCloudNoFile": "云端没有播放列表文件，无法恢复",
+  "csRestoredFromCloud": "已从云端恢复",
+  "csSyncDone": "同步完成",
+  "csUploadBgCount": "上传背景图 {count} 张",
+  "@csUploadBgCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDownloadBgCount": "下载背景图 {count} 张",
+  "@csDownloadBgCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csUploadedFileCount": "上传 {count} 个文件",
+  "@csUploadedFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDownloadedFileCount": "下载 {count} 个文件",
+  "@csDownloadedFileCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csMergedListsCount": "合并 {count} 个列表",
+  "@csMergedListsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csEncrypted": "已加密",
+  "csSyncFailed": "同步失败: {error}",
+  "@csSyncFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "csUploadedPlaylists": "已上传 {count} 个播放列表到云端",
+  "@csUploadedPlaylists": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "csDanmakuSummary": "上传 {uploaded} 个，下载 {downloaded} 个",
+  "@csDanmakuSummary": {
+    "placeholders": {
+      "uploaded": {
+        "type": "int"
+      },
+      "downloaded": {
+        "type": "int"
+      }
+    }
+  },
+  "csDanmakuFailed": "，失败 {failed} 个（{details}）",
+  "@csDanmakuFailed": {
+    "placeholders": {
+      "failed": {
+        "type": "int"
+      },
+      "details": {
+        "type": "String"
+      }
+    }
+  },
+  "unknownUser": "未知用户",
+  "transferSpeedBody": "{fileName}  {speed} KB/s",
+  "@transferSpeedBody": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      },
+      "speed": {
+        "type": "String"
+      }
+    }
+  },
+  "sendingFile": "发送文件",
+  "receivingFile": "接收: {fileName}",
+  "@receivingFile": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "notificationChannelName": "聊天消息",
+  "notificationChannelDesc": "接收聊天消息和快捷回复",
+  "notificationReply": "回复",
+  "screenshotSavedTitle": "截图已保存",
+  "screenshotSavedToAlbum": "截图已保存到相册",
+  "notificationConfirm": "确认",
+  "callInProgressError": "当前有未结束的通话，请先挂断",
+  "callTcpFailed": "无法连接对方（TCP 建立失败），请确认对方在线",
+  "callConnectionDropped": "连接建立后立即断开，请检查网络或对方状态",
+  "callInitFailed": "发起通话失败：{error}",
+  "@callInitFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "callAcceptFailed": "接听通话失败：{error}",
+  "@callAcceptFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "callRecordVoice": "语音通话",
+  "callRecordMissedOutgoing": "未接通话",
+  "callRecordRejected": "已拒绝来电",
+  "callRecordMissedIncoming": "未接来电",
+  "callPeerNoAnswer": "对方未接听",
+  "callUnknown": "未知",
+  "callInProgress": "通话中",
+  "webdavHttpWarning": "警告：使用 HTTP 连接，凭证将以明文传输。建议使用 HTTPS。",
+  "webdavConfigRequired": "请先填写服务器地址和用户名",
+  "webdavAuthFailed": "认证失败：用户名或密码错误",
+  "webdavConnectFailed": "连接失败：HTTP {code}",
+  "@webdavConnectFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNetworkError": "网络错误：无法连接到服务器 ({msg})",
+  "@webdavNetworkError": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavUnknownError": "未知错误：{error}",
+  "@webdavUnknownError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavNotConfigured": "WebDAV 未配置",
+  "webdavLocalFileMissing": "本地文件不存在: {path}",
+  "@webdavLocalFileMissing": {
+    "placeholders": {
+      "path": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavUploadFailed": "上传失败：HTTP {code}",
+  "@webdavUploadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavUploadError": "上传异常：{error}",
+  "@webdavUploadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavDownloadFailed": "下载失败: HTTP {code}",
+  "@webdavDownloadFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavDownloadError": "下载异常: {error}",
+  "@webdavDownloadError": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavDeleteFailed": "删除失败: {error}",
+  "@webdavDeleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavListFailed": "列出文件失败: {error}",
+  "@webdavListFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPropfindFailed": "PROPFIND 失败: HTTP {code}",
+  "@webdavPropfindFailed": {
+    "placeholders": {
+      "code": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavNetworkErr": "网络错误：{msg}",
+  "@webdavNetworkErr": {
+    "placeholders": {
+      "msg": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavPreparingBackup": "准备备份 {count} 个文件...",
+  "@webdavPreparingBackup": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "webdavBackingUp": "正在备份 ({nickname}) {fileName}",
+  "@webdavBackingUp": {
+    "placeholders": {
+      "nickname": {
+        "type": "String"
+      },
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "webdavBackupDone": "备份完成：{success} 成功，{fail} 失败",
+  "@webdavBackupDone": {
+    "placeholders": {
+      "success": {
+        "type": "int"
+      },
+      "fail": {
+        "type": "int"
+      }
+    }
+  },
+  "commonCancel": "取消",
+  "commonOk": "确定",
+  "commonConnect": "连接",
+  "commonSave": "保存",
+  "commonCreate": "创建",
+  "commonDelete": "删除",
+  "drawerHome": "主页",
+  "drawerVerificationRequests": "验证请求",
+  "drawerSettings": "设置",
+  "drawerAbout": "关于",
+  "drawerCloseMenu": "关闭菜单",
+  "drawerLockNow": "立即锁定",
+  "drawerNoNickname": "未设置昵称",
+  "drawerSwitchToDark": "切换到深色模式",
+  "drawerSwitchToLight": "切换到浅色模式",
+  "drawerLightMode": "浅色模式",
+  "drawerDarkMode": "深色模式",
+  "drawerSystemMode": "跟随系统",
+  "drawerThemeSwitched": "已切换到 {mode}",
+  "@drawerThemeSwitched": {
+    "placeholders": {
+      "mode": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerFetchFailed": "获取失败: {error}",
+  "@drawerFetchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerNoDeviceInfo": "暂无设备信息",
+  "drawerBackgroundTitle": "侧边栏背景",
+  "drawerBackgroundHasCustom": "当前已设置自定义背景，主人可以更换或移除喵。",
+  "drawerBackgroundNoCustom": "为侧边栏设置一张个性化背景图片。",
+  "drawerBackgroundUpdated": "侧边栏背景已更新",
+  "drawerBackgroundSetFailed": "设置失败: {error}",
+  "@drawerBackgroundSetFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerBackgroundChange": "更换背景",
+  "drawerBackgroundSelect": "选择背景图片",
+  "drawerBackgroundRestored": "已恢复默认背景",
+  "drawerBackgroundRemove": "移除背景",
+  "homeOpenMenu": "打开菜单",
+  "homeAddConnection": "添加连接",
+  "homeMessages": "消息",
+  "homeNoConnections": "暂无连接",
+  "homePullToRefreshHint": "下拉刷新或点击右上角添加",
+  "homeLoadFailed": "聊天记录加载失败，请重试",
+  "homeRetryLoad": "重新加载",
+  "homeUnknownAddress": "未知地址",
+  "homeNoMessages": "暂无消息",
+  "homeFileMessage": "[文件] {fileName}",
+  "@homeFileMessage": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "homeFileFallbackName": "文件",
+  "homeMessagePlaceholder": "[消息]",
+  "connectionLost": "连接已失效",
+  "openVideoFailed": "无法打开该视频",
+  "connectDialogTitle": "连接到对等端",
+  "connectIpHint": "输入 IP 地址 (例如：192.168.1.100 或 fe80::1)",
+  "connectIpEmpty": "请输入 IP 地址",
+  "connectIpInvalid": "IP 地址格式不正确",
+  "connectIpNotLan": "仅允许内网 IP 地址",
+  "connectRequestSent": "已发送连接请求，等待对方验证",
+  "connectFailed": "连接失败，请检查 IP 地址是否正确或对方是否在线",
+  "homeScanQr": "扫一扫",
+  "homeMyQrCode": "我的二维码",
+  "homeManualAdd": "手动添加",
+  "scannedFriends": "扫码添加的好友",
+  "scanTitle": "扫一扫",
+  "scanTitleWebdav": "扫描 WebDAV 地址",
+  "scanHint": "将二维码 / 条码对准框内",
+  "scanHintWebdav": "将 WebDAV 服务器地址二维码对准框内",
+  "scanHintAddFriend": "将好友的设备二维码对准框内",
+  "scanPreparing": "正在准备摄像头...",
+  "scanPermissionNeeded": "需要摄像头权限",
+  "scanPermissionNeededMsg": "请在权限弹窗中允许使用摄像头，才能扫码。",
+  "scanPermissionDenied": "摄像头权限被拒绝",
+  "scanPermissionDeniedMsg": "权限已被永久拒绝，请前往系统设置手动开启。",
+  "scanCameraUnavailable": "摄像头不可用",
+  "scanRetry": "重试",
+  "scanOpenSettings": "前往系统设置",
+  "scanTorch": "闪光灯",
+  "scanDetectedLink": "检测到链接",
+  "scanOpenLinkPrompt": "是否在内置浏览器中打开以下链接？",
+  "scanCopy": "复制",
+  "scanOpen": "打开",
+  "scanLinkCopied": "链接已复制",
+  "scanDetectedBiliVideo": "检测到 B 站视频链接",
+  "scanBiliVideoPrompt": "是否用内置播放器打开该视频？",
+  "scanBiliVideoAt": "空降至 {time}",
+  "@scanBiliVideoAt": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "scanOpenVideo": "打开视频",
+  "scanDetectedWebdav": "检测到 WebDAV 地址",
+  "scanWebdavPrompt": "该链接看起来是 WebDAV 服务器地址，是否自动填入配置？",
+  "scanOpenInBrowser": "浏览器打开",
+  "scanFillConfig": "填入配置",
+  "scanDetectedText": "识别到文本",
+  "scanCopiedToClipboard": "已复制到剪贴板",
+  "scanClose": "关闭",
+  "scanResultTitle": "扫码结果",
+  "scanErrorPermission": "摄像头权限被拒绝",
+  "scanErrorUnsupported": "当前设备不支持扫码",
+  "scanErrorDisposed": "扫码器已释放，请重试",
+  "scanErrorGeneric": "摄像头不可用（{code}）",
+  "@scanErrorGeneric": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "scanInitFailed": "扫码器初始化失败：{error}",
+  "@scanInitFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "scanDetectedDevice": "检测到设备二维码",
+  "scanAddFriendPrompt": "是否添加该设备为好友？",
+  "scanAddFriend": "添加好友",
+  "scanFriendAdded": "已发送好友请求，等待对方验证",
+  "scanFriendAddFailed": "添加好友失败，请检查网络或对方是否在线",
+  "myQrTitle": "我的二维码",
+  "myQrHint": "让好友扫描此二维码添加您",
+  "myQrEmbedIp": "二维码中已嵌入第一个局域网 IP",
+  "myQrLocalIps": "当前局域网 IP",
+  "myQrCopyContent": "复制二维码内容",
+  "myQrCopied": "已复制到剪贴板",
+  "myQrNoIp": "未找到有效的局域网 IP，请检查网络连接。",
+  "displayModeSectionTitle": "屏幕",
+  "displayModeTitle": "屏幕帧率",
+  "displayModeAuto": "自动",
+  "displayModeSystemTag": "[系统]",
+  "displayModeHint": "没有生效？重启应用试试",
+  "displayModeUnsupported": "当前平台不支持设置屏幕帧率（仅 Android）",
+  "displayModeAndroidOnly": "仅 Android",
+  "displayModeLoading": "正在获取屏幕帧率...",
+  "displayModeEmpty": "未获取到可用的屏幕帧率",
+  "playerSectionEnhance": "画面增强",
+  "superResolutionTitle": "超分辨率",
+  "superResolutionOff": "关闭",
+  "superResolutionEfficiency": "效率（低开销）",
+  "superResolutionQuality": "画质（最佳效果）",
+  "superResolutionHint": "通过 mpv 着色器实时增强画面，建议配合硬件解码；对动画内容效果最佳",
+  "skipIntroOutroTitle": "跳过片头/片尾",
+  "skipIntroOutroHint": "通过社区共享数据识别片头片尾，仅在视频有 BV+CID 时提示",
+  "skipIntro": "跳过片头",
+  "skipOutro": "跳过片尾",
+  "playlistDetailEpisodes": "共 {count} 集",
+  "@playlistDetailEpisodes": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDetailEmpty": "该播放列表为空，请先编辑添加视频",
+  "playlistDetailEpisodeOf": "第 {index} 集",
+  "@playlistDetailEpisodeOf": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDetailResume": "看到这集 · {position}",
+  "@playlistDetailResume": {
+    "placeholders": {
+      "position": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistDetailBgTitle": "背景图",
+  "playlistDetailBgPick": "选择背景图片",
+  "playlistDetailBgChange": "更换背景",
+  "playlistDetailBgRemove": "移除背景",
+  "playlistDetailBgUpdated": "✅ 背景图已更新",
+  "playlistDetailBgRemoved": "已恢复默认背景",
+  "playlistDetailBgFail": "设置失败：{error}",
+  "@playlistDetailBgFail": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "playlistFabRestart": "从头开始",
+  "playlistMenuMore": "更多操作",
+  "playlistMenuRename": "编辑名字",
+  "playlistMenuMultiSelect": "多选",
+  "playlistMenuDanmaku": "弹幕",
+  "playlistRenameTitle": "重命名播放列表",
+  "playlistRenameHint": "输入新的列表名称",
+  "playlistRenameSaved": "已重命名",
+  "playlistSelectDone": "完成",
+  "playlistSelectEmpty": "请先选择剧集",
+  "playlistSelectDelete": "删除选中（{count}）",
+  "@playlistSelectDelete": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistSelectDeleted": "已删除 {count} 集",
+  "@playlistSelectDeleted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuTitle": "导入番剧弹幕",
+  "playlistDanmakuSsHint": "输入番剧 SS 号（season_id）",
+  "playlistDanmakuFetchFail": "获取剧集失败，请检查 SS 号",
+  "playlistDanmakuSelectTitle": "选择剧集（共 {count} 集）",
+  "@playlistDanmakuSelectTitle": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuSelectAll": "全选",
+  "playlistDanmakuImport": "导入并附加弹幕",
+  "playlistDanmakuAttached": "已为 {count} 集附加弹幕",
+  "@playlistDanmakuAttached": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistDanmakuExceed": "所选 {selected} 集超过列表 {total} 集，超出部分已忽略",
+  "@playlistDanmakuExceed": {
+    "placeholders": {
+      "selected": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "splitSelectChat": "选择一个聊天",
+  "statusPending": "待对方验证",
+  "statusConnected": "已连接",
+  "statusRejected": "已拒绝",
+  "statusDisconnected": "已断开",
+  "homeStart": "开始",
+  "homeDone": "完成",
+  "homeBack": "转到上一层级",
+  "homeOverview": "鸟瞰视图",
+  "homeLocalUser": "本地用户",
+  "homeDefaultGroup": "默认分组",
+  "homeNewGroup": "新分组",
+  "homeUnnamedGroup": "(未命名分组)",
+  "homeDeleteGroupTitle": "确认删除",
+  "homeDeleteGroupMessage": "删除该组将同时删除组内的所有磁贴，是否继续？",
+  "homeNewGroupTitle": "新建分组",
+  "homeGroupNameHint": "输入分组名称",
+  "homeRenameGroupTitle": "为该组命名",
+  "homeNewGroupNameHint": "输入新组名",
+  "homeImageSlice": "图片碎片",
+  "tileSizeLabelSmall": "{size} (小)",
+  "@tileSizeLabelSmall": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "tileSizeLabelWide": "{size} (宽)",
+  "@tileSizeLabelWide": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "tileSizeLabelLarge": "{size} (大)",
+  "@tileSizeLabelLarge": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "homeGroupOne": "分组1",
+  "homeGroupTwo": "分组2",
+  "homeGroupProductivity": "生产力工具",
+  "homeGroupLegacy": "旧版",
+  "tileImageSlicer": "图片切割",
+  "tileSystemSettings": "系统设置",
+  "tileDatabase": "数据库",
+  "tileLcdDisplay": "LCD 显示屏",
+  "tileLedDynamic": "LED 动态",
+  "tileLedStatic": "LED 静态",
+  "tilePisScreen": "PIS 屏幕",
+  "tileRoutePreview": "路线预览",
+  "tileStationEntranceDesign": "出入口设计",
+  "tileStationEntrancePillar": "出入口立柱",
+  "tileStationEntranceSideName": "出入口侧名",
+  "tilePlatformSideName": "侧方站名",
+  "tileScreenDoorCover": "屏蔽门盖板",
+  "tileStationNameSign": "站名牌",
+  "tileGeneralSign": "通用标识",
+  "tileLineSymbol": "线路符号",
+  "tileBusLcd": "巴士 LCD",
+  "tileJsonEditor": "JSON 编辑器",
+  "tileNamingRule": "命名规范",
+  "tilePlatformText": "站台文本",
+  "tileDepartureText": "出发文本",
+  "tileArrivalText": "到站文本",
+  "tileOperationDirectionLegacy": "运营方向(旧)",
+  "tileLegacyLcdWarning": "旧版LCD(警告)",
+  "tileLinearRoute": "线性路线",
+  "tileRoadSign": "路牌",
+  "commentPanelTitle": "评论区",
+  "commentTotalCount": "共 {count} 条",
+  "@commentTotalCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSortHeat": "按热度",
+  "commentSortTime": "按时间",
+  "commentLoading": "正在加载评论...",
+  "commentLoadFail": "评论加载失败，请检查网络",
+  "commentLoadMoreFail": "加载更多评论失败",
+  "commentNoMore": "没有更多评论了",
+  "commentLoadingMore": "加载中...",
+  "commentEmpty": "还没有评论",
+  "commentViewDialogue": "查看对话",
+  "@commentViewDialogue": {
+    "type": "text"
+  },
+  "commentDialogueTitle": "对话详情",
+  "@commentDialogueTitle": {
+    "type": "text"
+  },
+  "msgMenuSettings": "消息设置",
+  "@msgMenuSettings": {
+    "type": "text"
+  },
+  "msgSettingsLoadFail": "消息设置加载失败",
+  "@msgSettingsLoadFail": {
+    "type": "text"
+  },
+  "msgSettingsSaveFail": "保存失败",
+  "@msgSettingsSaveFail": {
+    "type": "text"
+  },
+  "commentPinned": "置顶",
+  "commentDeleted": "评论已删除",
+  "commentExpand": "展开",
+  "commentCollapse": "收起",
+  "commentTranslateNeedEnable": "请先在语言设置中开启 AI 翻译",
+  "commentTranslateNone": "没有可用翻译",
+  "commentReply": "回复",
+  "commentTranslate": "翻译",
+  "commentTranslateRestore": "显示原文",
+  "commentLikeTooltip": "点赞",
+  "commentDislikeTooltip": "点踩",
+  "commentSubCount": "共 {count} 条回复",
+  "@commentSubCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentSubLoadMore": "加载更多回复（{hint}）",
+  "@commentSubLoadMore": {
+    "placeholders": {
+      "hint": {
+        "type": "String"
+      }
+    }
+  },
+  "commentYesterday": "昨天",
+  "articleLoadFailed": "文章加载失败",
+  "articleNoContent": "文章正文为空或暂不支持渲染",
+  "articleOpenBrowser": "浏览器打开",
+  "articleShare": "分享",
+  "articleAuthorUnknown": "未知作者",
+  "browserLinkPageTitle": "网页链接",
+  "articleViews": "{count} 阅读",
+  "@articleViews": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerTitle": "发送给联系人",
+  "contactPickerContentLabel": "发送内容",
+  "contactPickerContentHint": "输入要发送的内容",
+  "contactPickerContentEmpty": "内容不能为空",
+  "contactPickerSearchHint": "搜索联系人",
+  "contactPickerEmpty": "暂无联系人",
+  "contactPickerNoMatch": "未找到匹配的联系人",
+  "contactPickerSelectAll": "全选",
+  "contactPickerSendToCount": "发送给 {count} 个联系人",
+  "@contactPickerSendToCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contactPickerSent": "已发送给 {count} 个联系人",
+  "@contactPickerSent": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "contactPickerNotConnected": "「{name}」未连接，无法发送",
+  "@contactPickerNotConnected": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerSendFailed": "发送失败：{error}",
+  "@contactPickerSendFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "contactPickerOnline": "在线",
+  "contactPickerOffline": "离线",
+  "articleShareToContact": "私信分享",
+  "playerDanmakuList": "弹幕列表",
+  "playerDanmakuListCount": "弹幕列表 · 共 {count} 条",
+  "@playerDanmakuListCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerDanmakuListEmpty": "暂无弹幕",
+  "playerDanmakuListNoMatch": "无匹配的弹幕",
+  "playerDanmakuListSearchHint": "搜索弹幕内容",
+  "playerDanmakuListJumpCurrent": "定位到当前播放",
+  "playerViewNotes": "查看笔记",
+  "playerNotesTitle": "笔记",
+  "playerNotesCount": "笔记（{count}）",
+  "@playerNotesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "playerNotesEmpty": "该视频暂无公开笔记",
+  "playerNotesNoMore": "没有更多了",
+  "playerNotesLoadFailed": "笔记加载失败",
+  "playerNotesViewFull": "查看全部",
+  "playerWriteNote": "写笔记",
+  "noteEditorWrite": "写笔记",
+  "noteEditorTitle": "写笔记",
+  "noteEditorTitleHint": "标题（选填）",
+  "noteEditorContentHint": "开始记笔记…",
+  "noteEditorEmoji": "表情",
+  "noteEditorPublish": "发布",
+  "noteEditorEmptyContent": "笔记内容不能为空",
+  "noteEditorContentTooShort": "内容至少 10 个字符才能发布",
+  "noteEditorNotLoggedIn": "未登录：笔记已保存为本地草稿，登录后可发布",
+  "noteEditorPublished": "笔记已发布",
+  "noteEditorPublishNetworkError": "发布失败（网络异常），草稿已保存",
+  "noteEditorPublishRejected": "发布被服务端拒绝，草稿已保留",
+  "noteEditorDraftSaved": "已自动保存草稿",
+  "noteEditorLoggedInHint": "已登录，可发布公开笔记",
+  "noteEditorGuestHint": "未登录：仅保存本地草稿，不能发布",
+  "noteEditorSavedAt": "草稿已保存 {hour}:{minute}",
+  "@noteEditorSavedAt": {
+    "placeholders": {
+      "hour": {
+        "type": "String"
+      },
+      "minute": {
+        "type": "String"
+      }
+    }
+  },
+  "noteEditorCharCount": "{count} 字",
+  "@noteEditorCharCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noteEditorMyDraft": "我的草稿",
+  "noteEditorDeleteDraft": "删除草稿",
+  "playerMoreTooltip": "更多操作",
+  "commentComposerBarHint": "说点什么…",
+  "commentComposerHint": "输入评论内容…",
+  "commentComposerReplyHint": "回复 @{name}",
+  "@commentComposerReplyHint": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "commentComposerReplyTo": "回复 @{name}",
+  "@commentComposerReplyTo": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "commentComposerEmote": "表情",
+  "commentComposerSend": "发送",
+  "commentComposerEmpty": "评论内容不能为空",
+  "commentComposerEmoteUnavailable": "表情面板不可用（可能未登录）",
+  "commentComposerPickImage": "选择图片",
+  "commentComposerMore": "更多",
+  "commentComposerVideoProgress": "视频进度",
+  "commentComposerVideoScreenshot": "视频截图",
+  "commentComposerImageLimit": "最多选择 {count} 张图片",
+  "@commentComposerImageLimit": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "commentComposerCaptureFailed": "截图失败，请先开始播放",
+  "commentComposerUploadFailed": "图片上传失败，请重试",
+  "commentComposerFabLabel": "发评论",
+  "commentComposerFabReply": "发回复",
+  "danmakuSendTitle": "发弹幕",
+  "danmakuSendModeLabel": "模式",
+  "danmakuSendFontSizeLabel": "字号",
+  "danmakuSendColorLabel": "颜色",
+  "danmakuFontSizeSmall": "小",
+  "danmakuFontSizeStandard": "标准",
+  "danmakuFontSizeLarge": "大",
+  "danmakuSendCustomColor": "自定义颜色",
+  "danmakuSendColorOk": "确定",
+  "danmakuSendPreviewPlaceholder": "发个友善的弹幕见证当下",
+  "drawerHistory": "历史记录",
+  "drawerWatchLater": "稍后再看",
+  "drawerMyCache": "我的缓存",
+  "historyCenterTitle": "历史记录",
+  "historyTabWatch": "观看历史",
+  "historyTabPlay": "播放进度",
+  "historySearchHint": "搜索历史...",
+  "historyPauseHistory": "暂停记录历史",
+  "historyResumeHistory": "恢复记录历史",
+  "historyPausedTip": "历史记录已暂停",
+  "historyPausedTipAction": "点击恢复",
+  "historyClearWatchHistory": "清空观看历史",
+  "historyClearPlayHistory": "清空播放记录",
+  "historyClearAllTitle": "清空历史",
+  "historyClearAllConfirm": "确定要清空全部{label}吗？此操作不可恢复。",
+  "@historyClearAllConfirm": {
+    "placeholders": {
+      "label": {
+        "type": "String"
+      }
+    }
+  },
+  "historyNoWatchHistory": "暂无观看历史",
+  "historyNoPlayHistory": "暂无播放记录",
+  "historyDeleteSelected": "删除选中",
+  "historySelectedCount": "已选 {count} 项",
+  "@historySelectedCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "historySearchNoResult": "无匹配结果",
+  "historyPauseOnSnack": "已暂停历史记录",
+  "historyResumeOnSnack": "已恢复历史记录",
+  "historyDeleteToast": "已删除 {count} 条记录",
+  "@historyDeleteToast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "myCacheTitle": "我的缓存",
+  "myCacheSearchHint": "搜索缓存视频...",
+  "myCacheDownloading": "正在缓存",
+  "myCacheCached": "已缓存",
+  "myCacheNoCache": "暂无缓存视频",
+  "myCacheGroupCount": "{count}个视频",
+  "@myCacheGroupCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "myCacheDeleteGroup": "删除整组",
+  "myCacheUpdateDanmaku": "更新弹幕",
+  "myCacheClearAllTitle": "清空全部缓存",
+  "myCacheClearAllConfirm": "将删除全部已缓存视频（{count}个视频 · {size}），确定吗？",
+  "@myCacheClearAllConfirm": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "cacheActionDownload": "缓存",
+  "cacheActionCached": "已缓存",
+  "cacheActionCaching": "缓存中",
+  "cacheToastSuccess": "已加入缓存队列",
+  "cacheToastCached": "该视频已缓存",
+  "cacheToastFailed": "缓存失败：{error}",
+  "@cacheToastFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "drawerRecommend": "推荐",
+  "recommendSourceWeb": "Web端",
+  "recommendSourceApp": "APP端",
+  "recommendEmpty": "暂无推荐内容",
+  "recommendSwitchList": "切换为单列",
+  "recommendSwitchGrid": "切换为多列",
+  "sideBarExpand": "展开侧边栏",
+  "sideBarCollapse": "收起侧边栏",
+  "sideBarMore": "更多",
+  "recommendTabHot": "热门",
+  "recommendTabBangumi": "番剧",
+  "recommendSourceTitle": "推荐数据来源",
+  "settingsPreferences": "偏好设置",
+  "settingsPreferencesSub": "杂项与个人偏好",
+  "settingsPreferencesEmpty": "暂无偏好项",
+  "prefBottomBarSection": "底栏样式",
+  "prefUseM3BottomBar": "使用 M3 底栏",
+  "prefUseM3BottomBarDesc": "以标准 Material 3 NavigationBar 取代玻璃底栏",
+  "prefBottomBarSearch": "底栏搜索入口",
+  "prefBottomBarSearchDesc": "竖屏推荐页底栏显示搜索（玻璃底栏在最右侧孤儿位，M3 底栏为附加项；开启时顶栏搜索按钮隐藏）",
+  "prefWindowSection": "默认窗口大小",
+  "prefWindowSize": "启动窗口",
+  "prefRefreshSection": "刷新",
+  "prefRefreshDisplacement": "刷新滑动距离",
+  "prefRefreshDisplacementDesc": "下拉触发刷新所需的滑动距离",
+  "prefRefreshEdgeOffset": "刷新指示器距离",
+  "prefRefreshEdgeOffsetDesc": "刷新指示器距顶部的偏移",
+  "userSpaceFollowMutual": "互相关注",
+  "userSpaceFollowBlocked": "已拉黑",
+  "userSpaceFollowDone": "已关注",
+  "userSpaceUnfollowDone": "已取消关注",
+  "userSpaceFollowFail": "操作失败，请稍后重试",
+  "commonTapOutsideToClose": "点击空白处关闭",
+  "prefFileAssocSection": "文件关联",
+  "prefFileAssocDefault": "设为默认打开方式",
+  "prefFileAssocDefaultSub": "双击视频文件时直接用 NaviFlash 播放",
+  "msgCenterTitle": "消息中心",
+  "msgCenterSubtitle": "回复我的 · @我的 · 收到的赞 · 私信",
+  "msgCenterLoginPrompt": "登录后可以查看消息中心",
+  "msgReplyMe": "回复我的",
+  "msgAtMe": "@我的",
+  "msgLikedMe": "收到的赞",
+  "msgSysNotice": "系统通知",
+  "msgMyWhisper": "我的私信",
+  "msgWhisperSubtitle": "与 UP 主的私信会话",
+  "msgUnreadCount": "{count} 条未读",
+  "@msgUnreadCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "msgTimeJustNow": "刚刚",
+  "msgTimeMinutesAgo": "{count} 分钟前",
+  "@msgTimeMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "msgTimeYesterday": "昨天 {time}",
+  "@msgTimeYesterday": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "msgGoLogin": "去登录",
+  "msgDeleteNoticeConfirm": "确定删除该通知？",
+  "msgDeleted": "已删除",
+  "msgLoginPromptFeature": "登录后可以查看{title}",
+  "@msgLoginPromptFeature": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "msgNoMore": "没有更多了",
+  "msgReplyEmpty": "还没有人回复你",
+  "msgUserFallback": "用户{mid}",
+  "@msgUserFallback": {
+    "placeholders": {
+      "mid": {
+        "type": "String"
+      }
+    }
+  },
+  "msgEtAl": " 等人",
+  "msgReplyTitle": " 对我的{business}发布了{counts}条评论",
+  "@msgReplyTitle": {
+    "placeholders": {
+      "business": {
+        "type": "String"
+      },
+      "counts": {
+        "type": "int"
+      }
+    }
+  },
+  "msgAtEmpty": "还没有人 @ 你",
+  "msgAtTitle": " 在{business}里 @ 了你",
+  "@msgAtTitle": {
+    "placeholders": {
+      "business": {
+        "type": "String"
+      }
+    }
+  },
+  "msgDeleteNoticeTitle": "删除该通知？",
+  "msgDeleteNoticeBody": "删除后，当有新点赞时会重新出现在列表。",
+  "msgMuteNotice": "不再通知",
+  "msgMuteNoticeBody": "这条内容的点赞将不再通知，但仍可在列表内查看。",
+  "msgSettingSaved": "设置成功",
+  "msgLoginPromptLikes": "登录后可以查看收到的赞",
+  "msgLikedEmpty": "还没有人赞过您",
+  "msgLikedEmptySubtitle": "发布内容后会在这里看到点赞通知",
+  "msgSectionLatest": "最新",
+  "msgSectionTotal": "累计",
+  "msgSomeone": "有人",
+  "msgEtAlCount": "{name} 等 {count} 人",
+  "@msgEtAlCount": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "msgLikedYou": " 赞了您",
+  "msgLikedYourBusiness": " 赞了您的{business}",
+  "@msgLikedYourBusiness": {
+    "placeholders": {
+      "business": {
+        "type": "String"
+      }
+    }
+  },
+  "msgNoticeMuted": "已关闭通知",
+  "msgUnmuteNotice": "接收通知",
+  "msgLikeDetailTitle": "点赞的人",
+  "msgLikeDetailEmpty": "还没有人点赞",
+  "msgSysEmpty": "还没有系统通知",
+  "msgDeleteSessionTitle": "删除会话？",
+  "msgDeleteSessionBody": "删除后聊天记录将从列表移除，对方再发消息会重新出现。",
+  "msgUnpinned": "已取消置顶",
+  "msgPinned": "已置顶",
+  "msgUnpin": "取消置顶",
+  "msgPin": "置顶会话",
+  "msgDeleteSession": "删除会话",
+  "msgLoginPromptWhisper": "登录后可以查看私信",
+  "msgWhisperEmpty": "还没有私信会话",
+  "msgWhisperEmptySubtitle": "在 UP 主主页点「私信」就能开始聊天",
+  "msgNoMessage": "[暂无消息]",
+  "msgWithdrawConfirm": "撤回这条消息？",
+  "msgWithdraw": "撤回",
+  "msgWithdrawn": "已撤回",
+  "msgWithdrawnSelf": "您撤回了一条消息",
+  "msgWithdrawnOther": "对方撤回了一条消息",
+  "msgChatEmpty": "还没有聊天记录",
+  "msgChatEmptySubtitle": "发条消息打个招呼吧",
+  "msgNoEarlier": "没有更早的消息了",
+  "msgInputHint": "发个消息聊聊呗",
+  "msgPicture": "[图片]",
+  "msgPictureFailed": "[图片加载失败]",
+  "msgShare": "[分享内容]",
+  "msgUnsupportedType": "[暂不支持的消息类型 {type}]",
+  "msgVoice": "[语音]",
+  "msgCardVideo": "视频",
+  "msgCardArticle": "专栏",
+  "msgCardLive": "直播",
+  "msgCardDynamic": "动态",
+  "msgCardAlbum": "相簿",
+  "msgCardInvalid": "内容已失效",
+  "msgCardViewDetail": "查看详情",
+  "msgAutoReply": "此条消息为自动回复",
+  "msgUploadingImage": "正在上传图片…",
+  "msgChatSettings": "聊天设置",
+  "msgPushReceive": "接收消息推送",
+  "msgPushReceiveDesc": "若关闭此开关，主人将不再收到该账号的图文消息与稿件推送，但通知类消息不受影响喵~",
+  "msgPushCloseConfirm": "确认关闭内容推送吗？",
+  "msgPinChat": "置顶聊天",
+  "msgChatMute": "消息免打扰",
+  "msgBlockAdd": "加入黑名单",
+  "msgBlockConfirmTitle": "确认拉黑该用户",
+  "msgBlockConfirmBody": "加入黑名单后，将自动解除关注关系和对该用户的合集订阅关系，禁止该用户与我互动或查看我的空间",
+  "msgReport": "举报",
+  "msgReportTitle": "举报：{name}",
+  "@msgReportTitle": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "msgReportContentHint": "举报内容（必选，可多选）",
+  "msgReportReasonHint": "举报理由（单选，非必选）",
+  "msgReportReasonRequired": "至少选择一项作为举报内容",
+  "msgReportSuccess": "举报成功",
+  "msgReportFailed": "举报失败",
+  "msgReportReasonAvatar": "头像违规",
+  "msgReportReasonNickname": "昵称违规",
+  "msgReportReasonSign": "签名违规",
+  "msgReportReasonPorn": "色情低俗",
+  "msgReportReasonFalse": "不实信息",
+  "msgReportReasonForbidden": "违禁",
+  "msgReportReasonAttack": "人身攻击",
+  "msgReportReasonFraud": "赌博诈骗",
+  "msgReportReasonLink": "违规引流外链",
+  "@msgUnsupportedType": {
+    "placeholders": {
+      "type": {
+        "type": "String"
+      }
+    }
+  },
+  "msgRefresh": "刷新",
+  "commonSend": "发送",
+  "commonRetry": "重试",
+  "msgInteractions": "社区互动",
+  "msgLoadMore": "加载更多",
+  "dynamicsTitle": "动态",
+  "dynamicsTabAll": "全部",
+  "dynamicsTabVideo": "投稿",
+  "dynamicsTabPgc": "番剧",
+  "dynamicsTabArticle": "专栏",
+  "dynamicsEmpty": "这里还没有动态",
+  "dynamicsLoginPrompt": "登录后可以看关注动态",
+  "onnxDepSection": "智能防遮挡依赖",
+  "onnxDepDesc": "弹幕智能防遮挡需要 ONNX Runtime 运行库与识别模型，两者默认不随安装包提供",
+  "onnxDepNotInstalled": "未安装",
+  "onnxDepSizeCounting": "计算中…",
+  "onnxDepDownload": "下载",
+  "onnxDepUninstall": "卸载",
+  "onnxDepUninstallTitle": "卸载智能防遮挡依赖？",
+  "onnxDepUninstalled": "已卸载智能防遮挡依赖",
+  "onnxDepInstallDone": "安装完成，智能防遮挡已可用",
+  "onnxDepUnsupported": "当前平台不支持智能防遮挡",
+  "onnxDepSourceTitle": "下载源",
+  "onnxDepSourceDesc": "自定义下载地址，留空使用内置默认源",
+  "onnxDepNeedInstall": "请先在「设置 → AI」中下载智能防遮挡依赖",
+  "onnxDepSourceSaved": "下载源已更新",
+  "onnxDepInstalled": "已安装 · {size}",
+  "@onnxDepInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "onnxDepDownloading": "下载中 {percent}",
+  "@onnxDepDownloading": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "onnxDepUninstallConfirm": "将删除运行库与识别模型（{size}）。之后智能防遮挡不可用，需要时可重新下载。",
+  "@onnxDepUninstallConfirm": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "onnxDepFailed": "下载失败：{error}",
+  "@onnxDepFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "favWidgetPickTitle": "选择收藏夹",
+  "favWidgetPickHint": "小组件会显示该收藏夹里最新收藏的内容",
+  "favWidgetNeedLogin": "请先登录后再选择收藏夹",
+  "favWidgetFolderSwitched": "已切换为「{name}」",
+  "@favWidgetFolderSwitched": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ossSearchHint": "搜索包名或许可证",
+  "ossClearSearch": "清除",
+  "ossDepsSection": "第三方依赖",
+  "ossLoading": "正在收集许可信息…",
+  "ossLoadFailed": "未能读取许可清单，请稍后重试",
+  "ossEmptySearch": "没有匹配的开源项目",
+  "ossRetry": "重试",
+  "ossLicensesCount": "{count} 份许可",
+  "@ossLicensesCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "ossLicenseIndex": "许可 {index} / {total}",
+  "@ossLicenseIndex": {
+    "placeholders": {
+      "index": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "ossPackagesCount": "共 {total} 个开源包 · {licenses} 份许可文本",
+  "@ossPackagesCount": {
+    "placeholders": {
+      "total": {
+        "type": "int"
+      },
+      "licenses": {
+        "type": "int"
+      }
+    }
+  },
+  "userPickerTitle": "选择用户",
+  "userPickerSearchHint": "搜索我的关注",
+  "userPickerEmpty": "没有找到用户",
+  "userPickerLoadFailed": "加载失败",
+  "userPickerDone": "完成",
+  "shortsTitle": "短视频",
+  "shortsEmpty": "暂时没有内容",
+  "ttsSection": "AI 朗读引擎",
+  "ttsModelLabel": "Qwen3-TTS 1.7B",
+  "ttsDesc": "用 AI 朗读专栏、动态和评论，支持声音克隆。模型不随安装包提供，首次使用需下载约 1.4GB。",
+  "ttsNotInstalled": "未下载",
+  "ttsPartial": "下载不完整，继续下载即可补全",
+  "ttsSizeCounting": "计算中…",
+  "ttsDownload": "下载",
+  "ttsResume": "继续下载",
+  "ttsUninstall": "删除",
+  "ttsUninstallTitle": "删除 AI 朗读引擎？",
+  "ttsUninstalled": "已删除 AI 朗读引擎",
+  "ttsInstallDone": "下载完成，AI 朗读已可用",
+  "ttsUnsupported": "当前平台不支持 AI 朗读",
+  "ttsSourceTitle": "下载源",
+  "ttsSourceDesc": "访问不了 HuggingFace 时切换到镜像站，或填写自定义地址",
+  "ttsSourceSaved": "下载源已更新",
+  "ttsMirrorOfficial": "HuggingFace 官方",
+  "ttsMirrorChina": "hf-mirror 镜像站（国内推荐）",
+  "ttsMirrorCustom": "自定义地址",
+  "ttsEngineIdle": "未加载，点击朗读时自动加载",
+  "ttsEngineLoading": "正在加载朗读引擎…",
+  "ttsEngineReady": "引擎已就绪",
+  "ttsEngineUnload": "释放引擎",
+  "ttsEngineUnloaded": "已释放引擎，下次朗读时重新加载",
+  "ttsBackendTitle": "推理后端",
+  "ttsBackendAuto": "自动",
+  "ttsBackendNpu": "NPU",
+  "ttsBackendGpu": "GPU",
+  "ttsBackendCpu": "CPU",
+  "ttsBackendAutoDesc": "高通平台优先 NPU，不可用时回退 CPU",
+  "ttsBackendNpuDesc": "高通骁龙 NPU（Hexagon）加速",
+  "ttsBackendGpuDesc": "Vulkan / Metal 图形加速",
+  "ttsBackendCpuDesc": "纯 CPU 推理，兼容性最好",
+  "ttsBackendNpuRuntimeMissing": "当前安装包尚未内置 NPU 运行时，暂以 CPU 运行",
+  "ttsBackendNpuHardwareUnsupported": "NPU 仅支持高通骁龙平台，当前设备将回退 CPU",
+  "ttsEngineReadyOn": "引擎已就绪 · {name}",
+  "@ttsEngineReadyOn": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsNeedInstall": "请先在「设置 → 存储」中下载 AI 朗读引擎",
+  "ttsRuntimePending": "模型已就绪，推理运行时尚未接入",
+  "ttsVoTitle": "音色（声音克隆）",
+  "ttsVoDesc": "选一段 3-15 秒的清晰人声，朗读时会用它说话",
+  "ttsVoEmpty": "未设置，使用默认音色",
+  "ttsVoPick": "选择音频",
+  "ttsVoAdded": "音色已添加",
+  "ttsVoDeleteTitle": "删除音色？",
+  "ttsVoDeleted": "音色已删除",
+  "ttsVoDefault": "默认音色",
+  "ttsVoUse": "使用",
+  "ttsPickAudioTitle": "选择音色音频",
+  "ttsVoUnsupportedFile": "请选择一个音频文件",
+  "ttsInstalled": "已下载 · {size}",
+  "@ttsInstalled": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsDownloading": "下载中 {percent}",
+  "@ttsDownloading": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsDownloadingFile": "下载中 {percent} · {name}",
+  "@ttsDownloadingFile": {
+    "placeholders": {
+      "percent": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsUninstallConfirm": "将删除模型文件（{size}）。删除后 AI 朗读不可用，需要时可重新下载。",
+  "@ttsUninstallConfirm": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsFailed": "下载失败：{error}",
+  "@ttsFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsVoPickFailed": "读取音频失败：{error}",
+  "@ttsVoPickFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsVoDeleteConfirm": "将删除音色「{name}」。",
+  "@ttsVoDeleteConfirm": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsVoCount": "已保存 {count} 个音色",
+  "@ttsVoCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsReadAloud": "朗读",
+  "ttsReadAloudStop": "停止朗读",
+  "ttsSynthesizing": "正在合成语音…",
+  "ttsSpeakFailed": "朗读失败：{error}",
+  "@ttsSpeakFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "ttsTruncatedHint": "内容较长，只朗读前 {count} 字",
+  "@ttsTruncatedHint": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "playerOnlyPlayAudio": "听视频",
+  "playerOnlyPlayAudioDesc": "只播放声音，关闭画面（进度与倍速不受影响）",
+  "videoBgmUsedCount": "{count} 个稿件使用",
+  "@videoBgmUsedCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  }
+,
+  "comic": "漫画",
+  "memberShop": "会员购小店",
+  "audioZone": "音频区",
+  "opusTab": "图文",
+  "matchInfo": "比赛详情",
+  "watchLive": "看直播",
+  "interestStation": "兴趣小站",
+  "noteManage": "笔记管理",
+  "noteUnpublished": "未发布笔记",
+  "notePublished": "公开笔记",
+  "deleteSelected": "删除选中",
+  "confirmDeleteNote": "确定删除已选中的笔记吗？",
+  "favTopic": "我的话题",
+  "cancelFavTopic": "确定取消收藏该话题？",
+  "inputIdTitle": "输入 ID",
+  "inputIdHint": "请输入赛事或兴趣小站的 ID",
+  "noContent": "暂无内容",
+  "bubbleAll": "全部",
+  "cancel": "取消",
+  "deleted": "已删除",
+  "operationFailed": "操作失败",
+  "confirm": "确定"
+,
+  "selectAll": "全选",
+  "loadFailed": "加载失败",
+  "videoMorePanelTitle": "更多",
+  "memberLiteTitle": "UP 主",
+  "memberLiteViewFull": "查看原版主页",
+  "memberLiteEmpty": "暂无视频",
+  "audioPageTitle": "听视频",
+  "audioPageSpeed": "倍速",
+  "audioPageRetry": "重新加载",
+  "playerListenPage": "听视频",
+  "playerOnlyPlayAudioInline": "仅播放音频（留在当前页）",
+  "memberLiteVideoCount": "共 {count} 个视频",
+  "@memberLiteVideoCount": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "memberLiteGoSpace": "前往空间",
+  "commentSortLatestDesc": "最新评论",
+  "commentSortHottestDesc": "最热评论",
+  "commentSortLatestShort": "最新",
+  "commentSortHottestShort": "最热",
+  "memberLiteOrderPubdate": "最新发布",
+  "memberLiteOrderClick": "最多播放",
+  "videoMenuWatchLater": "稍后再看",
+  "videoMenuReload": "重新加载",
+  "playerMenuStats": "播放信息",
+  "playerMenuScreenshot": "截图",
+  "playerMenuAudioNorm": "音量均衡",
+  "playerMenuAudioDevice": "音频输出设备",
+  "playerMenuSource": "换源",
+  "playerMenuEndBehavior": "播放顺序",
+  "screenshotCopy": "复制到剪贴板",
+  "screenshotCopied": "已复制到剪贴板",
+  "screenshotCopyUnsupported": "当前平台不支持复制图片到剪贴板",
+  "commonCopy": "复制",
+  "subtitleDownloadAll": "下载全部字幕",
+  "subtitleDownloadPickDir": "选择字幕保存目录",
+  "subtitleDownloadNone": "当前视频没有可下载的字幕",
+  "subtitleDownloadAllFailed": "字幕下载失败",
+  "subtitleDownloadDone": "已保存 {count} 条字幕到 {dir}",
+  "@subtitleDownloadDone": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      },
+      "dir": {
+        "type": "String"
+      }
+    }
+  },
+  "prefPerfSection": "性能",
+  "prefEfficiencyMode": "效率模式",
+  "prefEfficiencyModeSub": "按系统低功耗档调度本应用（EcoQoS），后台挂机更省电，前台操作会略慢",
+  "prefEfficiencyModeUnsupported": "当前系统不支持效率模式",
+  "prefEfficiencyModeReading": "读取中…",
+  "prefEfficiencyModeActive": "已生效 · 进程按低功耗档调度",
+  "prefEfficiencyModeInactive": "未生效",
+  "prefEfficiencyModeFailed": "效率模式未能生效（{detail}）",
+  "@prefEfficiencyModeFailed": {
+    "placeholders": {
+      "detail": {
+        "type": "String"
+      }
+    }
+  },
+  "sleepTimer": "定时关闭",
+  "sleepTimerCustom": "自定义…",
+  "sleepTimerStopAfterCurrent": "播完本集后暂停",
+  "sleepTimerStopAfterCurrentShort": "播完本集",
+  "sleepTimerCancel": "取消定时关闭",
+  "sleepTimerArmedToast": "定时关闭已启动",
+  "sleepTimerCancelledToast": "已取消定时关闭",
+  "sleepTimerStopAfterCurrentArmedToast": "本集播完后将暂停播放",
+  "sleepTimerCustomDialogTitle": "自定义定时关闭",
+  "sleepTimerCustomHint": "分钟数",
+  "sleepTimerCustomUnit": "分钟",
+  "sleepTimerInvalidNumber": "请输入有效的分钟数",
+  "settingsSleepTimerExitApp": "定时结束后退出应用",
+  "settingsSleepTimerExitAppDesc": "到点暂停播放后退出 NaviFlash（桌面端生效）",
+  "sleepTimerMinutes": "{min} 分钟",
+  "@sleepTimerMinutes": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "playlistReversePlay": "倒序播放",
+  "playlistReversePlayOn": "已开启倒序播放",
+  "playlistReversePlayOff": "已关闭倒序播放",
+  "msgSettingsNotifSection": "通知提醒",
+  "msgSettingsReplyNotify": "回复我的消息提醒",
+  "msgSettingsReplyNotifyDesc": "（接收谁的评论消息提醒）",
+  "msgSettingsAtNotify": "@我的消息提醒",
+  "msgSettingsAtNotifyDesc": "（接收谁的@消息提醒）",
+  "msgSettingsLikeNotify": "收到的赞提醒",
+  "msgSettingsLikeNotifyDesc": "（接收谁的赞消息提醒）",
+  "msgSettingsNotifyEveryone": "所有人",
+  "msgSettingsNotifyFollowing": "关注的人",
+  "msgSettingsNotifyNone": "不接收任何消息提醒",
+  "msgSettingsReceiveSection": "私信接收",
+  "msgSettingsReceiveUnfollow": "接收未关注人消息",
+  "msgSettingsReceiveUnfollowDesc": "（若关闭此开关，你将不再收到未关注人的私信，但通知类消息不受影响）",
+  "msgSettingsUnfollowFold": "未关注人消息折叠",
+  "msgSettingsUnfollowFoldDesc": "（未关注人消息将被折叠起来）",
+  "msgSettingsGroupReceive": "接收应援团消息",
+  "msgSettingsGroupFold": "应援团消息折叠",
+  "msgSettingsSmartIntercept": "私信智能拦截",
+  "msgSettingsSmartInterceptDesc": "（开启后，7日内仅会接收到指定用户的私信、弹幕、评论，并不再接收@消息）",
+  "msgSettingsAntiHarassmentSection": "防骚扰",
+  "msgSettingsAntiHarassment": "防骚扰设置",
+  "msgSettingsScopeSelect": "接收私信的用户范围",
+  "msgSettingsValidUntil": "（该设置有效期至 {time}）",
+  "@msgSettingsValidUntil": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "prefEfficiencyModeAutoDesc": "前台保持正常性能；切到后台 3 分钟后自动进入效率模式，回到前台立即恢复，播放中不生效"
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SplashScreen 背景色（浅色模式；深色模式在 values-night/colors.xml 覆盖） -->
+    <color name="splash_background">#F7F8FA</color>
+
+    <!-- 桌面长按快捷方式图标色（默认/Android 11 及以下：品牌蓝）。
+         Android 12+ 用 values-v31 覆盖为系统 Material 动态色，
+         跟随系统主题/壁纸取色，无需运行时更新。 -->
+    <color name="shortcut_tint">#FF1E88E5</color>
+
+    <!-- 桌面小组件（收藏夹预览）浅色配色；深色在 values-night/colors.xml 覆盖 -->
+    <color name="fav_widget_background">#F7F8FA</color>
+    <color name="fav_widget_text_primary">#121316</color>
+    <color name="fav_widget_text_secondary">#6B7280</color>
+    <color name="fav_widget_placeholder">#E3E5E8</color>
+</resources>
